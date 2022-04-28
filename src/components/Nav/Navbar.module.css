@@ -20,22 +20,49 @@ p.logo {
   position: absolute;
   top: 10vh;
   left: 0;
-  background-color: rgb(152, 151, 151);
+  background-color: rgb(255, 255, 255);
   width: 100%;
+  border: 1px solid #d4d4d42e;
 }
 
 ul.navlinks li {
   list-style: none;
   text-align: center;
-  padding: 0.5rem 0;
+  padding: 0.875rem 0;
+  border: 1px solid #dadada2e;
 }
 
 ul.navlinks li a {
   text-decoration: none;
-  color: black;
+  color: #a6a6a6;
   font-weight: 600;
   font-size: 1.15rem;
 }
 
-.menu-icon {
+form {
+  position: relative;
+}
+
+label {
+  position: absolute;
+  top: 12px;
+  left: 90px;
+}
+input {
+  color: #c2a410;
+  border: 2px solid #c2a410;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 10px 30px;
+  width: 140px;
+  /* max-width: 250px; */
+}
+
+.btngroup {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
