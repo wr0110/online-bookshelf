@@ -1,0 +1,41 @@
+/* C2A410 */
+
+nav {
+  height: 10vh;
+  position: relative;
+  box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+p.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #c2a410;
+}
+
+.menu {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  background-color: rgb(152, 151, 151);
+  width: 100%;
+}
+
+ul.navlinks li {
+  list-style: none;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+ul.navlinks li a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.menu-icon {
+}
