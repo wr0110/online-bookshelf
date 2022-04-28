@@ -3,7 +3,7 @@
 nav {
   height: 10vh;
   position: relative;
-  box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 4px 50px rgba(149, 149, 149, 0.297);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,9 +35,9 @@ ul.navlinks li {
 
 ul.navlinks li a {
   text-decoration: none;
-  color: #a6a6a6;
+  color: #3f3d56;
   font-weight: 600;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
 }
 
 form {
@@ -70,4 +70,44 @@ input {
 
 .menu-icon {
   cursor: pointer;
+}
+
+/* Media Queries */
+
+@media (min-width: 768px) {
+  .menu-icon {
+    display: none;
+  }
+
+  .menu {
+    position: relative;
+    background: none;
+    border: none;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    align-items: center;
+  }
+
+  ul.navlinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul.navlinks li {
+    padding: 0 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu {
+    justify-content: space-between;
+    width: 60%;
+  }
+
+  nav {
+    padding: 0 4rem;
+  }
 }

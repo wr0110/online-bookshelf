@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "./Navbar.module.css";
+
 import { BiSearch } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Button from "../button/Button";
@@ -10,6 +11,12 @@ const Navbar = () => {
   const handleMenu = () => {
     setShowMenu((prevState) => !prevState);
   };
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 767) {
+      setShowMenu(true);
+    }
+  });
 
   return (
     <nav>
