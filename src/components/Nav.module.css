@@ -57,6 +57,13 @@
 .searchbar form {
   width: 80%;
   margin: 0 auto;
+  position: relative;
+}
+
+.searchbar label {
+  position: absolute;
+  top: 10px;
+  right: 15px;
 }
 
 .searchbar input,
@@ -69,6 +76,10 @@
   font-weight: 600;
 }
 
+.searchbar input:focus,
+.desktop-search-bar input:focus {
+  outline: none;
+}
 .desktop-search-bar input::placeholder {
   color: #c2a410;
   font-size: 1.1rem;
@@ -85,9 +96,25 @@
     display: none;
   }
 
+  .searchbar label {
+    position: relative;
+    top: 50px;
+    right: 80px;
+  }
+
   .desktop-search-bar {
     display: grid;
     width: 50%;
+  }
+
+  .desktop-search-bar form {
+    position: relative;
+  }
+
+  .desktop-search-bar label {
+    position: absolute;
+    top: 10px;
+    right: 15px;
   }
 
   .btnlog {
@@ -117,9 +144,5 @@
 
   .desktop-search-bar:hover {
     width: 300px;
-  }
-
-  .desktop-search-bar input:focus {
-    outline: none;
   }
 }

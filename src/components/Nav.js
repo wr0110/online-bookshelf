@@ -81,7 +81,10 @@ const Nav = () => {
         }
       >
         <form>
-          <input type="text" placeholder="Search" />
+          <label htmlFor="search">
+            <BiSearch size="20px" color="#c2a410" />
+          </label>
+          <input type="text" name="search" placeholder="Search" />
         </form>
       </div>
     </nav>
