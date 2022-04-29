@@ -4,91 +4,109 @@
   align-items: center;
   position: fixed;
   height: 70px;
-  background-color: bisque;
+  background-color: white;
   padding: 0 2rem;
   width: 100%;
   z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.navitems {
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #c2a410;
+}
+
+.nav-items {
   position: absolute;
-  background-color: burlywood;
   top: 70px;
   left: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
-  padding: 2rem;
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   list-style: none;
+  background-color: #f2f2f2;
   z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.navitems li a {
+.nav-items li a {
   text-decoration: none;
-  color: #000;
+  color: #3f3d56;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .searchbar {
   position: absolute;
-  top: 75px;
+  top: 70px;
   left: 0;
   z-index: 3;
+  background-color: rgb(226, 226, 226);
+  height: 80px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.searchbar input {
-  padding: 1rem;
-  width: 100%;
+.searchbar form {
+  width: 80%;
+  margin: 0 auto;
 }
 
-.nosearchbar {
+.searchbar input,
+.desktop-search-bar input {
+  border: 2px solid #c2a410;
+  border-radius: 50px;
+  padding: 10px 25px;
+  width: 100%;
+  color: #c2a410;
+  font-weight: 600;
+}
+
+.desktop-search-bar {
   display: none;
 }
 
 @media (min-width: 768px) {
-  .searchicon {
-    position: absolute;
-    left: -100px;
+  .search-icon {
+    /* position: absolute;
+    left: -100px; */
+    display: none;
   }
 
-  .nosearchbar {
+  .desktop-search-bar {
     display: grid;
-    background-color: red;
-  }
-
-  /* .searchbar {
-    display: grid;
-    position: relative;
-    top: 0;
     width: 50%;
-    visibility: visible;
   }
 
-  #search {
-    display: block;
-  } */
   .btnlog {
     order: 1;
   }
 }
 
 @media (min-width: 900px) {
-  .navitems {
+  .navbar {
+    justify-content: space-around;
+  }
+  .nav-items {
     position: relative;
     width: 30%;
     top: 0px !important;
     background: none;
+    box-shadow: none;
+    gap: 2rem;
+    margin-left: auto;
   }
 
-  /* .nosearchbar {
-    width: 300px;
+  .desktop-search-bar {
+    width: 120px;
+    margin-left: auto;
+    margin-right: 20px;
   }
-  .nosearchbar form {
-    width: 100%;
-  }
-
-  .nosearchbar form input {
-    width: 100%;
-  } */
 }
