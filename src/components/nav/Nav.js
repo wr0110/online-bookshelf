@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "./Nav.module.css";
 import { BiSearch } from "react-icons/bi";
-import Button from "./button/Button";
+import Button from "../button/Button";
 
 const Nav = () => {
   const [width, setwidth] = useState(0);

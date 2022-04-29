@@ -1,0 +1,9 @@
+.hero {
+  background-image: url("../images/covers.png");
+  height: 100vh;
+  padding-top: 10vh;
+}
+
+.hero-text {
+  margin: 15rem 0;
+}

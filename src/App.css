@@ -5,3 +5,14 @@
   font-family: "Inter", sans-serif;
   font-size: 14px;
 }
+
+:root {
+  --yellow: #c2a410;
+  --light-grey: #f2f2f2;
+  --dark-blue: #3f3d56;
+}
+
+/* main {
+  padding-top: 140px;
+  z-index: 20;
+} */
