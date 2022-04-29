@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "./Navbar.module.css";
 
 import { BiSearch } from "react-icons/bi";
@@ -8,15 +8,21 @@ import Button from "../button/Button";
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
-  const handleMenu = () => {
+  const toggleMenu = () => {
     setShowMenu((prevState) => !prevState);
   };
 
-  window.addEventListener("resize", () => {
+  function showItems() {
     if (window.innerWidth > 767) {
       setShowMenu(true);
     }
-  });
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", showItems);
+
+    return () => window.removeEventListener("resize", showItems);
+  }, [showMenu]);
 
   return (
     <nav>
@@ -52,7 +58,7 @@ const Navbar = () => {
         </div>
       )}
 
-      <div onClick={handleMenu} className={styled["menu-icon"]}>
+      <div onClick={toggleMenu} className={styled["menu-icon"]}>
         <GiHamburgerMenu size="25px" color="#c2a410" />
       </div>
     </nav>

@@ -1,5 +1,3 @@
-/* C2A410 */
-
 nav {
   height: 10vh;
   position: relative;
@@ -29,8 +27,6 @@ ul.navlinks li {
   list-style: none;
   text-align: center;
   padding: 0.875rem 0;
-
-  /* border: 1px solid #dadada2e; */
 }
 
 ul.navlinks li a {
@@ -86,7 +82,7 @@ input {
     top: 0;
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 75%;
     align-items: center;
   }
 
@@ -101,7 +97,7 @@ input {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1000px) {
   .menu {
     justify-content: space-between;
     width: 60%;
