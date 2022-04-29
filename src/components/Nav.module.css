@@ -53,8 +53,10 @@
   }
 
   .nosearchbar {
-    display: block;
+    display: grid;
+    background-color: red;
   }
+
   /* .searchbar {
     display: grid;
     position: relative;
@@ -69,4 +71,24 @@
   .btnlog {
     order: 1;
   }
+}
+
+@media (min-width: 900px) {
+  .navitems {
+    position: relative;
+    width: 30%;
+    top: 0px !important;
+    background: none;
+  }
+
+  /* .nosearchbar {
+    width: 300px;
+  }
+  .nosearchbar form {
+    width: 100%;
+  }
+
+  .nosearchbar form input {
+    width: 100%;
+  } */
 }
