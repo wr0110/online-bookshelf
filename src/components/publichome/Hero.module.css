@@ -10,11 +10,4 @@
 .hero-text {
   margin: 15rem 0;
   width: 80%;
-  color: var(--dark-blue);
-}
-
-.hero-intro {
-  line-height: 135%;
-  padding: 2rem 0;
-  letter-spacing: 1.5px;
 }

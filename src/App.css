@@ -12,6 +12,12 @@
   --dark-blue: #3f3d56;
 }
 
+.para {
+  line-height: 135%;
+  padding: 2rem 0;
+  letter-spacing: 1.5px;
+}
+
 /* main {
   padding-top: 140px;
   z-index: 20;

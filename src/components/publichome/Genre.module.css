@@ -1,0 +1,9 @@
+.genre {
+  padding: 3.5rem 0;
+}
+
+.genre-item {
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 10px 25px;
+}

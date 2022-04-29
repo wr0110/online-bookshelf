@@ -18,7 +18,7 @@ const Hero = () => {
             }
           />
 
-          <p className={styled["hero-intro"]}>
+          <p className="para">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus
             velit senectus in nunc ut dictum aliquam id platea. In eget amet,
             imperdiet tellus. Sit sit orci in eu. Quis pellentesque.
