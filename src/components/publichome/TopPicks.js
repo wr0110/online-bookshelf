@@ -3,6 +3,8 @@ import Heading from "../../ui/heading/Heading";
 import Container from "../../ui/wrapper/Container";
 import Recommendations from "../recs/Recommendations";
 import styled from "./TopPicks.module.css";
+import cruel_prince from "../../images/cruel_prince.jpg";
+import ugly_love from "../../images/ugly_love.jpg";
 
 const TopPicks = () => {
   const text = (
@@ -23,7 +25,25 @@ const TopPicks = () => {
           </p>
         </article>
 
-        <Recommendations />
+        <div>
+          <Recommendations
+            theme="yellow"
+            bookTitle="the cruel prince"
+            author="holly black"
+            genre="fantasy"
+            src={cruel_prince}
+            bg="light-yellow"
+          />
+
+          <Recommendations
+            theme="dark-blue"
+            bookTitle="ugly love"
+            author="colleen hoover"
+            genre="romance"
+            src={ugly_love}
+            bg="light-blue"
+          />
+        </div>
       </Container>
     </section>
   );

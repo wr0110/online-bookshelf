@@ -21,13 +21,13 @@
   border: 2px solid var(--dark-blue);
   color: var(--dark-blue);
   text-align: center;
-  /* min-width: 120px; */
+  min-width: 120px;
   width: fit-content;
 }
 
 .genre-group {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
   gap: 1rem;
   margin: 2rem 0;
   place-items: center;
