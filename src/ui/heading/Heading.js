@@ -3,9 +3,9 @@ import styled from "./Heading.module.css";
 
 const Heading = (props) => {
   return (
-    <p className={`${styled[`${props.className}`]} ${styled.heading}`}>
+    <h1 className={`${styled[`${props.className}`]} ${styled.heading}`}>
       {props.text}
-    </p>
+    </h1>
   );
 };
 

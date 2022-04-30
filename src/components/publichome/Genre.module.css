@@ -1,9 +1,9 @@
 .genre {
   background-image: url("../../images/wave_vector.png");
-  background-position: center top;
+  background-position: right top;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 70vh;
+  /* height: 70vh; */
 }
 
 .wrap {

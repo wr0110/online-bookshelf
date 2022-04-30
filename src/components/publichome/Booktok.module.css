@@ -1,0 +1,26 @@
+.booktok {
+  padding: 3rem 0;
+}
+
+.bookmark {
+  width: 100%;
+  position: relative;
+  left: -50px;
+  height: 45vh;
+}
+
+.bookmark img {
+  width: 100%;
+  height: 100%;
+  /* object-fit: contain; */
+}
+
+.booktok-info {
+  margin: 5rem 0;
+}
+
+.booktok-info h1,
+.booktok p {
+  text-align: left;
+  width: 70%;
+}
