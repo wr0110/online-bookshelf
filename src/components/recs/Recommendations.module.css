@@ -1,0 +1,44 @@
+.recs {
+  margin: 3rem 0;
+}
+
+.recs article {
+  display: grid;
+  grid-template-columns: 40% 45%;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-yellow);
+  border-radius: 20px;
+  /* height: 22vh; */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  position: relative;
+}
+
+.cover {
+  width: 100%;
+  position: relative;
+  top: -35px;
+}
+
+.cover img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.book-details h1 {
+  font-size: 15px;
+  padding: 0.5rem 0;
+}
+
+.book-details p {
+  padding-bottom: 2.5px;
+}
+
+.book-details p {
+  color: var(--med-grey);
+  letter-spacing: 1px;
+}

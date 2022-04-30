@@ -1,12 +1,13 @@
 import React from "react";
 import Heading from "../../ui/heading/Heading";
 import Container from "../../ui/wrapper/Container";
+import Recommendations from "../recs/Recommendations";
 import styled from "./TopPicks.module.css";
 
 const TopPicks = () => {
   const text = (
     <>
-      Top picks of the <span>month</span>{" "}
+      Top picks of the <span>month</span>
     </>
   );
   return (
@@ -22,7 +23,7 @@ const TopPicks = () => {
           </p>
         </article>
 
-        <div></div>
+        <Recommendations />
       </Container>
     </section>
   );

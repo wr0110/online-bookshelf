@@ -6,7 +6,11 @@ import Container from "../../ui/wrapper/Container";
 const Genre = (props) => {
   //  map over the genrelist recieved from props and return them in a paragraph
   const genres = props.genreList.map((genre) => {
-    return <p className={styled["genre-item"]}>{genre}</p>;
+    return (
+      <p key={genre} className={styled["genre-item"]}>
+        {genre}
+      </p>
+    );
   });
 
   return (
