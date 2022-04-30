@@ -2,7 +2,7 @@ import React from "react";
 import styled from "./Booktok.module.css";
 import Heading from "../../ui/heading/Heading";
 import Container from "../../ui/wrapper/Container";
-import bookmark from "../../images/bookmark.png";
+import booktok from "../../images/booktok2.jpg";
 import Button from "../button/Button";
 
 const Booktok = () => {
@@ -13,11 +13,10 @@ const Booktok = () => {
   );
   return (
     <section className={styled.booktok}>
+      <figure className={styled.bookmark}>
+        <img src={booktok} alt="books banner from tubefilter.com" />
+      </figure>
       <Container>
-        <figure className={styled.bookmark}>
-          <img src={bookmark} alt="" />
-        </figure>
-
         <article className={styled["booktok-info"]}>
           <Heading className="heading-md" text={heading} />
 
