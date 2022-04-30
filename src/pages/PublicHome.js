@@ -2,6 +2,7 @@ import React from "react";
 import Booktok from "../components/publichome/Booktok";
 import Genre from "../components/publichome/Genre";
 import Hero from "../components/publichome/Hero";
+import Review from "../components/publichome/Review";
 import TopPicks from "../components/publichome/TopPicks";
 import reading_svg from "../images/reading_svg.png";
 
@@ -36,7 +37,10 @@ const PublicHome = () => {
         alt="person reading a book"
         paragraph={paragraph}
       />
-      <TopPicks /> <Booktok />
+
+      <TopPicks />
+      <Booktok />
+      <Review />
     </section>
   );
 };

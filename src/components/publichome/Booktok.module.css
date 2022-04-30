@@ -1,11 +1,9 @@
 .booktok {
-  /* left: -50px; */
-  /* height: 45vh; */
   background-image: url("../../images/text-bg.png");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 80vh;
+  height: 90vh;
 }
 
 .bookmark img {

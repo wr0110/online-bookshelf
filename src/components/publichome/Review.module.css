@@ -1,0 +1,17 @@
+.reviews {
+  text-align: center;
+  padding: 3rem 0;
+  background-image: url("../../images/reviews_bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.review-list {
+  margin-top: 4rem;
+}
+
+.review {
+  margin-bottom: 1.5rem;
+}
