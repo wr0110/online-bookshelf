@@ -1,16 +1,17 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "./Genre.module.css";
 import Heading from "../../ui/heading/Heading";
 import Container from "../../ui/wrapper/Container";
+import reading_svg from "../images/reading_svg.png";
 
 const Genre = () => {
   const genreList = [
     "Fiction",
-    "Non-Fiction",
+    "Fantasy",
     "Romance",
-    "Historical Romance",
+    "Humour",
     "Horror",
-    "Young Adult",
+    "New Adult",
   ];
 
   const genres = genreList.map((genre) => {
@@ -29,8 +30,18 @@ const Genre = () => {
               </>
             }
           />
-          <Fragment>{genres}</Fragment>
+
+          <p className={`para ${styled.paragraph}`}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
+            eleifend cras praesent purus nec, quis aliquet.
+          </p>
         </article>
+
+        <div className={styled["genre-group"]}>{genres}</div>
+
+        <figure className={styled["genre-img"]}>
+          <img src={reading_svg} alt="person reading a book" />
+        </figure>
       </Container>
     </section>
   );

@@ -2,8 +2,35 @@
   padding: 3.5rem 0;
 }
 
+.paragraph {
+  text-align: center;
+}
+
 .genre-item {
   font-weight: 600;
   font-size: 1.1rem;
   padding: 10px 25px;
+  border-radius: 50px;
+  border: 2px solid var(--dark-blue);
+  text-align: center;
+  /* min-width: 120px; */
+  width: fit-content;
+}
+
+.genre-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+  place-items: center;
+}
+
+.genre-img {
+  width: 100%;
+  margin: 4rem 0;
+}
+
+.genre-img img {
+  width: 100%;
+  transform: scale(1.3);
 }
