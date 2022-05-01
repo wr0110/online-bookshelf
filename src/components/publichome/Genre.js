@@ -23,10 +23,9 @@ const Genre = (props) => {
           />
 
           <p className={`para ${styled.paragraph}`}>{props.paragraph}</p>
+
+          <div className={styled["genre-group"]}>{genres}</div>
         </article>
-
-        <div className={styled["genre-group"]}>{genres}</div>
-
         <figure className={styled["genre-img"]}>
           <img src={`${props.src}`} alt={props.alt} />
         </figure>

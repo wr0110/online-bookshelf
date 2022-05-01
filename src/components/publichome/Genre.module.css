@@ -1,9 +1,9 @@
 .genre {
   background-image: url("../../images/wave_vector.png");
-  background-position: right top;
+  background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* height: 70vh; */
+  /* height: 100vh; */
 }
 
 .wrap {
@@ -36,10 +36,34 @@
 .genre-img {
   width: 100%;
   margin: 4rem 0;
+  padding-bottom: 3rem;
 }
 
 .genre-img img {
   width: 100%;
   transform: scale(1.2);
   margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  /* .genre-group {
+    width: 50%;
+    margin: 0 auto;
+  } */
+
+  .genre article {
+    width: 65%;
+    margin: 0 auto;
+  }
+
+  .genre-img img {
+    transform: scale(1);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

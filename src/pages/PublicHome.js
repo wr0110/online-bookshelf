@@ -17,12 +17,14 @@ const PublicHome = () => {
     "New Adult",
   ];
 
+  // props to pass to the genre component
   const text = (
     <>
       All your favourites in <span>one</span> place
     </>
   );
 
+  // props to pass to the genre component
   const paragraph =
     " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus eleifend cras praesent purus nec, quis aliquet.";
 
@@ -37,7 +39,6 @@ const PublicHome = () => {
         alt="person reading a book"
         paragraph={paragraph}
       />
-
       <TopPicks />
       <Booktok />
       <Review />

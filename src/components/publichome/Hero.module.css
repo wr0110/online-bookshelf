@@ -8,6 +8,20 @@
 }
 
 .hero-text {
-  margin: 15rem 0;
+  margin-top: 15rem;
   width: 80%;
+  max-width: 400px;
+}
+
+@media (min-width: 768px) {
+  .hero-text {
+    margin-top: 10rem;
+    /* width: 60%; */
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-text {
+    margin-top: 8rem;
+  }
 }

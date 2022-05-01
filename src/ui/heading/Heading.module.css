@@ -1,6 +1,5 @@
 .heading,
 .heading span {
-  font-size: 3rem;
   font-weight: bold;
   letter-spacing: 1px;
   color: var(--dark-blue);
@@ -18,4 +17,24 @@
 .heading-md span {
   font-size: 2rem;
   text-align: center;
+}
+
+/* Media Queries for Tablet  */
+@media (min-width: 768px) {
+  .heading-lg,
+  .heading-lg span {
+    font-size: 4rem;
+  }
+  .heading-md,
+  .heading-md span {
+    font-size: 3rem;
+  }
+}
+
+/* Media Queries for Desktop  */
+@media (min-width: 1024px) {
+  .heading-lg,
+  .heading-lg span {
+    font-size: 5rem;
+  }
 }
