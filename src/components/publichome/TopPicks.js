@@ -25,7 +25,15 @@ const TopPicks = () => {
           </p>
         </article>
 
-        <div>
+        <div className={styled.recommendations}>
+          <Recommendations
+            theme="yellow"
+            bookTitle="the cruel prince"
+            author="holly black"
+            genre="fantasy"
+            src={cruel_prince}
+            bg="light-yellow"
+          />
           <Recommendations
             theme="dark-blue"
             bookTitle="ugly love"
@@ -35,14 +43,6 @@ const TopPicks = () => {
             bg="light-blue"
           />
         </div>
-        <Recommendations
-          theme="yellow"
-          bookTitle="the cruel prince"
-          author="holly black"
-          genre="fantasy"
-          src={cruel_prince}
-          bg="light-yellow"
-        />
       </Container>
     </section>
   );

@@ -11,8 +11,8 @@ const Recommendations = (props) => {
     );
   }
 
-  const starsList = stars.map((star) => {
-    return <span>{star}</span>;
+  const starsList = stars.map((star, index) => {
+    return <span key={index}>{star}</span>;
   });
 
   const headingStyle = {

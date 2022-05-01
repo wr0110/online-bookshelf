@@ -5,3 +5,12 @@
 .top-picks-info {
   text-align: center;
 }
+
+.recommendations {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+  margin: 5rem 0;
+}

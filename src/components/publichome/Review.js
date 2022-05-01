@@ -12,8 +12,8 @@ const Review = () => {
     stars.push(<GoStar size="22px" style={{ color: ` var(--yellow)` }} />);
   }
 
-  const starsList = stars.map((star) => {
-    return <span>{star}</span>;
+  const starsList = stars.map((star, index) => {
+    return <span key={index}>{star}</span>;
   });
 
   //props for heading component
@@ -26,7 +26,7 @@ const Review = () => {
 
   const reviewList = reviews.map((review) => {
     return (
-      <article className={styled.review}>
+      <article key={review.id} className={styled.review}>
         <p>
           <b>{review.name}</b>
         </p>
