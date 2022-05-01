@@ -26,6 +26,8 @@ const Genre = (props) => {
 
           <div className={styled["genre-group"]}>{genres}</div>
         </article>
+
+        {/* image */}
         <figure className={styled["genre-img"]}>
           <img src={`${props.src}`} alt={props.alt} />
         </figure>

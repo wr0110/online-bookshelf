@@ -39,8 +39,9 @@ const PublicHome = () => {
         alt="person reading a book"
         paragraph={paragraph}
       />
+      {/* <Booktok /> */}
       <TopPicks />
-      <Booktok />
+
       <Review />
     </section>
   );

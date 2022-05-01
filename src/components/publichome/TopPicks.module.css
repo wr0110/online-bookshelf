@@ -1,5 +1,6 @@
 .top-picks {
   padding: 3rem 0;
+  height: 120vh;
 }
 
 .top-picks-info {
@@ -13,4 +14,34 @@
   align-items: center;
   gap: 6rem;
   margin: 5rem 0;
+}
+
+@media (min-width: 768px) {
+  .top-picks {
+    height: 100vh;
+  }
+  .recommendations {
+    flex-direction: row;
+    margin-top: 8rem;
+    margin-bottom: 0;
+  }
+
+  .top-picks-info {
+    width: 70%;
+    margin: 3rem auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .top-picks-info {
+    margin: 0;
+    text-align: left;
+    margin-right: auto;
+    width: 50%;
+    padding-top: 2rem;
+  }
+
+  .recommendations {
+    justify-content: left;
+  }
 }
