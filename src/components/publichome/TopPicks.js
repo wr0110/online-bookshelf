@@ -7,11 +7,13 @@ import cruel_prince from "../../images/cruel_prince.jpg";
 import ugly_love from "../../images/ugly_love.jpg";
 
 const TopPicks = () => {
+  // props for heading component
   const text = (
     <>
       Top picks of the <span>month</span>
     </>
   );
+
   return (
     <section className={styled["top-picks"]}>
       <Container>
@@ -25,6 +27,7 @@ const TopPicks = () => {
           </p>
         </article>
 
+        {/* using the recommendations component */}
         <div className={styled.recommendations}>
           <Recommendations
             theme="yellow"

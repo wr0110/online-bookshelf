@@ -6,11 +6,13 @@ import booktok from "../../images/booktok2.jpg";
 import Button from "../button/Button";
 
 const Booktok = () => {
+  // props for heading component
   const heading = (
     <>
       What side of <span>tiktok</span> are you on?
     </>
   );
+
   return (
     <section className={styled.booktok}>
       <figure className={styled.bookmark}>

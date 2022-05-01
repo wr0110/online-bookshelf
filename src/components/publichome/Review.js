@@ -7,11 +7,13 @@ import { reviews } from "./reviews";
 import { GoStar } from "react-icons/go";
 
 const Review = () => {
+  // for loop to create 5 star icon and add them to the array
   let stars = [];
   for (let index = 0; index < 5; index++) {
     stars.push(<GoStar size="22px" style={{ color: ` var(--yellow)` }} />);
   }
 
+  // map over the stars array and place each element with a span
   const starsList = stars.map((star, index) => {
     return <span key={index}>{star}</span>;
   });

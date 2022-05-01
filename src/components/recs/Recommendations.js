@@ -4,6 +4,7 @@ import { GoStar } from "react-icons/go";
 import { IoAddCircleSharp } from "react-icons/io5";
 
 const Recommendations = (props) => {
+  // for loop to create 5 star icon and add them to the array
   let stars = [];
   for (let index = 0; index < 5; index++) {
     stars.push(
@@ -11,14 +12,17 @@ const Recommendations = (props) => {
     );
   }
 
+  // map over the stars array and place each element with a span
   const starsList = stars.map((star, index) => {
     return <span key={index}>{star}</span>;
   });
 
+  // set the color for the heading using props
   const headingStyle = {
     color: `var(--${props.theme})`,
   };
 
+  // set the color for the icon using props
   const addIconStyle = {
     color: `var(--${props.theme})`,
     position: "absolute",
@@ -26,9 +30,11 @@ const Recommendations = (props) => {
     right: "15px",
   };
 
+  // set the background color for the article using props
   const articleStyle = {
     backgroundColor: `var(--${props.bg})`,
   };
+
   return (
     <section className={styled.recs}>
       <article style={articleStyle}>
