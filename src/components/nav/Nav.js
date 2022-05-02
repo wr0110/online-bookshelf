@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "./Nav.module.css";
 import { BiSearch } from "react-icons/bi";
+import { BsJournalBookmarkFill } from "react-icons/bs";
 import Button from "../button/Button";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [width, setwidth] = useState(0);
@@ -48,41 +50,47 @@ const Nav = () => {
     setshowSearch((state) => !state);
   };
 
+  // apply the appropriate class based on the status of showSearch
+  const result = showSearch
+    ? `${styled.searchbar}`
+    : `${styled["desktop-search-bar"]}`;
+
   return (
     <nav className={styled.navbar}>
       <div className={styled["search-icon"]} onClick={handleSearch}>
-        <BiSearch size="25px" color="#c2a410" />
+        <BiSearch size="25px" style={{ color: ` var(--yellow)` }} />
       </div>
 
-      <p className={styled.logo}>BookMark</p>
+      <p className={styled.logo}>
+        <BsJournalBookmarkFill
+          size="20px"
+          style={{ color: ` var(--yellow)` }}
+        />
+        BookMark
+      </p>
 
       <Button className={styled.btnlog}> Sign In</Button>
 
-      {/*use Link for li */}
       <ul className={styled["nav-items"]} ref={ulRef}>
         <li>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="/">Explore</a>
+          <Link to="/explore">Explore</Link>
         </li>
         <li>
-          <a href="/">Genres</a>
+          <Link to="/genres">Genres</Link>
         </li>
         <li>
-          <a href="/">Library</a>
+          <Link to="/library">Library</Link>
         </li>
       </ul>
 
       {/* if showSearch is true apply the appropriate class */}
-      <div
-        className={
-          showSearch ? `${styled.searchbar}` : `${styled["desktop-search-bar"]}`
-        }
-      >
+      <div className={result}>
         <form>
           <label htmlFor="search">
-            <BiSearch size="20px" color="#c2a410" />
+            <BiSearch size="20px" style={{ color: ` var(--yellow)` }} />
           </label>
           <input type="text" name="search" placeholder="Search" />
         </form>
