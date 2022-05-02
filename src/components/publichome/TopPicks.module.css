@@ -13,7 +13,6 @@
   gap: 3rem;
   align-items: center;
   place-items: center;
-
   margin-top: 2rem;
 }
 
@@ -36,6 +35,6 @@
   .recommendations {
     justify-content: left;
     margin-top: 3rem;
-    justify-content: space-between;
+    place-items: center flex-start;
   }
 }
