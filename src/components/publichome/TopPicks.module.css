@@ -1,6 +1,6 @@
 .top-picks {
   padding: 3rem 0;
-  height: 120vh;
+  height: 100%;
 }
 
 .top-picks-info {
@@ -8,27 +8,20 @@
 }
 
 .recommendations {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
   align-items: center;
-  gap: 6rem;
-  margin: 5rem 0;
+  place-items: center;
+
+  margin-top: 2rem;
 }
 
 @media (min-width: 768px) {
-  .top-picks {
-    height: 100vh;
-  }
-  .recommendations {
-    flex-direction: row;
-    margin-top: 8rem;
-    margin-bottom: 0;
-  }
-
   .top-picks-info {
     width: 70%;
     margin: 3rem auto;
+    gap: 0;
   }
 }
 
@@ -37,11 +30,12 @@
     margin: 0;
     text-align: left;
     margin-right: auto;
-    width: 50%;
-    padding-top: 2rem;
+    width: 35%;
   }
 
   .recommendations {
     justify-content: left;
+    margin-top: 3rem;
+    justify-content: space-between;
   }
 }

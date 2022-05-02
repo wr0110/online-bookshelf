@@ -3,25 +3,24 @@
   background-position: center;
   background-repeat: none;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
   padding-top: 80px;
 }
 
 .hero-text {
-  margin-top: 15rem;
+  padding: 15rem 0;
   width: 80%;
   max-width: 400px;
 }
 
 @media (min-width: 768px) {
   .hero-text {
-    margin-top: 10rem;
-    /* width: 60%; */
+    padding: 15rem 0 15rem;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-text {
-    margin-top: 8rem;
+    padding: 10rem 0 12rem;
   }
 }

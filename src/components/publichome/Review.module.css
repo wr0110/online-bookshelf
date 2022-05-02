@@ -1,17 +1,44 @@
 .reviews {
   text-align: center;
   padding: 3rem 0;
-  background-image: url("../../images/reviews_bg.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
+  height: 100%;
+  background-color: var(--light-grey);
 }
 
 .review-list {
-  margin-top: 4rem;
+  padding-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  place-items: center;
 }
 
 .review {
-  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  max-width: 300px;
+}
+
+@media (min-width: 768px) {
+  .reviews-info {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .reviews-info {
+    width: 35%;
+  }
+
+  .reviews-info h1 {
+    text-align: center;
+  }
+
+  .reviews {
+    padding: 5rem 0 0;
+  }
+
+  .review-list {
+    padding: 8rem 0 2rem;
+  }
 }

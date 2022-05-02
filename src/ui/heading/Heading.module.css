@@ -33,10 +33,6 @@
 
 /* Media Queries for Desktop  */
 @media (min-width: 1024px) {
-  .heading-lg,
-  .heading-lg span {
-    font-size: 5rem;
-  }
   .heading-md,
   .heading-md span {
     text-align: left;

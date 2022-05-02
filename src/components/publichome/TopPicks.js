@@ -45,6 +45,15 @@ const TopPicks = () => {
             src={ugly_love}
             bg="light-blue"
           />
+
+          <Recommendations
+            theme="yellow"
+            bookTitle="the cruel prince"
+            author="holly black"
+            genre="fantasy"
+            src={cruel_prince}
+            bg="light-yellow"
+          />
         </div>
       </Container>
     </section>
