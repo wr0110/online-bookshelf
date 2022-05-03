@@ -2,6 +2,7 @@
   background-color: var(--white);
   text-align: center;
   padding: 2rem 0;
+  border-radius: 15px;
 }
 
 .login h1 {
@@ -20,16 +21,21 @@
 }
 
 .sign-in {
-  margin-top: 3rem;
   font-weight: 600;
   font-size: 1.1rem;
   padding: 8px 25px;
+  margin: 3rem auto 0;
+  max-width: 300px;
+
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
+
   border: 1px solid var(--dark-blue);
   border-radius: 50px;
+  cursor: pointer;
+
   background-color: var(--white);
   color: var(--dark-blue);
-  cursor: pointer;
 }

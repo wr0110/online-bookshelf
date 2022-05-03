@@ -8,8 +8,10 @@ import Modal from "../../ui/modal/Modal";
 import Login from "../login/Login";
 
 const Nav = () => {
+  // states and refs
   const [width, setwidth] = useState(0);
   const [showSearch, setshowSearch] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const ulRef = useRef();
 
   // sets the current width of the screen
@@ -57,6 +59,11 @@ const Nav = () => {
     ? `${styled.searchbar}`
     : `${styled["desktop-search-bar"]}`;
 
+  // set the state of the modal
+  const handleButtonClick = () => {
+    setOpenModal((state) => !state);
+  };
+
   return (
     <>
       <nav className={styled.navbar}>
@@ -72,7 +79,10 @@ const Nav = () => {
           BookMark
         </p>
 
-        <Button className={styled.btnlog}> Sign In</Button>
+        {/* call handleButtonClick when user clicks */}
+        <Button onClick={handleButtonClick} className={styled.btnlog}>
+          Sign In
+        </Button>
 
         <ul className={styled["nav-items"]} ref={ulRef}>
           <li>
@@ -100,9 +110,16 @@ const Nav = () => {
         </div>
       </nav>
 
-      <Modal>
-        <Login />
-      </Modal>
+      {/**
+       * only show the modal if the state is true
+       * Modal accepts the setState function as props
+       * Modal has the login component as a child
+       */}
+      {openModal && (
+        <Modal setOpenModal={setOpenModal}>
+          <Login />
+        </Modal>
+      )}
     </>
   );
 };
