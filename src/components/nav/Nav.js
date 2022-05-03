@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "./Nav.module.css";
 import { BiSearch } from "react-icons/bi";
 import { BsJournalBookmarkFill } from "react-icons/bs";
@@ -6,9 +6,12 @@ import Button from "../button/Button";
 import { Link } from "react-router-dom";
 import Modal from "../../ui/modal/Modal";
 import Login from "../login/Login";
+import { AuthContext } from "../../contexts/authContext";
 
 const Nav = () => {
-  // states and refs
+  // states contexts and refs
+  const { isSignedIn } = useContext(AuthContext);
+
   const [width, setwidth] = useState(0);
   const [showSearch, setshowSearch] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -94,9 +97,13 @@ const Nav = () => {
           <li>
             <Link to="/genres">Genres</Link>
           </li>
-          <li>
-            <Link to="/library">Library</Link>
-          </li>
+
+          {/* this link will only be available if the user is signed in */}
+          {isSignedIn && (
+            <li>
+              <Link to="/library">Library</Link>
+            </li>
+          )}
         </ul>
 
         {/* if showSearch is true apply the appropriate class */}
