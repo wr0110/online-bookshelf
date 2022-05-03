@@ -8,7 +8,11 @@ export const AuthContext = createContext();
 const AuthContextProvider = (props) => {
   // state to manage if the user is signed in or not
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [currentUser, setcurrentUser] = useState(null);
+  const [currentUser, setcurrentUser] = useState({
+    name: "",
+    userId: "",
+    email: "",
+  });
 
   /**
    *signs out the user
