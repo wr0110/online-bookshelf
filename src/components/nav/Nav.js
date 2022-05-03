@@ -3,19 +3,20 @@ import styled from "./Nav.module.css";
 import { BiSearch } from "react-icons/bi";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 import Button from "../button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "../../ui/modal/Modal";
 import Login from "../login/Login";
 import { AuthContext } from "../../contexts/authContext";
 
 const Nav = () => {
   // states contexts and refs
-  const { isSignedIn } = useContext(AuthContext);
+  const { isSignedIn, signUserOut } = useContext(AuthContext);
 
   const [width, setwidth] = useState(0);
   const [showSearch, setshowSearch] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const ulRef = useRef();
+  const navigate = useNavigate();
 
   // sets the current width of the screen
   const widthfunction = () => {
@@ -67,6 +68,11 @@ const Nav = () => {
     setOpenModal((state) => !state);
   };
 
+  const handleLogout = () => {
+    signUserOut();
+    navigate("/");
+  };
+
   return (
     <>
       <nav className={styled.navbar}>
@@ -82,10 +88,19 @@ const Nav = () => {
           BookMark
         </p>
 
-        {/* call handleButtonClick when user clicks */}
-        <Button onClick={handleButtonClick} className={styled.btnlog}>
-          Sign In
-        </Button>
+        {/**
+         * call appropriate function when user clicks
+         * show appropriate buttons based on the isSigned state
+         *  */}
+        {!isSignedIn ? (
+          <Button onClick={handleButtonClick} className={styled.btnlog}>
+            Sign In
+          </Button>
+        ) : (
+          <Button onClick={handleLogout} className={styled.btnlog}>
+            Logout
+          </Button>
+        )}
 
         <ul className={styled["nav-items"]} ref={ulRef}>
           <li>
@@ -124,7 +139,7 @@ const Nav = () => {
        */}
       {openModal && (
         <Modal setOpenModal={setOpenModal}>
-          <Login />
+          <Login setOpenModal={setOpenModal} />
         </Modal>
       )}
     </>
