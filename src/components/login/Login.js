@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "./Login.module.css";
-import Container from "../../ui/wrapper/Container";
+import Container from "../../helpers/wrapper/Container";
 import shelves from "../../images/shelves.svg";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../contexts/authContext";

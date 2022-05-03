@@ -4,7 +4,7 @@ import { BiSearch } from "react-icons/bi";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 import Button from "../button/Button";
 import { Link, useNavigate } from "react-router-dom";
-import Modal from "../../ui/modal/Modal";
+import Modal from "../../helpers/modal/Modal";
 import Login from "../login/Login";
 import { AuthContext } from "../../contexts/authContext";
 
@@ -37,7 +37,7 @@ const Nav = () => {
     return () => window.removeEventListener("resize", widthfunction);
   }, [width, showSearch]);
 
-  //!todo : change pageyoffset to scrollx
+  //todo : change pageyoffset to scrollx
   useEffect(() => {
     if (width <= 768) {
       let prevScrollpos = window.pageYOffset;
@@ -64,13 +64,11 @@ const Nav = () => {
     : `${styled["desktop-search-bar"]}`;
 
   // set the state of the modal
-  const handleButtonClick = () => {
-    setOpenModal((state) => !state);
-  };
+  const handleButtonClick = () => setOpenModal((state) => !state);
 
-  const handleLogout = () => {
-    signUserOut();
-    navigate("/");
+  const handleLogout = async () => {
+    await signUserOut();
+    navigate("/", { replace: true });
   };
 
   return (

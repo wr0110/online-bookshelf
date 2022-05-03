@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "./Genre.module.css";
-import Heading from "../../ui/heading/Heading";
-import Container from "../../ui/wrapper/Container";
+import Heading from "../../helpers/heading/Heading";
+import Container from "../../helpers/wrapper/Container";
 
 const Genre = (props) => {
   //  map over the genrelist recieved from props and return them in a paragraph

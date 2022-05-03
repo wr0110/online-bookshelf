@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "./Booktok.module.css";
-import Heading from "../../ui/heading/Heading";
-import Container from "../../ui/wrapper/Container";
+import Heading from "../../helpers/heading/Heading";
+import Container from "../../helpers/wrapper/Container";
 import booktok from "../../images/booktok2.jpg";
 import Button from "../button/Button";
 

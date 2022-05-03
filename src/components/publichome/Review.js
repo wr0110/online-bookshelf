@@ -1,6 +1,6 @@
 import React from "react";
-import Heading from "../../ui/heading/Heading";
-import Container from "../../ui/wrapper/Container";
+import Heading from "../../helpers/heading/Heading";
+import Container from "../../helpers/wrapper/Container";
 import Button from "../button/Button";
 import styled from "./Review.module.css";
 import { reviews } from "./reviews";
