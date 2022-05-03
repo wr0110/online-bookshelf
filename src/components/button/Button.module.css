@@ -1,15 +1,16 @@
 .button {
   background-color: var(--yellow);
-  color: white;
+  color: var(--white);
   font-weight: 600;
   font-size: 1.1rem;
   padding: 10px 25px;
   border: none;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .button:hover {
   background-color: darkgoldenrod;
-  cursor: pointer;
+
   font-weight: 700;
 }

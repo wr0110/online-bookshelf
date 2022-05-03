@@ -4,6 +4,8 @@ import { BiSearch } from "react-icons/bi";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 import Button from "../button/Button";
 import { Link } from "react-router-dom";
+import Modal from "../../ui/modal/Modal";
+import Login from "../login/Login";
 
 const Nav = () => {
   const [width, setwidth] = useState(0);
@@ -56,46 +58,52 @@ const Nav = () => {
     : `${styled["desktop-search-bar"]}`;
 
   return (
-    <nav className={styled.navbar}>
-      <div className={styled["search-icon"]} onClick={handleSearch}>
-        <BiSearch size="25px" style={{ color: ` var(--yellow)` }} />
-      </div>
+    <>
+      <nav className={styled.navbar}>
+        <div className={styled["search-icon"]} onClick={handleSearch}>
+          <BiSearch size="25px" style={{ color: ` var(--yellow)` }} />
+        </div>
 
-      <p className={styled.logo}>
-        <BsJournalBookmarkFill
-          size="20px"
-          style={{ color: ` var(--yellow)` }}
-        />
-        BookMark
-      </p>
+        <p className={styled.logo}>
+          <BsJournalBookmarkFill
+            size="20px"
+            style={{ color: ` var(--yellow)` }}
+          />
+          BookMark
+        </p>
 
-      <Button className={styled.btnlog}> Sign In</Button>
+        <Button className={styled.btnlog}> Sign In</Button>
 
-      <ul className={styled["nav-items"]} ref={ulRef}>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/explore">Explore</Link>
-        </li>
-        <li>
-          <Link to="/genres">Genres</Link>
-        </li>
-        <li>
-          <Link to="/library">Library</Link>
-        </li>
-      </ul>
+        <ul className={styled["nav-items"]} ref={ulRef}>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/explore">Explore</Link>
+          </li>
+          <li>
+            <Link to="/genres">Genres</Link>
+          </li>
+          <li>
+            <Link to="/library">Library</Link>
+          </li>
+        </ul>
 
-      {/* if showSearch is true apply the appropriate class */}
-      <div className={result}>
-        <form>
-          <label htmlFor="search">
-            <BiSearch size="20px" style={{ color: ` var(--yellow)` }} />
-          </label>
-          <input type="text" name="search" placeholder="Search" />
-        </form>
-      </div>
-    </nav>
+        {/* if showSearch is true apply the appropriate class */}
+        <div className={result}>
+          <form>
+            <label htmlFor="search">
+              <BiSearch size="20px" style={{ color: ` var(--yellow)` }} />
+            </label>
+            <input type="text" name="search" placeholder="Search" />
+          </form>
+        </div>
+      </nav>
+
+      <Modal>
+        <Login />
+      </Modal>
+    </>
   );
 };
 
