@@ -8,6 +8,7 @@ import { GiBookshelf } from "react-icons/gi";
 import Heading from "../../helpers/heading/Heading";
 
 const SearchResults = () => {
+  // state
   const [bookResults, setBookResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -41,13 +42,15 @@ const SearchResults = () => {
     fetchBook();
   }, [searchQuery]);
 
+  //map over the bookResults array and return a Book with the info
   const allBooks = bookResults.map((book) => (
     <Books key={book.id} book={book} />
   ));
 
+  //props for heading component
   const text = (
     <>
-      Showing results for <span>{searchQuery}</span>{" "}
+      Showing results for <span>{searchQuery}</span>
     </>
   );
   console.log(bookResults);
@@ -60,11 +63,13 @@ const SearchResults = () => {
 
   return (
     <section className={styled.results}>
+      {/* when loading show Modal */}
       {loading && (
         <Modal>
-          <GiBookshelf size="30px" />
+          <GiBookshelf size="50px" />
         </Modal>
       )}
+
       <Container>
         {allBooks && <Heading className="heading-md" text={text} />}
         <div className={styled.allBooks}>{allBooks}</div>

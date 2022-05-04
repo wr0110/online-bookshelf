@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import BookDetails from "./components/books/BookDetails";
 import Nav from "./components/nav/Nav";
 import SearchResults from "./components/search/SearchResults";
 import ProtectedRoute from "./helpers/ProtectedRoute";
@@ -23,6 +24,7 @@ function App() {
           }
         />
         <Route path="/results" element={<SearchResults />} />
+        <Route path="results/:bookId" element={<BookDetails />} />
       </Routes>
     </div>
   );

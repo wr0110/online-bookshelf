@@ -1,14 +1,31 @@
 import React from "react";
 import { IoAddCircleSharp } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 import styled from "./Books.module.css";
 
+// component to show each book it receives
+
 const Books = ({ book }) => {
+  const navigate = useNavigate();
+
   //Destructured imageLink property
   const { imageLinks, categories, authors, title } = book.volumeInfo;
+
+  const handleDetails = () => {
+    navigate(`/results/${book.id}`);
+  };
+
+  //map over the categories array and return a paragraph with the current category
+  const genre = categories?.map((category) => (
+    <p key={category}>
+      <small>{category}</small>
+    </p>
+  ));
 
   return (
     <section className={styled.books}>
       <article className={styled.book}>
+        {/* if there is no image (undefined was returned) then show place holder image */}
         <figure>
           <img
             src={
@@ -16,7 +33,7 @@ const Books = ({ book }) => {
                 ? imageLinks.smallThumbnail
                 : "https://via.placeholder.com/128x204"
             }
-            alt="book cover page"
+            alt={title}
           />
         </figure>
 
@@ -25,13 +42,10 @@ const Books = ({ book }) => {
           <p>
             <b>{authors?.[0]}</b>
           </p>
-          {categories?.map((genre) => (
-            <p key={genre}>
-              <small>{genre}</small>
-            </p>
-          ))}
 
-          <p className={styled.link}>
+          {genre}
+
+          <p className={styled.link} onClick={handleDetails}>
             <strong>See Details</strong>
           </p>
 
