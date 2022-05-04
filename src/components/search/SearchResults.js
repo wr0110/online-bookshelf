@@ -50,7 +50,7 @@ const SearchResults = () => {
       Showing results for <span>{searchQuery}</span>{" "}
     </>
   );
-  //   console.log(bookResults);
+  console.log(bookResults);
 
   /**prevent user from visiting the route manually route,
    * the user can only visit this page if there is a search term*/
