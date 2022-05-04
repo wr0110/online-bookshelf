@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Modal from "../../helpers/modal/Modal";
 import Login from "../login/Login";
 import { AuthContext } from "../../contexts/authContext";
+import Search from "../search/Search";
 
 const Nav = () => {
   // states contexts and refs
@@ -121,12 +122,7 @@ const Nav = () => {
 
         {/* if showSearch is true apply the appropriate class */}
         <div className={result}>
-          <form>
-            <label htmlFor="search">
-              <BiSearch size="20px" style={{ color: ` var(--yellow)` }} />
-            </label>
-            <input type="text" name="search" placeholder="Search" />
-          </form>
+          <Search />
         </div>
       </nav>
 

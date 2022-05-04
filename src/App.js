@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/nav/Nav";
+import SearchResults from "./components/search/SearchResults";
 import ProtectedRoute from "./helpers/ProtectedRoute";
 import Explore from "./pages/Explore";
 import Library from "./pages/Library";
@@ -21,6 +22,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/results" element={<SearchResults />} />
       </Routes>
     </div>
   );
