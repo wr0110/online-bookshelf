@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import styled from "./Modal.module.css";
-import { IoCloseCircleSharp } from "react-icons/io5";
+// import { IoCloseCircleSharp } from "react-icons/io5";
 
 const Modal = (props) => {
   //todo: try handling closing the modal with useRef
@@ -17,12 +17,12 @@ const Modal = (props) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* set the modal state to false and close the modal */}
-        <span
+        {/* <span
           onClick={() => props.setOpenModal(false)}
           className={styled.close}
         >
           <IoCloseCircleSharp size="30px" color="white" />
-        </span>
+        </span> */}
 
         {props.children}
       </div>

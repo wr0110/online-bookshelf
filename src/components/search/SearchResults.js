@@ -4,7 +4,8 @@ import { Navigate, useLocation } from "react-router-dom";
 import Books from "../books/Books";
 import Container from "../../helpers/wrapper/Container";
 import Modal from "../../helpers/modal/Modal";
-import Loading from "../../helpers/Loading";
+import { GiBookshelf } from "react-icons/gi";
+import Heading from "../../helpers/heading/Heading";
 
 const SearchResults = () => {
   const [bookResults, setBookResults] = useState([]);
@@ -44,6 +45,11 @@ const SearchResults = () => {
     <Books key={book.id} book={book} />
   ));
 
+  const text = (
+    <>
+      Showing results for <span>{searchQuery}</span>{" "}
+    </>
+  );
   //   console.log(bookResults);
 
   /**prevent user from visiting the route manually route,
@@ -56,10 +62,11 @@ const SearchResults = () => {
     <section className={styled.results}>
       {loading && (
         <Modal>
-          <Loading />
+          <GiBookshelf size="30px" />
         </Modal>
       )}
       <Container>
+        {allBooks && <Heading className="heading-md" text={text} />}
         <div className={styled.allBooks}>{allBooks}</div>
       </Container>
     </section>

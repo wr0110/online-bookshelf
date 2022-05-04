@@ -1,12 +1,32 @@
 .results {
   position: relative;
-  top: 80px;
-  padding: 7rem 0;
+  top: 100px;
+  padding: 5rem 0;
+}
+
+.results h1,
+.results h1 span {
+  padding-bottom: 2rem;
+  font-size: 1rem;
 }
 
 .allBooks {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 3rem;
   place-items: center;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .allBooks {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .results {
+    top: 50px;
+  }
 }
