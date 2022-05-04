@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styled from "./SearchResults.module.css";
 import { Navigate, useLocation } from "react-router-dom";
 import Books from "../books/Books";
 import Container from "../../helpers/wrapper/Container";
@@ -43,7 +44,7 @@ const SearchResults = () => {
     <Books key={book.id} book={book} />
   ));
 
-  console.log(bookResults);
+  //   console.log(bookResults);
 
   /**prevent user from visiting the route manually route,
    * the user can only visit this page if there is a search term*/
@@ -52,15 +53,14 @@ const SearchResults = () => {
   }
 
   return (
-    <section>
+    <section className={styled.results}>
+      {loading && (
+        <Modal>
+          <Loading />
+        </Modal>
+      )}
       <Container>
-        {loading ? (
-          <Modal>
-            <Loading />{" "}
-          </Modal>
-        ) : (
-          allBooks
-        )}
+        <div className={styled.allBooks}>{allBooks}</div>
       </Container>
     </section>
   );

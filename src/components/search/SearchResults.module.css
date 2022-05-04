@@ -1,0 +1,12 @@
+.results {
+  position: relative;
+  top: 80px;
+  padding: 7rem 0;
+}
+
+.allBooks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  place-items: center;
+}
