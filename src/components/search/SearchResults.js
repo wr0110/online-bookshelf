@@ -8,7 +8,7 @@ import { GiBookshelf } from "react-icons/gi";
 import Heading from "../../helpers/heading/Heading";
 
 const SearchResults = () => {
-  // state
+  // states
   const [bookResults, setBookResults] = useState([]);
   const [loading, setLoading] = useState(false);
 

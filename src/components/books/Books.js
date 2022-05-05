@@ -11,6 +11,7 @@ const Books = ({ book }) => {
   //Destructured imageLink property
   const { imageLinks, categories, authors, title } = book.volumeInfo;
 
+  //navigate to the book details page for the specified book
   const handleDetails = () => {
     navigate(`/results/${book.id}`);
   };
@@ -51,7 +52,7 @@ const Books = ({ book }) => {
 
           <IoAddCircleSharp
             className={styled.addIcon}
-            size="35px"
+            size="40px"
             style={{ color: "var(--dark-blue)" }}
           />
         </div>
