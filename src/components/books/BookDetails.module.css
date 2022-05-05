@@ -1,0 +1,65 @@
+.info {
+  position: relative;
+  top: 110px;
+  padding: 5rem 0;
+}
+
+.img-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.info figure {
+  height: 200px;
+  width: 130px;
+  border-radius: 10px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.info figure img {
+  border-radius: 10px;
+}
+
+h1.title {
+  font-size: 1.5rem;
+  padding-top: 2rem;
+  text-align: center;
+  color: var(--dark-blue);
+}
+
+.author {
+  text-align: center;
+  color: var(--med-grey);
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.book-categories {
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  place-items: center;
+}
+
+.category {
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 25px;
+  border-radius: 50px;
+  border: 2px solid var(--dark-blue);
+  color: var(--dark-blue);
+  text-align: center;
+  min-width: 150px;
+  /* margin: 0 auto; */
+  width: fit-content;
+}
+
+.description * {
+  font-weight: 400;
+  font-style: normal;
+}

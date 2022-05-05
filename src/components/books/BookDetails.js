@@ -4,16 +4,16 @@ import Modal from "../../helpers/modal/Modal";
 import Container from "../../helpers/wrapper/Container";
 import Button from "../button/Button";
 import { GiBookshelf } from "react-icons/gi";
+import styled from "./BookDetails.module.css";
 
 //component to show book details
 const BookDetails = () => {
   // parameter destructured from the url
   const { bookId } = useParams();
   const [loading, setLoading] = useState(false);
-  const testref = useRef();
-
   const [selectedBook, setSelectedBook] = useState([]);
-  //   pref.current.textContent = `${selectedBook.description}`;
+  const descriptionRef = useRef();
+
   //fetch data using the given book ID and set the selectedBook state
   useEffect(() => {
     const url = ` https://www.googleapis.com/books/v1/volumes/${bookId}`;
@@ -31,25 +31,29 @@ const BookDetails = () => {
     fetchById();
   }, [bookId]);
 
+  /** if the selectedBook is not empty, update the innerHTML value with the given data since the description includes html tags
+   */
   useEffect(() => {
     if (selectedBook.length !== 0) {
-      testref.current.innerHTML = ` ${selectedBook?.description}`;
+      descriptionRef.current.innerHTML = ` ${selectedBook?.description}`;
     }
-
-    console.log(testref);
   }, [selectedBook]);
-  //console.log(selectedBook);
 
   return (
-    <section>
+    <section className={styled.info}>
+      {/* show Modal when loading */}
       {loading && (
         <Modal>
           <GiBookshelf size="50px" />
         </Modal>
       )}
+
+      {/**only show is selectedBook is not empty
+       *   check is data is available or return left-hand side condition
+       */}
       {selectedBook.length !== 0 && (
-        <Container Container>
-          <div>
+        <Container>
+          <div className={styled["img-group"]}>
             <figure>
               <img
                 src={
@@ -64,17 +68,31 @@ const BookDetails = () => {
             <Button>Add to library</Button>
           </div>
 
-          <article>
-            <h1>{selectedBook?.title}</h1>
-            {/* {selectedBook !== [] && <p>{selectedBook?.authors[0]}</p>} */}
+          <article className={styled["book-info"]}>
+            <h1 className={styled.title}>{selectedBook?.title}</h1>
 
-            <div>
-              {selectedBook?.categories.map((category, index) => (
-                <p key={index}>{category.split("/")}</p>
-              ))}
+            {(
+              <p className={styled.author}>
+                <strong>{selectedBook?.authors[0]} </strong>
+              </p>
+            ) || ""}
+
+            <div className={styled["book-categories"]}>
+              {selectedBook?.categories?.map(
+                (category, index) =>
+                  (
+                    <p className={styled.category} key={index}>
+                      {category?.split("/")}
+                    </p>
+                  ) || ""
+              )}
             </div>
 
-            <p className="para" ref={testref}></p>
+            {/* uses ref to select element */}
+            <p
+              className={`para ${styled.description}`}
+              ref={descriptionRef}
+            ></p>
           </article>
         </Container>
       )}
