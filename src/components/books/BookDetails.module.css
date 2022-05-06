@@ -40,10 +40,14 @@ h1.title {
 
 .book-categories {
   padding-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
   gap: 1rem;
-  place-items: center;
+  place-items: center; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .category {
@@ -54,12 +58,45 @@ h1.title {
   border: 2px solid var(--dark-blue);
   color: var(--dark-blue);
   text-align: center;
-  min-width: 150px;
-  /* margin: 0 auto; */
   width: fit-content;
 }
 
 .description * {
   font-weight: 400;
   font-style: normal;
+}
+
+@media (min-width: 768px) {
+  .book-details-container {
+    display: grid;
+    grid-template-columns: 25% 70%;
+    place-items: center space-between;
+    gap: 1rem;
+  }
+
+  .img-group {
+    justify-content: start;
+  }
+
+  h1.title,
+  .author {
+    text-align: left;
+    padding-top: 0;
+  }
+
+  .book-categories {
+    place-items: center left;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* .book-categories {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* place-items: center space-between;
+  } *
+  }
+
+  .category {
+    width: 250px;
+  } */
 }

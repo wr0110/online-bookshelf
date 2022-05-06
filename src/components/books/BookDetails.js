@@ -52,7 +52,7 @@ const BookDetails = () => {
        *   check is data is available or return left-hand side condition
        */}
       {selectedBook.length !== 0 && (
-        <Container>
+        <Container className={styled["book-details-container"]}>
           <div className={styled["img-group"]}>
             <figure>
               <img

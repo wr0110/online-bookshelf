@@ -12,7 +12,6 @@ import Search from "../search/Search";
 const Nav = () => {
   // states contexts and refs
   const { isSignedIn, signUserOut } = useContext(AuthContext);
-
   const [width, setwidth] = useState(0);
   const [showSearch, setshowSearch] = useState(false);
   const [openModal, setOpenModal] = useState(false);
