@@ -71,11 +71,7 @@ const BookDetails = () => {
           <article className={styled["book-info"]}>
             <h1 className={styled.title}>{selectedBook?.title}</h1>
 
-            {(
-              <p className={styled.author}>
-                <strong>{selectedBook?.authors[0]} </strong>
-              </p>
-            ) || ""}
+            {<p className={styled.author}>{selectedBook?.authors[0]}</p> || ""}
 
             <div className={styled["book-categories"]}>
               {selectedBook?.categories?.map(
@@ -89,10 +85,7 @@ const BookDetails = () => {
             </div>
 
             {/* uses ref to select element */}
-            <p
-              className={`para ${styled.description}`}
-              ref={descriptionRef}
-            ></p>
+            <p className={styled.description} ref={descriptionRef}></p>
           </article>
         </Container>
       )}

@@ -68,10 +68,6 @@
   padding-right: 5px;
 }
 
-.supporting-details :first-child::after {
-  content: " | ";
-}
-
 .summary-snippet {
   font-weight: 500;
   line-height: 130%;
@@ -83,6 +79,8 @@
   -webkit-box-orient: vertical;
   color: var(--med-grey);
 }
+
+/* Actions */
 
 .actions {
   display: flex;
@@ -119,6 +117,7 @@
   padding-right: 5px;
 }
 
+/* Media Queries */
 @media (min-width: 450px) {
   .actions {
     justify-content: space-evenly;
@@ -130,7 +129,7 @@
 
 @media (min-width: 600px) {
   .info {
-    bottom: 40px;
+    position: relative;
   }
   .book-summary {
     padding: 1.5rem;

@@ -22,6 +22,8 @@
 
 .info figure img {
   border-radius: 10px;
+  width: 100%;
+  height: 100%;
 }
 
 h1.title {
@@ -31,20 +33,16 @@ h1.title {
   color: var(--dark-blue);
 }
 
-.author {
+p.author {
   text-align: center;
   color: var(--med-grey);
   font-size: 1.1rem;
+  font-weight: 600;
   letter-spacing: 1px;
 }
 
 .book-categories {
   padding-top: 2rem;
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-  gap: 1rem;
-  place-items: center; */
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -53,35 +51,61 @@ h1.title {
 .category {
   font-weight: 600;
   font-size: 1rem;
-  padding: 10px 25px;
+  padding: 10px 20px;
   border-radius: 50px;
   border: 2px solid var(--dark-blue);
   color: var(--dark-blue);
-  text-align: center;
+
   width: fit-content;
 }
 
-.description * {
+p.description * {
   font-weight: 400;
   font-style: normal;
+  font-size: 1.1rem;
 }
 
-@media (min-width: 768px) {
+p.description {
+  padding-top: 2rem;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 620px) {
   .book-details-container {
     display: grid;
-    grid-template-columns: 25% 70%;
-    place-items: center space-between;
+    grid-template-columns: 1fr 2fr;
+    /* place-items: center space-between; */
     gap: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .info figure {
+    height: 250px;
+    width: 150px;
   }
 
   .img-group {
     justify-content: start;
   }
 
+  p.author {
+    font-size: 1.3rem;
+  }
+
   h1.title,
-  .author {
+  p.author {
     text-align: left;
     padding-top: 0;
+  }
+
+  h1.title {
+    font-size: 1.8rem;
+  }
+
+  p.description *,
+  p.description {
+    font-size: 1.2rem;
   }
 
   .book-categories {
@@ -90,13 +114,7 @@ h1.title {
 }
 
 @media (min-width: 1024px) {
-  /* .book-categories {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    /* place-items: center space-between;
-  } *
+  .info {
+    top: 70px;
   }
-
-  .category {
-    width: 250px;
-  } */
 }
