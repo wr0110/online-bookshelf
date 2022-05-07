@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "./Summary.module.css";
 import { RiAddCircleLine } from "react-icons/ri";
 import { MdInfoOutline } from "react-icons/md";
 
 const Summary = (props) => {
+  const snippetRef = useRef();
+
   //  Destructured from the book object
   const { imageLinks, categories, publishedDate, authors, title } =
     props.book.volumeInfo;
 
   const { book } = props;
+
+  /** the textSnippet includes html tags so use ref to include the text in the innerHTML
+   * if there is no snippet then show alternative text in else case
+   */
+  useEffect(() => {
+    if (book.searchInfo) {
+      snippetRef.current.innerHTML = ` ${book.searchInfo?.textSnippet}`;
+    } else snippetRef.current.innerHTML = "Visit Details & More";
+  }, [book.searchInfo]);
 
   return (
     <section className={styled.info}>
@@ -41,11 +52,7 @@ const Summary = (props) => {
             </div>
 
             {/* Text Snippet */}
-            <p className={styled["summary-snippet"]}>
-              {book.searchInfo
-                ? book.searchInfo.textSnippet
-                : "Visit Details & More"}
-            </p>
+            <p className={styled["summary-snippet"]} ref={snippetRef}></p>
           </article>
         </div>
 
