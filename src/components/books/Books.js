@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { IoAddCircleSharp } from "react-icons/io5";
+import { RiAddCircleLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../helpers/modal/Modal";
 import styled from "./Books.module.css";
+import { MdInfoOutline } from "react-icons/md";
 
 // component to show each book it receives
 
 const Books = ({ book }) => {
-  const [showBookInfo, setShowBookInfo] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
 
@@ -42,7 +42,52 @@ const Books = ({ book }) => {
         />
       </figure>
 
-      {openModal && <Modal setOpenModal={setOpenModal}>{title}</Modal>}
+      {openModal && (
+        <Modal setOpenModal={setOpenModal}>
+          <section className={styled.info}>
+            <section className={styled["book-summary"]}>
+              <div className={styled.summary}>
+                <figure>
+                  <img
+                    src={
+                      imageLinks
+                        ? imageLinks.smallThumbnail
+                        : "https://via.placeholder.com/128x204"
+                    }
+                    alt={title}
+                  />
+                </figure>
+                <article>
+                  <h1 className={styled["summary-title"]}>{title}</h1>
+                  {(
+                    <p className={styled["summary-author"]}>{authors?.[0]} </p>
+                  ) || ""}
+                  <p className={styled["summary-snippet"]}>
+                    {book.searchInfo
+                      ? book.searchInfo.textSnippet
+                      : "See more details"}
+                  </p>
+                </article>
+              </div>
+
+              <div className={styled.actions}>
+                <p>
+                  <span>
+                    <RiAddCircleLine size="25px" fontWeight="700" />
+                  </span>
+                  Add to Library
+                </p>
+                <p>
+                  <span>
+                    <MdInfoOutline size="25px" fontWeight="700" />
+                  </span>
+                  Details & More
+                </p>
+              </div>
+            </section>
+          </section>
+        </Modal>
+      )}
     </section>
   );
 };
