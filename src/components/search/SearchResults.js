@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "./SearchResults.module.css";
 import { Navigate, useLocation } from "react-router-dom";
 import Books from "../books/Books";
@@ -6,9 +6,11 @@ import Container from "../../helpers/wrapper/Container";
 import Modal from "../../helpers/modal/Modal";
 import { GiBookshelf } from "react-icons/gi";
 import Heading from "../../helpers/heading/Heading";
+import { LibraryContext } from "../../contexts/libraryContext";
 
 const SearchResults = () => {
-  // states
+  // context and states
+  const { setBookResultsFromSearch } = useContext(LibraryContext);
   const [bookResults, setBookResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -20,8 +22,8 @@ const SearchResults = () => {
   const searchQuery = queryParams.get("search");
 
   /**
-   * url includes searchQuery, orderBy relevance and maxResults 0f 40
-   * setBookResults to the results from the fetched data
+   * url includes searchQuery, orderBy relevance and maxResults of 40
+   * setBookResults and setBookResultsFromSearch to the results from the fetched data
    */
   useEffect(() => {
     const apiKey = process.env.REACT_APP_GOOGLE_BOOKS_API_KEY;
@@ -33,6 +35,7 @@ const SearchResults = () => {
         const response = await fetch(url);
         const data = await response.json();
         setBookResults(data.items);
+        setBookResultsFromSearch(data.items);
       } catch (error) {
         console.log(error);
       }
@@ -40,7 +43,7 @@ const SearchResults = () => {
     };
 
     fetchBook();
-  }, [searchQuery]);
+  }, [searchQuery, setBookResultsFromSearch]);
 
   //map over the bookResults array and return a Book with the info
   const allBooks = bookResults.map((book) => (
@@ -53,7 +56,6 @@ const SearchResults = () => {
       Showing results for <span>{searchQuery}</span>
     </>
   );
-  console.log(bookResults);
 
   /**prevent user from visiting the route manually route,
    * the user can only visit this page if there is a search term*/
