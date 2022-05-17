@@ -7,11 +7,13 @@ const libraryReducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.ADD_TO_LIBRARY:
       const userToUpdate = action.payload.user;
-      const userExists = state.library.find(
-        (shelf) => shelf.user === userToUpdate
-      );
-
+      const userExists = state.library.find((shelf) => {
+        console.log(shelf);
+        return shelf.user === userToUpdate;
+      });
+      console.log(userExists);
       if (!userExists) {
+        console.log(action.payload);
         return {
           library: (state.library = [
             {
@@ -27,12 +29,22 @@ const libraryReducer = (state, action) => {
             ...state.library,
           ]),
         };
-      } else if (userExists) {
-        console.log(userExists);
-        return userExists;
+      } else {
+        return {
+          ...userExists,
+          userLibrary: [
+            {
+              book: `${action.payload.book}`,
+              category: action.payload.category,
+            },
+
+            ...userExists.userLibrary,
+          ],
+        };
       }
 
-      break;
+    // console.log(userExists);
+    // return userExists;
 
     default:
       return state;

@@ -23,6 +23,7 @@ const AuthContextProvider = (props) => {
   const signUserOut = async () => {
     signOut(auth).then(() => {
       localStorage.removeItem("isUserSignedIn");
+      localStorage.removeItem("currentUser");
       setIsSignedIn(false);
     });
   };
@@ -34,10 +35,14 @@ const AuthContextProvider = (props) => {
    */
   useEffect(() => {
     const login = localStorage.getItem("isUserSignedIn");
+    const user = JSON.parse(localStorage.getItem("currentUser"));
     if (login) {
       setIsSignedIn(true);
     }
-    console.log(login);
+    if (user) {
+      setcurrentUser(user);
+    }
+    console.log(login, user?.email);
   }, []);
 
   const authObject = {
