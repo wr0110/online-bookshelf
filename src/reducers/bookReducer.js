@@ -3,21 +3,60 @@ export const ACTIONS = {
 };
 
 //reducer to manage the library state
-const libraryReducer = (userBooks, action) => {
+const libraryReducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.ADD_TO_LIBRARY:
-      return [
-        {
-          user: action.payload.user,
-          userBookShelf: [
-            { id: action.payload.bookId, category: action.payload.category },
-          ],
-        },
-        ...userBooks,
-      ];
+      const userToUpdate = action.payload.user;
+      const userExists = state.library.find(
+        (shelf) => shelf.user === userToUpdate
+      );
+
+      if (!userExists) {
+        return {
+          library: (state.library = [
+            {
+              user: action.payload.user,
+              userLibrary: [
+                {
+                  book: action.payload.book,
+                  category: action.payload.category,
+                },
+              ],
+            },
+
+            ...state.library,
+          ]),
+        };
+      } else if (userExists) {
+        console.log(userExists);
+        return userExists;
+      }
+
+      break;
+
     default:
-      return userBooks;
+      return state;
   }
 };
 
 export default libraryReducer;
+
+/*    return [
+        {
+          user: action.payload.user,
+          userBookShelf: [
+            {book: action.payload.book, category: action.payload.category },
+          ],
+        },
+        ...userBooks,
+      ];*/
+
+//    console.log(state.library);
+//    return {
+//      library: (state.library = {
+//        book: action.payload.book,
+//        category: action.payload.category,
+//      }),
+
+//      ...state.library,
+//    };

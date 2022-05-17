@@ -6,10 +6,15 @@ export const LibraryContext = createContext({
   setBookResultsFromSearch: () => {},
 });
 
+const initialState = {
+  library: [],
+  totalBooks: 0,
+};
+
 const LibraryContextProvider = (props) => {
   //state
   const [bookResultsFromSearch, setBookResultsFromSearch] = useState([]);
-  const [state, dispatch] = useReducer(libraryReducer, []);
+  const [state, dispatch] = useReducer(libraryReducer, initialState);
 
   const values = {
     bookResultsFromSearch,
@@ -18,7 +23,7 @@ const LibraryContextProvider = (props) => {
     dispatch,
   };
 
-  console.log(bookResultsFromSearch);
+  console.log(state);
   return (
     <LibraryContext.Provider value={values}>
       {props.children}

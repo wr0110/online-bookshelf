@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "./Library.module.css";
 import readingNook from "../../images/reading_svg.png";
+import { LibraryContext } from "../../contexts/libraryContext";
+import { ACTIONS } from "../../reducers/bookReducer";
+import { AuthContext } from "../../contexts/authContext";
 
-const Library = () => {
+const Library = (props) => {
+  //destructured from library context
+  const { dispatch } = useContext(LibraryContext);
+  const { currentUser } = useContext(AuthContext);
+
   const libraryCategories = ["To Be Read", "In Progress", "Completed"];
+
+  const book = props.selectedBook.volumeInfo;
+
+  //function to add the selected book to the library
+  const addToLibrary = (category) => {
+    dispatch({
+      type: ACTIONS.ADD_TO_LIBRARY,
+      payload: {
+        book: `${book}`,
+        category,
+        user: currentUser.email,
+      },
+    });
+  };
 
   return (
     <section className={styled["library-container"]}>
@@ -16,7 +37,11 @@ const Library = () => {
             </figure>
             <div>
               {libraryCategories.map((category) => {
-                return <p key={category}>{category}</p>;
+                return (
+                  <p key={category} onClick={() => addToLibrary(category)}>
+                    {category}
+                  </p>
+                );
               })}
             </div>
           </article>

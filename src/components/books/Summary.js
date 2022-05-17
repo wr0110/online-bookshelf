@@ -91,11 +91,11 @@ const Summary = (props) => {
       </section>
 
       {/**show options to add to library
-       * pass the ID of selected book to the library
+       * pass the currently selected book to the library
        */}
       {openModal && (
         <Modal setOpenModal={setOpenModal}>
-          <Library selectedBookID={book.id} />
+          <Library selectedBook={book} />
         </Modal>
       )}
     </>

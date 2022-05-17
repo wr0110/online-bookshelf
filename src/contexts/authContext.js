@@ -14,6 +14,8 @@ const AuthContextProvider = (props) => {
     email: "",
   });
 
+  console.log(currentUser.email);
+
   /**
    *signs out the user
    *removes the isUserSignedIn value from local storage
