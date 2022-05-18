@@ -7,11 +7,13 @@ import LibraryContextProvider from "./contexts/libraryContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <AuthContextProvider>
-    <LibraryContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </LibraryContextProvider>
-  </AuthContextProvider>
+  <React.StrictMode>
+    <AuthContextProvider>
+      <LibraryContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </LibraryContextProvider>
+    </AuthContextProvider>
+  </React.StrictMode>
 );

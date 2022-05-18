@@ -1,20 +1,15 @@
 import React, { createContext, useReducer, useState } from "react";
-import libraryReducer from "../reducers/bookReducer";
+import libraryReducer, { initalState } from "../reducers/bookReducer";
 
 export const LibraryContext = createContext({
   bookResultsFromSearch: [],
   setBookResultsFromSearch: () => {},
 });
 
-const initialState = {
-  library: [],
-  totalBooks: 0,
-};
-
 const LibraryContextProvider = (props) => {
   //state
   const [bookResultsFromSearch, setBookResultsFromSearch] = useState([]);
-  const [state, dispatch] = useReducer(libraryReducer, initialState);
+  const [state, dispatch] = useReducer(libraryReducer, initalState);
 
   const values = {
     bookResultsFromSearch,
