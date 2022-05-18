@@ -32,6 +32,14 @@ const Login = (props) => {
           userId: result.user.uid,
           email: result.user.email,
         });
+        localStorage.setItem(
+          "currentUser",
+          JSON.stringify({
+            name: result.user.displayName,
+            userId: result.user.uid,
+            email: result.user.email,
+          })
+        );
         setLoading(false);
       })
       .then(() => {

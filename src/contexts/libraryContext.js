@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useState } from "react";
-import libraryReducer from "../reducers/bookReducer";
+import libraryReducer, { initalState } from "../reducers/bookReducer";
 
 export const LibraryContext = createContext({
   bookResultsFromSearch: [],
@@ -9,7 +9,7 @@ export const LibraryContext = createContext({
 const LibraryContextProvider = (props) => {
   //state
   const [bookResultsFromSearch, setBookResultsFromSearch] = useState([]);
-  const [state, dispatch] = useReducer(libraryReducer, []);
+  const [state, dispatch] = useReducer(libraryReducer, initalState);
 
   const values = {
     bookResultsFromSearch,
@@ -18,7 +18,7 @@ const LibraryContextProvider = (props) => {
     dispatch,
   };
 
-  console.log(bookResultsFromSearch);
+  console.log(state);
   return (
     <LibraryContext.Provider value={values}>
       {props.children}
