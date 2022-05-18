@@ -4,7 +4,7 @@ import { RiAddCircleLine } from "react-icons/ri";
 import { MdInfoOutline } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../helpers/modal/Modal";
-import Library from "./Library";
+import UserLibrary from "./UserLibrary";
 
 const Summary = (props) => {
   const navigate = useNavigate();
@@ -95,7 +95,7 @@ const Summary = (props) => {
        */}
       {openModal && (
         <Modal setOpenModal={setOpenModal}>
-          <Library selectedBook={book} />
+          <UserLibrary selectedBook={book} />
         </Modal>
       )}
     </>
