@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import styled from "./Library.module.css";
+import styled from "./UserLibrary.module.css";
 import readingNook from "../../images/reading_svg.png";
 import { LibraryContext } from "../../contexts/libraryContext";
 import { ACTIONS } from "../../reducers/bookReducer";
 import { AuthContext } from "../../contexts/authContext";
 
-const Library = (props) => {
+const UserLibrary = (props) => {
   //destructured from library context
   const { dispatch } = useContext(LibraryContext);
   const { currentUser } = useContext(AuthContext);
@@ -51,4 +51,4 @@ const Library = (props) => {
   );
 };
 
-export default Library;
+export default UserLibrary;
