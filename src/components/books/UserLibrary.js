@@ -14,13 +14,12 @@ const UserLibrary = (props) => {
 
   const book = props.selectedBook.volumeInfo;
 
-  //function to add the selected book to the library
+  //function to add the user and their selected book to the library
   const addToLibrary = (category) => {
     dispatch({
       type: ACTIONS.ADD_TO_LIBRARY,
       payload: {
-        book: `${book}`,
-        category,
+        selectedBook: { book, category },
         user: currentUser.email,
       },
     });
