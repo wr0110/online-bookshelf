@@ -95,7 +95,7 @@ const Summary = (props) => {
        */}
       {openModal && (
         <Modal setOpenModal={setOpenModal}>
-          <UserLibrary selectedBook={book} />
+          <UserLibrary selectedBook={book} setOpenModal={setOpenModal} />
         </Modal>
       )}
     </>

@@ -46,7 +46,7 @@ const libraryReducer = (state, action) => {
 
         const bookAlreadyExists = currentUser?.userLibrary.find(
           (record) =>
-            record.book.title === userToUpdate.selectedBook.book.title &&
+            record.book.id === userToUpdate.selectedBook.book.id &&
             record.category === userToUpdate.selectedBook.category
         );
         const duplicate = currentUser?.userLibrary.includes(bookAlreadyExists);
