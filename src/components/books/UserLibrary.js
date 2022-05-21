@@ -12,18 +12,18 @@ const UserLibrary = (props) => {
 
   const libraryCategories = ["To Be Read", "In Progress", "Completed"];
 
-  const book = props.selectedBook.volumeInfo;
+  const book = props.selectedBook;
 
-  //function to add the selected book to the library
+  //function to add the user and their selected book to the library
   const addToLibrary = (category) => {
     dispatch({
       type: ACTIONS.ADD_TO_LIBRARY,
       payload: {
-        book: `${book}`,
-        category,
+        selectedBook: { book, category },
         user: currentUser.email,
       },
     });
+    props.setOpenModal(false);
   };
 
   return (
