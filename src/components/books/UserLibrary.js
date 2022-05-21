@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import styled from "./UserLibrary.module.css";
 import readingNook from "../../images/reading_svg.png";
-import { LibraryContext } from "../../contexts/libraryContext";
-import { ACTIONS } from "../../reducers/bookReducer";
 import { AuthContext } from "../../contexts/authContext";
+import { useDispatch } from "react-redux";
+import { addBookToLibrary } from "../../store/features/library/librarySlice";
 
 const UserLibrary = (props) => {
+  const dispatch = useDispatch();
+
   //destructured from library context
-  const { dispatch } = useContext(LibraryContext);
   const { currentUser } = useContext(AuthContext);
 
   const libraryCategories = ["To Be Read", "In Progress", "Completed"];
@@ -16,13 +17,13 @@ const UserLibrary = (props) => {
 
   //function to add the user and their selected book to the library
   const addToLibrary = (category) => {
-    dispatch({
-      type: ACTIONS.ADD_TO_LIBRARY,
-      payload: {
+    dispatch(
+      addBookToLibrary({
         selectedBook: { book, category },
         user: currentUser.email,
-      },
-    });
+      })
+    );
+
     props.setOpenModal(false);
   };
 
