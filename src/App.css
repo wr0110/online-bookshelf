@@ -32,3 +32,19 @@
   padding-top: 140px;
   z-index: 20;
 } */
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 2rem;
+  place-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .all {
+    place-items: center space-between;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}

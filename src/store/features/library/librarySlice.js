@@ -5,6 +5,16 @@ const initialState = {
   bookAlreadyInLibrary: false,
 };
 
+/**
+ * addToLibrary
+ * store the payload in a constant
+ * retrieve the record of the current user from the library
+ * if there is no record for the current user, create a new object with the payload information
+ * if there is a record for the current user, check if the book they are adding already exists
+ * update the bookAlreadyExists property and alert the user
+ * if there is a current user and the book being added does not exist, add the book to their userLibrary
+ */
+
 const librarySlice = createSlice({
   name: "library",
   initialState,
@@ -43,5 +53,7 @@ const librarySlice = createSlice({
   },
 });
 
+//actions
 export const { addBookToLibrary } = librarySlice.actions;
+
 export default librarySlice.reducer;

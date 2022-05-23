@@ -1,26 +1,31 @@
 import React, { useContext } from "react";
-import styled from "./AllBooks.module.css";
 import { useSelector } from "react-redux";
 import { AuthContext } from "../../contexts/authContext";
-
 import Books from "../books/Books";
+import Summary from "../books/Summary";
 
 const AllBooks = () => {
   const { library } = useSelector((state) => state.bookStore);
   const { currentUser } = useContext(AuthContext);
 
-  const libraryForCurrentUser = library.find(
+  const detailsForCurrentUser = library.find(
     (shelf) => shelf.user === currentUser?.email
   );
 
   //map over each book record in the current user's library and return a Book
-  const allBooksForCurrentUser = libraryForCurrentUser?.userLibrary.map(
+  const allBooksForCurrentUser = detailsForCurrentUser?.userLibrary.map(
     (record, index) => {
-      return <Books key={index} book={record.book} />;
+      return (
+        <Books
+          key={index}
+          modalComponent={<Summary book={record.book} />}
+          book={record.book}
+        />
+      );
     }
   );
 
-  return <section className={styled.all}>{allBooksForCurrentUser}</section>;
+  return <section className="books-grid">{allBooksForCurrentUser}</section>;
 };
 
 export default AllBooks;

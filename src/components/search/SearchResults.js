@@ -6,6 +6,7 @@ import Container from "../../helpers/wrapper/Container";
 import Modal from "../../helpers/modal/Modal";
 import { GiBookshelf } from "react-icons/gi";
 import Heading from "../../helpers/heading/Heading";
+import Summary from "../books/Summary";
 
 const SearchResults = () => {
   // states
@@ -42,9 +43,10 @@ const SearchResults = () => {
     fetchBook();
   }, [searchQuery]);
 
+  //  const Summary = <Summary />;
   //map over the bookResults array and return a Book with the info
   const allBooks = bookResults.map((book) => (
-    <Books key={book.id} book={book} />
+    <Books key={book.id} modalComponent={<Summary book={book} />} book={book} />
   ));
 
   //props for heading component
