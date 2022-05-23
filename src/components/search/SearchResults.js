@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "./SearchResults.module.css";
 import { Navigate, useLocation } from "react-router-dom";
 import Books from "../books/Books";
@@ -6,11 +6,9 @@ import Container from "../../helpers/wrapper/Container";
 import Modal from "../../helpers/modal/Modal";
 import { GiBookshelf } from "react-icons/gi";
 import Heading from "../../helpers/heading/Heading";
-import { LibraryContext } from "../../contexts/libraryContext";
 
 const SearchResults = () => {
-  // context and states
-  const { setBookResultsFromSearch } = useContext(LibraryContext);
+  // states
   const [bookResults, setBookResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -23,7 +21,7 @@ const SearchResults = () => {
 
   /**
    * url includes searchQuery, orderBy relevance and maxResults of 40
-   * setBookResults and setBookResultsFromSearch to the results from the fetched data
+   * setBookResults  to the results from the fetched data
    */
   useEffect(() => {
     const apiKey = process.env.REACT_APP_GOOGLE_BOOKS_API_KEY;
@@ -35,7 +33,6 @@ const SearchResults = () => {
         const response = await fetch(url);
         const data = await response.json();
         setBookResults(data.items);
-        setBookResultsFromSearch(data.items);
       } catch (error) {
         console.log(error);
       }
@@ -43,7 +40,7 @@ const SearchResults = () => {
     };
 
     fetchBook();
-  }, [searchQuery, setBookResultsFromSearch]);
+  }, [searchQuery]);
 
   //map over the bookResults array and return a Book with the info
   const allBooks = bookResults.map((book) => (
