@@ -12,12 +12,19 @@ const Summary = (props) => {
   const [openModal, setOpenModal] = useState(false);
 
   //  Destructured from the book object
-  const { imageLinks, categories, publishedDate, authors, title } =
-    props.book.volumeInfo;
-  const { book } = props;
+  const {
+    id,
+    searchInfo,
+    title,
+    authors,
+    publishedDate,
+    categories,
+    imageLinks,
+  } = props.book;
+  //const { book } = props;
 
   //navigate to the book details page for the specified book
-  const handleDetails = () => navigate(`/results/${book.id}`);
+  const handleDetails = () => navigate(`/results/${id}`);
 
   //set the modal state when the user clicks on the add to library button
   const handleLibrary = () => setOpenModal((state) => !state);
@@ -26,10 +33,10 @@ const Summary = (props) => {
    * if there is no snippet then show alternative text in else case
    */
   useEffect(() => {
-    if (book.searchInfo) {
-      snippetRef.current.innerHTML = ` ${book.searchInfo?.textSnippet}`;
+    if (searchInfo) {
+      snippetRef.current.innerHTML = ` ${searchInfo?.textSnippet}`;
     } else snippetRef.current.innerHTML = "Visit Details & More";
-  }, [book.searchInfo]);
+  }, [searchInfo]);
 
   return (
     <>
@@ -59,7 +66,7 @@ const Summary = (props) => {
               {/* Year and Category */}
               <div className={styled["supporting-details"]}>
                 {publishedDate && (
-                  <p>{new Date(publishedDate).getFullYear()}</p>
+                  <p>{new Date(publishedDate).getFullYear().toString()}</p>
                 )}
                 {categories && <p>{categories[0]}</p>}
               </div>
@@ -95,7 +102,7 @@ const Summary = (props) => {
        */}
       {openModal && (
         <Modal setOpenModal={setOpenModal}>
-          <UserLibrary selectedBook={book} setOpenModal={setOpenModal} />
+          <UserLibrary selectedBook={props.book} setOpenModal={setOpenModal} />
         </Modal>
       )}
     </>

@@ -20,13 +20,14 @@ const useFilterLibrary = (category) => {
   /**
    * filter the current user's userLibrary based on the category received
    * map over the filtered results and return a Book for each record
+   * Todo : remove duplicate books
    */
   const libraryForCurrentUser = detailsForCurrentUser?.userLibrary
     .filter((record) => record.category === `${category}`)
-    .map((record, index) => {
+    .map((record) => {
       return (
         <Books
-          key={index}
+          key={record.id}
           modalComponent={<Summary book={record.book} />}
           book={record.book}
         />

@@ -8,7 +8,7 @@ const Books = ({ book, modalComponent }) => {
   const [openModal, setOpenModal] = useState(false);
 
   //Destructured imageLink property
-  const { imageLinks, title } = book.volumeInfo;
+  const { imageLinks, title } = book;
 
   // if there is no image (undefined was returned) then show place holder image
   const url = imageLinks
