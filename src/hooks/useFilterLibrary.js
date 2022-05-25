@@ -27,9 +27,9 @@ const useFilterLibrary = (category) => {
     .map((record) => {
       return (
         <Books
-          key={record.id}
-          modalComponent={<Summary book={record.book} />}
-          book={record.book}
+          key={record.bookData.id}
+          modalComponent={<Summary book={record.bookData} />}
+          book={record.bookData}
         />
       );
     });

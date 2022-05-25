@@ -50,6 +50,7 @@ const SearchResults = () => {
     const { id, searchInfo } = book;
     const { title, authors, publishedDate, categories, imageLinks } =
       book.volumeInfo;
+
     const bookData = {
       id,
       searchInfo,
