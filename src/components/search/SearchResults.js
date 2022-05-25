@@ -43,11 +43,31 @@ const SearchResults = () => {
     fetchBook();
   }, [searchQuery]);
 
-  //  const Summary = <Summary />;
-  //map over the bookResults array and return a Book with the info
-  const allBooks = bookResults.map((book) => (
-    <Books key={book.id} modalComponent={<Summary book={book} />} book={book} />
-  ));
+  /**map over the bookResults array and return a Book with the info
+   * destucture properties from the book object and pass them as props
+   */
+  const allBooks = bookResults.map((book) => {
+    const { id, searchInfo } = book;
+    const { title, authors, publishedDate, categories, imageLinks } =
+      book.volumeInfo;
+
+    const bookData = {
+      id,
+      searchInfo,
+      title,
+      authors,
+      publishedDate,
+      categories,
+      imageLinks,
+    };
+    return (
+      <Books
+        key={book.id}
+        modalComponent={<Summary book={bookData} />}
+        book={bookData}
+      />
+    );
+  });
 
   //props for heading component
   const text = (

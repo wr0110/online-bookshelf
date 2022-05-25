@@ -31,11 +31,12 @@ const librarySlice = createSlice({
           userLibrary: [action.payload.selectedBook],
         });
       } else {
-        const bookAlreadyExists = currentUser?.userLibrary.find(
-          (record) =>
-            record.book.id === userToUpdate.selectedBook.book.id &&
+        const bookAlreadyExists = currentUser?.userLibrary.find((record) => {
+          return (
+            record.bookData.id === userToUpdate.selectedBook.bookData.id &&
             record.category === userToUpdate.selectedBook.category
-        );
+          );
+        });
         const duplicate = currentUser?.userLibrary.includes(bookAlreadyExists);
 
         if (duplicate) {

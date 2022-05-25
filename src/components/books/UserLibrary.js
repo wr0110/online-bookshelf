@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addBookToLibrary } from "../../store/features/library/librarySlice";
 
 const UserLibrary = (props) => {
+  // const state = useSelector((state) => state.bookStore);
   const dispatch = useDispatch();
 
   //destructured from library context
@@ -15,11 +16,25 @@ const UserLibrary = (props) => {
 
   const book = props.selectedBook;
 
-  //function to add the user and their selected book to the library
-  const addToLibrary = (category) => {
+  //retutrn empty string if the data is undefined
+  const bookCategory = book.categories === undefined ? "" : book.categories;
+  const info = book.searchInfo === undefined ? "" : book.searchInfo;
+
+  const bookData = {
+    id: book.id,
+    title: book.title,
+    authors: book.authors,
+    publishedDate: book.publishedDate,
+    imageLinks: book.imageLinks,
+    categories: bookCategory,
+    searchInfo: info,
+  };
+
+  //function to add the user and the selected book to the library
+  const addToLibrary = async (category) => {
     dispatch(
       addBookToLibrary({
-        selectedBook: { book, category },
+        selectedBook: { bookData, category },
         user: currentUser.email,
       })
     );

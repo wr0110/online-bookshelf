@@ -14,12 +14,12 @@ const AllBooks = () => {
 
   //map over each book record in the current user's library and return a Book
   const allBooksForCurrentUser = detailsForCurrentUser?.userLibrary.map(
-    (record, index) => {
+    (record) => {
       return (
         <Books
-          key={index}
-          modalComponent={<Summary book={record.book} />}
-          book={record.book}
+          key={record.bookData.id}
+          modalComponent={<Summary book={record.bookData} />}
+          book={record.bookData}
         />
       );
     }
