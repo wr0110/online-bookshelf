@@ -1,18 +1,23 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import styled from "./UserLibrary.module.css";
 import readingNook from "../../images/reading_svg.png";
 import { AuthContext } from "../../contexts/authContext";
 import { useDispatch, useSelector } from "react-redux";
-import { addBookToLibrary } from "../../store/features/library/librarySlice";
+import {
+  addBookToLibrary,
+  checkIfBookAlreadyExistsInCurrentUserLibrary,
+} from "../../store/features/library/librarySlice";
+
+const libraryCategories = ["To Be Read", "In Progress", "Completed", "DNF"];
 
 const UserLibrary = (props) => {
-  //states, store and context
-  const { library } = useSelector((state) => state.bookStore);
+  //store and context
   const dispatch = useDispatch();
-  const [bookExistsCategory, setBookExistsCategory] = useState([]);
+  const { bookAlreadyInLibraryCategory } = useSelector(
+    (state) => state.bookStore
+  );
   const { currentUser } = useContext(AuthContext);
 
-  const libraryCategories = ["To Be Read", "In Progress", "Completed"];
   const book = props.selectedBook;
 
   //return empty string if the data is undefined
@@ -43,25 +48,16 @@ const UserLibrary = (props) => {
     props.setOpenModal(false);
   };
 
-  //this checks if the selected book is already in the userLibrary of the current user
+  // everytime there is a change in the library, check if the selected book is already in the current user library
   useEffect(() => {
-    //get the library of the current user
-    const user = library.find((shelf) => shelf.user === currentUser.email);
+    dispatch(
+      checkIfBookAlreadyExistsInCurrentUserLibrary({
+        bookData,
+        user: currentUser.email,
+      })
+    );
+  }, [bookData, currentUser, dispatch]);
 
-    //check if the selected book is already in the userLibrary of the user
-    if (user) {
-      const bookAlreadyExists = user.userLibrary.find(
-        (record) => record.bookData.id === bookData.id
-      );
-
-      //setBookExistsCategory to the category array of the bookAlreadyExists object
-      bookAlreadyExists
-        ? setBookExistsCategory(bookAlreadyExists.category)
-        : setBookExistsCategory([]);
-    }
-  }, [library, bookData, currentUser]);
-
-  console.log(bookExistsCategory);
   return (
     <section className={styled["library-container"]}>
       <section className={styled.library}>
@@ -72,15 +68,19 @@ const UserLibrary = (props) => {
               <img src={readingNook} alt="illustation of a bookshelf" />
             </figure>
             <div>
+              {/* if the isCurrentCategory is the same as the current category then let the buttons reflect that and apply the correct styles */}
               {libraryCategories.map((category) => {
+                const isCurrentCategory =
+                  bookAlreadyInLibraryCategory === category;
                 return (
-                  <p key={category} onClick={() => addToLibrary(category)}>
-                    {/* if the category exists in bookExistsCategory, the text should say "Already in category */}
-                    {bookExistsCategory.includes(category) ? (
-                      ` Already in ${category}`
-                    ) : (
-                      <>{category}</>
-                    )}
+                  <p
+                    key={category}
+                    className={isCurrentCategory ? styled.exist : ""}
+                    onClick={() => addToLibrary(category)}
+                  >
+                    {isCurrentCategory
+                      ? `Currently in - ${category}`
+                      : category}
                   </p>
                 );
               })}
