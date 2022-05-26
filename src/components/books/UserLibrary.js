@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import styled from "./UserLibrary.module.css";
 import readingNook from "../../images/reading_svg.png";
 import { AuthContext } from "../../contexts/authContext";
@@ -8,6 +8,7 @@ import { addBookToLibrary } from "../../store/features/library/librarySlice";
 const UserLibrary = (props) => {
   const { library } = useSelector((state) => state.bookStore);
   const dispatch = useDispatch();
+  const [bookExistsCategory, setBookExistsCategory] = useState([]);
 
   //destructured from library context
   const { currentUser } = useContext(AuthContext);
@@ -44,21 +45,26 @@ const UserLibrary = (props) => {
     props.setOpenModal(false);
   };
 
-  useEffect(() => {
-    //get the library of the current user
-    const user = library.find((shelf) => shelf.user === currentUser.email);
+  // useEffect(() => {
+  //   //get the library of the current user
+  //   const user = library.find((shelf) => shelf.user === currentUser.email);
 
-    //check if the selected book is already in the userLibrary of the current user
-    let bookAlreadyExists = {};
-    if (user) {
-      bookAlreadyExists = user?.userLibrary?.find((record) => {
-        return record.bookData.id === bookData.id;
-      });
-    }
+  //   //check if the selected book is already in the userLibrary of the current user
+  //   let bookAlreadyExists = {};
+  //   if (user) {
+  //     bookAlreadyExists = user?.userLibrary?.find((record) => {
+  //       return record.bookData.id === bookData.id;
+  //     });
+  //   }
 
-    bookAlreadyExists && console.log(bookAlreadyExists?.category);
-  }, [library, bookData, currentUser]);
+  //   bookAlreadyExists !== undefined &&
+  //     setBookExistsCategory(bookAlreadyExists.category);
 
+  //   bookAlreadyExists !== undefined &&
+  //     console.log((prev) => [bookAlreadyExists?.category, ...prev]);
+  // }, [library, bookData, currentUser]);
+
+  // console.log(bookExistsCategory);
   return (
     <section className={styled["library-container"]}>
       <section className={styled.library}>

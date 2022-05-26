@@ -5,16 +5,6 @@ const initialState = {
   bookAlreadyInLibrary: false,
 };
 
-/**
- * addToLibrary
- * store the payload in a constant
- * retrieve the record of the current user from the library
- * if there is no record for the current user, create a new object with the payload information
- * if there is a record for the current user, check if the book they are adding already exists
- * update the bookAlreadyExists property and alert the user
- * if there is a current user and the book being added does not exist, add the book to their userLibrary
- */
-
 const librarySlice = createSlice({
   name: "library",
   initialState,
@@ -28,26 +18,46 @@ const librarySlice = createSlice({
       if (!currentUser) {
         state.library.push({
           user: action.payload.user,
-          userLibrary: [action.payload.selectedBook],
+          userLibrary: [
+            {
+              bookData: action.payload.selectedBook.bookData,
+              category: [action.payload.selectedBook.category],
+            },
+          ],
         });
       } else {
+        //if the user exists, check if the book they are trying to add already exists in their library
         const bookAlreadyExists = currentUser?.userLibrary.find((record) => {
-          return (
-            record.bookData.id === userToUpdate.selectedBook.bookData.id &&
-            record.category === userToUpdate.selectedBook.category
-          );
+          return record.bookData.id === userToUpdate.selectedBook.bookData.id;
         });
-        const duplicate = currentUser?.userLibrary.includes(bookAlreadyExists);
 
-        if (duplicate) {
+        //if the bookExists check if the book category already exists in bookAlreadyExistsCategory array
+        if (bookAlreadyExists) {
           state.bookAlreadyInLibrary = true;
-          alert(
-            `This book already exists in your ${bookAlreadyExists.category} shelf.`
+
+          // get the category array from bookAlreadyExists
+          const bookAlreadyExistsCategory = bookAlreadyExists.category;
+
+          //check if the category already exists in the bookAlreadyExistsCategory array
+          const categoryAlreadyExists = bookAlreadyExistsCategory.includes(
+            userToUpdate.selectedBook.category
           );
-          return state;
+
+          if (categoryAlreadyExists) {
+            //if the category already exists, alert the user that the book of this category already exists in their library
+            alert(
+              `This book is already in your library under the category ${userToUpdate.selectedBook.category}`
+            );
+          } else {
+            //if the category does not exist, add the category to the bookAlreadyExistsCategory array
+            bookAlreadyExistsCategory.push(userToUpdate.selectedBook.category);
+          }
         } else {
-          currentUser.userLibrary.push(action.payload.selectedBook);
-          state.bookAlreadyInLibrary = false;
+          //if the book does not exist, add the book to the userLibrary array
+          currentUser.userLibrary.push({
+            bookData: userToUpdate.selectedBook.bookData,
+            category: [userToUpdate.selectedBook.category],
+          });
         }
       }
     },
