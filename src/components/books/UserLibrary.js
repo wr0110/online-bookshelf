@@ -9,7 +9,7 @@ const UserLibrary = (props) => {
   //states, store and context
   const { library } = useSelector((state) => state.bookStore);
   const dispatch = useDispatch();
-  const [bookExistsCategory, setBookExistsCategory] = useState([]);
+  const [bookExistsCategory, setBookExistsCategory] = useState("");
   const { currentUser } = useContext(AuthContext);
 
   const libraryCategories = ["To Be Read", "In Progress", "Completed"];
@@ -43,21 +43,20 @@ const UserLibrary = (props) => {
     props.setOpenModal(false);
   };
 
-  //this checks if the selected book is already in the userLibrary of the current user
+  // this checks if the selected book is already in the userLibrary of the current user
   useEffect(() => {
     //get the library of the current user
     const user = library.find((shelf) => shelf.user === currentUser.email);
 
-    //check if the selected book is already in the userLibrary of the user
+    /**
+     * check if the selected book is already in the userLibrary of the user
+     * if it exists bookExistsCategory to the category of the book if the book exists in the library
+     */
     if (user) {
       const bookAlreadyExists = user.userLibrary.find(
         (record) => record.bookData.id === bookData.id
       );
-
-      //setBookExistsCategory to the category array of the bookAlreadyExists object
-      bookAlreadyExists
-        ? setBookExistsCategory(bookAlreadyExists.category)
-        : setBookExistsCategory([]);
+      bookAlreadyExists && setBookExistsCategory(bookAlreadyExists.category);
     }
   }, [library, bookData, currentUser]);
 
@@ -72,15 +71,19 @@ const UserLibrary = (props) => {
               <img src={readingNook} alt="illustation of a bookshelf" />
             </figure>
             <div>
+              {/* if the bookExistsCategory is the same as the current category then let the buttons reflect that and apply the correct styles */}
               {libraryCategories.map((category) => {
                 return (
-                  <p key={category} onClick={() => addToLibrary(category)}>
-                    {/* if the category exists in bookExistsCategory, the text should say "Already in category */}
-                    {bookExistsCategory.includes(category) ? (
-                      ` Already in ${category}`
-                    ) : (
-                      <>{category}</>
-                    )}
+                  <p
+                    key={category}
+                    className={
+                      bookExistsCategory === category ? styled.exist : ""
+                    }
+                    onClick={() => addToLibrary(category)}
+                  >
+                    {bookExistsCategory === category
+                      ? `Currently in ${category} `
+                      : category}
                   </p>
                 );
               })}

@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   library: [],
-  bookAlreadyInLibrary: false,
 };
 
 const librarySlice = createSlice({
@@ -15,15 +14,11 @@ const librarySlice = createSlice({
         (shelf) => shelf.user === userToUpdate.user
       );
 
+      //if the user is new to the library, create a new shelf for them
       if (!currentUser) {
         state.library.push({
           user: action.payload.user,
-          userLibrary: [
-            {
-              bookData: action.payload.selectedBook.bookData,
-              category: [action.payload.selectedBook.category],
-            },
-          ],
+          userLibrary: [action.payload.selectedBook],
         });
       } else {
         //if the user exists, check if the book they are trying to add already exists in their library
@@ -31,33 +26,23 @@ const librarySlice = createSlice({
           return record.bookData.id === userToUpdate.selectedBook.bookData.id;
         });
 
-        //if the bookExists check if the book category already exists in bookAlreadyExistsCategory array
+        //if the bookExists check if the book category already exists
         if (bookAlreadyExists) {
-          state.bookAlreadyInLibrary = true;
-
-          // get the category array from bookAlreadyExists
-          const bookAlreadyExistsCategory = bookAlreadyExists.category;
-
-          //check if the category already exists in the bookAlreadyExistsCategory array
-          const categoryAlreadyExists = bookAlreadyExistsCategory.includes(
-            userToUpdate.selectedBook.category
-          );
-
-          if (categoryAlreadyExists) {
-            //if the category already exists, alert the user that the book of this category already exists in their library
+          //if the categories are the same, alert the user that the book is already in the library
+          if (
+            bookAlreadyExists.category === userToUpdate.selectedBook.category
+          ) {
             alert(
-              `This book is already in your library under the category ${userToUpdate.selectedBook.category}`
+              `This book is already in your ${bookAlreadyExists.category} shelf`
             );
+            return state;
           } else {
-            //if the category does not exist, add the category to the bookAlreadyExistsCategory array
-            bookAlreadyExistsCategory.push(userToUpdate.selectedBook.category);
+            //if the categories are different, update the category of the bookAlreadyExists object
+            bookAlreadyExists.category = userToUpdate.selectedBook.category;
           }
         } else {
           //if the book does not exist, add the book to the userLibrary array
-          currentUser.userLibrary.push({
-            bookData: userToUpdate.selectedBook.bookData,
-            category: [userToUpdate.selectedBook.category],
-          });
+          currentUser.userLibrary.push(action.payload.selectedBook);
         }
       }
     },

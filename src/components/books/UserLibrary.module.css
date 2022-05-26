@@ -35,6 +35,11 @@
   cursor: pointer;
 }
 
+.libraryCategory .exist {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
 .libraryCategory p:hover {
   background-color: var(--dark-blue);
   color: var(--white);
