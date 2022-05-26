@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import styled from "./UserLibrary.module.css";
 import readingNook from "../../images/reading_svg.png";
 import { AuthContext } from "../../contexts/authContext";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addBookToLibrary } from "../../store/features/library/librarySlice";
 
 const UserLibrary = (props) => {
-  // const state = useSelector((state) => state.bookStore);
+  const { library } = useSelector((state) => state.bookStore);
   const dispatch = useDispatch();
 
   //destructured from library context
@@ -20,15 +20,17 @@ const UserLibrary = (props) => {
   const bookCategory = book.categories === undefined ? "" : book.categories;
   const info = book.searchInfo === undefined ? "" : book.searchInfo;
 
-  const bookData = {
-    id: book.id,
-    title: book.title,
-    authors: book.authors,
-    publishedDate: book.publishedDate,
-    imageLinks: book.imageLinks,
-    categories: bookCategory,
-    searchInfo: info,
-  };
+  const bookData = useMemo(() => {
+    return {
+      id: book.id,
+      title: book.title,
+      authors: book.authors,
+      publishedDate: book.publishedDate,
+      imageLinks: book.imageLinks,
+      categories: bookCategory,
+      searchInfo: info,
+    };
+  }, [book, bookCategory, info]);
 
   //function to add the user and the selected book to the library
   const addToLibrary = async (category) => {
@@ -41,6 +43,21 @@ const UserLibrary = (props) => {
 
     props.setOpenModal(false);
   };
+
+  useEffect(() => {
+    //get the library of the current user
+    const user = library.find((shelf) => shelf.user === currentUser.email);
+
+    //check if the selected book is already in the userLibrary of the current user
+    let bookAlreadyExists = {};
+    if (user) {
+      bookAlreadyExists = user?.userLibrary?.find((record) => {
+        return record.bookData.id === bookData.id;
+      });
+    }
+
+    bookAlreadyExists && console.log(bookAlreadyExists?.category);
+  }, [library, bookData, currentUser]);
 
   return (
     <section className={styled["library-container"]}>
