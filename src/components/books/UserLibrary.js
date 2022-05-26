@@ -6,18 +6,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { addBookToLibrary } from "../../store/features/library/librarySlice";
 
 const UserLibrary = (props) => {
+  //states, store and context
   const { library } = useSelector((state) => state.bookStore);
   const dispatch = useDispatch();
   const [bookExistsCategory, setBookExistsCategory] = useState([]);
-
-  //destructured from library context
   const { currentUser } = useContext(AuthContext);
 
   const libraryCategories = ["To Be Read", "In Progress", "Completed"];
-
   const book = props.selectedBook;
 
-  //retutrn empty string if the data is undefined
+  //return empty string if the data is undefined
   const bookCategory = book.categories === undefined ? "" : book.categories;
   const info = book.searchInfo === undefined ? "" : book.searchInfo;
 
@@ -41,30 +39,29 @@ const UserLibrary = (props) => {
         user: currentUser.email,
       })
     );
-
+    //close the modal
     props.setOpenModal(false);
   };
 
-  // useEffect(() => {
-  //   //get the library of the current user
-  //   const user = library.find((shelf) => shelf.user === currentUser.email);
+  //this checks if the selected book is already in the userLibrary of the current user
+  useEffect(() => {
+    //get the library of the current user
+    const user = library.find((shelf) => shelf.user === currentUser.email);
 
-  //   //check if the selected book is already in the userLibrary of the current user
-  //   let bookAlreadyExists = {};
-  //   if (user) {
-  //     bookAlreadyExists = user?.userLibrary?.find((record) => {
-  //       return record.bookData.id === bookData.id;
-  //     });
-  //   }
+    //check if the selected book is already in the userLibrary of the user
+    if (user) {
+      const bookAlreadyExists = user.userLibrary.find(
+        (record) => record.bookData.id === bookData.id
+      );
 
-  //   bookAlreadyExists !== undefined &&
-  //     setBookExistsCategory(bookAlreadyExists.category);
+      //setBookExistsCategory to the category array of the bookAlreadyExists object
+      bookAlreadyExists
+        ? setBookExistsCategory(bookAlreadyExists.category)
+        : setBookExistsCategory([]);
+    }
+  }, [library, bookData, currentUser]);
 
-  //   bookAlreadyExists !== undefined &&
-  //     console.log((prev) => [bookAlreadyExists?.category, ...prev]);
-  // }, [library, bookData, currentUser]);
-
-  // console.log(bookExistsCategory);
+  console.log(bookExistsCategory);
   return (
     <section className={styled["library-container"]}>
       <section className={styled.library}>
@@ -78,7 +75,12 @@ const UserLibrary = (props) => {
               {libraryCategories.map((category) => {
                 return (
                   <p key={category} onClick={() => addToLibrary(category)}>
-                    {category}
+                    {/* if the category exists in bookExistsCategory, the text should say "Already in category */}
+                    {bookExistsCategory.includes(category) ? (
+                      ` Already in ${category}`
+                    ) : (
+                      <>{category}</>
+                    )}
                   </p>
                 );
               })}
