@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   library: [],
+  bookAlreadyInLibraryCategory: "",
 };
 
 const librarySlice = createSlice({
@@ -46,10 +47,27 @@ const librarySlice = createSlice({
         }
       }
     },
+    checkIfBookAlreadyExistsInCurrentUserLibrary: (state, action) => {
+      const userInfo = action.payload;
+
+      const user = state.library.find((shelf) => shelf.user === userInfo.user);
+      if (user) {
+        const bookAlreadyExists = user.userLibrary.find(
+          (record) => record.bookData.id === userInfo.bookData.id
+        );
+
+        bookAlreadyExists
+          ? (state.bookAlreadyInLibraryCategory = bookAlreadyExists.category)
+          : (state.bookAlreadyInLibraryCategory = "");
+      }
+    },
   },
 });
 
 //actions
-export const { addBookToLibrary } = librarySlice.actions;
+export const {
+  addBookToLibrary,
+  checkIfBookAlreadyExistsInCurrentUserLibrary,
+} = librarySlice.actions;
 
 export default librarySlice.reducer;
