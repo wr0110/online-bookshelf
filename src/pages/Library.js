@@ -3,8 +3,7 @@ import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import Books from "../components/books/Books";
 import Summary from "../components/books/Summary";
-
-import styled from "../components/library/Library.module.css";
+import styled from "../components/pagesStyles/Library.module.css";
 import { AuthContext } from "../contexts/authContext";
 import Container from "../helpers/wrapper/Container";
 import useFilterLibrary from "../hooks/useFilterLibrary";
