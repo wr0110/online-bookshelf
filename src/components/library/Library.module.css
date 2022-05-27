@@ -6,6 +6,7 @@
   margin-top: 5rem;
   padding: 0.5rem 0 1.5rem;
   border-bottom: 1.5px solid rgba(166, 166, 166, 0.3);
+  margin-bottom: 2rem;
 }
 
 .library-navbar h1 {
@@ -17,21 +18,7 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
-}
-
-.library-links li {
-  list-style: none;
-}
-
-.library-links a {
-  text-decoration: none;
-  color: var(--med-grey);
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-
-.library-outlet {
-  padding: 3rem 0;
+  cursor: pointer;
 }
 
 /* Media Queries */
