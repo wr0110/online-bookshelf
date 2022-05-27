@@ -20,7 +20,7 @@ const Library = () => {
   //get the category from the url params
   let urlParam = searchParams.get("category");
 
-  //books to return based on the category
+  //books to return based on the selected category
   let books = [];
   books = useFilterLibrary(urlParam);
 
@@ -29,6 +29,7 @@ const Library = () => {
     setSearchParams({ category: "To Be Read" });
   }
 
+  //return all books for the current user
   if (searchParams.get("category") === "All") {
     const detailsForCurrentUser = library.find(
       (shelf) => shelf.user === currentUser?.email
@@ -51,7 +52,11 @@ const Library = () => {
     setSearchParams({ category: link });
   }, [link, setSearchParams]);
 
+  //function to change the link state
   const handleLink = (link) => setlink(link);
+
+  //active ClassName for the link
+
   return (
     <section className={styled["library-container"]}>
       <Container>
@@ -61,7 +66,16 @@ const Library = () => {
           <div className={styled["library-links"]}>
             {links.map((link) => {
               return (
-                <p key={link} onClick={() => handleLink(link)}>
+                <p
+                  key={link}
+                  onClick={() => handleLink(link)}
+                  className={
+                    urlParam === link ||
+                    (urlParam === "To Be Read" && link === "TBR")
+                      ? styled.active
+                      : styled.link
+                  }
+                >
                   {link}
                 </p>
               );
