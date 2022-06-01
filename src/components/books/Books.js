@@ -3,9 +3,10 @@ import styled from "./Books.module.css";
 import Modal from "../../helpers/modal/Modal";
 
 // component to show each book it receives
-const Books = ({ book, modalComponent, icon }) => {
+const Books = ({ book, modalComponent, icon, iconComponent }) => {
   // state
   const [openModal, setOpenModal] = useState(false);
+  const [openRemoveModal, setOpenRemoveModal] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
 
   //Destructured imageLink property
@@ -21,10 +22,7 @@ const Books = ({ book, modalComponent, icon }) => {
     setOpenModal((state) => !state);
   };
 
-  const handleDelete = () => {
-    // e.stopImmediatePropagation();
-    console.log("hi");
-  };
+  const handleDelete = () => setOpenRemoveModal((state) => !state);
 
   return (
     <>
@@ -46,6 +44,12 @@ const Books = ({ book, modalComponent, icon }) => {
       {openModal && (
         <Modal setOpenModal={setOpenModal}>
           <>{modalComponent}</>
+        </Modal>
+      )}
+
+      {openRemoveModal && (
+        <Modal setOpenModal={setOpenRemoveModal}>
+          <>{iconComponent}</>
         </Modal>
       )}
     </>

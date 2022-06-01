@@ -5,6 +5,8 @@ import Books from "../components/books/Books";
 import Summary from "../components/books/Summary";
 import { MdOutlineBookmarkRemove } from "react-icons/md";
 
+import RemoveBook from "../components/books/RemoveBook";
+
 //custom hook to filter the current user's library based on the category recieved
 const useFilterLibrary = (category) => {
   // retrieve the library from the store
@@ -31,6 +33,7 @@ const useFilterLibrary = (category) => {
           modalComponent={<Summary book={record.bookData} />}
           book={record.bookData}
           icon={<MdOutlineBookmarkRemove color="white" size="30px" />}
+          iconComponent={<RemoveBook />}
         />
       );
     });
