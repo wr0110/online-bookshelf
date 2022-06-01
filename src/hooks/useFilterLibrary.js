@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { AuthContext } from "../contexts/authContext";
 import Books from "../components/books/Books";
 import Summary from "../components/books/Summary";
+import { MdOutlineBookmarkRemove } from "react-icons/md";
 
 //custom hook to filter the current user's library based on the category recieved
 const useFilterLibrary = (category) => {
@@ -29,6 +30,7 @@ const useFilterLibrary = (category) => {
           key={record.bookData.id}
           modalComponent={<Summary book={record.bookData} />}
           book={record.bookData}
+          icon={<MdOutlineBookmarkRemove color="white" size="30px" />}
         />
       );
     });

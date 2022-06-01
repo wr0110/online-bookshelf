@@ -1,3 +1,16 @@
+.books {
+  position: relative;
+}
+
+.icon {
+  position: relative;
+  top: 40px;
+  right: -90px;
+  background-color: var(--med-grey);
+  border-radius: 5px;
+  width: fit-content;
+}
+
 .books figure img {
   height: 200px;
   width: 130px;
@@ -9,4 +22,15 @@
 
 .books figure {
   cursor: pointer;
+}
+
+.delete {
+  position: absolute;
+  top: 10px;
+  left: 90px;
+  background-color: var(--med-grey);
+  border-radius: 5px;
+  /* pointer-events: none; */
+  z-index: 5;
+
 }
