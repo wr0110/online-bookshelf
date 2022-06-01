@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { AuthContext } from "../contexts/authContext";
 import Books from "../components/books/Books";
 import Summary from "../components/books/Summary";
-import { MdOutlineBookmarkRemove } from "react-icons/md";
+import { RiBookmarkFill } from "react-icons/ri";
 
 import RemoveBook from "../components/books/RemoveBook";
 
@@ -32,7 +32,7 @@ const useFilterLibrary = (category) => {
           key={record.bookData.id}
           modalComponent={<Summary book={record.bookData} />}
           book={record.bookData}
-          icon={<MdOutlineBookmarkRemove color="white" size="30px" />}
+          icon={<RiBookmarkFill color="white" size="25px" />}
           iconComponent={<RemoveBook />}
         />
       );

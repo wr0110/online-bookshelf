@@ -1,5 +1,6 @@
 .books {
   position: relative;
+  width: fit-content;
 }
 
 .icon {
@@ -26,11 +27,12 @@
 
 .delete {
   position: absolute;
-  top: 10px;
-  left: 90px;
-  background-color: var(--med-grey);
+  top: -15px;
+  left: 110px;
+  background-color: var(--yellow);
   border-radius: 5px;
-  /* pointer-events: none; */
-  z-index: 5;
+  padding: 4px;
+  cursor: pointer;
+
 
 }

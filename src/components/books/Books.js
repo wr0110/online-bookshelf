@@ -28,8 +28,8 @@ const Books = ({ book, modalComponent, icon, iconComponent }) => {
     <>
       <section
         className={styled.books}
-        onMouseOver={() => setIsHovering(true)}
-        onMouseOut={() => setIsHovering(false)}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
       >
         <figure onClick={handleGetBookInfo}>
           <img src={url} alt={title} />
