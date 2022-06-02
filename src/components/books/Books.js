@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "./Books.module.css";
 import Modal from "../../helpers/modal/Modal";
+import Information from "./Information";
 
 // component to show each book it receives
 const Books = (props) => {
@@ -43,7 +44,10 @@ const Books = (props) => {
 
       {openModal && (
         <Modal setOpenModal={setOpenModal}>
-          <>{props.modalComponent}</>
+          <Information
+            book={props.book}
+            actionsComponent={props.actionsComponent}
+          />
         </Modal>
       )}
 
