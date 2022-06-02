@@ -3,14 +3,13 @@ import styled from "./Books.module.css";
 import Modal from "../../helpers/modal/Modal";
 
 // component to show each book it receives
-const Books = ({ book, modalComponent, icon, iconComponent }) => {
+const Books = (props) => {
   // state
   const [openModal, setOpenModal] = useState(false);
-  const [openRemoveModal, setOpenRemoveModal] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
 
   //Destructured imageLink property
-  const { imageLinks, title } = book;
+  const { imageLinks, title } = props.book;
 
   // if there is no image (undefined was returned) then show place holder image
   const url = imageLinks
@@ -22,7 +21,7 @@ const Books = ({ book, modalComponent, icon, iconComponent }) => {
     setOpenModal((state) => !state);
   };
 
-  const handleDelete = () => setOpenRemoveModal((state) => !state);
+  const handleDelete = () => props.setOpenIconModal((state) => !state);
 
   return (
     <>
@@ -37,19 +36,20 @@ const Books = ({ book, modalComponent, icon, iconComponent }) => {
 
         {isHovering && (
           <div className={styled.delete} onClick={handleDelete}>
-            <div>{icon}</div>
+            <div>{props.icon}</div>
           </div>
         )}
       </section>
+
       {openModal && (
         <Modal setOpenModal={setOpenModal}>
-          <>{modalComponent}</>
+          <>{props.modalComponent}</>
         </Modal>
       )}
 
-      {openRemoveModal && (
-        <Modal setOpenModal={setOpenRemoveModal}>
-          <>{iconComponent}</>
+      {props.openIconModal && (
+        <Modal setOpenModal={props.setOpenIconModal}>
+          <>{props.iconComponent}</>
         </Modal>
       )}
     </>

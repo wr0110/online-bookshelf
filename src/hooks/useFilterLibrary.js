@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import { AuthContext } from "../contexts/authContext";
 import Books from "../components/books/Books";
@@ -9,6 +9,7 @@ import RemoveBook from "../components/books/RemoveBook";
 
 //custom hook to filter the current user's library based on the category recieved
 const useFilterLibrary = (category) => {
+  const [openIconModal, setOpenIconModal] = useState(false);
   // retrieve the library from the store
   const { library } = useSelector((state) => state.bookStore);
 
@@ -32,8 +33,15 @@ const useFilterLibrary = (category) => {
           key={record.bookData.id}
           modalComponent={<Summary book={record.bookData} />}
           book={record.bookData}
-          icon={<RiBookmarkFill color="white" size="25px" />}
-          iconComponent={<RemoveBook />}
+          icon={<RiBookmarkFill color="white" size="22px" />}
+          iconComponent={
+            <RemoveBook
+              book={record.bookData}
+              setOpenIconModal={setOpenIconModal}
+            />
+          }
+          openIconModal={openIconModal}
+          setOpenIconModal={setOpenIconModal}
         />
       );
     });

@@ -29,9 +29,9 @@
   position: absolute;
   top: -15px;
   left: 110px;
-  background-color: var(--yellow);
+  background-color: var(--med-grey);
   border-radius: 5px;
-  padding: 4px;
+  padding: 3px;
   cursor: pointer;
 
 
