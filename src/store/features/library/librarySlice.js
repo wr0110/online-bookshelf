@@ -63,14 +63,18 @@ const librarySlice = createSlice({
     },
     removeBookFromLibrary: (state, action) => {
       const userToUpdate = action.payload; //email, bookid
-      const currentUser = state.library.find(
-        (shelf) => shelf.user === userToUpdate.user
-      );
 
-      //removing a book from the library using the book id
-      currentUser.userLibrary.filter(
-        (record) => record.bookData.id !== userToUpdate.bookId
-      );
+      // removing a book from the current user's library using the book id
+      state.library = state.library.map((shelf) => {
+        if (shelf.user === userToUpdate.user) {
+          shelf.userLibrary = shelf.userLibrary.filter(
+            (record) => record.bookData.id !== userToUpdate.bookId
+          );
+        }
+        return shelf;
+      });
+
+      return state;
     },
   },
 });

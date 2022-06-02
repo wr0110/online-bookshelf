@@ -6,7 +6,7 @@ import Container from "../../helpers/wrapper/Container";
 import Modal from "../../helpers/modal/Modal";
 import { GiBookshelf } from "react-icons/gi";
 import Heading from "../../helpers/heading/Heading";
-import Summary from "../books/Summary";
+import LibraryActions from "../books/LibraryActions";
 
 const SearchResults = () => {
   // states
@@ -63,8 +63,8 @@ const SearchResults = () => {
     return (
       <Books
         key={book.id}
-        modalComponent={<Summary book={bookData} />}
         book={bookData}
+        actionsComponent={<LibraryActions book={bookData} />}
       />
     );
   });

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "./Books.module.css";
 import Modal from "../../helpers/modal/Modal";
+import Information from "./Information";
 
 // component to show each book it receives
 const Books = (props) => {
@@ -34,19 +35,24 @@ const Books = (props) => {
           <img src={url} alt={title} />
         </figure>
 
-        {isHovering && (
+        {props.icon && isHovering && (
           <div className={styled.delete} onClick={handleDelete}>
             <div>{props.icon}</div>
           </div>
         )}
       </section>
 
+      {/* modal to show the book information */}
       {openModal && (
         <Modal setOpenModal={setOpenModal}>
-          <>{props.modalComponent}</>
+          <Information
+            book={props.book}
+            actionsComponent={props.actionsComponent}
+          />
         </Modal>
       )}
 
+      {/* modal to show component when the icon is clicked  */}
       {props.openIconModal && (
         <Modal setOpenModal={props.setOpenIconModal}>
           <>{props.iconComponent}</>
