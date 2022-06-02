@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import Books from "../components/books/Books";
+import EmptyShelf from "../components/books/EmptyShelf";
 import Summary from "../components/books/Summary";
 import styled from "../components/pagesStyles/Library.module.css";
 import { AuthContext } from "../contexts/authContext";
@@ -55,8 +56,6 @@ const Library = () => {
   //function to change the link state
   const handleLink = (link) => setlink(link);
 
-  //active ClassName for the link
-
   return (
     <section className={styled["library-container"]}>
       <Container>
@@ -83,7 +82,11 @@ const Library = () => {
           </div>
         </nav>
 
-        <section className="books-grid">{books}</section>
+        {!books || books === undefined ? (
+          <EmptyShelf />
+        ) : (
+          <section className="books-grid">{books}</section>
+        )}
       </Container>
     </section>
   );
