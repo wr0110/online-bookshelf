@@ -35,13 +35,14 @@ const Books = (props) => {
           <img src={url} alt={title} />
         </figure>
 
-        {isHovering && (
+        {props.icon && isHovering && (
           <div className={styled.delete} onClick={handleDelete}>
             <div>{props.icon}</div>
           </div>
         )}
       </section>
 
+      {/* modal to show the book information */}
       {openModal && (
         <Modal setOpenModal={setOpenModal}>
           <Information
@@ -51,6 +52,7 @@ const Books = (props) => {
         </Modal>
       )}
 
+      {/* modal to show component when the icon is clicked  */}
       {props.openIconModal && (
         <Modal setOpenModal={props.setOpenIconModal}>
           <>{props.iconComponent}</>

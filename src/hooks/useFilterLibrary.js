@@ -2,10 +2,10 @@ import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import { AuthContext } from "../contexts/authContext";
 import Books from "../components/books/Books";
-import Summary from "../components/books/Summary";
 import { RiBookmarkFill } from "react-icons/ri";
 
 import RemoveBook from "../components/books/RemoveBook";
+import LibraryActions from "../components/books/LibraryActions";
 
 //custom hook to filter the current user's library based on the category recieved
 const useFilterLibrary = (category) => {
@@ -31,7 +31,6 @@ const useFilterLibrary = (category) => {
       return (
         <Books
           key={record.bookData.id}
-          modalComponent={<Summary book={record.bookData} />}
           book={record.bookData}
           icon={<RiBookmarkFill color="white" size="22px" />}
           iconComponent={
@@ -42,6 +41,7 @@ const useFilterLibrary = (category) => {
           }
           openIconModal={openIconModal}
           setOpenIconModal={setOpenIconModal}
+          actionsComponent={<LibraryActions book={record.bookData} />}
         />
       );
     });
