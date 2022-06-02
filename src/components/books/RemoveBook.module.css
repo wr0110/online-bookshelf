@@ -1,0 +1,73 @@
+.remove-book-container {
+    position: fixed;
+    bottom: 10px;
+    left: 0px;
+    width: 100%;
+}
+
+.remove-book {
+    background-color: var(--white);
+    width: 95%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.remove-book h2 {
+    font-size: 1.2rem;
+    color: var(--dark-blue);
+    padding-bottom: 1rem;
+}
+
+.prompt,
+.prompt span {
+    font-size: 1.11rem;
+}
+
+.name {
+    font-weight: 600;
+    color: var(--yellow);
+}
+
+/* Actions */
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.actions button {
+    padding: 10px 25px;
+    font-weight: 600;
+    color: var(--dark-blue);
+    border-radius: 50px;
+    border: 2px solid var(--dark-blue);
+    width: 40%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actions button:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border-radius: 50px;
+
+}
+
+
+@media (min-width: 600px) {
+    .remove-book-container {
+        position: relative;
+    }
+
+
+}

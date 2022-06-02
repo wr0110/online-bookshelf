@@ -61,6 +61,17 @@ const librarySlice = createSlice({
           : (state.bookAlreadyInLibraryCategory = "");
       }
     },
+    removeBookFromLibrary: (state, action) => {
+      const userToUpdate = action.payload; //email, bookid
+      const currentUser = state.library.find(
+        (shelf) => shelf.user === userToUpdate.user
+      );
+
+      //removing a book from the library using the book id
+      currentUser.userLibrary.filter(
+        (record) => record.bookData.id !== userToUpdate.bookId
+      );
+    },
   },
 });
 
@@ -68,6 +79,7 @@ const librarySlice = createSlice({
 export const {
   addBookToLibrary,
   checkIfBookAlreadyExistsInCurrentUserLibrary,
+  removeBookFromLibrary,
 } = librarySlice.actions;
 
 export default librarySlice.reducer;
