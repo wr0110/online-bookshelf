@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useDispatch } from "react-redux";
+import { AuthContext } from "../../contexts/authContext";
+import { removeBookFromLibrary } from "../../store/features/library/librarySlice";
 import styled from "./RemoveBook.module.css";
 
-const RemoveBook = ({ book }) => {
+const RemoveBook = ({ book, setOpenIconModal }) => {
+  const { currentUser } = useContext(AuthContext);
+  const dispatch = useDispatch();
+
+  // function remove the book from the library
+  const removeHandler = () => {
+    dispatch(
+      removeBookFromLibrary({ user: currentUser.email, bookId: book.id })
+    );
+    setOpenIconModal(false);
+    alert(`${book.title} has been removed from your library`);
+  };
+
   return (
     <section className={styled["remove-book-container"]}>
       <section className={styled["remove-book"]}>
@@ -14,9 +29,9 @@ const RemoveBook = ({ book }) => {
           </p>
 
           <div className={styled.actions}>
-            <button>Remove</button>
+            <button onClick={removeHandler}>Remove</button>
 
-            <button>Cancel</button>
+            <button onClick={() => setOpenIconModal(false)}>Cancel</button>
           </div>
         </article>
       </section>
