@@ -50,7 +50,10 @@ const librarySlice = createSlice({
     checkIfBookAlreadyExistsInCurrentUserLibrary: (state, action) => {
       const userInfo = action.payload;
 
+      //check if the current user exists
       const user = state.library.find((shelf) => shelf.user === userInfo.user);
+
+      //check if the book exists in the current user's library
       if (user) {
         const bookAlreadyExists = user.userLibrary.find(
           (record) => record.bookData.id === userInfo.bookData.id

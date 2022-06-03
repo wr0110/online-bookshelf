@@ -107,14 +107,17 @@ const Nav = () => {
           <li>
             <Link to="/explore">Explore</Link>
           </li>
-          <li>
-            <Link to="/genres">Genres</Link>
-          </li>
 
           {/* this link will only be available if the user is signed in */}
           {isSignedIn && (
             <li>
               <Link to="/library">Library</Link>
+            </li>
+          )}
+
+          {isSignedIn && (
+            <li>
+              <Link to="/shelves">Shelves</Link>
             </li>
           )}
         </ul>
