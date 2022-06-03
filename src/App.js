@@ -7,6 +7,7 @@ import ProtectedRoute from "./helpers/ProtectedRoute";
 import Explore from "./pages/Explore";
 import Library from "./pages/Library";
 import PublicHome from "./pages/PublicHome";
+import Shelves from "./pages/Shelves";
 
 function App() {
   return (
@@ -21,6 +22,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Library />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/shelves"
+          element={
+            <ProtectedRoute>
+              <Shelves />
             </ProtectedRoute>
           }
         />
