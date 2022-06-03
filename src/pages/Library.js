@@ -1,22 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import Books from "../components/books/Books";
 import EmptyShelf from "../components/books/EmptyShelf";
-import Summary from "../components/books/Summary";
 import styled from "../components/pagesStyles/Library.module.css";
-import { AuthContext } from "../contexts/authContext";
 import Container from "../helpers/wrapper/Container";
 import useFilterLibrary from "../hooks/useFilterLibrary";
+import useGetAllBooks from "../hooks/useGetAllBooks";
 
 const links = ["All", "TBR", "In Progress", "Completed", "DNF"];
 
 const Library = () => {
-  //store, context, and state
-  const { library } = useSelector((state) => state.bookStore);
-  const { currentUser } = useContext(AuthContext);
+  //state
   const [searchParams, setSearchParams] = useSearchParams();
   const [link, setlink] = useState("All");
+  const AllBooks = useGetAllBooks();
 
   //get the category from the url params
   let urlParam = searchParams.get("category");
@@ -32,20 +28,7 @@ const Library = () => {
 
   //return all books for the current user
   if (searchParams.get("category") === "All") {
-    const detailsForCurrentUser = library.find(
-      (shelf) => shelf.user === currentUser?.email
-    );
-
-    //map over each book record in the current user's library and return a Book
-    books = detailsForCurrentUser?.userLibrary.map((record) => {
-      return (
-        <Books
-          key={record.bookData.id}
-          modalComponent={<Summary book={record.bookData} />}
-          book={record.bookData}
-        />
-      );
-    });
+    books = AllBooks;
   }
 
   //update the search params when the link changes
@@ -82,6 +65,7 @@ const Library = () => {
           </div>
         </nav>
 
+        {/* if there are no books in the library show the empty shelf */}
         {!books || books === undefined ? (
           <EmptyShelf />
         ) : (

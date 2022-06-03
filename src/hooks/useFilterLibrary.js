@@ -47,8 +47,7 @@ const useFilterLibrary = (category) => {
       );
     });
 
-  console.log(libraryForCurrentUser);
-
+  //if the library is empty show an empty shelf
   if (
     libraryForCurrentUser === undefined ||
     libraryForCurrentUser.length === 0
