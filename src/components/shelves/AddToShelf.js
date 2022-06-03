@@ -1,13 +1,24 @@
-import React, { useState } from "react";
-import Button from "../button/Button";
+import React, { useContext, useState } from "react";
+import { useDispatch } from "react-redux";
+import { AuthContext } from "../../contexts/authContext";
+import { addToShelf } from "../../store/features/shelf/shelfSlice";
 import styled from "./AddToShelf.module.css";
 
-const AddToShelf = () => {
+const AddToShelf = (props) => {
+  const dispatch = useDispatch();
   const [newShelf, setNewShelf] = useState("");
+  const { currentUser } = useContext(AuthContext);
 
   const handleAddToShelf = (e) => {
     e.preventDefault();
-    console.log(newShelf);
+
+    if (newShelf === "") {
+      alert("Please enter a shelf name");
+      return;
+    }
+
+    dispatch(addToShelf({ user: currentUser.email, shelf: newShelf }));
+    props.setOpenModal(false);
     setNewShelf("");
   };
 

@@ -41,7 +41,7 @@ const Shelves = () => {
 
         {openModal && (
           <Modal setOpenModal={setOpenModal}>
-            <AddToShelf />
+            <AddToShelf setOpenModal={setOpenModal} />
           </Modal>
         )}
       </section>
