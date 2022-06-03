@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "../components/pagesStyles/Shelves.module.css";
 import Container from "../helpers/wrapper/Container";
-import { IoAddSharp } from "react-icons/io5";
+import { IoAddCircleSharp } from "react-icons/io5";
+import AddToShelf from "../components/shelves/AddToShelf";
+import Modal from "../helpers/modal/Modal";
 
 const Shelves = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  //function to open the modal
+  const addHandler = () => setOpenModal((state) => !state);
+
   return (
-    <section className={styled.shelves}>
-      <Container>
+    <Container>
+      <section className={styled.shelves}>
         <nav className={styled["shelf-navbar"]}>
           <p>Books</p>
 
@@ -26,12 +33,19 @@ const Shelves = () => {
             <p>Test </p>
             <p>Test </p>
           </div>
-          <div>
-            <IoAddSharp size="20px" />
+
+          <div className={styled.add} onClick={addHandler}>
+            <IoAddCircleSharp size="28px" color="#3f3d56" />
           </div>
         </nav>
-      </Container>
-    </section>
+
+        {openModal && (
+          <Modal setOpenModal={setOpenModal}>
+            <AddToShelf />
+          </Modal>
+        )}
+      </section>
+    </Container>
   );
 };
 

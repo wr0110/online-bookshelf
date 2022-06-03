@@ -17,11 +17,9 @@
 .shelf-links {
     display: flex;
     align-items: center;
-
     cursor: pointer;
     overflow: scroll;
     scrollbar-width: none;
-
 }
 
 .shelf-links::-webkit-scrollbar {
@@ -46,4 +44,8 @@
     color: var(--white);
     border-radius: 50px;
     transition: all 0.3s ease-in-out;
+}
+
+.add {
+    cursor: pointer;
 }

@@ -7,6 +7,7 @@ const Button = (props) => {
   };
   return (
     <button
+      type={props.type}
       onClick={handleButtonClick}
       className={`${styled.button} ${props.className}`}
     >
