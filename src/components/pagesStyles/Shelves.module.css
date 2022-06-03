@@ -33,7 +33,7 @@
 .shelf-links p {
     margin-right: .5rem;
     min-width: fit-content;
-    padding: 8px 25px;
+    padding: 5px 10px;
     font-weight: 600;
     color: var(--dark-blue);
     border-radius: 50px;

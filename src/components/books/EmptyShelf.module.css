@@ -40,6 +40,8 @@
         grid-template-columns: 1fr 1fr;
         place-items: center;
         gap: 2rem;
+        max-width: 56.25rem;
+        margin: 0 auto;
     }
 
     .empty-shelf article {

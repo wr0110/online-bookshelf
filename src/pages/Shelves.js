@@ -8,7 +8,7 @@ const Shelves = () => {
     <section className={styled.shelves}>
       <Container>
         <nav className={styled["shelf-navbar"]}>
-          <p>All</p>
+          <p>Books</p>
 
           <div className={styled["shelf-links"]}>
             <p>Allk alkc </p>
