@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AuthContext } from "../../contexts/authContext";
-import { addToShelf } from "../../store/features/shelf/shelfSlice";
-import styled from "./AddToShelf.module.css";
+import { createShelf } from "../../store/features/shelf/shelfSlice";
+import styled from "./CreateShelf.module.css";
 
-const AddToShelf = (props) => {
+const CreateShelf = (props) => {
   const dispatch = useDispatch();
   const [newShelf, setNewShelf] = useState("");
   const { currentUser } = useContext(AuthContext);
 
-  const handleAddToShelf = (e) => {
+  const handleCreateShelf = (e) => {
     e.preventDefault();
 
     if (newShelf === "") {
@@ -17,7 +17,7 @@ const AddToShelf = (props) => {
       return;
     }
 
-    dispatch(addToShelf({ user: currentUser.email, shelf: newShelf }));
+    dispatch(createShelf({ user: currentUser.email, shelf: newShelf }));
     props.setOpenModal(false);
     setNewShelf("");
   };
@@ -31,7 +31,7 @@ const AddToShelf = (props) => {
         </p>
 
         <form
-          onSubmit={handleAddToShelf}
+          onSubmit={handleCreateShelf}
           className={styled["add-to-shelf-form"]}
         >
           <input
@@ -47,4 +47,4 @@ const AddToShelf = (props) => {
   );
 };
 
-export default AddToShelf;
+export default CreateShelf;

@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import styled from "../components/pagesStyles/Shelves.module.css";
 import Container from "../helpers/wrapper/Container";
 import { IoAddCircleSharp } from "react-icons/io5";
-import AddToShelf from "../components/shelves/AddToShelf";
 import Modal from "../helpers/modal/Modal";
 import { AuthContext } from "../contexts/authContext";
 import { useSelector } from "react-redux";
 import Books from "../components/books/Books";
 import ShelfActions from "../components/shelves/ShelfActions";
+import CreateShelf from "../components/shelves/CreateShelf";
 
 const Shelves = () => {
   const { currentUser } = useContext(AuthContext);
@@ -43,6 +43,9 @@ const Shelves = () => {
     <Container>
       <section className={styled.shelves}>
         <nav className={styled["shelf-navbar"]}>
+          <div className={styled.add} onClick={addHandler}>
+            <IoAddCircleSharp size="28px" color="#3f3d56" />
+          </div>
           <div className={styled["shelf-links"]}>
             <p>Allk alkc </p>
             <p>All ,acnlk</p>
@@ -59,17 +62,13 @@ const Shelves = () => {
             <p>Test </p>
             <p>Test </p>
           </div>
-
-          <div className={styled.add} onClick={addHandler}>
-            <IoAddCircleSharp size="28px" color="#3f3d56" />
-          </div>
         </nav>
 
         <section className="books-grid">{allBooks}</section>
 
         {openModal && (
           <Modal setOpenModal={setOpenModal}>
-            <AddToShelf setOpenModal={setOpenModal} />
+            <CreateShelf setOpenModal={setOpenModal} />
           </Modal>
         )}
       </section>

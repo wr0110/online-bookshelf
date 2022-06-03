@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "./LibraryActions.module.css";
 import { useNavigate } from "react-router-dom";
 import { RiAddCircleLine } from "react-icons/ri";
 import { MdInfoOutline } from "react-icons/md";
@@ -17,7 +16,7 @@ const LibraryActions = (props) => {
 
   return (
     <>
-      <div className={styled.actions}>
+      <div className="actions">
         {/* Button to add to library */}
         <p onClick={handleLibrary}>
           <span>

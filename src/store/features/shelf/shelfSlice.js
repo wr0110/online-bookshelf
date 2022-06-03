@@ -8,7 +8,7 @@ const shelfSlice = createSlice({
   name: "shelf",
   initialState,
   reducers: {
-    addToShelf: (state, action) => {
+    createShelf: (state, action) => {
       const data = action.payload;
 
       //check if the user exists
@@ -40,5 +40,5 @@ const shelfSlice = createSlice({
   },
 });
 
-export const { addToShelf } = shelfSlice.actions;
+export const { createShelf } = shelfSlice.actions;
 export default shelfSlice.reducer;
