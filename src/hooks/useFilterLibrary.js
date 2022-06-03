@@ -6,6 +6,7 @@ import { RiBookmarkFill } from "react-icons/ri";
 
 import RemoveBook from "../components/books/RemoveBook";
 import LibraryActions from "../components/books/LibraryActions";
+import EmptyShelf from "../components/books/EmptyShelf";
 
 //custom hook to filter the current user's library based on the category recieved
 const useFilterLibrary = (category) => {
@@ -45,6 +46,14 @@ const useFilterLibrary = (category) => {
         />
       );
     });
+
+  //if the library is empty show an empty shelf
+  if (
+    libraryForCurrentUser === undefined ||
+    libraryForCurrentUser.length === 0
+  ) {
+    return <EmptyShelf />;
+  }
 
   // return the results from the filter and map
   return libraryForCurrentUser;
