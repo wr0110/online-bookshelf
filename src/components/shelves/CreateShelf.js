@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AuthContext } from "../../contexts/authContext";
 import { createShelf } from "../../store/features/shelf/shelfSlice";
+import { GiBookshelf } from "react-icons/gi";
 import styled from "./CreateShelf.module.css";
 
 const CreateShelf = (props) => {
@@ -26,9 +27,12 @@ const CreateShelf = (props) => {
     <section className={styled["add-to-shelf-container"]}>
       <article className={styled["add-to-shelf"]}>
         <h2>Create New Shelf</h2>
+
         <p>
           Get creative and place the books in your library in custom shelves.
         </p>
+
+        <GiBookshelf size="50px" style={{ color: "var(--yellow)" }} />
 
         <form
           onSubmit={handleCreateShelf}

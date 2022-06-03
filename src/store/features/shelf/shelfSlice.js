@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   shelf: [],
+  isShelfEmpty: true,
 };
 
 const shelfSlice = createSlice({
@@ -21,7 +22,6 @@ const shelfSlice = createSlice({
         const newUser = {
           user: data.user,
           shelves: [data.shelf],
-          booksOnShelves: [],
         };
         state.shelf.push(newUser);
       } else if (userExists) {
@@ -37,8 +37,18 @@ const shelfSlice = createSlice({
         }
       }
     },
+    checkIfUserHasShelves: (state, action) => {
+      const user = action.payload;
+      const userExists = state.shelf.find((record) => record.user === user);
+
+      if (userExists) {
+        state.isShelfEmpty = userExists.shelves?.length === 0;
+      } else {
+        state.isShelfEmpty = true;
+      }
+    },
   },
 });
 
-export const { createShelf } = shelfSlice.actions;
+export const { createShelf, checkIfUserHasShelves } = shelfSlice.actions;
 export default shelfSlice.reducer;
