@@ -47,8 +47,48 @@ const shelfSlice = createSlice({
         state.isShelfEmpty = true;
       }
     },
+    addToShelf: (state, action) => {
+      const data = action.payload; //bookData, shelf, user
+
+      //find the user
+      const user = state.shelf.find((record) => record.user === data.user);
+
+      //add the book to the shelf for current user
+      if (user) {
+        //check if the booksOnShelves property exists
+        if (!user.booksOnShelves) {
+          user.booksOnShelves = [
+            { bookData: data.bookData, shelf: data.shelf },
+          ];
+        } else if (user.booksOnShelves) {
+          //check if the book they are trying to add already exists
+          const bookExists = user.booksOnShelves.find(
+            (book) => book.bookData.id === data.bookData.id
+          );
+
+          //if bookExists check if the bookExists shelf is the same as the shelf they are trying to add to
+          if (bookExists) {
+            if (bookExists.shelf === data.shelf) {
+              alert(
+                `You already have ${data.bookData.title} on your ${data.shelf} shelf`
+              );
+              return state;
+            } else {
+              //if the book exists but the shelves are different, update the shelf
+              bookExists.shelf = data.shelf;
+            }
+          } else if (!bookExists) {
+            user.booksOnShelves.push({
+              bookData: data.bookData,
+              shelf: data.shelf,
+            });
+          }
+        }
+      }
+    },
   },
 });
 
-export const { createShelf, checkIfUserHasShelves } = shelfSlice.actions;
+export const { createShelf, checkIfUserHasShelves, addToShelf } =
+  shelfSlice.actions;
 export default shelfSlice.reducer;

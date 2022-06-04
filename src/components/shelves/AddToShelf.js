@@ -1,17 +1,31 @@
 import React, { useContext } from "react";
 import styled from "./AddToShelf.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AuthContext } from "../../contexts/authContext";
 import shelves from "../../images/shelves.svg";
+import { addToShelf } from "../../store/features/shelf/shelfSlice";
 
-const AddToShelf = () => {
+const AddToShelf = (props) => {
   //context and store
   const { currentUser } = useContext(AuthContext);
   const { shelf } = useSelector((state) => state.bookShelf);
+  const dispatch = useDispatch();
 
+  const handleSelectedShelf = (shelf) => {
+    dispatch(
+      addToShelf({ user: currentUser.email, bookData: props.book, shelf })
+    );
+  };
+
+  //find the data for the current user
   const user = shelf.find((shelf) => shelf.user === currentUser?.email);
 
-  const AllShelves = user?.shelves?.map((shelf) => <p key={shelf}>{shelf} </p>);
+  //get all the shelves created by the current user
+  const AllShelves = user?.shelves?.map((shelf) => (
+    <p key={shelf} onClick={() => handleSelectedShelf(shelf)}>
+      {shelf}{" "}
+    </p>
+  ));
 
   return (
     <section className={styled["add-to-shelf-container"]}>

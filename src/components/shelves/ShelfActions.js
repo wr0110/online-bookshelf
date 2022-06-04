@@ -8,7 +8,7 @@ import CreateShelf from "./CreateShelf";
 import Modal from "../../helpers/modal/Modal";
 import AddToShelf from "./AddToShelf";
 
-const ShelfActions = () => {
+const ShelfActions = (props) => {
   const dispatch = useDispatch();
   const { isShelfEmpty } = useSelector((state) => state.bookShelf);
   const { currentUser } = useContext(AuthContext);
@@ -53,7 +53,7 @@ const ShelfActions = () => {
 
       {openShelfModal && (
         <Modal setOpenModal={setOpenShelfModal}>
-          <AddToShelf />
+          <AddToShelf book={props.book} />
         </Modal>
       )}
     </section>
