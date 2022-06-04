@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 import Books from "../components/books/Books";
-import Summary from "../components/books/Summary";
+import LibraryActions from "../components/books/LibraryActions";
 import { AuthContext } from "../contexts/authContext";
 
 const useGetAllBooks = () => {
@@ -19,7 +19,7 @@ const useGetAllBooks = () => {
     return (
       <Books
         key={record.bookData.id}
-        modalComponent={<Summary book={record.bookData} />}
+        actionsComponent={<LibraryActions book={record.bookData} />}
         book={record.bookData}
       />
     );
