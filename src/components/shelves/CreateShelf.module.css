@@ -1,11 +1,11 @@
-.add-to-shelf-container {
+.create-shelf-container {
     position: fixed;
     bottom: 10px;
     left: 0px;
     width: 100%;
 }
 
-.add-to-shelf {
+.create-shelf {
     background-color: var(--white);
     width: 95%;
     max-width: 600px;
@@ -19,21 +19,21 @@
     text-align: center;
 }
 
-.add-to-shelf h2 {
+.create-shelf h2 {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--dark-blue);
 }
 
-.add-to-shelf p {
+.create-shelf p {
     width: 85%;
     margin: .5rem auto 1.5rem auto;
     font-weight: 500;
 }
 
 
-.add-to-shelf-form input {
+.create-shelf-form input {
     border: none;
     border-bottom: 2px solid rgba(58, 55, 104, 0.49);
     padding: 0.5rem;
@@ -46,12 +46,12 @@
 
 }
 
-.add-to-shelf-form input::placeholder {
+.create-shelf-form input::placeholder {
     color: var(--dark-blue);
     font-weight: 600;
 }
 
-.add-to-shelf button {
+.create-shelf button {
     padding: 8px 25px;
     font-weight: 600;
     color: var(--dark-blue);
@@ -61,7 +61,7 @@
     background-color: var(--white);
 }
 
-.add-to-shelf button:hover {
+.create-shelf button:hover {
     background-color: var(--dark-blue);
     color: var(--white);
     border-radius: 50px;

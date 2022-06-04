@@ -12,12 +12,17 @@ import CreateShelf from "../components/shelves/CreateShelf";
 const Shelves = () => {
   const { currentUser } = useContext(AuthContext);
   const { library } = useSelector((state) => state.bookStore);
-  const { shelves } = useSelector((state) => state.bookShelf);
+  const { shelf } = useSelector((state) => state.bookShelf);
   const [openModal, setOpenModal] = useState(false);
   const [allBooks, setAllBooks] = useState([]);
 
   //function to open the modal
   const addHandler = () => setOpenModal((state) => !state);
+
+  //find the current user
+  const user = shelf.find((shelf) => shelf.user === currentUser?.email);
+
+  const links = user?.shelves?.map((shelf) => <p key={shelf}>{shelf}</p>);
 
   useEffect(() => {
     const getBooks = () => {
@@ -46,22 +51,7 @@ const Shelves = () => {
           <div className={styled.add} onClick={addHandler}>
             <IoAddCircleSharp size="28px" color="#3f3d56" />
           </div>
-          <div className={styled["shelf-links"]}>
-            <p>Allk alkc </p>
-            <p>All ,acnlk</p>
-            <p>All </p>
-            <p>Allkn kl </p>
-            <p>Allkncajk </p>
-            <p>Test </p>
-            <p>Test </p>
-            <p>Test </p>
-            <p>Test </p>
-            <p>Test </p>
-            <p>Test </p>
-            <p>Test </p>
-            <p>Test </p>
-            <p>Test </p>
-          </div>
+          <div className={styled["shelf-links"]}>{links}</div>
         </nav>
 
         <section className="books-grid">{allBooks}</section>

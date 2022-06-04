@@ -24,8 +24,8 @@ const CreateShelf = (props) => {
   };
 
   return (
-    <section className={styled["add-to-shelf-container"]}>
-      <article className={styled["add-to-shelf"]}>
+    <section className={styled["create-shelf-container"]}>
+      <article className={styled["create-shelf"]}>
         <h2>Create New Shelf</h2>
 
         <p>
@@ -36,7 +36,7 @@ const CreateShelf = (props) => {
 
         <form
           onSubmit={handleCreateShelf}
-          className={styled["add-to-shelf-form"]}
+          className={styled["create-shelf-form"]}
         >
           <input
             type="text"

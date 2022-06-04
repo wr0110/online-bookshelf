@@ -62,16 +62,12 @@
 .actions p:hover {
   background-color: var(--dark-blue);
   color: var(--white);
-  border-radius: 50px;
-  padding: 8px 25px;
+
 }
 
 .actions p span {
   padding-right: 5px;
 }
-
-
-
 
 
 
