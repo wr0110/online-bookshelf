@@ -58,7 +58,7 @@ const shelfSlice = createSlice({
         //check if the booksOnShelves property exists
         if (!user.booksOnShelves) {
           user.booksOnShelves = [
-            { bookData: data.bookData, shelf: data.shelf },
+            { bookData: data.bookData, shelf: [data.shelf] },
           ];
         } else if (user.booksOnShelves) {
           //check if the book they are trying to add already exists
@@ -69,18 +69,19 @@ const shelfSlice = createSlice({
           //if bookExists check if the bookExists shelf is the same as the shelf they are trying to add to
           if (bookExists) {
             if (bookExists.shelf === data.shelf) {
+              bookExists.shelf.filter((shelf) => shelf !== data.shelf);
               alert(
-                `You already have ${data.bookData.title} on your ${data.shelf} shelf`
+                `${data.bookData.title} has been removed from ${data.shelf}`
               );
               return state;
             } else {
               //if the book exists but the shelves are different, update the shelf
-              bookExists.shelf = data.shelf;
+              bookExists.shelf.push(data.shelf);
             }
           } else if (!bookExists) {
             user.booksOnShelves.push({
               bookData: data.bookData,
-              shelf: data.shelf,
+              shelf: [data.shelf],
             });
           }
         }
