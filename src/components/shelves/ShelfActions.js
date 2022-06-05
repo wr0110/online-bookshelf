@@ -25,7 +25,7 @@ const ShelfActions = (props) => {
 
   useEffect(() => {
     dispatch(checkIfUserHasShelves(currentUser.email));
-  }, [dispatch, currentUser]);
+  }, [dispatch, currentUser, openModal]);
 
   return (
     <section>

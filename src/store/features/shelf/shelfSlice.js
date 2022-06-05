@@ -68,12 +68,15 @@ const shelfSlice = createSlice({
 
           //if bookExists check if the bookExists shelf is the same as the shelf they are trying to add to
           if (bookExists) {
-            if (bookExists.shelf === data.shelf) {
-              bookExists.shelf.filter((shelf) => shelf !== data.shelf);
+            //check if the shelf they are trying to add to already exists
+            const shelfExists = bookExists.shelf.includes(data.shelf);
+            if (shelfExists) {
+              //find the index of the shelf and remove it
+              bookExists.shelf.splice(bookExists.shelf.indexOf(data.shelf), 1);
+
               alert(
                 `${data.bookData.title} has been removed from ${data.shelf}`
               );
-              return state;
             } else {
               //if the book exists but the shelves are different, update the shelf
               bookExists.shelf.push(data.shelf);

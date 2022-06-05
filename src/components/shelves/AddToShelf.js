@@ -23,7 +23,7 @@ const AddToShelf = (props) => {
   //get all the shelves created by the current user
   const AllShelves = user?.shelves?.map((shelf) => (
     <p key={shelf} onClick={() => handleSelectedShelf(shelf)}>
-      {shelf}{" "}
+      {shelf}
     </p>
   ));
 
