@@ -49,3 +49,12 @@
 .add {
     cursor: pointer;
 }
+
+/* Media Queries */
+
+@media (min-width:900px) {
+    .shelf-navbar {
+        margin-top: 0;
+    }
+
+}

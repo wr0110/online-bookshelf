@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   shelf: [],
   isShelfEmpty: true,
+  currentBookShelves: [],
 };
 
 const shelfSlice = createSlice({
@@ -90,9 +91,33 @@ const shelfSlice = createSlice({
         }
       }
     },
+    getShelvesForCurrentBook: (state, action) => {
+      const data = action.payload; //bookData, user
+
+      //get booksOnShelves for the current user
+      const user = state.shelf.find((record) => record.user === data.user);
+
+      //get the booksOnShelves for the current book
+
+      if (user) {
+        const book = user.booksOnShelves?.find(
+          (book) => book.bookData.id === data.bookData.id
+        );
+
+        if (book) {
+          state.currentBookShelves = book.shelf;
+        } else {
+          state.currentBookShelves = [];
+        }
+      }
+    },
   },
 });
 
-export const { createShelf, checkIfUserHasShelves, addToShelf } =
-  shelfSlice.actions;
+export const {
+  createShelf,
+  checkIfUserHasShelves,
+  addToShelf,
+  getShelvesForCurrentBook,
+} = shelfSlice.actions;
 export default shelfSlice.reducer;

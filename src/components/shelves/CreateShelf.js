@@ -43,6 +43,7 @@ const CreateShelf = (props) => {
             placeholder="Eg. My Mafia Faves"
             value={newShelf}
             onChange={(e) => setNewShelf(e.target.value)}
+            autoFocus
           />
           <button type="submit">Create</button>
         </form>
