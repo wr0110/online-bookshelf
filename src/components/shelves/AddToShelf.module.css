@@ -19,11 +19,17 @@
     text-align: center;
 }
 
-.add-to-shelf h2 {
+.add-to-shelf h2,
+.add-to-shelf span {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--dark-blue);
+    max-width: 300px;
+}
+
+.add-to-shelf span {
+    color: var(--yellow);
 }
 
 .add-to-shelf figure {
@@ -47,7 +53,7 @@
 
 }
 
-.allShelves p {
+.offShelf {
     padding: 8px 25px;
     font-weight: 600;
     color: var(--dark-blue);
@@ -57,11 +63,22 @@
     cursor: pointer;
 }
 
-.allShelves p:hover {
+.offShelf:hover {
     background-color: var(--dark-blue);
     color: var(--white);
 }
 
+
+.onShelf {
+    padding: 8px 25px;
+    font-weight: 600;
+    border-radius: 50px;
+    border: 2px solid var(--dark-blue);
+    width: fit-content;
+    cursor: pointer;
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
 
 /* Media Queries */
 

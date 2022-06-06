@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { RiAddCircleLine } from "react-icons/ri";
 import { MdInfoOutline } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,14 +16,16 @@ const ShelfActions = (props) => {
   const [openShelfModal, setOpenShelfModal] = useState(false);
 
   const addToShelfHandler = () => {
-    dispatch(checkIfUserHasShelves(currentUser.email));
-
     if (isShelfEmpty) {
       setOpenModal((state) => !state);
-    } else {
+    } else if (!isShelfEmpty) {
       setOpenShelfModal((state) => !state);
     }
   };
+
+  useEffect(() => {
+    dispatch(checkIfUserHasShelves(currentUser.email));
+  }, [dispatch, currentUser, openModal]);
 
   return (
     <section>
