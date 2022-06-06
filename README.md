@@ -30,7 +30,14 @@ As this is still a work-in-progress, here are the currently implemented features
 
 - [x] Sign in and sign out
 - [x] Search for books
+- [ ] View books on explore page
 - [x] Get information on books
-- [ ] Add to library
-- [ ] Create custom shelves
-- [ ] Add to their custom shelves
+- [x] Add a book to the library
+- [x] Move book to a different category in the library
+- [x] Remove a book from the library
+- [x] Create custom shelves
+- [x] Add books to custom shelves
+- [x] Remove books from custom shelves
+- [ ] Edit custom shelves
+- [ ] Delete custom shelves
+- [ ] View books on custom shelves
