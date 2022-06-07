@@ -14,6 +14,13 @@ const ShelfNav = ({ setSearchParams }) => {
   const addHandler = () => setOpenModal((state) => !state);
   const handleShelfName = (shelf) => setShelfName(shelf);
 
+  console.log(shelfName);
+
+  //update the search params when the shelf changes
+  useEffect(() => {
+    setSearchParams({ shelf: shelfName });
+  }, [shelfName, setSearchParams]);
+
   //find the current user
   const user = shelf.find((shelf) => shelf.user === currentUser?.email);
 
@@ -23,11 +30,6 @@ const ShelfNav = ({ setSearchParams }) => {
       {shelf}
     </p>
   ));
-
-  //update the search params when the shelf changes
-  useEffect(() => {
-    setSearchParams({ shelf: shelfName });
-  }, [shelfName, setSearchParams]);
 
   return (
     <>
