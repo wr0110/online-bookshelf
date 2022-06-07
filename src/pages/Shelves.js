@@ -22,6 +22,7 @@ const Shelves = () => {
   //find the current user
   const user = shelf.find((shelf) => shelf.user === currentUser?.email);
 
+  //get the shelves creates by the current user
   const links = user?.shelves?.map((shelf) => <p key={shelf}>{shelf}</p>);
 
   useEffect(() => {
@@ -48,16 +49,16 @@ const Shelves = () => {
     <Container>
       <section className={styled.shelves}>
         <nav className={styled["shelf-navbar"]}>
+          <div className={styled["shelf-links"]}>{links}</div>
           <div className={styled.add} onClick={addHandler}>
             <IoAddCircleSharp size="28px" color="#3f3d56" />
           </div>
-          <div className={styled["shelf-links"]}>{links}</div>
         </nav>
 
         <section className="books-grid">{allBooks}</section>
 
         {openModal && (
-          <Modal setOpenModal={setOpenModal}>
+          <Modal setOpenModal={setOpenModal} openModal={openModal}>
             <CreateShelf setOpenModal={setOpenModal} />
           </Modal>
         )}

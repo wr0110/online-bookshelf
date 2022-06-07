@@ -44,7 +44,7 @@ const Books = (props) => {
 
       {/* modal to show the book information */}
       {openModal && (
-        <Modal setOpenModal={setOpenModal}>
+        <Modal setOpenModal={setOpenModal} openModal={openModal}>
           <Information
             book={props.book}
             actionsComponent={props.actionsComponent}
@@ -54,7 +54,10 @@ const Books = (props) => {
 
       {/* modal to show component when the icon is clicked  */}
       {props.openIconModal && (
-        <Modal setOpenModal={props.setOpenIconModal}>
+        <Modal
+          setOpenModal={props.setOpenIconModal}
+          openModal={props.openIconModal}
+        >
           <>{props.iconComponent}</>
         </Modal>
       )}

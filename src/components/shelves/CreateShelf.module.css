@@ -67,3 +67,16 @@
     border-radius: 50px;
     transition: all 0.3s ease-in-out;
 }
+
+/* Media Queries */
+
+@media (min-width:600px) {
+    .create-shelf-container {
+        position: relative;
+    }
+
+    .create-shelf {
+        width: 100%;
+
+    }
+}

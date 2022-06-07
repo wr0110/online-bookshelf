@@ -134,7 +134,7 @@ const Nav = () => {
        * Modal has the login component as a child
        */}
       {openModal && (
-        <Modal setOpenModal={setOpenModal}>
+        <Modal setOpenModal={setOpenModal} openModal={openModal}>
           <Login setOpenModal={setOpenModal} />
         </Modal>
       )}
