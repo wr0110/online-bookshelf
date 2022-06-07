@@ -1,35 +1,21 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { AuthContext } from "../../contexts/authContext";
-import Books from "../books/Books";
-import ShelfActions from "./ShelfActions";
+import React, { useEffect, useState } from "react";
+import useFilterShelf from "../../hooks/useFilterShelf";
+import useGetAllShelfBooks from "../../hooks/useGetAllShelfBooks";
 
-const BooksForShelves = () => {
-  const { currentUser } = useContext(AuthContext);
-  const { library } = useSelector((state) => state.bookStore);
-  const [allBooks, setAllBooks] = useState([]);
+const BooksForShelves = ({ searchParams }) => {
+  const allBooksInLibrary = useGetAllShelfBooks();
+  const urlParams = searchParams.get("shelf");
+  const booksOnSelectedShelf = useFilterShelf(urlParams);
 
-  useEffect(() => {
-    const getBooks = () => {
-      const detailsForCurrentUser = library.find(
-        (shelf) => shelf.user === currentUser?.email
-      );
-      const all = detailsForCurrentUser?.userLibrary.map((record) => {
-        return (
-          <Books
-            key={record.bookData.id}
-            book={record.bookData}
-            actionsComponent={<ShelfActions book={record.bookData} />}
-          />
-        );
-      });
-      setAllBooks(all);
-    };
+  let books = [];
 
-    getBooks();
-  }, [currentUser, library]);
+  if (!urlParams || urlParams === "") {
+    books = allBooksInLibrary;
+  } else if (urlParams) {
+    books = booksOnSelectedShelf;
+  }
 
-  return <section className="books-grid">{allBooks}</section>;
+  return <section className="books-grid">{books}</section>;
 };
 
 export default BooksForShelves;

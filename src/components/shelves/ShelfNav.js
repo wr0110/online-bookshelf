@@ -1,19 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "./ShelfNav.module.css";
 import { IoAddCircleSharp } from "react-icons/io5";
-import { useSearchParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import { useSelector } from "react-redux";
 import Modal from "../../helpers/modal/Modal";
 import CreateShelf from "./CreateShelf";
 
-const ShelfNav = () => {
+const ShelfNav = ({ setSearchParams }) => {
   const { shelf } = useSelector((state) => state.bookShelf);
   const { currentUser } = useContext(AuthContext);
-  const [searchParams, setSearchParams] = useSearchParams();
   const [shelfName, setShelfName] = useState("");
   const [openModal, setOpenModal] = useState(false);
-
   const addHandler = () => setOpenModal((state) => !state);
   const handleShelfName = (shelf) => setShelfName(shelf);
 
