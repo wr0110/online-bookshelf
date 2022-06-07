@@ -8,10 +8,10 @@ const Modal = (props) => {
   useEffect(() => {
     if (props.openModal === true) {
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
     }
-  }, [props.openModal]);
+
+    return () => (document.body.style.overflow = "unset");
+  }, [props]);
 
   //todo: try handling closing the modal with useRef
   return ReactDOM.createPortal(

@@ -21,4 +21,8 @@
     .information-container {
         position: relative;
     }
+
+    .information {
+        min-width: 600px;
+    }
 }
