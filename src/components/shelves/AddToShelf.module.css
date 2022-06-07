@@ -86,4 +86,8 @@
     .add-to-shelf-container {
         position: relative;
     }
+
+    .add-to-shelf {
+        min-width: 600px;
+    }
 }

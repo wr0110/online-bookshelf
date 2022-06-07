@@ -62,7 +62,9 @@ const UserLibrary = (props) => {
     <section className={styled["library-container"]}>
       <section className={styled.library}>
         <article>
-          <h2>Where would you like to add this book?</h2>
+          <h2>
+            Where would you like to add <span>{bookData.title}</span> ?
+          </h2>
           <article className={styled.libraryCategory}>
             <figure>
               <img src={readingNook} alt="illustation of a bookshelf" />

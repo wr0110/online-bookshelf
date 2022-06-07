@@ -54,7 +54,7 @@ const ShelfActions = (props) => {
       )}
 
       {openShelfModal && (
-        <Modal setOpenModal={setOpenShelfModal} openModal={openModal}>
+        <Modal setOpenModal={setOpenShelfModal} openModal={openShelfModal}>
           <AddToShelf book={props.book} />
         </Modal>
       )}

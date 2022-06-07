@@ -8,22 +8,38 @@ import { useSelector } from "react-redux";
 import Books from "../components/books/Books";
 import ShelfActions from "../components/shelves/ShelfActions";
 import CreateShelf from "../components/shelves/CreateShelf";
+import { useSearchParams } from "react-router-dom";
 
 const Shelves = () => {
   const { currentUser } = useContext(AuthContext);
+  const [searchParams, setSearchParams] = useSearchParams();
   const { library } = useSelector((state) => state.bookStore);
   const { shelf } = useSelector((state) => state.bookShelf);
   const [openModal, setOpenModal] = useState(false);
   const [allBooks, setAllBooks] = useState([]);
+  const [shelfName, setShelfName] = useState("");
 
   //function to open the modal
   const addHandler = () => setOpenModal((state) => !state);
+
+  const handleUrl = (shelf) => {
+    setShelfName(shelf);
+  };
+
+  //update the search params when the shelf changes
+  useEffect(() => {
+    setSearchParams({ shelf: shelfName });
+  }, [shelfName, setSearchParams]);
 
   //find the current user
   const user = shelf.find((shelf) => shelf.user === currentUser?.email);
 
   //get the shelves creates by the current user
-  const links = user?.shelves?.map((shelf) => <p key={shelf}>{shelf}</p>);
+  const links = user?.shelves?.map((shelf) => (
+    <p key={shelf} onClick={() => handleUrl(shelf)}>
+      {shelf}
+    </p>
+  ));
 
   useEffect(() => {
     const getBooks = () => {

@@ -14,12 +14,14 @@ const AddToShelf = (props) => {
   const { shelf, currentBookShelves } = useSelector((state) => state.bookShelf);
   const dispatch = useDispatch();
 
+  //function to dispatch action to add book to shelf
   const handleSelectedShelf = (shelf) => {
     dispatch(
       addToShelf({ user: currentUser.email, bookData: props.book, shelf })
     );
   };
 
+  //everytime there is a change in the shelf, check if the selected book is already in the current user shelf
   useEffect(() => {
     dispatch(
       getShelvesForCurrentBook({

@@ -45,6 +45,8 @@ const CreateShelf = (props) => {
             placeholder="Eg. My Mafia Faves"
             value={newShelf}
             onChange={(e) => handleShelfName(e)}
+            required
+            maxLength="40"
             autoFocus
           />
           <button type="submit">Create</button>
