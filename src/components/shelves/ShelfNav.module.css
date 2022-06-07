@@ -12,6 +12,23 @@
     justify-content: space-between;
     align-items: center;
     gap: 1.5rem;
+    cursor: pointer;
+}
+
+
+.shelf-navbar h2 {
+    min-width: fit-content;
+    padding: 5px 10px;
+    font-weight: 600;
+    color: var(--dark-blue);
+    border-radius: 50px;
+    border: 2px solid var(--dark-blue);
+}
+
+.shelf-navbar h2:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    transition: all 0.3s ease-in-out;
 }
 
 .shelf-links {
@@ -33,14 +50,14 @@
     min-width: fit-content;
     padding: 5px 10px;
     font-weight: 600;
-    color: var(--dark-blue);
+    color: var(--med-grey);
     border-radius: 50px;
-    border: 2px solid var(--dark-blue);
+    border: 2px solid var(--med-grey);
     width: 100%;
 }
 
 .shelf-links p:hover {
-    background-color: var(--dark-blue);
+    background-color: var(--med-grey);
     color: var(--white);
     border-radius: 50px;
     transition: all 0.3s ease-in-out;
@@ -50,11 +67,25 @@
     cursor: pointer;
 }
 
+.active {
+    background-color: var(--dark-blue);
+    color: var(--white) !important;
+}
+
+.active:hover {
+    background-color: var(--white);
+    color: var(--dark-blue);
+    border: 2px solid var(--dark-blue);
+
+}
+
+
 /* Media Queries */
 
 @media (min-width:900px) {
     .shelf-navbar {
         margin-top: 0;
+        padding: 0.5rem 0 1.5rem;
     }
 
 }

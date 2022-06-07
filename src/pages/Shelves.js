@@ -11,7 +11,10 @@ const Shelves = () => {
   return (
     <Container>
       <section className={styled.shelves}>
-        <ShelfNav setSearchParams={setSearchParams} />
+        <ShelfNav
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
         <BooksForShelves searchParams={searchParams} />
       </section>
     </Container>
