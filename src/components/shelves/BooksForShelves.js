@@ -9,7 +9,7 @@ const BooksForShelves = ({ searchParams }) => {
 
   let books = [];
 
-  if (!urlParams || urlParams === "") {
+  if (!urlParams || urlParams === "" || urlParams === "All") {
     books = allBooksInLibrary;
   } else if (urlParams) {
     books = booksOnSelectedShelf;
