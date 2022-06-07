@@ -10,17 +10,19 @@ const CreateShelf = (props) => {
   const [newShelf, setNewShelf] = useState("");
   const { currentUser } = useContext(AuthContext);
 
+  const handleShelfName = (e) => setNewShelf(e.target.value);
+
   const handleCreateShelf = (e) => {
     e.preventDefault();
 
     if (newShelf === "") {
       alert("Please enter a shelf name");
       return;
+    } else {
+      dispatch(createShelf({ user: currentUser.email, shelf: newShelf }));
+      setNewShelf("");
+      props.setOpenModal(false);
     }
-
-    dispatch(createShelf({ user: currentUser.email, shelf: newShelf }));
-    props.setOpenModal(false);
-    setNewShelf("");
   };
 
   return (
@@ -42,7 +44,7 @@ const CreateShelf = (props) => {
             type="text"
             placeholder="Eg. My Mafia Faves"
             value={newShelf}
-            onChange={(e) => setNewShelf(e.target.value)}
+            onChange={(e) => handleShelfName(e)}
             autoFocus
           />
           <button type="submit">Create</button>
