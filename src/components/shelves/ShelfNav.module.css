@@ -54,13 +54,13 @@
     border-radius: 50px;
     border: 2px solid var(--med-grey);
     width: 100%;
+    transition: all 0.3s ease-in-out;
 }
 
 .shelf-links p:hover {
     background-color: var(--med-grey);
     color: var(--white);
-    border-radius: 50px;
-    transition: all 0.3s ease-in-out;
+
 }
 
 .add {
