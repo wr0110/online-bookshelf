@@ -21,10 +21,13 @@ const Library = () => {
   let books = [];
   books = useFilterLibrary(urlParam);
 
-  //if the search param = TBR set the urlParam to To Be Read
-  if (searchParams.get("category") === "TBR") {
-    setSearchParams({ category: "To Be Read" });
-  }
+  //* wrapped inside useEffect, to fix bad setState
+  useEffect(() => {
+    //if the search param = TBR set the urlParam to To Be Read
+    if (searchParams.get("category") === "TBR") {
+      setSearchParams({ category: "To Be Read" });
+    }
+  }, [setSearchParams, searchParams]);
 
   //return all books for the current user
   if (searchParams.get("category") === "All") {
