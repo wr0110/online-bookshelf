@@ -72,7 +72,6 @@
 
 /* Button Actions */
 
-
 .button-actions {
   display: flex;
   gap: 1rem;
@@ -81,10 +80,11 @@
   border-top: 1px solid gainsboro;
   padding-top: 1rem;
   cursor: pointer;
+  padding: 1rem 0 0.5rem;
 }
 
 .button-actions button {
-  padding: 8px 25px;
+  padding: 12px 25px;
   font-weight: 600;
   color: var(--dark-blue);
   background-color: var(--white);
@@ -101,7 +101,9 @@
   color: var(--white);
 }
 
+
 /* Media Queries */
+
 @media (min-width: 450px) {
   .actions {
     justify-content: space-evenly;

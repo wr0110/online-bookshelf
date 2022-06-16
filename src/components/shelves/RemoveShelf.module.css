@@ -31,3 +31,20 @@
     font-weight: 600;
     color: var(--yellow);
 }
+
+/* Media Queries */
+
+@media (min-width:600px) {
+    .remove-container {
+        position: relative;
+    }
+
+    .remove {
+        min-width: 600px;
+    }
+
+    .remove p,
+    .remove span {
+        font-size: 1.2rem;
+    }
+}

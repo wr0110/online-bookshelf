@@ -41,28 +41,16 @@
 
 }
 
-.rename button {
-    padding: 8px 25px;
-    font-weight: 600;
-    color: var(--dark-blue);
-    border-radius: 50px;
-    border: 2px solid var(--dark-blue);
-    cursor: pointer;
-    background-color: var(--white);
-}
-
-.rename button:hover {
-    background-color: var(--dark-blue);
-    color: var(--white);
-    border-radius: 50px;
-    transition: all 0.3s ease-in-out;
-}
 
 /* Media Queries */
 
 @media (min-width:600px) {
     .rename-container {
         position: relative;
+    }
+
+    .rename {
+        min-width: 600px;
     }
 
     .rename p {

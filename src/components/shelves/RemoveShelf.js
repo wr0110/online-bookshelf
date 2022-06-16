@@ -6,7 +6,6 @@ const RemoveShelf = () => {
   return (
     <div className={styled["remove-container"]}>
       <section className={styled.remove}>
-        {" "}
         <TiDelete size="50px" style={{ color: "var(--yellow)" }} />
         <h2>Remove Shelf</h2>
         <p>
