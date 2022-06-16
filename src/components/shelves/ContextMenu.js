@@ -2,17 +2,25 @@ import React from "react";
 import styled from "./ContextMenu.module.css";
 
 const ContextMenu = (props) => {
-  console.log(props.selectedShelf);
+  const handleRenaming = (e) => {
+    props.setOpenMenuAction((state) => !state);
+    props.setAction(e.target.innerText);
+  };
 
   const menuStyle = {
     top: props.positions.top + 20 + "px",
     left: props.positions.left - 40 + "px",
   };
+
   return (
-    <section className={styled["context-menu"]} style={menuStyle}>
+    <div
+      onClick={handleRenaming}
+      className={styled["context-menu"]}
+      style={menuStyle}
+    >
       <p>Rename Shelf</p>
       <p>Delete Shelf</p>
-    </section>
+    </div>
   );
 };
 

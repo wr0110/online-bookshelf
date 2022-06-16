@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Modal from "../../helpers/modal/Modal";
 import CreateShelf from "./CreateShelf";
 import ContextMenu from "./ContextMenu";
+import ContextMenuAction from "./ContextMenuAction";
 
 const ShelfNav = ({ searchParams, setSearchParams }) => {
   //states and context
@@ -16,6 +17,8 @@ const ShelfNav = ({ searchParams, setSearchParams }) => {
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [positions, setPositions] = useState({ top: 0, left: 0 });
   const [selectedShelf, setSelectedShelf] = useState(null);
+  const [openMenuAction, setOpenMenuAction] = useState(false);
+  const [action, setAction] = useState(null);
 
   //functions
   const addHandler = () => setOpenModal((state) => !state);
@@ -26,7 +29,7 @@ const ShelfNav = ({ searchParams, setSearchParams }) => {
     e.preventDefault();
     setShowContextMenu(true);
     setSelectedShelf(e.target.innerText);
-    setPositions({ top: e.clientY, left: e.clientX });
+    setPositions({ top: e.pageY, left: e.pageX });
   };
 
   //function to close the context menu
@@ -87,12 +90,17 @@ const ShelfNav = ({ searchParams, setSearchParams }) => {
       {/* show custom context menu */}
       {showContextMenu && (
         <ContextMenu
-          setShowContextMenu={setShowContextMenu}
-          shelfName={shelfName}
-          setShelfName={setShelfName}
+          setAction={setAction}
           positions={positions}
-          selectedShelf={selectedShelf}
+          setOpenMenuAction={setOpenMenuAction}
         />
+      )}
+
+      {/* show rename shelf modal */}
+      {openMenuAction && (
+        <Modal setOpenModal={setOpenMenuAction} openModal={openMenuAction}>
+          <ContextMenuAction action={action} selectedShelf={selectedShelf} />
+        </Modal>
       )}
     </>
   );

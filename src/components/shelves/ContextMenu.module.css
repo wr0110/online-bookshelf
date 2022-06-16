@@ -11,7 +11,7 @@
 .context-menu p {
     padding: .8rem;
     cursor: pointer;
-    border-bottom: 2px solid var(--dark-blue);
+    /* border-bottom: 1px solid var(--dark-blue); */
 }
 
 .context-menu p:hover {
