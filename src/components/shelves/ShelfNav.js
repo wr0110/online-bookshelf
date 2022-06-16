@@ -5,15 +5,41 @@ import { AuthContext } from "../../contexts/authContext";
 import { useSelector } from "react-redux";
 import Modal from "../../helpers/modal/Modal";
 import CreateShelf from "./CreateShelf";
+import ContextMenu from "./ContextMenu";
+import ContextMenuAction from "./ContextMenuAction";
 
 const ShelfNav = ({ searchParams, setSearchParams }) => {
+  //states and context
   const { shelf } = useSelector((state) => state.bookShelf);
   const { currentUser } = useContext(AuthContext);
   const [shelfName, setShelfName] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [showContextMenu, setShowContextMenu] = useState(false);
+  const [positions, setPositions] = useState({ top: 0, left: 0 });
+  const [selectedShelf, setSelectedShelf] = useState(null);
+  const [openMenuAction, setOpenMenuAction] = useState(false);
+  const [action, setAction] = useState(null);
 
+  //functions
   const addHandler = () => setOpenModal((state) => !state);
   const handleShelfName = (shelf) => setShelfName(shelf);
+
+  //function to open conrext menu and set the position of the menu
+  const handleContextMenu = (e) => {
+    e.preventDefault();
+    setShowContextMenu(true);
+    setSelectedShelf(e.target.innerText);
+    setPositions({ top: e.pageY, left: e.pageX });
+  };
+
+  //function to close the context menu
+  useEffect(() => {
+    const closeContextMenu = () => setShowContextMenu(false);
+    window.addEventListener("click", closeContextMenu);
+
+    //cleanup function to remove the event listener
+    return () => window.removeEventListener("click", closeContextMenu);
+  }, [showContextMenu]);
 
   //get current shelf from url
   const currentShelf = searchParams.get("shelf");
@@ -34,12 +60,11 @@ const ShelfNav = ({ searchParams, setSearchParams }) => {
       key={shelf}
       onClick={() => handleShelfName(shelf)}
       className={currentShelf === shelf ? styled.active : ""}
+      onContextMenu={handleContextMenu}
     >
       {shelf}
     </p>
   ));
-
-  console.log(currentShelf);
 
   return (
     <>
@@ -59,6 +84,28 @@ const ShelfNav = ({ searchParams, setSearchParams }) => {
       {openModal && (
         <Modal setOpenModal={setOpenModal} openModal={openModal}>
           <CreateShelf setOpenModal={setOpenModal} />
+        </Modal>
+      )}
+
+      {/* show custom context menu */}
+      {showContextMenu && (
+        <ContextMenu
+          setAction={setAction}
+          positions={positions}
+          setOpenMenuAction={setOpenMenuAction}
+        />
+      )}
+
+      {/* show rename shelf modal */}
+      {openMenuAction && (
+        <Modal setOpenModal={setOpenMenuAction} openModal={openMenuAction}>
+          <ContextMenuAction
+            action={action}
+            selectedShelf={selectedShelf}
+            setSearchParams={setSearchParams}
+            setOpenMenuAction={setOpenMenuAction}
+            searchParams={searchParams}
+          />
         </Modal>
       )}
     </>

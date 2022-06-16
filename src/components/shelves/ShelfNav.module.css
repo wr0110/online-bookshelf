@@ -54,13 +54,13 @@
     border-radius: 50px;
     border: 2px solid var(--med-grey);
     width: 100%;
+    transition: all 0.3s ease-in-out;
 }
 
 .shelf-links p:hover {
     background-color: var(--med-grey);
     color: var(--white);
-    border-radius: 50px;
-    transition: all 0.3s ease-in-out;
+
 }
 
 .add {
@@ -73,9 +73,9 @@
 }
 
 .active:hover {
-    background-color: var(--white);
-    color: var(--dark-blue);
-    border: 2px solid var(--dark-blue);
+    background-color: var(--white) !important;
+    color: var(--dark-blue) !important;
+    border: 2px solid var(--dark-blue) !important;
 
 }
 
