@@ -73,9 +73,9 @@
 }
 
 .active:hover {
-    background-color: var(--white);
-    color: var(--dark-blue);
-    border: 2px solid var(--dark-blue);
+    background-color: var(--white) !important;
+    color: var(--dark-blue) !important;
+    border: 2px solid var(--dark-blue) !important;
 
 }
 

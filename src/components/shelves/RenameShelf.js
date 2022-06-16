@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { AuthContext } from "../../contexts/authContext";
 import { renameShelf } from "../../store/features/shelf/shelfSlice";
 import styled from "./RenameShelf.module.css";
+import { BiRename } from "react-icons/bi";
 
 const RenameShelf = (props) => {
   const dispatch = useDispatch();
@@ -36,6 +37,8 @@ const RenameShelf = (props) => {
       <form onSubmit={handleRenaming} className={styled.rename}>
         <h2>Rename Shelf</h2>
         <p>What would you like to rename this shelf to?</p>
+
+        <BiRename size="50px" style={{ color: "var(--yellow)" }} />
 
         <input
           type="text"
