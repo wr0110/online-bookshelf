@@ -111,6 +111,33 @@ const shelfSlice = createSlice({
         }
       }
     },
+    renameShelf: (state, action) => {
+      const data = action.payload; //newName, shelf, user
+
+      //find the user
+      const user = state.shelf.find((record) => record.user === data.user);
+
+      //if user exists, find the shelf and update it and return new state
+      if (user) {
+        const shelf = user.shelves.find((shelf) => shelf === data.shelf);
+
+        //find all the books on the shelf that includes the shelf they are trying to rename
+        const booksOnShelf = user.booksOnShelves?.filter((book) =>
+          book.shelf.includes(data.shelf)
+        );
+
+        if (shelf) {
+          user.shelves[user.shelves.indexOf(shelf)] = data.newShelfName;
+
+          //update the booksOnShelves with the new shelf name
+          if (booksOnShelf) {
+            booksOnShelf.forEach((book) => {
+              book.shelf[book.shelf.indexOf(data.shelf)] = data.newShelfName;
+            });
+          }
+        }
+      }
+    },
   },
 });
 
@@ -119,5 +146,6 @@ export const {
   checkIfUserHasShelves,
   addToShelf,
   getShelvesForCurrentBook,
+  renameShelf,
 } = shelfSlice.actions;
 export default shelfSlice.reducer;

@@ -99,7 +99,13 @@ const ShelfNav = ({ searchParams, setSearchParams }) => {
       {/* show rename shelf modal */}
       {openMenuAction && (
         <Modal setOpenModal={setOpenMenuAction} openModal={openMenuAction}>
-          <ContextMenuAction action={action} selectedShelf={selectedShelf} />
+          <ContextMenuAction
+            action={action}
+            selectedShelf={selectedShelf}
+            setSearchParams={setSearchParams}
+            setOpenMenuAction={setOpenMenuAction}
+            searchParams={searchParams}
+          />
         </Modal>
       )}
     </>

@@ -1,0 +1,15 @@
+.rename-container {
+    position: fixed;
+    bottom: 10px;
+    left: 0px;
+    width: 100%;
+}
+
+.rename {
+    background-color: var(--white);
+    width: 95%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 1rem;
+}
