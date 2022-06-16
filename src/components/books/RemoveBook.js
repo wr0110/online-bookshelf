@@ -28,7 +28,7 @@ const RemoveBook = ({ book, setOpenIconModal }) => {
             library?
           </p>
 
-          <div className={styled.actions}>
+          <div className="actions">
             <button onClick={removeHandler}>Remove</button>
 
             <button onClick={() => setOpenIconModal(false)}>Cancel</button>

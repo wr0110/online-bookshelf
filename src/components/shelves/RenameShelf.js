@@ -35,19 +35,22 @@ const RenameShelf = (props) => {
   return (
     <div className={styled["rename-container"]}>
       <form onSubmit={handleRenaming} className={styled.rename}>
+        <BiRename size="50px" style={{ color: "var(--yellow)" }} />
         <h2>Rename Shelf</h2>
         <p>What would you like to rename this shelf to?</p>
-
-        <BiRename size="50px" style={{ color: "var(--yellow)" }} />
 
         <input
           type="text"
           placeholder="New Shelf Name"
           onChange={(e) => setNewShelfName(e.target.value)}
           value={newShelfName}
+          autoFocus
         />
 
-        <button type="submit">Rename</button>
+        <div className="button-actions">
+          <button type="submit">Rename</button>
+          <button onClick={() => props.setOpenMenuAction(false)}>Cancel</button>
+        </div>
       </form>
     </div>
   );
