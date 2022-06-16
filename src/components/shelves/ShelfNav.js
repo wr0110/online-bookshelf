@@ -24,7 +24,7 @@ const ShelfNav = ({ searchParams, setSearchParams }) => {
   const addHandler = () => setOpenModal((state) => !state);
   const handleShelfName = (shelf) => setShelfName(shelf);
 
-  //function to open conrext menu and set the position of the menu
+  //function to open context menu and set the position of the menu
   const handleContextMenu = (e) => {
     e.preventDefault();
     setShowContextMenu(true);
@@ -46,7 +46,9 @@ const ShelfNav = ({ searchParams, setSearchParams }) => {
 
   //update the search params when the shelf changes
   useEffect(() => {
-    setSearchParams({ shelf: shelfName });
+    if (shelfName) {
+      setSearchParams({ shelf: shelfName });
+    }
   }, [shelfName, setSearchParams]);
 
   //find the current user
