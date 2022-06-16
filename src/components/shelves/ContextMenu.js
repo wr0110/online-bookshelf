@@ -19,7 +19,7 @@ const ContextMenu = (props) => {
       style={menuStyle}
     >
       <p>Rename Shelf</p>
-      <p>Delete Shelf</p>
+      <p>Remove Shelf</p>
     </div>
   );
 };
