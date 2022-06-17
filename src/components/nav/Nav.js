@@ -19,9 +19,7 @@ const Nav = () => {
   const navigate = useNavigate();
 
   // sets the current width of the screen
-  const widthfunction = () => {
-    setwidth(window.innerWidth);
-  };
+  const widthfunction = () => setwidth(window.innerWidth);
 
   /**
    * add event listener to the window
