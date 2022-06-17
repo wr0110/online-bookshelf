@@ -115,6 +115,14 @@
   }
 }
 
+
+@media (min-width: 600px) {
+  .button-actions {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 768px) {
   .books-grid {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -124,4 +132,6 @@
   .para {
     font-size: 16px;
   }
+
+
 }

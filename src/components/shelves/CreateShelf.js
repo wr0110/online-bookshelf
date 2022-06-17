@@ -28,14 +28,11 @@ const CreateShelf = (props) => {
   return (
     <section className={styled["create-shelf-container"]}>
       <article className={styled["create-shelf"]}>
+        <GiBookshelf size="50px" style={{ color: "var(--yellow)" }} />
         <h2>Create New Shelf</h2>
-
         <p>
           Get creative and place the books in your library in custom shelves.
         </p>
-
-        <GiBookshelf size="50px" style={{ color: "var(--yellow)" }} />
-
         <form
           onSubmit={handleCreateShelf}
           className={styled["create-shelf-form"]}
@@ -49,7 +46,11 @@ const CreateShelf = (props) => {
             maxLength="40"
             autoFocus
           />
-          <button type="submit">Create</button>
+
+          <div className={`${styled.actions} button-actions`}>
+            <button type="submit">Create</button>
+            <button onClick={() => props.setOpenModal(false)}>Cancel</button>
+          </div>
         </form>
       </article>
     </section>
