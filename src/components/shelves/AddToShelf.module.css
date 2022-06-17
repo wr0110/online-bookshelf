@@ -50,7 +50,15 @@
     align-items: center;
     border-top: 1px solid gainsboro;
     padding-top: 0.875rem;
+    max-height: 200px;
+    overflow-y: scroll;
+    scrollbar-width: none;
 
+}
+
+.allShelves::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 .offShelf {
@@ -87,7 +95,7 @@
         position: relative;
     }
 
-    .add-to-shelf {
+    /* .add-to-shelf {
         min-width: 600px;
-    }
+    } */
 }
