@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
-const Search = () => {
+const Search = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
@@ -10,6 +10,7 @@ const Search = () => {
     e.preventDefault();
 
     navigate(`/results?search=${searchTerm}`);
+    props.setshowSearch(false);
     setSearchTerm("");
   };
 
