@@ -11,7 +11,7 @@
     max-width: 600px;
     margin: 0 auto;
     border-radius: 10px;
-    padding: 2rem 1rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,13 +22,13 @@
 .create-shelf h2 {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     color: var(--dark-blue);
 }
 
 .create-shelf p {
     width: 85%;
-    margin: .5rem auto 1.5rem auto;
+    margin: .5rem auto 0;
     font-weight: 500;
 }
 
@@ -51,22 +51,11 @@
     font-weight: 600;
 }
 
-.create-shelf button {
-    padding: 8px 25px;
-    font-weight: 600;
-    color: var(--dark-blue);
-    border-radius: 50px;
-    border: 2px solid var(--dark-blue);
-    cursor: pointer;
-    background-color: var(--white);
+.actions {
+    border: none;
 }
 
-.create-shelf button:hover {
-    background-color: var(--dark-blue);
-    color: var(--white);
-    border-radius: 50px;
-    transition: all 0.3s ease-in-out;
-}
+
 
 /* Media Queries */
 
@@ -77,6 +66,7 @@
 
     .create-shelf {
         width: 100%;
-
     }
+
+
 }

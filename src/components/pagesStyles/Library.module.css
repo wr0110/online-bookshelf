@@ -4,7 +4,7 @@
 
 .library-navbar {
   margin-top: 5rem;
-  padding: 0.5rem 0 1.5rem;
+  padding: 1.5rem 0 1.5rem;
   border-bottom: 1.5px solid rgba(166, 166, 166, 0.3);
   margin-bottom: 2rem;
 }
@@ -20,6 +20,7 @@
   padding-top: 1rem;
   cursor: pointer;
 }
+
 .link {
   color: var(--med-grey);
   font-weight: 400;
@@ -29,6 +30,7 @@
   font-weight: 600;
   color: var(--dark-blue);
 }
+
 /* Media Queries */
 
 @media (min-width: 768px) {

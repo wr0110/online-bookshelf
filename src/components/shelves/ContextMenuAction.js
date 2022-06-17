@@ -7,15 +7,22 @@ const ContextMenuAction = (props) => {
     return (
       <RenameShelf
         selectedShelf={props.selectedShelf}
-        setSearchParams={props.setSearchParams}
         setOpenMenuAction={props.setOpenMenuAction}
         searchParams={props.searchParams}
+        setSearchParams={props.setSearchParams}
       />
     );
   }
 
   if (props.action.includes("Remove")) {
-    return <RemoveShelf />;
+    return (
+      <RemoveShelf
+        selectedShelf={props.selectedShelf}
+        setOpenMenuAction={props.setOpenMenuAction}
+        searchParams={props.searchParams}
+        setSearchParams={props.setSearchParams}
+      />
+    );
   }
 };
 

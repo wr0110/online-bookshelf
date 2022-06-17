@@ -138,6 +138,32 @@ const shelfSlice = createSlice({
         }
       }
     },
+    removeShelf: (state, action) => {
+      const data = action.payload; //shelf, user
+
+      //find the user
+      const user = state.shelf.find((record) => record.user === data.user);
+
+      if (user) {
+        const shelfToRemove = user.shelves.find(
+          (shelf) => shelf === data.shelf
+        );
+
+        if (shelfToRemove) {
+          //remove the shelf
+          user.shelves.splice(user.shelves.indexOf(shelfToRemove), 1);
+
+          //find all the books on the shelf that includes the shelfToRemove and remove it
+          user.booksOnShelves?.forEach((book) => {
+            book.shelf.splice(book.shelf.indexOf(shelfToRemove), 1);
+          });
+
+          alert(`Your ${shelfToRemove} shelf has been removed`);
+        } else {
+          alert(`You do not have a ${data.shelf} shelf`);
+        }
+      }
+    },
   },
 });
 
@@ -147,5 +173,6 @@ export const {
   addToShelf,
   getShelvesForCurrentBook,
   renameShelf,
+  removeShelf,
 } = shelfSlice.actions;
 export default shelfSlice.reducer;

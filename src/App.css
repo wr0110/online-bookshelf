@@ -42,18 +42,19 @@
   justify-content: center;
   align-items: center;
   border-top: 1px solid gainsboro;
-  padding-top: 0.875rem;
+  padding-top: 1rem;
   cursor: pointer;
 }
 
 .actions p {
+  background-color: var(--white);
   padding: 8px 25px;
   font-weight: 600;
   color: var(--dark-blue);
   border-radius: 50px;
   border: 2px solid var(--dark-blue);
   width: 100%;
-
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,16 +70,56 @@
   padding-right: 5px;
 }
 
+/* Button Actions */
+
+.button-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid gainsboro;
+  padding-top: 1rem;
+  cursor: pointer;
+  padding: 1rem 0 0.5rem;
+}
+
+.button-actions button {
+  padding: 12px 25px;
+  font-weight: 600;
+  color: var(--dark-blue);
+  background-color: var(--white);
+  border-radius: 50px;
+  border: 2px solid var(--dark-blue);
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.button-actions button:hover {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
 
 
 /* Media Queries */
+
 @media (min-width: 450px) {
   .actions {
     justify-content: space-evenly;
   }
 
-  .actions p {
+  .actions p,
+  .actions button {
     width: 45%;
+  }
+}
+
+
+@media (min-width: 600px) {
+  .button-actions {
+    width: 80%;
+    margin: 0 auto;
   }
 }
 
@@ -91,4 +132,6 @@
   .para {
     font-size: 16px;
   }
+
+
 }
