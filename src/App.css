@@ -6,6 +6,33 @@
   font-size: 14px;
 }
 
+
+/* Scrollbar for Chrome */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--yellow)
+}
+
+
+/* Scrollbar for FireFox */
+
+@supports (scrollbar-color: red blue) {
+  * {
+    scrollbar-color: var(--yellow) #f1f1f1;
+    scrollbar-width: thin;
+  }
+}
+
+
 :root {
   --yellow: #c2a410;
   --light-grey: #f2f2f2;
