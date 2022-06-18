@@ -71,7 +71,7 @@ const SearchResults = () => {
   //props for heading component
   const text = (
     <>
-      Showing results for <span>{searchQuery}</span>
+      Showing results for <span> {searchQuery}</span>
     </>
   );
 
@@ -90,10 +90,12 @@ const SearchResults = () => {
         </Modal>
       )}
 
-      <Container>
-        {allBooks && <Heading className="heading-md" text={text} />}
-        <div className={styled.allBooks}>{allBooks}</div>
-      </Container>
+      {!loading && (
+        <Container>
+          {allBooks && <Heading className="heading-md" text={text} />}
+          <div className="books-grid">{allBooks}</div>
+        </Container>
+      )}
     </section>
   );
 };

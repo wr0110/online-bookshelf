@@ -8,11 +8,9 @@
 
 
 /* Scrollbar for Chrome */
-
 ::-webkit-scrollbar {
   width: 4px;
 }
-
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -24,7 +22,6 @@
 
 
 /* Scrollbar for FireFox */
-
 @supports (scrollbar-color: red blue) {
   * {
     scrollbar-color: var(--yellow) #f1f1f1;
@@ -159,6 +156,4 @@
   .para {
     font-size: 16px;
   }
-
-
 }
