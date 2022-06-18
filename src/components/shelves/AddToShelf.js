@@ -53,7 +53,7 @@ const AddToShelf = (props) => {
     <section className={styled["add-to-shelf-container"]}>
       <section className={styled["add-to-shelf"]}>
         <h2>
-          Which shelf would you like to place <span>{props.book.title}</span>{" "}
+          Which shelf would you like to place <span>{props.book.title} </span>
           on?
         </h2>
         <figure>

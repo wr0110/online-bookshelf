@@ -16,7 +16,7 @@
 }
 
 .shelf-navbar h2 {
-    min-width: fit-content;
+    /* min-width: fit-content; */
     padding: 5px 10px;
     font-weight: 600;
     color: var(--dark-blue);
@@ -34,13 +34,15 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    overflow: scroll;
+    overflow-x: scroll;
     scrollbar-width: none;
 }
 
 .shelf-links::-webkit-scrollbar {
     width: 0px;
     background: transparent;
+    display: none;
+    /* Chrome */
 }
 
 
@@ -54,12 +56,13 @@
     border: 2px solid var(--med-grey);
     width: 100%;
     transition: all 0.3s ease-in-out;
+    margin-bottom: 0;
+
 }
 
 .shelf-links p:hover {
     background-color: var(--med-grey);
     color: var(--white);
-
 }
 
 .add {
