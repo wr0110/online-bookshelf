@@ -50,9 +50,10 @@
     align-items: center;
     border-top: 1px solid gainsboro;
     padding-top: 0.875rem;
-    max-height: 200px;
+    max-height: 210px;
     overflow-y: scroll;
     scrollbar-width: none;
+    padding: 1rem 0;
 
 }
 
