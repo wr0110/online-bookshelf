@@ -13,8 +13,7 @@ const SearchResults = () => {
   const [bookResults, setBookResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  /** the location object returns information about the page
-   * convert the location object into a javascript object
+  /** convert the location object into a javascript object
    * get the search property and store is value in a constant  */
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -22,7 +21,7 @@ const SearchResults = () => {
 
   /**
    * url includes searchQuery, orderBy relevance and maxResults of 40
-   * setBookResults  to the results from the fetched data
+   * setBookResults to the results from the fetched data
    */
   useEffect(() => {
     const apiKey = process.env.REACT_APP_GOOGLE_BOOKS_API_KEY;
@@ -72,7 +71,7 @@ const SearchResults = () => {
   //props for heading component
   const text = (
     <>
-      Showing results for <span>{searchQuery}</span>
+      Showing results for <span> {searchQuery}</span>
     </>
   );
 
@@ -91,10 +90,12 @@ const SearchResults = () => {
         </Modal>
       )}
 
-      <Container>
-        {allBooks && <Heading className="heading-md" text={text} />}
-        <div className={styled.allBooks}>{allBooks}</div>
-      </Container>
+      {!loading && (
+        <Container>
+          {allBooks && <Heading className="heading-md" text={text} />}
+          <div className="books-grid">{allBooks}</div>
+        </Container>
+      )}
     </section>
   );
 };

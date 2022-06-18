@@ -37,7 +37,7 @@ const UserLibrary = (props) => {
   }, [book, bookCategory, info]);
 
   //function to add the user and the selected book to the library
-  const addToLibrary = async (category) => {
+  const addToLibrary = (category) => {
     dispatch(
       addBookToLibrary({
         selectedBook: { bookData, category },
@@ -48,7 +48,7 @@ const UserLibrary = (props) => {
     props.setOpenModal(false);
   };
 
-  // everytime there is a change in the library, check if the selected book is already in the current user library
+  // everytime there is a change in the library, check if the selected book is already in the current user's library
   useEffect(() => {
     dispatch(
       checkIfBookAlreadyExistsInCurrentUserLibrary({

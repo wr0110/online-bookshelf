@@ -8,7 +8,6 @@
   padding: 0 2rem;
   width: 100%;
   z-index: 10;
-
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
@@ -86,6 +85,7 @@
 .desktop-search-bar input:focus {
   outline: none;
 }
+
 .desktop-search-bar input::placeholder {
   color: var(--yellow);
   font-size: 1.1rem;
@@ -132,6 +132,7 @@
   .navbar {
     justify-content: space-around;
   }
+
   .nav-items {
     position: relative;
     width: 30%;
@@ -146,6 +147,7 @@
     width: 120px;
     margin-left: auto;
     margin-right: 20px;
+    transition: all 0.3s ease-in-out;
   }
 
   .desktop-search-bar:hover {

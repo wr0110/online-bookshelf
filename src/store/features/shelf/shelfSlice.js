@@ -164,6 +164,19 @@ const shelfSlice = createSlice({
         }
       }
     },
+    removeBookFromAllShelves: (state, action) => {
+      const data = action.payload; //bookId, user
+
+      //remove the book from all shelves
+      return (state.shelf = state.shelf.map((record) => {
+        if (record.user === data.user) {
+          record.booksOnShelves = record.booksOnShelves?.filter(
+            () => record.booksOnShelves.bookData.id !== data.bookId
+          );
+        }
+        return record;
+      }));
+    },
   },
 });
 
@@ -174,5 +187,6 @@ export const {
   getShelvesForCurrentBook,
   renameShelf,
   removeShelf,
+  removeBookFromAllShelves,
 } = shelfSlice.actions;
 export default shelfSlice.reducer;

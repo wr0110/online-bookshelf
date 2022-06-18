@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "./EmptyShelf.module.css";
-import search from "../../images/search.svg";
 import Button from "../button/Button";
 
-const EmptyShelf = () => {
+const EmptyShelf = (props) => {
   return (
     <section className={styled["empty-shelf"]}>
       <figure>
-        <img src={search} alt="Illustration of a girl searching the web." />
+        <img src={props.src} alt="Illustration of a girl searching the web." />
       </figure>
 
       <article>

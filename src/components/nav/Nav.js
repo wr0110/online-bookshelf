@@ -19,9 +19,7 @@ const Nav = () => {
   const navigate = useNavigate();
 
   // sets the current width of the screen
-  const widthfunction = () => {
-    setwidth(window.innerWidth);
-  };
+  const widthfunction = () => setwidth(window.innerWidth);
 
   /**
    * add event listener to the window
@@ -54,9 +52,7 @@ const Nav = () => {
   }, [width]);
 
   //set the state when the user clicks on the search icon
-  const handleSearch = () => {
-    setshowSearch((state) => !state);
-  };
+  const handleSearch = () => setshowSearch((state) => !state);
 
   // apply the appropriate class based on the status of showSearch
   const result = showSearch
@@ -124,15 +120,10 @@ const Nav = () => {
 
         {/* if showSearch is true apply the appropriate class */}
         <div className={result}>
-          <Search />
+          <Search setshowSearch={setshowSearch} />
         </div>
       </nav>
 
-      {/**
-       * only show the modal if the state is true
-       * Modal accepts the setState function as props
-       * Modal has the login component as a child
-       */}
       {openModal && (
         <Modal setOpenModal={setOpenModal} openModal={openModal}>
           <Login setOpenModal={setOpenModal} />

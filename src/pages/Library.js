@@ -5,6 +5,7 @@ import styled from "../components/pagesStyles/Library.module.css";
 import Container from "../helpers/wrapper/Container";
 import useFilterLibrary from "../hooks/useFilterLibrary";
 import useGetAllBooks from "../hooks/useGetAllBooks";
+import search from "../images/search.svg";
 
 const links = ["All", "TBR", "In Progress", "Completed", "DNF"];
 
@@ -69,8 +70,8 @@ const Library = () => {
         </nav>
 
         {/* if there are no books in the library show the empty shelf */}
-        {!books || books === undefined ? (
-          <EmptyShelf />
+        {!books || books.length === 0 || books === undefined ? (
+          <EmptyShelf src={search} />
         ) : (
           <section className="books-grid">{books}</section>
         )}

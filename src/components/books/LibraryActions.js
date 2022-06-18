@@ -38,7 +38,7 @@ const LibraryActions = (props) => {
        * pass the currently selected book to the library
        */}
       {openModal && (
-        <Modal setOpenModal={setOpenModal}>
+        <Modal setOpenModal={setOpenModal} openModal={openModal}>
           <UserLibrary selectedBook={props.book} setOpenModal={setOpenModal} />
         </Modal>
       )}

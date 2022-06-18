@@ -4,30 +4,29 @@
   padding: 5rem 0;
 }
 
+.results h1 {
+  background-color: var(--light-yellow);
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+
+}
+
 .results h1,
 .results h1 span {
-  padding-bottom: 2rem;
   font-size: 1rem;
 }
 
-.allBooks {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 2rem;
-  place-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
+.results span {
+  padding-left: 5px;
 }
 
-@media (min-width: 768px) {
-  .allBooks {
-    place-items: center space-between;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
-}
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   .results {
-    top: 50px;
+    top: 40px;
   }
 }
