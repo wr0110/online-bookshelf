@@ -174,7 +174,6 @@ const shelfSlice = createSlice({
         //remove the book from all shelves
         user.booksOnShelves?.forEach((book) => {
           if (book.bookData.id === data.bookId) {
-            //remover the book
             user.booksOnShelves.splice(user.booksOnShelves.indexOf(book), 1);
           }
         });
