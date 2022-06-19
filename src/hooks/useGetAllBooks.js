@@ -19,8 +19,9 @@ const useGetAllBooks = () => {
     return (
       <Books
         key={record.bookData.id}
-        actionsComponent={<LibraryActions book={record.bookData} />}
         book={record.bookData}
+        showDeleteIcon={true}
+        actionsComponent={<LibraryActions book={record.bookData} />}
       />
     );
   });
