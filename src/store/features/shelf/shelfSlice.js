@@ -167,15 +167,18 @@ const shelfSlice = createSlice({
     removeBookFromAllShelves: (state, action) => {
       const data = action.payload; //bookId, user
 
-      //remove the book from all shelves
-      return (state.shelf = state.shelf.map((record) => {
-        if (record.user === data.user) {
-          record.booksOnShelves = record.booksOnShelves?.filter(
-            () => record.booksOnShelves.bookData.id !== data.bookId
-          );
-        }
-        return record;
-      }));
+      //find the user
+      const user = state.shelf.find((record) => record.user === data.user);
+
+      if (user) {
+        //remove the book from all shelves
+        user.booksOnShelves?.forEach((book) => {
+          if (book.bookData.id === data.bookId) {
+            //remover the book
+            user.booksOnShelves.splice(user.booksOnShelves.indexOf(book), 1);
+          }
+        });
+      }
     },
   },
 });

@@ -11,17 +11,14 @@ const RemoveBook = ({ book, setOpenIconModal }) => {
   const dispatch = useDispatch();
 
   // function remove the book from the library
-  const removeHandler = () => {
-    dispatch(
-      removeBookFromLibrary({ user: currentUser.email, bookId: book.id })
-    );
+  const removeHandler = async () => {
+    const data = { user: currentUser.email, bookId: book.id };
 
-    //remove the book from all shelves
-    dispatch(
-      removeBookFromAllShelves({ user: currentUser.email, bookId: book.id })
-    );
-
-    setOpenIconModal(false);
+    await Promise.all([
+      dispatch(removeBookFromLibrary(data)),
+      dispatch(removeBookFromAllShelves(data)),
+    ]);
+    await setOpenIconModal(false);
     alert(`${book.title} has been removed from your library`);
   };
 

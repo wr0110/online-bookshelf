@@ -1,17 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { AuthContext } from "../contexts/authContext";
 import Books from "../components/books/Books";
-import { RiBookmarkFill } from "react-icons/ri";
-
-import RemoveBook from "../components/books/RemoveBook";
 import LibraryActions from "../components/books/LibraryActions";
 import EmptyShelf from "../components/books/EmptyShelf";
 import search from "../images/search.svg";
 
 //custom hook to filter the current user's library based on the category recieved
 const useFilterLibrary = (category) => {
-  const [openIconModal, setOpenIconModal] = useState(false);
   // retrieve the library from the store
   const { library } = useSelector((state) => state.bookStore);
 
@@ -34,15 +30,7 @@ const useFilterLibrary = (category) => {
         <Books
           key={record.bookData.id}
           book={record.bookData}
-          icon={<RiBookmarkFill color="white" size="22px" />}
-          iconComponent={
-            <RemoveBook
-              book={record.bookData}
-              setOpenIconModal={setOpenIconModal}
-            />
-          }
-          openIconModal={openIconModal}
-          setOpenIconModal={setOpenIconModal}
+          showDeleteIcon={true}
           actionsComponent={<LibraryActions book={record.bookData} />}
         />
       );
