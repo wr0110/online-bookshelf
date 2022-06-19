@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import styled from "./Books.module.css";
 import Modal from "../../helpers/modal/Modal";
 import Information from "./Information";
+import RemoveBook from "./RemoveBook";
+import { RiBookmarkFill } from "react-icons/ri";
 
 // component to show each book it receives
 const Books = (props) => {
   // state
   const [openModal, setOpenModal] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [openRemoveModal, setOpenRemoveModal] = useState(false);
 
   //Destructured imageLink property
   const { imageLinks, title } = props.book;
@@ -22,7 +25,7 @@ const Books = (props) => {
     setOpenModal((state) => !state);
   };
 
-  const handleDelete = () => props.setOpenIconModal((state) => !state);
+  const handleDelete = () => setOpenRemoveModal((state) => !state);
 
   return (
     <>
@@ -35,9 +38,11 @@ const Books = (props) => {
           <img src={url} alt={title} />
         </figure>
 
-        {props.icon && isHovering && (
+        {props.showDeleteIcon && isHovering && (
           <div className={styled.delete} onClick={handleDelete}>
-            <div>{props.icon}</div>
+            <div>
+              <RiBookmarkFill color="white" size="22px" />
+            </div>
           </div>
         )}
       </section>
@@ -53,12 +58,9 @@ const Books = (props) => {
       )}
 
       {/* modal to show component when the icon is clicked  */}
-      {props.openIconModal && (
-        <Modal
-          setOpenModal={props.setOpenIconModal}
-          openModal={props.openIconModal}
-        >
-          <>{props.iconComponent}</>
+      {openRemoveModal && (
+        <Modal setOpenModal={setOpenRemoveModal} openModal={openRemoveModal}>
+          <RemoveBook book={props.book} setOpenIconModal={setOpenRemoveModal} />
         </Modal>
       )}
     </>
