@@ -34,7 +34,7 @@ const shelfSlice = createSlice({
           return state;
         } else {
           //if the shelf does not exist add the shelf
-          userExists.shelves.push(data.shelf);
+          userExists.shelves.unshift(data.shelf);
         }
       }
     },
@@ -75,15 +75,23 @@ const shelfSlice = createSlice({
               //find the index of the shelf and remove it
               bookExists.shelf.splice(bookExists.shelf.indexOf(data.shelf), 1);
 
+              //if the shelf is empty for the book, remove the book from the booksOnShelves array
+              if (bookExists.shelf.length === 0) {
+                user.booksOnShelves.splice(
+                  user.booksOnShelves.indexOf(bookExists),
+                  1
+                );
+              }
+
               alert(
                 `${data.bookData.title} has been removed from ${data.shelf}`
               );
             } else {
               //if the book exists but the shelves are different, update the shelf
-              bookExists.shelf.push(data.shelf);
+              bookExists.shelf.unshift(data.shelf);
             }
           } else if (!bookExists) {
-            user.booksOnShelves.push({
+            user.booksOnShelves.unshift({
               bookData: data.bookData,
               shelf: [data.shelf],
             });

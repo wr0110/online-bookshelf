@@ -43,7 +43,7 @@ const librarySlice = createSlice({
           }
         } else {
           //if the book does not exist, add the book to the userLibrary array
-          currentUser.userLibrary.push(action.payload.selectedBook);
+          currentUser.userLibrary.unshift(action.payload.selectedBook);
         }
       }
     },
