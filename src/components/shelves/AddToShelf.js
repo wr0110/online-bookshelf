@@ -17,7 +17,12 @@ const AddToShelf = (props) => {
   //function to dispatch action to add book to shelf
   const handleSelectedShelf = (shelf) => {
     dispatch(
-      addToShelf({ user: currentUser.email, bookData: props.book, shelf })
+      addToShelf({
+        user: currentUser.email,
+        bookData: props.book,
+        shelf,
+        timeAdded: Date.now(),
+      })
     );
   };
 
@@ -36,8 +41,10 @@ const AddToShelf = (props) => {
 
   //get all the shelves created by the current user
   const AllShelves = user?.shelves?.map((shelf) => {
+    //console.log(currentBookShelves);
     //check if the selected book is already in the shelf
-    const exists = currentBookShelves.includes(shelf);
+    const exists = currentBookShelves?.includes(shelf);
+
     return (
       <p
         key={shelf}

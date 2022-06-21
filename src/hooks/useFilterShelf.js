@@ -13,19 +13,41 @@ const useFilterShelf = (selectedShelf) => {
 
   //get the books on the shelf
 
-  const booksOnSelectedShelf = user?.booksOnShelves
-    ?.filter((book) => book.shelf.includes(selectedShelf))
-    .map((record) => {
-      return (
-        <Books
-          key={record.bookData.id}
-          book={record.bookData}
-          actionsComponent={<ShelfActions book={record.bookData} />}
-        />
-      );
-    });
+  const booksOnSelectedShelf = user?.booksOnShelves?.filter((book) =>
+    book.shelf.find((item) => item.shelf === selectedShelf)
+  );
 
-  return booksOnSelectedShelf;
+  //sort the books on the shelf by the time they were added to the shelf
+  const sortedBooksOnSelectedShelf = booksOnSelectedShelf?.forEach(
+    (element) => {
+      const temp = [...element.shelf];
+
+      //map over temp and sort the books by the time they were added to the shelf
+      temp.map((item) => {
+        if (item.timeAdded) {
+          item.timeAdded = new Date(item.timeAdded);
+        }
+        return item;
+      });
+    }
+  );
+
+  console.log(sortedBooksOnSelectedShelf);
+
+  //map over results and sort them by time added, newest first, each result is an object with bookdata and shelf
+
+  //   .map((record) => {
+  //     return (
+  //       <Books
+  //         key={record.bookData.id}
+  //         book={record.bookData}
+  //         actionsComponent={<ShelfActions book={record.bookData} />}
+  //       />
+  //     );
+  //   });
+  // console.log(booksOnSelectedShelf);
+
+  // return booksOnSelectedShelf;
 };
 
 export default useFilterShelf;
