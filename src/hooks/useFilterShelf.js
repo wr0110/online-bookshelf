@@ -5,20 +5,21 @@ import ShelfActions from "../components/shelves/ShelfActions";
 import { AuthContext } from "../contexts/authContext";
 
 const useFilterShelf = (selectedShelf) => {
+  //context and store
   const { currentUser } = useContext(AuthContext);
   const { shelf } = useSelector((state) => state.bookShelf);
 
-  //find the current user
+  //find the current user, then get the books on shelves for the current user
   const user = shelf.find((shelf) => shelf.user === currentUser?.email);
-
-  //each user has booksOnShelves
   const booksOnShelves = user?.booksOnShelves;
 
-  //filter the booksOnShelves by the selected shelf
-  const filteredBooksOnShelves = booksOnShelves
+  /**
+   * filter the booksOnShelves by the selected shelf
+   * sort the results for the selected shelf by timeAdded (most recent first) in the shelf array
+   * map over the resulting array and return the book data (Book component)
+   * */
+  const filteredBooksAndSortedBooks = booksOnShelves
     ?.filter((book) => book.shelf.find((item) => item.shelf === selectedShelf))
-
-    //sort by selected shelf by timeAdded (most recent first) in the shelf array
     .sort((a, b) => {
       const aTime = a.shelf.find(
         (item) => item.shelf === selectedShelf
@@ -27,19 +28,18 @@ const useFilterShelf = (selectedShelf) => {
         (item) => item.shelf === selectedShelf
       ).timeAdded;
       return bTime - aTime;
+    })
+    .map((record) => {
+      return (
+        <Books
+          key={record.bookData.id}
+          book={record.bookData}
+          actionsComponent={<ShelfActions book={record.bookData} />}
+        />
+      );
     });
 
-  const booksOnSelectedShelf = filteredBooksOnShelves?.map((record) => {
-    return (
-      <Books
-        key={record.bookData.id}
-        book={record.bookData}
-        actionsComponent={<ShelfActions book={record.bookData} />}
-      />
-    );
-  });
-
-  return booksOnSelectedShelf;
+  return filteredBooksAndSortedBooks;
 };
 
 export default useFilterShelf;
