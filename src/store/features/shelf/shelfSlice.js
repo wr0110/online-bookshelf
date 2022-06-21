@@ -4,6 +4,7 @@ const initialState = {
   shelf: [],
   isShelfEmpty: true,
   currentBookShelves: [],
+  sortedBooks: [],
 };
 
 const shelfSlice = createSlice({
@@ -49,7 +50,7 @@ const shelfSlice = createSlice({
       }
     },
     addToShelf: (state, action) => {
-      const data = action.payload; //bookData, shelf, user
+      const data = action.payload; //bookData, shelf, user, timeAdded
 
       //find the user
       const user = state.shelf.find((record) => record.user === data.user);
@@ -59,7 +60,10 @@ const shelfSlice = createSlice({
         //check if the booksOnShelves property exists
         if (!user.booksOnShelves) {
           user.booksOnShelves = [
-            { bookData: data.bookData, shelf: [data.shelf] },
+            {
+              bookData: data.bookData,
+              shelf: [{ shelf: data.shelf, timeAdded: data.timeAdded }],
+            },
           ];
         } else if (user.booksOnShelves) {
           //check if the book they are trying to add already exists
@@ -70,10 +74,17 @@ const shelfSlice = createSlice({
           //if bookExists check if the bookExists shelf is the same as the shelf they are trying to add to
           if (bookExists) {
             //check if the shelf they are trying to add to already exists
-            const shelfExists = bookExists.shelf.includes(data.shelf);
+
+            const shelfExists = bookExists.shelf.find(
+              (shelf) => shelf.shelf === data.shelf
+            );
+
             if (shelfExists) {
               //find the index of the shelf and remove it
-              bookExists.shelf.splice(bookExists.shelf.indexOf(data.shelf), 1);
+              const index = bookExists.shelf.findIndex(
+                (shelf) => shelf.shelf === data.shelf
+              );
+              bookExists.shelf.splice(index, 1);
 
               //if the shelf is empty for the book, remove the book from the booksOnShelves array
               if (bookExists.shelf.length === 0) {
@@ -88,12 +99,15 @@ const shelfSlice = createSlice({
               );
             } else {
               //if the book exists but the shelves are different, update the shelf
-              bookExists.shelf.unshift(data.shelf);
+              bookExists.shelf.unshift({
+                shelf: data.shelf,
+                timeAdded: data.timeAdded,
+              });
             }
           } else if (!bookExists) {
             user.booksOnShelves.unshift({
               bookData: data.bookData,
-              shelf: [data.shelf],
+              shelf: [{ shelf: data.shelf, timeAdded: data.timeAdded }],
             });
           }
         }
@@ -102,7 +116,7 @@ const shelfSlice = createSlice({
     getShelvesForCurrentBook: (state, action) => {
       const data = action.payload; //bookData, user
 
-      //get booksOnShelves for the current user
+      //find the user
       const user = state.shelf.find((record) => record.user === data.user);
 
       //get the booksOnShelves for the current book
@@ -112,8 +126,11 @@ const shelfSlice = createSlice({
           (book) => book.bookData.id === data.bookData.id
         );
 
+        //get shelves for the book
+        const shelves = book?.shelf?.map((item) => item.shelf);
+
         if (book) {
-          state.currentBookShelves = book.shelf;
+          state.currentBookShelves = shelves;
         } else {
           state.currentBookShelves = [];
         }
@@ -131,7 +148,7 @@ const shelfSlice = createSlice({
 
         //find all the books on the shelf that includes the shelf they are trying to rename
         const booksOnShelf = user.booksOnShelves?.filter((book) =>
-          book.shelf.includes(data.shelf)
+          book.shelf.find((item) => item.shelf === data.shelf)
         );
 
         if (shelf) {
@@ -140,7 +157,11 @@ const shelfSlice = createSlice({
           //update the booksOnShelves with the new shelf name
           if (booksOnShelf) {
             booksOnShelf.forEach((book) => {
-              book.shelf[book.shelf.indexOf(data.shelf)] = data.newShelfName;
+              book.shelf.forEach((item) => {
+                if (item.shelf === data.shelf) {
+                  item.shelf = data.newShelfName;
+                }
+              });
             });
           }
         }
@@ -163,7 +184,11 @@ const shelfSlice = createSlice({
 
           //find all the books on the shelf that includes the shelfToRemove and remove it
           user.booksOnShelves?.forEach((book) => {
-            book.shelf.splice(book.shelf.indexOf(shelfToRemove), 1);
+            book.shelf.forEach((item) => {
+              if (item.shelf === data.shelf) {
+                book.shelf.splice(book.shelf.indexOf(item), 1);
+              }
+            });
           });
 
           alert(`Your ${shelfToRemove} shelf has been removed`);
@@ -198,5 +223,6 @@ export const {
   renameShelf,
   removeShelf,
   removeBookFromAllShelves,
+  sortBooksOnShelf,
 } = shelfSlice.actions;
 export default shelfSlice.reducer;
