@@ -11,43 +11,35 @@ const useFilterShelf = (selectedShelf) => {
   //find the current user
   const user = shelf.find((shelf) => shelf.user === currentUser?.email);
 
-  //get the books on the shelf
+  //each user has booksOnShelves
+  const booksOnShelves = user?.booksOnShelves;
 
-  const booksOnSelectedShelf = user?.booksOnShelves?.filter((book) =>
-    book.shelf.find((item) => item.shelf === selectedShelf)
-  );
+  //filter the booksOnShelves by the selected shelf
+  const filteredBooksOnShelves = booksOnShelves
+    ?.filter((book) => book.shelf.find((item) => item.shelf === selectedShelf))
 
-  //sort the books on the shelf by the time they were added to the shelf
-  const sortedBooksOnSelectedShelf = booksOnSelectedShelf?.forEach(
-    (element) => {
-      const temp = [...element.shelf];
+    //sort by selected shelf by timeAdded (most recent first) in the shelf array
+    .sort((a, b) => {
+      const aTime = a.shelf.find(
+        (item) => item.shelf === selectedShelf
+      ).timeAdded;
+      const bTime = b.shelf.find(
+        (item) => item.shelf === selectedShelf
+      ).timeAdded;
+      return bTime - aTime;
+    });
 
-      //map over temp and sort the books by the time they were added to the shelf
-      temp.map((item) => {
-        if (item.timeAdded) {
-          item.timeAdded = new Date(item.timeAdded);
-        }
-        return item;
-      });
-    }
-  );
+  const booksOnSelectedShelf = filteredBooksOnShelves?.map((record) => {
+    return (
+      <Books
+        key={record.bookData.id}
+        book={record.bookData}
+        actionsComponent={<ShelfActions book={record.bookData} />}
+      />
+    );
+  });
 
-  console.log(sortedBooksOnSelectedShelf);
-
-  //map over results and sort them by time added, newest first, each result is an object with bookdata and shelf
-
-  //   .map((record) => {
-  //     return (
-  //       <Books
-  //         key={record.bookData.id}
-  //         book={record.bookData}
-  //         actionsComponent={<ShelfActions book={record.bookData} />}
-  //       />
-  //     );
-  //   });
-  // console.log(booksOnSelectedShelf);
-
-  // return booksOnSelectedShelf;
+  return booksOnSelectedShelf;
 };
 
 export default useFilterShelf;

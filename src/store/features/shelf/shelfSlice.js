@@ -4,6 +4,7 @@ const initialState = {
   shelf: [],
   isShelfEmpty: true,
   currentBookShelves: [],
+  sortedBooks: [],
 };
 
 const shelfSlice = createSlice({
@@ -104,7 +105,7 @@ const shelfSlice = createSlice({
               });
             }
           } else if (!bookExists) {
-            user.booksOnShelves.push({
+            user.booksOnShelves.unshift({
               bookData: data.bookData,
               shelf: [{ shelf: data.shelf, timeAdded: data.timeAdded }],
             });
@@ -203,6 +204,22 @@ const shelfSlice = createSlice({
         });
       }
     },
+    sortBooksOnShelf: (state, action) => {
+      const data = action.payload; // books
+
+      //each book = {bookData:{}, shelf:{shelf, timeAdded}}
+      const books = data.books;
+
+      //sort the shelves by timeAdded
+      books.forEach((book) => {
+        book.shelf.sort((a, b) => {
+          return a.timeAdded - b.timeAdded;
+        });
+      });
+
+      //update the state
+      state.sortedBooks = books;
+    },
   },
 });
 
@@ -214,5 +231,6 @@ export const {
   renameShelf,
   removeShelf,
   removeBookFromAllShelves,
+  sortBooksOnShelf,
 } = shelfSlice.actions;
 export default shelfSlice.reducer;
