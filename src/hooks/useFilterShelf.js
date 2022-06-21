@@ -18,7 +18,7 @@ const useFilterShelf = (selectedShelf) => {
    * sort the results for the selected shelf by timeAdded (most recent first) in the shelf array
    * map over the resulting array and return the book data (Book component)
    * */
-  const filteredBooksAndSortedBooks = booksOnShelves
+  const filteredThenSortedBooks = booksOnShelves
     ?.filter((book) => book.shelf.find((item) => item.shelf === selectedShelf))
     .sort((a, b) => {
       const aTime = a.shelf.find(
@@ -39,7 +39,7 @@ const useFilterShelf = (selectedShelf) => {
       );
     });
 
-  return filteredBooksAndSortedBooks;
+  return filteredThenSortedBooks;
 };
 
 export default useFilterShelf;

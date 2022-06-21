@@ -148,7 +148,7 @@ const shelfSlice = createSlice({
 
         //find all the books on the shelf that includes the shelf they are trying to rename
         const booksOnShelf = user.booksOnShelves?.filter((book) =>
-          book.shelf.includes(data.shelf)
+          book.shelf.find((item) => item.shelf === data.shelf)
         );
 
         if (shelf) {
@@ -157,7 +157,11 @@ const shelfSlice = createSlice({
           //update the booksOnShelves with the new shelf name
           if (booksOnShelf) {
             booksOnShelf.forEach((book) => {
-              book.shelf[book.shelf.indexOf(data.shelf)] = data.newShelfName;
+              book.shelf.forEach((item) => {
+                if (item.shelf === data.shelf) {
+                  item.shelf = data.newShelfName;
+                }
+              });
             });
           }
         }
@@ -180,7 +184,11 @@ const shelfSlice = createSlice({
 
           //find all the books on the shelf that includes the shelfToRemove and remove it
           user.booksOnShelves?.forEach((book) => {
-            book.shelf.splice(book.shelf.indexOf(shelfToRemove), 1);
+            book.shelf.forEach((item) => {
+              if (item.shelf === data.shelf) {
+                book.shelf.splice(book.shelf.indexOf(item), 1);
+              }
+            });
           });
 
           alert(`Your ${shelfToRemove} shelf has been removed`);
@@ -203,22 +211,6 @@ const shelfSlice = createSlice({
           }
         });
       }
-    },
-    sortBooksOnShelf: (state, action) => {
-      const data = action.payload; // books
-
-      //each book = {bookData:{}, shelf:{shelf, timeAdded}}
-      const books = data.books;
-
-      //sort the shelves by timeAdded
-      books.forEach((book) => {
-        book.shelf.sort((a, b) => {
-          return a.timeAdded - b.timeAdded;
-        });
-      });
-
-      //update the state
-      state.sortedBooks = books;
     },
   },
 });
