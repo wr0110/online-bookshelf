@@ -8,6 +8,7 @@ import UserLibrary from "./UserLibrary";
 const LibraryActions = (props) => {
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
+
   //navigate to the book details page for the specified book
   const handleDetails = () => navigate(`/results/${props.book.id}`);
 

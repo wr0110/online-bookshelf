@@ -44,6 +44,8 @@ const UserLibrary = (props) => {
         user: currentUser.email,
       })
     );
+
+    //add notification
     //close the modal
     props.setOpenModal(false);
   };
