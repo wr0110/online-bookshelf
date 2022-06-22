@@ -3,6 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   library: [],
   bookAlreadyInLibraryCategory: "",
+  feedback: {
+    title: "",
+    message: "",
+    type: "",
+  },
 };
 
 const librarySlice = createSlice({
@@ -21,6 +26,11 @@ const librarySlice = createSlice({
           user: action.payload.user,
           userLibrary: [action.payload.selectedBook],
         });
+        state.feedback = {
+          title: "Success",
+          message: `${action.payload.selectedBook.title} has been added to your library`,
+          type: "success",
+        };
       } else {
         //if the user exists, check if the book they are trying to add already exists in their library
         const bookAlreadyExists = currentUser?.userLibrary.find((record) => {
@@ -33,17 +43,30 @@ const librarySlice = createSlice({
           if (
             bookAlreadyExists.category === userToUpdate.selectedBook.category
           ) {
-            alert(
-              `This book is already in your ${bookAlreadyExists.category} shelf`
-            );
+            state.feedback = {
+              title: "Warning",
+              message: `${action.payload.selectedBook.title} is already in your library`,
+              type: "warning",
+            };
+
             return state;
           } else {
             //if the categories are different, update the category of the bookAlreadyExists object
             bookAlreadyExists.category = userToUpdate.selectedBook.category;
+            state.feedback = {
+              title: "Success",
+              message: `${action.payload.selectedBook.title} has been moved to ${userToUpdate.selectedBook.category}`,
+              type: "success",
+            };
           }
         } else {
           //if the book does not exist, add the book to the userLibrary array
           currentUser.userLibrary.unshift(action.payload.selectedBook);
+          state.feedback = {
+            title: "Success",
+            message: `${action.payload.selectedBook.title} has been added to your library`,
+            type: "success",
+          };
         }
       }
     },
