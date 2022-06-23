@@ -3,9 +3,11 @@ import styled from "./Notification.module.css";
 import { useSelector } from "react-redux";
 import { BsBookmarkCheckFill } from "react-icons/bs";
 import { RiErrorWarningFill } from "react-icons/ri";
+import { HiInformationCircle } from "react-icons/hi";
 
 const Notification = (props) => {
   const { feedback } = useSelector((state) => state.bookStore);
+  const { shelfFeedback } = useSelector((state) => state.bookShelf);
 
   //switch case to determine the type of icon
   const icon = () => {
@@ -20,6 +22,14 @@ const Notification = (props) => {
       case "warning":
         return <RiErrorWarningFill size="30px" color="#856404" />;
 
+      case "info":
+        return (
+          <HiInformationCircle
+            size="30px"
+            style={{ color: "var(--dark-blue)" }}
+          />
+        );
+
       default:
         return (
           <BsBookmarkCheckFill
@@ -31,7 +41,11 @@ const Notification = (props) => {
   };
 
   return (
-    <article className={`${styled[feedback.type]} ${styled.feedback} `}>
+    <article
+      className={`${styled[feedback.type]} ${styled[shelfFeedback.type]} ${
+        styled.feedback
+      } `}
+    >
       <div className={styled.icon}>{icon()}</div>
       <div>
         <h1 className={styled.title}>{props.title}</h1>

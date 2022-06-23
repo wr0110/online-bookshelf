@@ -59,12 +59,9 @@ function App() {
         container: "top-right",
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
-        // width: "700px",
 
         dismiss: {
           duration: 1200,
-          //showIcon: true,
-          // onScreen: true,
         },
       });
     }

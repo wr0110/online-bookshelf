@@ -33,7 +33,7 @@ const shelfSlice = createSlice({
         state.shelf.push(newUser);
         state.shelfFeedback = {
           title: "Success",
-          message: `Your ${data.shelf} has been created.`,
+          message: `Your ${data.shelf} shelf has been created.`,
           type: "success",
         };
       } else if (userExists) {
@@ -43,7 +43,7 @@ const shelfSlice = createSlice({
         if (shelfExists) {
           state.shelfFeedback = {
             title: "Warning",
-            message: `${data.shelf} already exists.`,
+            message: `A shelf named ${data.shelf} already exists.`,
             type: "warning",
           };
 
@@ -53,7 +53,7 @@ const shelfSlice = createSlice({
           userExists.shelves.unshift(data.shelf);
           state.shelfFeedback = {
             title: "Success",
-            message: `Your ${data.shelf} has been created.`,
+            message: `Your ${data.shelf} shelf has been created.`,
             type: "success",
           };
         }
@@ -88,7 +88,7 @@ const shelfSlice = createSlice({
 
           state.shelfFeedback = {
             title: "Success",
-            message: `${data.bookData.title} has been added to your ${data.shelf.name} shelf.`,
+            message: `${data.bookData.title} has been added to your ${data.shelf} shelf.`,
             type: "success",
           };
         } else if (user.booksOnShelves) {
@@ -134,7 +134,7 @@ const shelfSlice = createSlice({
 
               state.shelfFeedback = {
                 title: "Success",
-                message: `${data.bookData.title} has been added to your ${data.shelf.name} shelf.`,
+                message: `${data.bookData.title} has been added to your ${data.shelf} shelf.`,
                 type: "success",
               };
             }
@@ -146,7 +146,7 @@ const shelfSlice = createSlice({
 
             state.shelfFeedback = {
               title: "Success",
-              message: `${data.bookData.title} has been added to your ${data.shelf.name} shelf.`,
+              message: `${data.bookData.title} has been added to your ${data.shelf} shelf.`,
               type: "success",
             };
           }
