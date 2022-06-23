@@ -22,6 +22,9 @@ const Notification = (props) => {
       case "warning":
         return <RiErrorWarningFill size="30px" color="#856404" />;
 
+      case "error":
+        return <HiInformationCircle size="30px" color="#a94442" />;
+
       case "info":
         return (
           <HiInformationCircle

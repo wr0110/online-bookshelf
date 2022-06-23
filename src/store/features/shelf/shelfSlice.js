@@ -206,9 +206,9 @@ const shelfSlice = createSlice({
           }
 
           state.shelfFeedback = {
-            title: "Success",
-            message: `${data.shelf.name} has been renamed to ${data.newShelfName}.`,
-            type: "success",
+            title: "Information",
+            message: `${data.shelf} has been renamed to ${data.newShelfName}.`,
+            type: "info",
           };
         }
       }

@@ -26,6 +26,12 @@
     border: 15px solid#e7f0f4;
 }
 
+.error {
+    color: #a94442;
+    background-color: #f2dede;
+    border: 15px solid #ebccd1;
+}
+
 .message {
     padding: 2px 0;
 }
