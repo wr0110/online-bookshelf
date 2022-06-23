@@ -5,6 +5,11 @@ const initialState = {
   isShelfEmpty: true,
   currentBookShelves: [],
   sortedBooks: [],
+  shelfFeedback: {
+    title: "",
+    message: "",
+    type: "",
+  },
 };
 
 const shelfSlice = createSlice({
@@ -26,16 +31,31 @@ const shelfSlice = createSlice({
           shelves: [data.shelf],
         };
         state.shelf.push(newUser);
+        state.shelfFeedback = {
+          title: "Success",
+          message: `Your ${data.shelf} shelf has been created.`,
+          type: "success",
+        };
       } else if (userExists) {
         //check if the shelf already exists
         const shelfExists = userExists.shelves.includes(data.shelf);
 
         if (shelfExists) {
-          alert(`You already have a shelf called ${data.shelf}`);
-          return state;
+          state.shelfFeedback = {
+            title: "Warning",
+            message: `A shelf named ${data.shelf} already exists.`,
+            type: "warning",
+          };
+
+          // return state;
         } else {
           //if the shelf does not exist add the shelf
           userExists.shelves.unshift(data.shelf);
+          state.shelfFeedback = {
+            title: "Success",
+            message: `Your ${data.shelf} shelf has been created.`,
+            type: "success",
+          };
         }
       }
     },
@@ -65,6 +85,12 @@ const shelfSlice = createSlice({
               shelf: [{ shelf: data.shelf, timeAdded: data.timeAdded }],
             },
           ];
+
+          state.shelfFeedback = {
+            title: "Success",
+            message: `${data.bookData.title} has been added to your ${data.shelf} shelf.`,
+            type: "success",
+          };
         } else if (user.booksOnShelves) {
           //check if the book they are trying to add already exists
           const bookExists = user.booksOnShelves.find(
@@ -94,21 +120,35 @@ const shelfSlice = createSlice({
                 );
               }
 
-              alert(
-                `${data.bookData.title} has been removed from ${data.shelf}`
-              );
+              state.shelfFeedback = {
+                title: "Information",
+                message: `${data.bookData.title} has been removed from ${data.shelf}.`,
+                type: "info",
+              };
             } else {
               //if the book exists but the shelves are different, update the shelf
               bookExists.shelf.unshift({
                 shelf: data.shelf,
                 timeAdded: data.timeAdded,
               });
+
+              state.shelfFeedback = {
+                title: "Success",
+                message: `${data.bookData.title} has been added to your ${data.shelf} shelf.`,
+                type: "success",
+              };
             }
           } else if (!bookExists) {
             user.booksOnShelves.unshift({
               bookData: data.bookData,
               shelf: [{ shelf: data.shelf, timeAdded: data.timeAdded }],
             });
+
+            state.shelfFeedback = {
+              title: "Success",
+              message: `${data.bookData.title} has been added to your ${data.shelf} shelf.`,
+              type: "success",
+            };
           }
         }
       }
@@ -164,6 +204,12 @@ const shelfSlice = createSlice({
               });
             });
           }
+
+          state.shelfFeedback = {
+            title: "Information",
+            message: `${data.shelf} has been renamed to ${data.newShelfName}.`,
+            type: "info",
+          };
         }
       }
     },
@@ -190,10 +236,17 @@ const shelfSlice = createSlice({
               }
             });
           });
-
-          alert(`Your ${shelfToRemove} shelf has been removed`);
+          state.shelfFeedback = {
+            title: "Information",
+            message: `${shelfToRemove} has been removed.`,
+            type: "info",
+          };
         } else {
-          alert(`You do not have a ${data.shelf} shelf`);
+          state.shelfFeedback = {
+            title: "Error",
+            message: `You do not have a ${data.shelf} shelf`,
+            type: "error",
+          };
         }
       }
     },

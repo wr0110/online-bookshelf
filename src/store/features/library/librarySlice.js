@@ -15,9 +15,9 @@ const librarySlice = createSlice({
   initialState,
   reducers: {
     addBookToLibrary: (state, action) => {
-      const userToUpdate = action.payload;
+      const data = action.payload;
       const currentUser = state.library.find(
-        (shelf) => shelf.user === userToUpdate.user
+        (shelf) => shelf.user === data.user
       );
 
       //if the user is new to the library, create a new shelf for them
@@ -28,35 +28,31 @@ const librarySlice = createSlice({
         });
         state.feedback = {
           title: "Success",
-          message: `${action.payload.selectedBook.title} has been added to your library`,
+          message: `${data.selectedBook.bookData.title} has been added to your library`,
           type: "success",
         };
       } else {
         //if the user exists, check if the book they are trying to add already exists in their library
         const bookAlreadyExists = currentUser?.userLibrary.find((record) => {
-          return record.bookData.id === userToUpdate.selectedBook.bookData.id;
+          return record.bookData.id === data.selectedBook.bookData.id;
         });
 
         //if the bookExists check if the book category already exists
         if (bookAlreadyExists) {
           //if the categories are the same, alert the user that the book is already in the library
-          if (
-            bookAlreadyExists.category === userToUpdate.selectedBook.category
-          ) {
+          if (bookAlreadyExists.category === data.selectedBook.category) {
             state.feedback = {
               title: "Warning",
-              message: `${action.payload.selectedBook.title} is already in your library`,
+              message: `${data.selectedBook.bookData.title} is already on your ${data.selectedBook.category} shelf.`,
               type: "warning",
             };
-
-            return state;
           } else {
             //if the categories are different, update the category of the bookAlreadyExists object
-            bookAlreadyExists.category = userToUpdate.selectedBook.category;
+            bookAlreadyExists.category = data.selectedBook.category;
             state.feedback = {
-              title: "Success",
-              message: `${action.payload.selectedBook.title} has been moved to ${userToUpdate.selectedBook.category}`,
-              type: "success",
+              title: "Information",
+              message: `${data.selectedBook.bookData.title} has been moved to the ${data.selectedBook.category} shelf.`,
+              type: "info",
             };
           }
         } else {
@@ -64,7 +60,7 @@ const librarySlice = createSlice({
           currentUser.userLibrary.unshift(action.payload.selectedBook);
           state.feedback = {
             title: "Success",
-            message: `${action.payload.selectedBook.title} has been added to your library`,
+            message: `${data.selectedBook.bookData.title} has been added to your library.`,
             type: "success",
           };
         }
@@ -88,17 +84,23 @@ const librarySlice = createSlice({
       }
     },
     removeBookFromLibrary: (state, action) => {
-      const userToUpdate = action.payload; //email, bookid
+      const data = action.payload; //email, bookid
 
       // removing a book from the current user's library using the book id
       state.library = state.library.map((shelf) => {
-        if (shelf.user === userToUpdate.user) {
+        if (shelf.user === data.user) {
           shelf.userLibrary = shelf.userLibrary.filter(
-            (record) => record.bookData.id !== userToUpdate.bookId
+            (record) => record.bookData.id !== data.bookId
           );
         }
         return shelf;
       });
+
+      state.feedback = {
+        title: "Information",
+        message: `${data.bookTitle} has been removed from your library.`,
+        type: "info",
+      };
 
       return state;
     },
