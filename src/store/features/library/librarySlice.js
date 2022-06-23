@@ -50,9 +50,9 @@ const librarySlice = createSlice({
             //if the categories are different, update the category of the bookAlreadyExists object
             bookAlreadyExists.category = data.selectedBook.category;
             state.feedback = {
-              title: "Success",
+              title: "Information",
               message: `${data.selectedBook.bookData.title} has been moved to the ${data.selectedBook.category} shelf.`,
-              type: "success",
+              type: "info",
             };
           }
         } else {
@@ -95,6 +95,12 @@ const librarySlice = createSlice({
         }
         return shelf;
       });
+
+      state.feedback = {
+        title: "Information",
+        message: `${data.bookTitle} has been removed from your library.`,
+        type: "info",
+      };
 
       return state;
     },

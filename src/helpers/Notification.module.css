@@ -4,7 +4,7 @@
     padding: .8rem 1rem;
     border-radius: 8px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
-    border: 15px solid var(--light-grey);
+
     width: 100%;
 
 }
@@ -12,6 +12,7 @@
 .success {
     color: var(--dark-blue);
     background-color: var(--white);
+    border: 15px solid var(--light-grey);
 }
 
 .warning {
@@ -20,15 +21,21 @@
     border: 15px solid lightyellow;
 }
 
+.info {
+    color: var(--dark-blue);
+    background-color: #cce5ff;
+    border: 15px solid#e7f0f4;
+}
+
 .message {
     padding: 2px 0;
 }
 
 /* Media Queries */
-@media (min-width:1024px) {
+/* @media (min-width:1024px) {
     .feedback {
         min-width: 400px;
         position: relative;
         right: 20%;
     }
-}
+} */

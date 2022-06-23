@@ -4,12 +4,12 @@ import { useSelector } from "react-redux";
 import { BsBookmarkCheckFill } from "react-icons/bs";
 import { RiErrorWarningFill } from "react-icons/ri";
 
-const Notification = () => {
+const Notification = (props) => {
   const { feedback } = useSelector((state) => state.bookStore);
 
   //switch case to determine the type of icon
   const icon = () => {
-    switch (feedback.type) {
+    switch (props.type) {
       case "success":
         return (
           <BsBookmarkCheckFill
@@ -34,8 +34,8 @@ const Notification = () => {
     <article className={`${styled[feedback.type]} ${styled.feedback} `}>
       <div className={styled.icon}>{icon()}</div>
       <div>
-        <h1 className={styled.title}>{feedback.title}</h1>
-        <p className={styled.message}>{feedback.message}</p>
+        <h1 className={styled.title}>{props.title}</h1>
+        <p className={styled.message}>{props.message}</p>
       </div>
     </article>
   );

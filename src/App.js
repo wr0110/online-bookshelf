@@ -17,13 +17,44 @@ import Notification from "./helpers/Notification";
 
 function App() {
   const { feedback } = useSelector((state) => state.bookStore);
+  const { shelfFeedback } = useSelector((state) => state.bookShelf);
   useEffect(() => {
     if (feedback.message !== "") {
       Store.addNotification({
-        content: Notification,
-        // title: feedback.title,
-        // message: feedback.message,
-        // type: "warning",
+        content: (
+          <Notification
+            type={feedback.type}
+            message={feedback.message}
+            title={feedback.title}
+          />
+        ),
+
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+
+        dismiss: {
+          duration: 1200,
+          //showIcon: true,
+          // onScreen: true,
+        },
+      });
+    }
+    console.log(feedback);
+  }, [feedback]);
+
+  useEffect(() => {
+    if (shelfFeedback.message !== "") {
+      Store.addNotification({
+        content: (
+          <Notification
+            type={shelfFeedback.type}
+            message={shelfFeedback.message}
+            title={shelfFeedback.title}
+          />
+        ),
+
         insert: "top",
         container: "top-right",
         animationIn: ["animate__animated", "animate__fadeIn"],
@@ -32,13 +63,12 @@ function App() {
 
         dismiss: {
           duration: 1200,
-          showIcon: true,
-          onScreen: true,
+          //showIcon: true,
+          // onScreen: true,
         },
       });
     }
-    console.log(feedback);
-  }, [feedback]);
+  }, [shelfFeedback]);
 
   return (
     <div>
