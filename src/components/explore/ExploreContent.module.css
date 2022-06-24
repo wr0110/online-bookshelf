@@ -1,0 +1,17 @@
+.explore-books {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    margin: 2rem 0;
+    gap: 2rem;
+}
+
+
+.explore-books::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+    display: none;
+    /* Chrome */
+}
