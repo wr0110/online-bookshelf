@@ -1,5 +1,11 @@
 .explore {
   position: relative;
-  top: 70px;
-  background-color: bisque;
+  top: 150px;
+
+}
+
+@media (min-width: 900px) {
+  .explore {
+    top: 70px;
+  }
 }
