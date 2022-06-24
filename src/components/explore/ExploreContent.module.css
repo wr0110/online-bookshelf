@@ -1,3 +1,7 @@
+.explore-content {
+    margin: 2rem 0 4rem;
+}
+
 .explore-books {
     display: flex;
     align-items: center;

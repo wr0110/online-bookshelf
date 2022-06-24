@@ -6,10 +6,10 @@ const useExplore = (query, subject) => {
   const [loading, setLoading] = useState(false);
   const [exploreBooks, setExploreBooks] = useState([]);
 
-  //fetch the books from the API based on the subject
+  //fetch the books from the API based on the subject or query
   useEffect(() => {
     const apiKey = process.env.REACT_APP_GOOGLE_BOOKS_API_KEY;
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}subject:${subject}&maxResults=20&key=${apiKey}`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}subject:${subject}&maxResults=10&key=${apiKey}`;
 
     const fetchBook = async () => {
       setLoading(true);

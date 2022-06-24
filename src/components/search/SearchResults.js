@@ -45,7 +45,7 @@ const SearchResults = () => {
   /**map over the bookResults array and return a Book with the info
    * destucture properties from the book object and pass them as props
    */
-  const allBooks = bookResults.map((book) => {
+  const allBooks = bookResults?.map((book) => {
     const { id, searchInfo } = book;
     const { title, authors, publishedDate, categories, imageLinks } =
       book.volumeInfo;

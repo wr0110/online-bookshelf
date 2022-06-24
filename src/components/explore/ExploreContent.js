@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "./ExploreContent.module.css";
-
 import useExploreContent from "../../hooks/useExploreContent";
 
 const ExploreContent = () => {
+  //custom hook to fetch books
   const contents = useExploreContent();
 
   const renderContents = contents.map((content, i) => {
@@ -21,7 +21,9 @@ const ExploreContent = () => {
     );
   });
 
-  return <section>{renderContents}</section>;
+  return (
+    <section className={styled["explore-content"]}>{renderContents}</section>
+  );
 };
 
 export default ExploreContent;
