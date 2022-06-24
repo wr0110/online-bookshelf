@@ -6,17 +6,13 @@ const ExploreContent = () => {
   //custom hook to fetch books
   const contents = useExploreContent();
 
-  const renderContents = contents.map((content, i) => {
+  const renderContents = contents?.map((content) => {
     return (
-      <div key={Date.now() + i}>
-        {content.loading && "Getting  Books..."}
-
-        {!content.loading && (
-          <section>
-            <h2>{content.title}</h2>
-            <div className={styled["explore-books"]}>{content.books}</div>
-          </section>
-        )}
+      <div key={content.title}>
+        <section>
+          <h2>{content.title}</h2>
+          <div className={styled["explore-books"]}>{content.books}</div>
+        </section>
       </div>
     );
   });

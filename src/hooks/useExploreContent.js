@@ -2,17 +2,19 @@ import useExplore from "./useExplore";
 
 const useExploreContent = () => {
   //custom hook to fetch books
-  const [loadingFictionBooks, fictionBooks] = useExplore("", "fiction");
-  const [loadingRomanceBooks, romanceBooks] = useExplore("", "romance");
-  const [loadingLoveBooks, loveBooks] = useExplore("", "love");
-  const [loadingFantasyBooks, fantasyBooks] = useExplore("", "fantasy");
+  const romance = useExplore("Romance");
+  const spice = useExplore("spice");
+  const helen = useExplore("Helen");
+  const tiktok = useExplore("Tiktok");
+  const easyReads = useExplore("Easy Reads");
 
   //array with results from useExplore hook
   const contents = [
-    { title: "Fiction", books: fictionBooks, loading: loadingFictionBooks },
-    { title: "Romance", books: romanceBooks, loading: loadingRomanceBooks },
-    { title: "Love", books: loveBooks, loading: loadingLoveBooks },
-    { title: "Fantasy", books: fantasyBooks, loading: loadingFantasyBooks },
+    { title: "Romance", books: romance },
+    { title: "Add a little bit of Spice", books: spice },
+    { title: "From Helen Hoang", books: helen },
+    { title: "BookTok Sensations", books: tiktok },
+    { title: "Read in a day", books: easyReads },
   ];
   return contents;
 };

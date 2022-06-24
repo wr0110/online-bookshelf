@@ -1,37 +1,20 @@
-import { useEffect, useState } from "react";
 import Books from "../components/books/Books";
 import LibraryActions from "../components/books/LibraryActions";
+import { exploreBooks } from "../components/explore/ExploreBooks";
 
-const useExplore = (query, subject) => {
-  const [loading, setLoading] = useState(false);
-  const [exploreBooks, setExploreBooks] = useState([]);
+const useExplore = (subject) => {
+  const results = exploreBooks?.filter((book) =>
+    book.subject?.includes(subject)
+  );
 
-  //fetch the books from the API based on the subject or query
-  useEffect(() => {
-    const apiKey = process.env.REACT_APP_GOOGLE_BOOKS_API_KEY;
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}subject:${subject}&maxResults=10&key=${apiKey}`;
-
-    const fetchBook = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setExploreBooks(data.items);
-      } catch (error) {
-        console.log(error);
-      }
-      setLoading(false);
-    };
-    fetchBook();
-  }, [query, subject]);
+  //sort in a random order
+  const random = results?.sort(() => Math.random() - 0.5);
 
   /**map over the bookResults array and return a Book with the info
      destucture properties from the book object and pass them as props
-     substitute the searchInfo object with the description property
-     calculate the key because some books will be repeated
      */
 
-  const allBooks = exploreBooks?.map((book, i) => {
+  const allBooks = random?.map((book) => {
     const { id } = book;
     const {
       title,
@@ -53,14 +36,14 @@ const useExplore = (query, subject) => {
     };
     return (
       <Books
-        key={Date.now() + i}
+        key={id}
         book={bookData}
         actionsComponent={<LibraryActions book={bookData} />}
       />
     );
   });
 
-  return [loading, allBooks];
+  return allBooks;
 };
 
 export default useExplore;

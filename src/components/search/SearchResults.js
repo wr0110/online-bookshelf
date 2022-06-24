@@ -25,7 +25,7 @@ const SearchResults = () => {
    */
   useEffect(() => {
     const apiKey = process.env.REACT_APP_GOOGLE_BOOKS_API_KEY;
-    const url = ` https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&orderBy=relevance&maxResults=40&key=${apiKey}`;
+    const url = ` https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&orderBy=relevance&maxResults=28&key=${apiKey}`;
 
     const fetchBook = async () => {
       setLoading(true);
@@ -39,34 +39,41 @@ const SearchResults = () => {
       setLoading(false);
     };
 
-    fetchBook();
+    if (searchQuery) {
+      fetchBook();
+    }
   }, [searchQuery]);
+
+  console.log(bookResults);
 
   /**map over the bookResults array and return a Book with the info
    * destucture properties from the book object and pass them as props
    */
-  const allBooks = bookResults?.map((book) => {
-    const { id, searchInfo } = book;
-    const { title, authors, publishedDate, categories, imageLinks } =
-      book.volumeInfo;
+  const allBooks = bookResults
+    ?.filter((book) => book.volumeInfo.imageLinks?.smallThumbnail !== undefined)
 
-    const bookData = {
-      id,
-      searchInfo,
-      title,
-      authors,
-      publishedDate,
-      categories,
-      imageLinks,
-    };
-    return (
-      <Books
-        key={book.id}
-        book={bookData}
-        actionsComponent={<LibraryActions book={bookData} />}
-      />
-    );
-  });
+    .map((book) => {
+      const { id, searchInfo } = book;
+      const { title, authors, publishedDate, categories, imageLinks } =
+        book.volumeInfo;
+
+      const bookData = {
+        id,
+        searchInfo,
+        title,
+        authors,
+        publishedDate,
+        categories,
+        imageLinks,
+      };
+      return (
+        <Books
+          key={book.id}
+          book={bookData}
+          actionsComponent={<LibraryActions book={bookData} />}
+        />
+      );
+    });
 
   //props for heading component
   const text = (
