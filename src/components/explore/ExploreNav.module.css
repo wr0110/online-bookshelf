@@ -1,0 +1,36 @@
+.explore-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1.5px solid rgba(166, 166, 166, 0.3);
+    margin-bottom: 2rem;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.explore-nav::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+    display: none;
+    /* Chrome */
+}
+
+.explore-nav p {
+    margin-right: .5rem;
+    min-width: max-content;
+    padding: 5px 10px;
+    font-weight: 600;
+    color: var(--dark-blue);
+    border-radius: 50px;
+    border: 2px solid var(--dark-blue);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+.explore-nav p:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}

@@ -1,0 +1,30 @@
+.explore-content {
+    margin: 2rem 0 4rem;
+    padding-bottom: 3rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    color: var(--dark-blue);
+}
+
+.explore-books {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    margin: 2rem 0;
+    gap: 2rem;
+}
+
+
+.explore-books::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+    display: none;
+    /* Chrome */
+}
