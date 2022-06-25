@@ -133,17 +133,58 @@ export const exploreBooks = [
   },
 
   {
-    id: "_kldwgEACAAJ",
+    id: "o5lDEAAAQBAJ",
     volumeInfo: {
-      title: "The Kiss Quotient",
-      authors: ["Helen Hoang"],
-      publishedDate: "2019-06-03",
+      title: "The Love Hypothesis",
+      authors: ["Ali Hazelwood"],
+      publishedDate: "2021-09-27",
+      categories: ["Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=o5lDEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=o5lDEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    subject: ["Romance", "Easy Reads"],
+  },
+
+  {
+    id: "LthOEAAAQBAJ",
+    volumeInfo: {
+      title: "Stuck with You",
+      authors: ["Ali Hazelwood"],
+      publishedDate: "2022-06-07",
+      categories: ["Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=LthOEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=LthOEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    subject: ["Easy Reads"],
+  },
+
+  {
+    id: "DViYDwAAQBAJ",
+    volumeInfo: {
+      title: "The Unhoneymooners",
+      authors: ["Christina Lauren"],
+      publishedDate: "2019-05-14",
+      categories: ["Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=DViYDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=DViYDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      },
     },
     searchInfo: {
       textSnippet:
-        "A heartwarming and refreshing debut novel that proves one thing: there&#39;s not enough data in the world to predict what will make your heart tick.",
+        "With Christina Lauren’s “uniquely hilarious and touching voice” (Entertainment Weekly), The Unhoneymooners is a romance for anyone who has ever felt unlucky in love.",
     },
-    subject: ["Romance", "Helen ", "Tiktok"],
+    subject: ["Tiktok", "Easy Reads"],
   },
 
   {
@@ -273,6 +314,23 @@ export const exploreBooks = [
     subject: ["Easy Reads"],
   },
 
+  {
+    id: "LNhOEAAAQBAJ",
+    volumeInfo: {
+      title: "Under One Roof",
+      authors: ["Ali Hazelwood"],
+      publishedDate: "2022-05-03",
+      categories: ["Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=LNhOEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=LNhOEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    subject: ["Fiction", "Easy Reads"],
+  },
+
   //   Spice Books
   {
     id: "z36uuAEACAAJ",
@@ -282,9 +340,6 @@ export const exploreBooks = [
       authors: ["Danielle Lori"],
       publisher: "Createspace Independent Publishing Platform",
       publishedDate: "2018-06-20",
-      description:
-        "She's a romantic at heart, living in the most unromantic of worlds . . . Nicknamed Sweet Abelli for her docile nature, Elena smiles on cue and has a charming response for everything. She's the favored daughter, the perfect mafia principessa . . . or was. Now, all she can see in the mirror's reflection is blood staining her hands like crimson paint. They say first impressions are everything . . . In the murky waters of New York's underworld, Elena's sister is arranged to marry Nicolas Russo. A Made Man, a boss, a cheat-even measured against mafia standards. His reputation stretches far and wide and is darker than his black suits and ties. After his and Elena's first encounter ends with an accidental glare on her part, she realizes he's just as rude as he is handsome. She doesn't like the man or anything he stands for, though that doesn't stop her heart from pattering like rain against glass when he's near, nor the shiver that ghosts down her spine at the sound of his voice. And he's always near. Telling her what to do. Making her feel hotter than any future brother-in-law should. Elena may be the Sweet Abelli on the outside, but she's beginning to learn she has a taste for the darkness, for rough hands, cigarettes, and whiskey-colored eyes. Having already escaped one scandal, however, she can hardly afford to be swept up in another. Besides, even if he were hers, everyone knows you don't fall in love with a Made Man . . . right? This is a standalone forbidden romance.",
-
       imageLinks: {
         smallThumbnail:
           "http://books.google.com/books/content?id=z36uuAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
@@ -306,8 +361,6 @@ export const exploreBooks = [
       title: "The Darkest Temptation",
       authors: ["Danielle Lori"],
       publishedDate: "2020-12-13",
-      description:
-        "A fortune teller once told Mila she'd find a man who would take her breath away. She refrained from telling her it would be literally while Mila ran for her life.Having always done what is expected of her, Mila dresses the part, only dates college boys with exemplary backgrounds, and doesn't ask questions. Not about her papa's absences or his refusal to let her set foot in her birthplace-Russia.Suffocated by the rules and unanswered questions, Mila does what she's always wanted to. She boards a plane to Moscow.She never expected to fall for a man on the way. One with unexplained wealth, tattoos on his hands, and secrets in his eyes. But it doesn't take long for his caress to become a rough grasp muffling her screams.Revenge is a dish best served cold. Unfortunately, a Russian winter is the coldest of them all, and Mila soon learns the only way to escape intact is to do the impossible and thaw her captor's heart.",
 
       imageLinks: {
         smallThumbnail:
@@ -542,5 +595,385 @@ export const exploreBooks = [
     },
 
     subject: ["spice"],
+  },
+
+  //Fantasy
+  {
+    id: "OdXvDwAAQBAJ",
+    volumeInfo: {
+      title: "A Court of Silver Flames",
+      authors: ["Sarah J. Maas"],
+      publishedDate: "2021-02-16",
+      categories: ["Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=OdXvDwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=OdXvDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "Sarah J. Maas&#39;s sexy, richly imagined series continues with the journey of Feyre&#39;s fiery sister, Nesta.",
+    },
+    subject: ["Fantasy", "Fiction", "Tiktok"],
+  },
+
+  {
+    id: "D8GIcKPGNR8C",
+    volumeInfo: {
+      title: "Throne of Glass",
+      authors: ["Sarah J. Maas"],
+      publishedDate: "2012",
+      categories: ["Juvenile Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=D8GIcKPGNR8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=D8GIcKPGNR8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "A hugely commercial, fabulously addictive fantastical romp - from an author with top-notch digital self-publishing pedigree and legions of fans awaiting publication",
+    },
+    subject: ["Fantasy", "Fiction"],
+  },
+
+  {
+    id: "w0QotwEACAAJ",
+    volumeInfo: {
+      title: "Restore Me",
+      authors: ["Tahereh Mafi"],
+      publishedDate: "2019-03-05",
+      categories: ["Young Adult Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=w0QotwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=w0QotwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "An instant New York Times bestseller! Juliette and Warner’s story continues in the electrifying fourth installment of Tahereh Mafi’s bestselling Shatter Me series.",
+    },
+    subject: ["Fantasy", "Tiktok"],
+  },
+
+  {
+    id: "giXxsgEACAAJ",
+    volumeInfo: {
+      title: "Shatter Me",
+      authors: ["Tahereh Mafi"],
+      publishedDate: "2012-10-02",
+      categories: ["Juvenile Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=giXxsgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=giXxsgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "In this electrifying debut, Tahereh Mafi presents a riveting dystopian world, a thrilling superhero story, and an unforgettable heroine.",
+    },
+    subject: ["Fiction", "Fantasy"],
+  },
+
+  {
+    id: "2SH_xgEACAAJ",
+    volumeInfo: {
+      title: "Imagine Me",
+      authors: ["Tahereh Mafi"],
+      publishedDate: "2020-03-31",
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=2SH_xgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=2SH_xgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+      language: "en",
+    },
+    searchInfo: {
+      textSnippet:
+        "The book that all Shatter Me fans have been waiting for is finally here.",
+    },
+    subject: ["Fantasy"],
+  },
+
+  {
+    id: "wckaAQAAQBAJ",
+    volumeInfo: {
+      title: "The One",
+      authors: ["Kiera Cass"],
+      publishedDate: "2014-05-06",
+      categories: ["Young Adult Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=wckaAQAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=wckaAQAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+
+    searchInfo: {
+      textSnippet:
+        "The captivating third book in Kiera Cass’s #1 New York Times bestselling Selection series America Singer searches for her happily ever after in this swoon-worthy YA dystopian romance, perfect for readers who loved Veronica Roth’s ...",
+    },
+    subject: ["Fantasy", "Fiction", "Tiktok"],
+  },
+
+  {
+    id: "w3JStQEACAAJ",
+    volumeInfo: {
+      title: "The Selection",
+      authors: ["Kiera Cass"],
+      publishedDate: "2012-04-24",
+      categories: ["Juvenile Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=w3JStQEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=w3JStQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "For thirty-five girls, the Selection is the chance of a lifetime.",
+    },
+
+    subject: ["Fiction, Fantasy", "Tiktok"],
+  },
+
+  {
+    id: "Co9szQEACAAJ",
+    volumeInfo: {
+      title: "The Heir",
+      authors: ["Kiera Cass"],
+      publishedDate: "2016-05-03",
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=Co9szQEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=Co9szQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "Twenty years ago, America Singer entered the Selection and won Prince Maxon&#39;s heart.",
+    },
+    subject: ["Fantasy"],
+  },
+
+  {
+    id: "xZudBAAAQBAJ",
+    volumeInfo: {
+      title: "Scythe",
+      authors: ["Neal Shusterman"],
+      publishedDate: "2016-11-22",
+      categories: ["Young Adult Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=xZudBAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=xZudBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "A Time Best YA Book of All Time (2021) Two teens must learn the “art of killing” in this Printz Honor–winning book, the first in a chilling new series from Neal Shusterman, author of the New York Times bestselling Unwind dystology.",
+    },
+    subject: ["Fantasy", "Tiktok"],
+  },
+
+  {
+    id: "iZt4CgAAQBAJ",
+    volumeInfo: {
+      title: "Thunderhead",
+      authors: ["Neal Shusterman"],
+      publishedDate: "2018-01-09",
+      categories: ["Young Adult Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=iZt4CgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=iZt4CgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "“Intelligent and entertaining.” —Kirkus Reviews (starred review) “Even better than the first book.” —School Library Journal (starred review) Rowan and Citra take opposite stances on the morality of the Scythedom, putting them at ...",
+    },
+    subject: ["Fiction", "Fantasy"],
+  },
+
+  {
+    id: "EJ2kzgEACAAJ",
+    volumeInfo: {
+      title: "A Game of Retribution",
+      authors: ["Scarlett St Clair"],
+      publishedDate: "2022-05-31",
+      categories: ["Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=EJ2kzgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=EJ2kzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "&quot;Fan favorite Scarlett St. Clair expands her universe of New Greece and the Hades and Persephone retellings with a new series told in Hades&#39;s point of view.",
+    },
+    subject: ["Fantasy"],
+  },
+
+  {
+    id: "hhKXzgEACAAJ",
+    volumeInfo: {
+      title: "A Touch of Darkness",
+      authors: ["Scarlett St Clair"],
+      publisher: "Bloom Books",
+      publishedDate: "2021-08-13",
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=hhKXzgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=hhKXzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "From bestselling author Scarlett St. Clair comes a dark and enthralling reimagining of the Hades and Persephone Greek myth.",
+    },
+    subject: ["Fantasy"],
+  },
+
+  {
+    id: "ZLCYzgEACAAJ",
+    volumeInfo: {
+      title: "A Touch of Malice",
+      authors: ["Scarlett St. Clair"],
+      publishedDate: "2021-08-27",
+      categories: ["Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=ZLCYzgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=ZLCYzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "The next installment in the Hades and Persephone story from bestselling author Scarlett St. Clair.",
+    },
+    subject: ["Fantasy"],
+  },
+
+  //Booktok
+
+  {
+    id: "IdAmDwAAQBAJ",
+    volumeInfo: {
+      title: "The Seven Husbands of Evelyn Hugo",
+      subtitle: "A Novel",
+      authors: ["Taylor Jenkins Reid"],
+      publishedDate: "2017-06-13",
+      categories: ["FICTION"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=IdAmDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=IdAmDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      },
+    },
+
+    searchInfo: {
+      textSnippet:
+        "The epic adventures Evelyn creates over the course of a lifetime will leave every reader mesmerized.",
+    },
+    subject: ["Tiktok", "Fiction"],
+  },
+
+  {
+    id: "vH3LDwAAQBAJ",
+    volumeInfo: {
+      title: "The Invisible Life of Addie LaRue",
+      authors: ["V. E. Schwab"],
+      publishedDate: "2020-10-06",
+      categories: ["Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=vH3LDwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=vH3LDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    subject: ["Fiction", "Tiktok"],
+  },
+
+  {
+    id: "l5rZtwEACAAJ",
+    volumeInfo: {
+      title: "Fix Her Up",
+      authors: ["Tessa Bailey"],
+      publishedDate: "2019-06-11",
+      categories: ["Fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=l5rZtwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=l5rZtwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "A brand new romantic comedy from New York Times bestseller Tessa Bailey!",
+    },
+    subject: ["Tiktok", "Romance", "Easy Reads"],
+  },
+
+  {
+    id: "PuXizQEACAAJ",
+    volumeInfo: {
+      title: "It Happened One Summer",
+      authors: ["Tessa Bailey"],
+      publishedDate: "2021-07-13",
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=PuXizQEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=PuXizQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    searchInfo: {
+      textSnippet:
+        "&quot;Tessa Bailey is back with a Schitt&#39;s Creek-inspired rom-com about a Hollywood &quot;It Girl&quot; who&#39;s cut off from her wealthy family and exiled to a small Pacific Northwest beach town ... where she butts heads with a surly, sexy local who thinks ...",
+    },
+    subject: ["Fiction", "Romance", "Tiktok", "Easy Reads"],
+  },
+
+  {
+    id: "mqHCzgEACAAJ",
+    volumeInfo: {
+      title: "Window Shopping",
+      authors: ["Tessa Bailey"],
+      publishedDate: "2022-01-25",
+      categories: ["Romance fiction"],
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=mqHCzgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=mqHCzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+
+    searchInfo: {
+      textSnippet:
+        "I&#39;ll put my heart and soul into dressing his holiday windows. I&#39;ll work without stopping. And when we lose the battle with temptation, I&#39;ll try and remember I&#39;m just window shopping&quot;--back cover.",
+    },
+    subject: ["Easy Reads"],
   },
 ];

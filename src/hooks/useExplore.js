@@ -15,19 +15,13 @@ const useExplore = (subject) => {
      */
 
   const allBooks = random?.map((book) => {
-    const { id } = book;
-    const {
-      title,
-      authors,
-      publishedDate,
-      categories,
-      imageLinks,
-      description,
-    } = book.volumeInfo;
+    const { id, searchInfo } = book;
+    const { title, authors, publishedDate, categories, imageLinks } =
+      book.volumeInfo;
 
     const bookData = {
       id,
-      searchInfo: { textSnippet: description },
+      searchInfo,
       title,
       authors,
       publishedDate,
