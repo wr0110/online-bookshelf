@@ -51,7 +51,8 @@
   top: 70px;
   left: 0;
   z-index: 3;
-  background-color: rgb(226, 226, 226);
+  background-color: rgba(226, 226, 226, 0.6);
+  backdrop-filter: blur(10px);
   height: 80px;
   width: 100%;
   display: flex;
@@ -75,7 +76,8 @@
 .desktop-search-bar input {
   border: 2px solid var(--yellow);
   border-radius: 50px;
-  padding: 9px 25px;
+  padding: 9px 18px;
+  padding-right: 40px;
   width: 100%;
   color: var(--yellow);
   font-weight: 600;
@@ -147,10 +149,5 @@
     width: 120px;
     margin-left: auto;
     margin-right: 20px;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .desktop-search-bar:hover {
-    width: 300px;
   }
 }

@@ -7,24 +7,14 @@ import { RiBookmarkFill } from "react-icons/ri";
 
 // component to show each book it receives
 const Books = (props) => {
-  // state
+  // state and props
   const [openModal, setOpenModal] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [openRemoveModal, setOpenRemoveModal] = useState(false);
-
-  //Destructured imageLink property
   const { imageLinks, title } = props.book;
 
-  // if there is no image (undefined was returned) then show place holder image
-  const url = imageLinks
-    ? imageLinks.smallThumbnail
-    : "https://via.placeholder.com/128x204";
-
   // set the modal state
-  const handleGetBookInfo = () => {
-    setOpenModal((state) => !state);
-  };
-
+  const handleGetBookInfo = () => setOpenModal((state) => !state);
   const handleDelete = () => setOpenRemoveModal((state) => !state);
 
   return (
@@ -35,7 +25,7 @@ const Books = (props) => {
         onMouseLeave={() => setIsHovering(false)}
       >
         <figure onClick={handleGetBookInfo}>
-          <img src={url} alt={title} />
+          <img src={imageLinks.smallThumbnail} alt={title} />
         </figure>
 
         {props.showDeleteIcon && isHovering && (
