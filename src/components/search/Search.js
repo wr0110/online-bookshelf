@@ -9,7 +9,15 @@ const Search = (props) => {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    navigate(`/results?search=${searchTerm}`);
+    /**if user is not on the results page then navigate to the results page
+     * if user is on the results page then update the path to the new search term without refreshing the page
+     */
+    if (window.location.pathname !== "/results?search=") {
+      navigate(`/results?search=${searchTerm}`);
+    } else {
+      navigate(`/results?search=${searchTerm}`, { replace: true });
+    }
+
     props.setshowSearch(false);
     setSearchTerm("");
   };

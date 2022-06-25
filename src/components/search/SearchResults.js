@@ -3,10 +3,9 @@ import styled from "./SearchResults.module.css";
 import { Navigate, useLocation } from "react-router-dom";
 import Books from "../books/Books";
 import Container from "../../helpers/wrapper/Container";
-import Modal from "../../helpers/modal/Modal";
-import { GiBookshelf } from "react-icons/gi";
 import Heading from "../../helpers/heading/Heading";
 import LibraryActions from "../books/LibraryActions";
+import Loading from "../../helpers/Loading";
 
 const SearchResults = () => {
   // states
@@ -88,18 +87,13 @@ const SearchResults = () => {
   return (
     <section className={styled.results}>
       {/* when loading show Modal */}
-      {loading && (
-        <Modal>
-          <GiBookshelf size="50px" />
-        </Modal>
-      )}
+      {loading && <Loading />}
 
-      {!loading && (
-        <Container>
-          {allBooks && <Heading className="heading-md" text={text} />}
-          <div className="books-grid">{allBooks}</div>
-        </Container>
-      )}
+      <Container>
+        {allBooks && <Heading className="heading-md" text={text} />}
+
+        <div className="books-grid">{allBooks}</div>
+      </Container>
     </section>
   );
 };
