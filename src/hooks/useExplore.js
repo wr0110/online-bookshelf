@@ -10,10 +10,9 @@ const useExplore = (subject) => {
   //sort in a random order
   const random = results?.sort(() => Math.random() - 0.5);
 
-  /**map over the bookResults array and return a Book with the info
-     destucture properties from the book object and pass them as props
-     */
-
+  /**map over the array and return a Book with the info
+   * destucture properties from the book object and pass them as props
+   */
   const allBooks = random?.map((book) => {
     const { id, searchInfo } = book;
     const { title, authors, publishedDate, categories, imageLinks } =

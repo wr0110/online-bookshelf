@@ -10,7 +10,7 @@ const ExploreContent = () => {
     return (
       <div key={content.title}>
         <section>
-          <h2>{content.title}</h2>
+          <h2 className={styled.title}>{content.title}</h2>
           <div className={styled["explore-books"]}>{content.books}</div>
         </section>
       </div>

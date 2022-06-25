@@ -44,14 +44,11 @@ const SearchResults = () => {
     }
   }, [searchQuery]);
 
-  console.log(bookResults);
-
   /**map over the bookResults array and return a Book with the info
    * destucture properties from the book object and pass them as props
    */
   const allBooks = bookResults
     ?.filter((book) => book.volumeInfo.imageLinks?.smallThumbnail !== undefined)
-
     .map((book) => {
       const { id, searchInfo } = book;
       const { title, authors, publishedDate, categories, imageLinks } =
