@@ -6,6 +6,8 @@ import Container from "../../helpers/wrapper/Container";
 import Heading from "../../helpers/heading/Heading";
 import LibraryActions from "../books/LibraryActions";
 import Loading from "../../helpers/Loading";
+import EmptyShelf from "../books/EmptyShelf";
+import webSearch from "../../images/web_search.svg";
 
 const SearchResults = () => {
   // states
@@ -19,7 +21,7 @@ const SearchResults = () => {
   const searchQuery = queryParams.get("search");
 
   /**
-   * url includes searchQuery, orderBy relevance and maxResults of 40
+   * url includes searchQuery, orderBy relevance and maxResults of 28
    * setBookResults to the results from the fetched data
    */
   useEffect(() => {
@@ -91,7 +93,7 @@ const SearchResults = () => {
 
       <Container>
         {allBooks && <Heading className="heading-md" text={text} />}
-
+        {allBooks === undefined && <EmptyShelf src={webSearch} />}
         <div className="books-grid">{allBooks}</div>
       </Container>
     </section>
