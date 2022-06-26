@@ -6,6 +6,10 @@
   padding-top: 80px;
 }
 
+.hero-alt {
+  background-position: 40%;
+}
+
 .hero-text {
   padding: 15rem 0;
   width: 80%;
@@ -19,6 +23,10 @@
 }
 
 @media (min-width: 1024px) {
+  .hero {
+    height: 120vh;
+  }
+
   .hero-text {
     padding: 10rem 0 12rem;
   }

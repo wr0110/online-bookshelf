@@ -8,7 +8,10 @@ const Hero = (props) => {
   const heroStyle = { backgroundImage: `url(${props.src})` };
 
   return (
-    <section style={heroStyle} className={styled.hero}>
+    <section
+      style={heroStyle}
+      className={`${styled.hero} ${styled[props.className]}`}
+    >
       <Container>
         <article className={styled["hero-text"]}>
           <Heading className="heading-lg" text={props.heroHeading} />
