@@ -1,9 +1,9 @@
 import React from "react";
-import Genre from "../components/publichome/Genre";
-import Hero from "../components/publichome/Hero";
+import Genre from "../components/home/Genre";
+import Hero from "../components/home/Hero";
 import cover from "../images/private_cover.png";
 import bookSitting from "../images/book_sitting.png";
-import TopPicks from "../components/publichome/TopPicks";
+import TopPicks from "../components/home/TopPicks";
 
 const genreList = [
   "Crime Fiction",

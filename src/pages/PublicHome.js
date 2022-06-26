@@ -1,9 +1,9 @@
 import React from "react";
-import Booktok from "../components/publichome/Booktok";
-import Genre from "../components/publichome/Genre";
-import Hero from "../components/publichome/Hero";
-import Review from "../components/publichome/Review";
-import TopPicks from "../components/publichome/TopPicks";
+import Booktok from "../components/home/Booktok";
+import Genre from "../components/home/Genre";
+import Hero from "../components/home/Hero";
+import Review from "../components/home/Review";
+import TopPicks from "../components/home/TopPicks";
 import reading_svg from "../images/reading_svg.png";
 import covers from "../images/covers.png";
 
