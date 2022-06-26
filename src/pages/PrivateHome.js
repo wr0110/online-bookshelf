@@ -48,7 +48,16 @@ const PrivateHome = () => {
         className="hero-alt"
       />
       <Add />
-      <TopPicks />
+      <TopPicks
+        text={
+          <>
+            We think you <span>might like</span> these
+          </>
+        }
+        paragraph="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere
+            blanditiis quis perferendis doloremque ipsa, reprehenderit saepe
+            repellendus illo deleniti assumenda!"
+      />
       <Genre
         genreList={genreList}
         headingClassName="heading-md"

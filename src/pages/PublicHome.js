@@ -44,6 +44,8 @@ const PublicHome = () => {
   const paragraph =
     " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus eleifend cras praesent purus nec, quis aliquet.";
 
+  // props to pass to the top picks component
+
   return (
     <section>
       <Hero
@@ -60,7 +62,16 @@ const PublicHome = () => {
         alt="person reading a book"
         paragraph={paragraph}
       />
-      <TopPicks />
+      <TopPicks
+        text={
+          <>
+            Top picks of the <span>month</span>
+          </>
+        }
+        paragraph="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere
+            blanditiis quis perferendis doloremque ipsa, reprehenderit saepe
+            repellendus illo deleniti assumenda!"
+      />
       <Booktok />
       <Review />
     </section>

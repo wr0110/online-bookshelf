@@ -6,25 +6,13 @@ import styled from "./TopPicks.module.css";
 import cruel_prince from "../../images/cruel_prince.jpg";
 import ugly_love from "../../images/ugly_love.jpg";
 
-const TopPicks = () => {
-  // props for heading component
-  const text = (
-    <>
-      Top picks of the <span>month</span>
-    </>
-  );
-
+const TopPicks = (props) => {
   return (
     <section className={styled["top-picks"]}>
       <Container>
         <article className={styled["top-picks-info"]}>
-          <Heading className="heading-md" text={text} />
-
-          <p className="para">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere
-            blanditiis quis perferendis doloremque ipsa, reprehenderit saepe
-            repellendus illo deleniti assumenda!
-          </p>
+          <Heading className="heading-md" text={props.text} />
+          <p className="para">{props.paragraph}</p>
         </article>
 
         {/* using the recommendations component */}
