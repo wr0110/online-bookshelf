@@ -26,6 +26,13 @@
   text-align: center;
   min-width: 120px;
   width: fit-content;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.genre-item:hover {
+  background-color: var(--dark-blue);
+  color: var(--white);
 }
 
 .genre-group {
