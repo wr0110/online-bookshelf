@@ -4,6 +4,7 @@ import Hero from "../components/home/Hero";
 import cover from "../images/private_cover.png";
 import bookSitting from "../images/book_sitting.png";
 import TopPicks from "../components/home/TopPicks";
+import Add from "../components/home/Add";
 
 const genreList = [
   "Crime Fiction",
@@ -21,7 +22,7 @@ const PrivateHome = () => {
   //Hero Props
   const heroHeading = (
     <>
-      Start <span>Organizing</span> your reads
+      Start <span>organizing</span> your reads
     </>
   );
 
@@ -46,6 +47,7 @@ const PrivateHome = () => {
         buttonText={buttonText}
         className="hero-alt"
       />
+      <Add />
       <TopPicks />
       <Genre
         genreList={genreList}
