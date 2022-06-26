@@ -4,27 +4,16 @@ import Container from "../../helpers/wrapper/Container";
 import Button from "../button/Button";
 import styled from "./Hero.module.css";
 
-const Hero = () => {
+const Hero = (props) => {
+  const heroStyle = { backgroundImage: `url(${props.src})` };
+
   return (
-    <section className={styled.hero}>
+    <section style={heroStyle} className={styled.hero}>
       <Container>
         <article className={styled["hero-text"]}>
-          <Heading
-            className="heading-lg"
-            text={
-              <>
-                Your <span>online</span> bookshelf
-              </>
-            }
-          />
-
-          <p className="para">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus
-            velit senectus in nunc ut dictum aliquam id platea. In eget amet,
-            imperdiet tellus. Sit sit orci in eu. Quis pellentesque.
-          </p>
-
-          <Button>Start Organizing</Button>
+          <Heading className="heading-lg" text={props.heroHeading} />
+          <p className="para">{props.text}</p>
+          <Button>{props.buttonText}</Button>
         </article>
       </Container>
     </section>

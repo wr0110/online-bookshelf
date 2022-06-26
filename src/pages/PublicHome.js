@@ -5,17 +5,30 @@ import Hero from "../components/publichome/Hero";
 import Review from "../components/publichome/Review";
 import TopPicks from "../components/publichome/TopPicks";
 import reading_svg from "../images/reading_svg.png";
+import covers from "../images/covers.png";
+
+// props to pass to the genre component
+const genreList = [
+  "Fiction",
+  "Fantasy",
+  "Romance",
+  "Humour",
+  "Horror",
+  "New Adult",
+];
 
 const PublicHome = () => {
-  // props to pass to the genre component
-  const genreList = [
-    "Fiction",
-    "Fantasy",
-    "Romance",
-    "Humour",
-    "Horror",
-    "New Adult",
-  ];
+  //Hero Props
+  const heroHeading = (
+    <>
+      Your <span>online</span> bookshelf
+    </>
+  );
+
+  const heroText =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus velit senectus in nunc ut dictum aliquam id platea. In eget amet, imperdiet tellus. Sit sit orci in eu. Quis pellentesque.";
+
+  const buttonText = "Start Organizing";
 
   // props to pass to the genre component
   const text = (
@@ -30,7 +43,12 @@ const PublicHome = () => {
 
   return (
     <section>
-      <Hero />
+      <Hero
+        src={covers}
+        text={heroText}
+        buttonText={buttonText}
+        heroHeading={heroHeading}
+      />
       <Genre
         genreList={genreList}
         headingClassName="heading-md"
