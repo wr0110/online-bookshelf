@@ -5,7 +5,7 @@ import Container from "../../helpers/wrapper/Container";
 
 const Genre = (props) => {
   //  map over the genrelist recieved from props and return them in a paragraph
-  const genres = props.genreList.map((genre) => {
+  const genres = props.genreList?.map((genre) => {
     return (
       <p key={genre} className={styled["genre-item"]}>
         {genre}
@@ -22,13 +22,16 @@ const Genre = (props) => {
             text={props.headingText}
           />
 
-          <p className={`para ${styled.paragraph}`}>{props.paragraph}</p>
-
+          {props.paragraph && (
+            <p className={`para ${styled.paragraph}`}>{props.paragraph}</p>
+          )}
           <div className={styled["genre-group"]}>{genres}</div>
         </article>
 
         {/* image */}
-        <figure className={styled["genre-img"]}>
+        <figure
+          className={`${styled["genre-img"]} ${styled[props.imgClassName]}`}
+        >
           <img src={`${props.src}`} alt={props.alt} />
         </figure>
       </Container>

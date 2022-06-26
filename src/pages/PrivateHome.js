@@ -1,6 +1,21 @@
 import React from "react";
+import Genre from "../components/publichome/Genre";
 import Hero from "../components/publichome/Hero";
 import cover from "../images/private_cover.png";
+import bookSitting from "../images/book_sitting.png";
+import TopPicks from "../components/publichome/TopPicks";
+
+const genreList = [
+  "Crime Fiction",
+  "Self-Help",
+  "Fantasy",
+  "Romance",
+  "Humour",
+  "Historical Fiction",
+  "Horror",
+  "Young Adult",
+  "Dystopian Fiction",
+];
 
 const PrivateHome = () => {
   //Hero Props
@@ -15,6 +30,13 @@ const PrivateHome = () => {
 
   const buttonText = "Get Started";
 
+  //Genre Props
+  const genreHeading = (
+    <>
+      Seach from your <span>favourite </span> categories
+    </>
+  );
+
   return (
     <>
       <Hero
@@ -23,6 +45,15 @@ const PrivateHome = () => {
         text={heroText}
         buttonText={buttonText}
         className="hero-alt"
+      />
+      <TopPicks />
+      <Genre
+        genreList={genreList}
+        headingClassName="heading-md"
+        headingText={genreHeading}
+        src={bookSitting}
+        alt="person reading a book"
+        imgClassName="med-img"
       />
     </>
   );

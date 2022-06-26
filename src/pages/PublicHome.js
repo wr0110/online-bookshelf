@@ -10,11 +10,14 @@ import covers from "../images/covers.png";
 // props to pass to the genre component
 const genreList = [
   "Fiction",
+
   "Fantasy",
   "Romance",
   "Humour",
   "Horror",
   "New Adult",
+  "Non-Fiction",
+  "Mystery",
 ];
 
 const PublicHome = () => {

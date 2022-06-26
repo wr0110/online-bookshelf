@@ -11,6 +11,7 @@
 .wrap {
   padding-top: 4rem;
 }
+
 .paragraph {
   text-align: center;
 }
@@ -28,11 +29,12 @@
 }
 
 .genre-group {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   margin: 2rem 0;
-  place-items: center;
+
 }
 
 .genre-img {
@@ -50,9 +52,9 @@
     margin: 0 auto;
   }
 
-  .genre-group {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
-    justify-content: center;
+  .med-img {
+    width: 80%;
+    margin: 0 auto;
   }
 }
 
@@ -69,6 +71,7 @@
     padding: 3rem 0;
     max-width: 400px;
   }
+
   .wrap article h1,
   .wrap article .paragraph {
     text-align: left;
@@ -84,11 +87,11 @@
     margin-right: auto;
   }
 
-  .genre-item {
-    margin-right: auto;
-  }
-
   .genre-img img {
     transform: scale(1.2);
+  }
+
+  .med-img {
+    width: 70%;
   }
 }
