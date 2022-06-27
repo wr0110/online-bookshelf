@@ -53,7 +53,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 2rem;
-  place-items: center space-between;
+  place-items: center;
   margin: 0 auto;
   padding-bottom: 2rem;
 }

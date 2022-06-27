@@ -21,11 +21,18 @@ const AuthContextProvider = (props) => {
   /**
    *signs out the user
    *removes the isUserSignedIn value from local storage
+   *sets the isSignedIn state to false and removes current user
    */
   const signUserOut = async () => {
-    signOut(auth).then(() => {
+    await signOut(auth).then(() => {
       localStorage.removeItem("isUserSignedIn");
       localStorage.removeItem("currentUser");
+      setcurrentUser({
+        name: "",
+        userId: "",
+        email: "",
+      });
+
       setIsSignedIn(false);
     });
   };

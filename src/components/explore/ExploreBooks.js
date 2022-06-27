@@ -21,7 +21,7 @@ export const exploreBooks = [
       textSnippet:
         "Before It Ends with Us, it started with Atlas. Colleen Hoover tells fan favourite Atlas&#39; side of the story and shares what comes next in this long-anticipated sequel to the #1 Sunday Times bestseller It Ends with Us.",
     },
-    subject: ["Romance", "Colleen Hoover"],
+    subject: ["Picks", "Romance", "Colleen Hoover"],
   },
 
   {
@@ -47,7 +47,7 @@ export const exploreBooks = [
       textSnippet:
         "An honest, evocative, and tender novel, It Ends with Us is “a glorious and touching read, a forever keeper. The kind of book that gets handed down” (USA TODAY).",
     },
-    subject: ["Romance", "Colleen Hoover"],
+    subject: ["Picks", "Romance", "Colleen Hoover"],
   },
 
   {
@@ -76,7 +76,7 @@ export const exploreBooks = [
       textSnippet:
         "From Colleen Hoover, the #1 New York Times bestselling author of It Ends With Us, a heart-wrenching love story that proves attraction at first sight can be messy.",
     },
-    subject: ["Romance", "Colleen Hoover"],
+    subject: ["Picks", "Romance", "Colleen Hoover"],
   },
 
   {
@@ -101,7 +101,7 @@ export const exploreBooks = [
       },
     },
 
-    subject: ["Romance", "Colleen Hoover"],
+    subject: ["Picks", "Romance", "Colleen Hoover"],
   },
 
   {
@@ -129,7 +129,7 @@ export const exploreBooks = [
       textSnippet:
         "&quot;This book club in a box contains 7 stand alone titles of Colleen Hoover.",
     },
-    subject: ["Romance", "Colleen Hoover"],
+    subject: ["Picks", "Romance", "Colleen Hoover"],
   },
 
   {
@@ -146,7 +146,7 @@ export const exploreBooks = [
           "http://books.google.com/books/content?id=o5lDEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
       },
     },
-    subject: ["Romance", "Easy Reads"],
+    subject: ["Picks", "Romance", "Easy Reads"],
   },
 
   {
@@ -163,7 +163,7 @@ export const exploreBooks = [
           "http://books.google.com/books/content?id=LthOEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
       },
     },
-    subject: ["Easy Reads"],
+    subject: ["Picks", "Easy Reads"],
   },
 
   {
@@ -184,7 +184,7 @@ export const exploreBooks = [
       textSnippet:
         "With Christina Lauren’s “uniquely hilarious and touching voice” (Entertainment Weekly), The Unhoneymooners is a romance for anyone who has ever felt unlucky in love.",
     },
-    subject: ["Tiktok", "Easy Reads"],
+    subject: ["Picks", "Tiktok", "Easy Reads"],
   },
 
   {
@@ -207,7 +207,7 @@ export const exploreBooks = [
           "http://books.google.com/books/content?id=DKWGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
       },
     },
-    subject: ["Romance", "Easy Reads", "Helen", "Tiktok"],
+    subject: ["Picks", "Romance", "Easy Reads", "Helen", "Tiktok"],
   },
 
   {
@@ -233,7 +233,7 @@ export const exploreBooks = [
       textSnippet:
         "A woman struggling with burnout learns to embrace the unexpected—and the man she enlists to help her—in this new New York Times bestselling romance by Helen Hoang.",
     },
-    subject: ["Easy Reads", "Tiktok", "Helen"],
+    subject: ["Picks", "Easy Reads", "Tiktok", "Helen"],
   },
 
   {
@@ -259,7 +259,7 @@ export const exploreBooks = [
       textSnippet:
         "&quot;Two enemies team up to flip a house ... and the sparks between them will either burn the place down or ignite a passion they can&#39;t resist&quot;--Jacket flap.",
     },
-    subject: ["Romance", "Helen", "Easy Reads", "Tiktok"],
+    subject: ["Picks", "Romance", "Helen", "Easy Reads", "Tiktok"],
   },
 
   {
@@ -285,7 +285,7 @@ export const exploreBooks = [
       textSnippet:
         "Maybe she doesn&#39;t hate him. And just maybe, he doesn&#39;t hate her either. Or maybe this is just another game . . . &#39;A brilliant, biting, hilarious new voice. The Hating Game will take the romcom world by storm.",
     },
-    subject: ["Tiktok", "Romance", "Helen", "Easy Reads"],
+    subject: ["Picks", "Tiktok", "Romance", "Helen", "Easy Reads"],
   },
 
   {
@@ -311,7 +311,7 @@ export const exploreBooks = [
       textSnippet:
         "From the New York Times bestselling author of The Love Hypothesis comes a new STEMinist rom-com in which a scientist is forced to work on a project with her nemesis—with explosive results.",
     },
-    subject: ["Easy Reads"],
+    subject: ["Picks", "Easy Reads"],
   },
 
   {
@@ -328,7 +328,7 @@ export const exploreBooks = [
           "http://books.google.com/books/content?id=LNhOEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
       },
     },
-    subject: ["Fiction", "Easy Reads"],
+    subject: ["Picks", "Fiction", "Easy Reads"],
   },
 
   //   Spice Books
@@ -374,7 +374,7 @@ export const exploreBooks = [
       textSnippet:
         "A fortune teller once told Mila she&#39;d find a man who would take her breath away.",
     },
-    subject: ["spice"],
+    subject: ["Picks", "spice"],
   },
 
   {
@@ -400,7 +400,7 @@ export const exploreBooks = [
       textSnippet:
         "She fears the dark.He rules it.Her dresses are too tight, her heels too tall. She laughs too loudly, eats without decorum, and mixes up most sayings in the book.",
     },
-    subject: ["spice"],
+    subject: ["Picks", "spice"],
   },
 
   {
@@ -426,7 +426,7 @@ export const exploreBooks = [
       textSnippet:
         "Then I learned new rules. My name is Tyler Anselm Bell. I&#39;m twenty-nine years old. Six months ago, I broke my vow of celibacy on the altar of my own church, and God help me, I would do it again. I am a priest and this is my confession.",
     },
-    subject: ["spice"],
+    subject: ["Picks", "spice"],
   },
 
   {
@@ -451,7 +451,7 @@ export const exploreBooks = [
     searchInfo: {
       textSnippet: "He wants me to be his queen.",
     },
-    subject: ["spice"],
+    subject: ["Picks", "spice"],
   },
   {
     id: "rPsuEAAAQBAJ",
@@ -476,7 +476,7 @@ export const exploreBooks = [
       textSnippet:
         "It would take a saint. And we all know that I’m no saint. (This is the third full-length standalone in the Priest Collection, featuring Father Bell&#39;s brother, Aiden Bell. You do not have to read Priest or Sinner to read Saint.)",
     },
-    subject: ["spice"],
+    subject: ["Picks", "spice"],
   },
 
   {
@@ -499,7 +499,7 @@ export const exploreBooks = [
       textSnippet:
         "Former presidential aide Ryan Belvedere meets Sidney Blount-a cold, sophisticated, Dominant-who&#39;s at the same English house to appraise the family art. It doesn&#39;t take long for Sidney&#39;s discerning eye to land on Ryan . . .",
     },
-    subject: ["spice"],
+    subject: ["Picks", "spice"],
   },
 
   {
@@ -525,7 +525,7 @@ export const exploreBooks = [
       textSnippet:
         "Or about to be anyway. But I want her. I want her even with my best friend and God in the way, I want to teach her and touch her and love her, and I know that makes me something much worse than a very bad man. It makes me a sinner.",
     },
-    subject: ["spice"],
+    subject: ["Picks", "spice"],
   },
 
   {
@@ -548,7 +548,7 @@ export const exploreBooks = [
       textSnippet:
         "It is intended only for an adult audience. Beware: this is a dark, weird, kinky read. The activities depicted therein are dangerous and are not meant to be an example of realistic BDSM.",
     },
-    subject: ["spice"],
+    subject: ["Picks", "spice"],
   },
 
   {
@@ -571,7 +571,7 @@ export const exploreBooks = [
       textSnippet:
         "Although all the books are interconnected, they are stand-alone and can be read in any order. Content Note This book contains sexual scenes, kink/fetish content, horror elements, drug use, and depictions of hard kink/edgeplay.",
     },
-    subject: ["spice"],
+    subject: ["Picks", "spice"],
   },
 
   {
@@ -594,7 +594,7 @@ export const exploreBooks = [
       textSnippet: "The world ended and with it so did the rules.",
     },
 
-    subject: ["spice"],
+    subject: ["Picks", "spice"],
   },
 
   //Fantasy
@@ -616,7 +616,7 @@ export const exploreBooks = [
       textSnippet:
         "Sarah J. Maas&#39;s sexy, richly imagined series continues with the journey of Feyre&#39;s fiery sister, Nesta.",
     },
-    subject: ["Fantasy", "Fiction", "Tiktok"],
+    subject: ["Picks", "Fantasy", "Fiction", "Tiktok"],
   },
 
   {
@@ -637,7 +637,7 @@ export const exploreBooks = [
       textSnippet:
         "A hugely commercial, fabulously addictive fantastical romp - from an author with top-notch digital self-publishing pedigree and legions of fans awaiting publication",
     },
-    subject: ["Fantasy", "Fiction"],
+    subject: ["Picks", "Fantasy", "Fiction"],
   },
 
   {
@@ -658,7 +658,7 @@ export const exploreBooks = [
       textSnippet:
         "An instant New York Times bestseller! Juliette and Warner’s story continues in the electrifying fourth installment of Tahereh Mafi’s bestselling Shatter Me series.",
     },
-    subject: ["Fantasy", "Tiktok"],
+    subject: ["Picks", "Fantasy", "Tiktok"],
   },
 
   {
@@ -679,7 +679,7 @@ export const exploreBooks = [
       textSnippet:
         "In this electrifying debut, Tahereh Mafi presents a riveting dystopian world, a thrilling superhero story, and an unforgettable heroine.",
     },
-    subject: ["Fiction", "Fantasy"],
+    subject: ["Picks", "Fiction", "Fantasy"],
   },
 
   {
@@ -700,7 +700,7 @@ export const exploreBooks = [
       textSnippet:
         "The book that all Shatter Me fans have been waiting for is finally here.",
     },
-    subject: ["Fantasy"],
+    subject: ["Picks", "Fantasy"],
   },
 
   {
@@ -722,7 +722,7 @@ export const exploreBooks = [
       textSnippet:
         "The captivating third book in Kiera Cass’s #1 New York Times bestselling Selection series America Singer searches for her happily ever after in this swoon-worthy YA dystopian romance, perfect for readers who loved Veronica Roth’s ...",
     },
-    subject: ["Fantasy", "Fiction", "Tiktok"],
+    subject: ["Picks", "Fantasy", "Fiction", "Tiktok"],
   },
 
   {
@@ -744,7 +744,7 @@ export const exploreBooks = [
         "For thirty-five girls, the Selection is the chance of a lifetime.",
     },
 
-    subject: ["Fiction, Fantasy", "Tiktok"],
+    subject: ["Picks", "Fiction, Fantasy", "Tiktok"],
   },
 
   {
@@ -764,7 +764,7 @@ export const exploreBooks = [
       textSnippet:
         "Twenty years ago, America Singer entered the Selection and won Prince Maxon&#39;s heart.",
     },
-    subject: ["Fantasy"],
+    subject: ["Picks", "Fantasy"],
   },
 
   {
@@ -785,7 +785,7 @@ export const exploreBooks = [
       textSnippet:
         "A Time Best YA Book of All Time (2021) Two teens must learn the “art of killing” in this Printz Honor–winning book, the first in a chilling new series from Neal Shusterman, author of the New York Times bestselling Unwind dystology.",
     },
-    subject: ["Fantasy", "Tiktok"],
+    subject: ["Picks", "Fantasy", "Tiktok"],
   },
 
   {
@@ -806,7 +806,7 @@ export const exploreBooks = [
       textSnippet:
         "“Intelligent and entertaining.” —Kirkus Reviews (starred review) “Even better than the first book.” —School Library Journal (starred review) Rowan and Citra take opposite stances on the morality of the Scythedom, putting them at ...",
     },
-    subject: ["Fiction", "Fantasy"],
+    subject: ["Picks", "Fiction", "Fantasy"],
   },
 
   {
@@ -827,7 +827,7 @@ export const exploreBooks = [
       textSnippet:
         "&quot;Fan favorite Scarlett St. Clair expands her universe of New Greece and the Hades and Persephone retellings with a new series told in Hades&#39;s point of view.",
     },
-    subject: ["Fantasy"],
+    subject: ["Picks", "Fantasy"],
   },
 
   {
@@ -848,7 +848,7 @@ export const exploreBooks = [
       textSnippet:
         "From bestselling author Scarlett St. Clair comes a dark and enthralling reimagining of the Hades and Persephone Greek myth.",
     },
-    subject: ["Fantasy"],
+    subject: ["Picks", "Fantasy"],
   },
 
   {
@@ -869,7 +869,7 @@ export const exploreBooks = [
       textSnippet:
         "The next installment in the Hades and Persephone story from bestselling author Scarlett St. Clair.",
     },
-    subject: ["Fantasy"],
+    subject: ["Picks", "Fantasy"],
   },
 
   //Booktok
@@ -894,7 +894,7 @@ export const exploreBooks = [
       textSnippet:
         "The epic adventures Evelyn creates over the course of a lifetime will leave every reader mesmerized.",
     },
-    subject: ["Tiktok", "Fiction"],
+    subject: ["Picks", "Tiktok", "Fiction"],
   },
 
   {
@@ -911,7 +911,7 @@ export const exploreBooks = [
           "http://books.google.com/books/content?id=vH3LDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
       },
     },
-    subject: ["Fiction", "Tiktok"],
+    subject: ["Picks", "Fiction", "Tiktok"],
   },
 
   {
@@ -932,7 +932,7 @@ export const exploreBooks = [
       textSnippet:
         "A brand new romantic comedy from New York Times bestseller Tessa Bailey!",
     },
-    subject: ["Tiktok", "Romance", "Easy Reads"],
+    subject: ["Picks", "Tiktok", "Romance", "Easy Reads"],
   },
 
   {
@@ -952,7 +952,7 @@ export const exploreBooks = [
       textSnippet:
         "&quot;Tessa Bailey is back with a Schitt&#39;s Creek-inspired rom-com about a Hollywood &quot;It Girl&quot; who&#39;s cut off from her wealthy family and exiled to a small Pacific Northwest beach town ... where she butts heads with a surly, sexy local who thinks ...",
     },
-    subject: ["Fiction", "Romance", "Tiktok", "Easy Reads"],
+    subject: ["Picks", "Fiction", "Romance", "Tiktok", "Easy Reads"],
   },
 
   {
@@ -974,6 +974,6 @@ export const exploreBooks = [
       textSnippet:
         "I&#39;ll put my heart and soul into dressing his holiday windows. I&#39;ll work without stopping. And when we lose the battle with temptation, I&#39;ll try and remember I&#39;m just window shopping&quot;--back cover.",
     },
-    subject: ["Easy Reads"],
+    subject: ["Picks", "Easy Reads"],
   },
 ];

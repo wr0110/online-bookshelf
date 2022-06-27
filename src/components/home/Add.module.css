@@ -1,0 +1,69 @@
+.add {
+    background-image: url("../../images/wave_vector.png");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    padding: 5rem 0;
+    text-align: center;
+
+}
+
+.add figure {
+    width: 100%;
+    max-width: 400px;
+    margin: 3rem auto;
+    padding-top: 3rem;
+}
+
+.add figure img {
+    width: 100%;
+}
+
+
+
+@media (min-width: 768px) {
+    .add-info {
+        width: 70%;
+        margin: 3rem auto;
+
+
+    }
+
+    .add figure {
+        margin: 5rem auto;
+    }
+
+    .add figure img {
+        transform: scale(1.2);
+    }
+}
+
+@media (min-width:1024px) {
+    .add {
+        text-align: left;
+    }
+
+    .add figure img {
+        transform: scale(none);
+    }
+
+    .wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 3rem;
+        place-content: center space-between;
+        place-items: center flex-start;
+
+    }
+
+    .add-info {
+        padding: 3rem 0;
+        max-width: 400px;
+        margin: 0;
+    }
+
+    .add-info h1 {
+        width: 70%;
+    }
+}

@@ -1,16 +1,27 @@
 .hero {
-  background-image: url("../../images/covers.png");
   background-position: center;
   background-repeat: none;
   background-size: cover;
-  height: 100%;
+  height: 100vh;
   padding-top: 80px;
 }
 
+.hero-alt {
+  background-position: 40%;
+}
+
 .hero-text {
-  padding: 15rem 0;
-  width: 80%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   max-width: 400px;
+  /* padding: 15rem 0;
+  width: 80%;
+  max-width: 400px; */
+}
+
+.hero-text h1 {
+  width: 80%;
 }
 
 @media (min-width: 768px) {
@@ -20,6 +31,10 @@
 }
 
 @media (min-width: 1024px) {
+  .hero {
+    height: 120vh;
+  }
+
   .hero-text {
     padding: 10rem 0 12rem;
   }

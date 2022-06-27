@@ -29,7 +29,7 @@
   width: 100%;
   padding: 2rem 4rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   list-style: none;
   background-color: var(--light-grey);
@@ -41,8 +41,6 @@
 
 .nav-items li a {
   text-decoration: none;
-  color: var(--dark-blue);
-  font-weight: 700;
   font-size: 1.1rem;
 }
 

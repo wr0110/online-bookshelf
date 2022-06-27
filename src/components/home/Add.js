@@ -2,33 +2,36 @@ import React from "react";
 import Heading from "../../helpers/heading/Heading";
 import Container from "../../helpers/wrapper/Container";
 import Button from "../button/Button";
-import styled from "./Hero.module.css";
+import add from "../../images/add.png";
+import styled from "./Add.module.css";
 
-const Hero = () => {
+const Add = () => {
   return (
-    <section className={styled.hero}>
-      <Container>
-        <article className={styled["hero-text"]}>
+    <section className={styled.add}>
+      <Container className={styled.wrap}>
+        <article className={styled["add-info"]}>
           <Heading
-            className="heading-lg"
+            className="heading-md"
             text={
               <>
-                Your <span>online</span> bookshelf
+                Add to your <span> library</span>
               </>
             }
           />
-
           <p className="para">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus
             velit senectus in nunc ut dictum aliquam id platea. In eget amet,
             imperdiet tellus. Sit sit orci in eu. Quis pellentesque.
           </p>
-
-          <Button>Start Organizing</Button>
+          <Button>Get Started</Button>
         </article>
+
+        <figure>
+          <img src={add} alt="illustration of a girl with a checklist " />
+        </figure>
       </Container>
     </section>
   );
 };
 
-export default Hero;
+export default Add;

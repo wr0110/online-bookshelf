@@ -3,7 +3,7 @@ import styled from "./Nav.module.css";
 import { BiSearch } from "react-icons/bi";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 import Button from "../button/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink as Link, useNavigate } from "react-router-dom";
 import Modal from "../../helpers/modal/Modal";
 import Login from "../login/Login";
 import { AuthContext } from "../../contexts/authContext";
@@ -22,8 +22,7 @@ const Nav = () => {
   const widthfunction = () => setwidth(window.innerWidth);
 
   /**
-   * add event listener to the window
-   * checks if the current width >= 768
+   * add event listener to the window to check if the current width >= 768
    * if width >= 768, set the state to the opposite of what it currently is
    * use the cleanup function to remove the eventlistener
    */
@@ -67,6 +66,14 @@ const Nav = () => {
     navigate("/", { replace: true });
   };
 
+  //active link style
+  const navStyle = ({ isActive }) => {
+    return {
+      color: isActive ? " var(--dark-blue)" : "var(--med-grey)",
+      fontWeight: isActive ? "bold" : "normal",
+    };
+  };
+
   return (
     <>
       <nav className={styled.navbar}>
@@ -98,22 +105,30 @@ const Nav = () => {
 
         <ul className={styled["nav-items"]} ref={ulRef}>
           <li>
-            <Link to="/">Home</Link>
+            <Link style={navStyle} to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/explore">Explore</Link>
+            <Link style={navStyle} to="/explore">
+              Explore
+            </Link>
           </li>
 
           {/* this link will only be available if the user is signed in */}
           {isSignedIn && (
             <li>
-              <Link to="/library">Library</Link>
+              <Link style={navStyle} to="/library">
+                Library
+              </Link>
             </li>
           )}
 
           {isSignedIn && (
             <li>
-              <Link to="/shelves">Shelves</Link>
+              <Link style={navStyle} to="/shelves">
+                Shelves
+              </Link>
             </li>
           )}
         </ul>
