@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { RiAddCircleLine } from "react-icons/ri";
 import { MdInfoOutline } from "react-icons/md";
 import Modal from "../../helpers/modal/Modal";
-import UserLibrary from "./UserLibrary";
+import AddToLibrary from "./AddToLibrary";
 
 const LibraryActions = (props) => {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ const LibraryActions = (props) => {
        */}
       {openModal && (
         <Modal setOpenModal={setOpenModal} openModal={openModal}>
-          <UserLibrary selectedBook={props.book} setOpenModal={setOpenModal} />
+          <AddToLibrary selectedBook={props.book} setOpenModal={setOpenModal} />
         </Modal>
       )}
     </>

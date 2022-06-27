@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useMemo } from "react";
-import styled from "./UserLibrary.module.css";
+import styled from "./AddToLibrary.module.css";
 import readingNook from "../../images/reading_svg.png";
 import { AuthContext } from "../../contexts/authContext";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import {
 
 const libraryCategories = ["To Be Read", "In Progress", "Completed", "DNF"];
 
-const UserLibrary = (props) => {
+const AddToLibrary = (props) => {
   //store and context
   const dispatch = useDispatch();
   const { bookAlreadyInLibraryCategory } = useSelector(
@@ -38,12 +38,17 @@ const UserLibrary = (props) => {
 
   //function to add the user and the selected book to the library
   const addToLibrary = (category) => {
-    dispatch(
-      addBookToLibrary({
-        selectedBook: { bookData, category },
-        user: currentUser.email,
-      })
-    );
+    //only add to library if there is a current user
+    if (currentUser.email) {
+      dispatch(
+        addBookToLibrary({
+          selectedBook: { bookData, category },
+          user: currentUser.email,
+        })
+      );
+    } else {
+      alert("Please sign in to add books to your library");
+    }
 
     //add notification
     //close the modal
@@ -96,4 +101,4 @@ const UserLibrary = (props) => {
   );
 };
 
-export default UserLibrary;
+export default AddToLibrary;

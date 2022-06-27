@@ -70,7 +70,7 @@ const Nav = () => {
   const navStyle = ({ isActive }) => {
     return {
       color: isActive ? " var(--dark-blue)" : "var(--med-grey)",
-      fontWeight: isActive ? "bold" : "normal",
+      fontWeight: isActive ? "bold" : "600",
     };
   };
 
