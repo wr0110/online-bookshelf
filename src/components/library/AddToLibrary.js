@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useMemo } from "react";
-import styled from "./UserLibrary.module.css";
+import styled from "./AddToLibrary.module.css";
 import readingNook from "../../images/reading_svg.png";
 import { AuthContext } from "../../contexts/authContext";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import {
 
 const libraryCategories = ["To Be Read", "In Progress", "Completed", "DNF"];
 
-const UserLibrary = (props) => {
+const AddToLibrary = (props) => {
   //store and context
   const dispatch = useDispatch();
   const { bookAlreadyInLibraryCategory } = useSelector(
@@ -40,17 +40,16 @@ const UserLibrary = (props) => {
   const addToLibrary = (category) => {
     dispatch(
       addBookToLibrary({
-        selectedBook: { bookData, category },
+        selectedBook: { bookData, category, timeAdded: Date.now() },
         user: currentUser.email,
       })
     );
 
-    //add notification
     //close the modal
     props.setOpenModal(false);
   };
 
-  // everytime there is a change in the library, check if the selected book is already in the current user's library
+  // when a user want to add a book, check if the selected book is already in their library
   useEffect(() => {
     dispatch(
       checkIfBookAlreadyExistsInCurrentUserLibrary({
@@ -96,4 +95,4 @@ const UserLibrary = (props) => {
   );
 };
 
-export default UserLibrary;
+export default AddToLibrary;

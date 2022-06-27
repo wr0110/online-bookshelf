@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { AuthContext } from "../contexts/authContext";
 import Books from "../components/books/Books";
-import LibraryActions from "../components/books/LibraryActions";
+import LibraryActions from "../components/library/LibraryActions";
 import EmptyShelf from "../components/books/EmptyShelf";
 import search from "../images/search.svg";
 
@@ -16,7 +16,7 @@ const useFilterLibrary = (category) => {
 
   //find the record for currentUser in the library array
   const detailsForCurrentUser = library.find(
-    (shelf) => shelf.user === currentUser?.email
+    (record) => record.user === currentUser?.email
   );
 
   /**
@@ -24,7 +24,8 @@ const useFilterLibrary = (category) => {
    * map over the filtered results and return a Book for each record
    */
   const libraryForCurrentUser = detailsForCurrentUser?.userLibrary
-    .filter((record) => record.category === `${category}`)
+    .filter((record) => record.category === category)
+    .sort((a, b) => b.timeAdded - a.timeAdded)
     .map((record) => {
       return (
         <Books

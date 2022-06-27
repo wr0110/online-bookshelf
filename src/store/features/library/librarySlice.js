@@ -33,7 +33,7 @@ const librarySlice = createSlice({
         };
       } else {
         //if the user exists, check if the book they are trying to add already exists in their library
-        const bookAlreadyExists = currentUser?.userLibrary.find((record) => {
+        let bookAlreadyExists = currentUser?.userLibrary.find((record) => {
           return record.bookData.id === data.selectedBook.bookData.id;
         });
 
@@ -47,8 +47,9 @@ const librarySlice = createSlice({
               type: "warning",
             };
           } else {
-            //if the categories are different, update the category of the bookAlreadyExists object
+            //if the categories are different, update the category and timeAdded of the bookAlreadyExists object
             bookAlreadyExists.category = data.selectedBook.category;
+            bookAlreadyExists.timeAdded = Date.now();
             state.feedback = {
               title: "Information",
               message: `${data.selectedBook.bookData.title} has been moved to the ${data.selectedBook.category} shelf.`,

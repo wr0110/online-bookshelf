@@ -1,5 +1,5 @@
 import Books from "../components/books/Books";
-import LibraryActions from "../components/books/LibraryActions";
+import LibraryActions from "../components/library/LibraryActions";
 import { exploreBooks } from "../components/explore/ExploreBooks";
 
 const useExplore = (subject) => {

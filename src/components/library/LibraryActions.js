@@ -1,19 +1,32 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RiAddCircleLine } from "react-icons/ri";
 import { MdInfoOutline } from "react-icons/md";
 import Modal from "../../helpers/modal/Modal";
-import UserLibrary from "./UserLibrary";
+import AddToLibrary from "./AddToLibrary";
+import { AuthContext } from "../../contexts/authContext";
+import Login from "../login/Login";
 
 const LibraryActions = (props) => {
   const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
+  const [openLoginModal, setOpenLoginModal] = useState(false);
 
   //navigate to the book details page for the specified book
   const handleDetails = () => navigate(`/results/${props.book.id}`);
 
-  //set the modal state when the user clicks on the add to library button
-  const handleLibrary = () => setOpenModal((state) => !state);
+  /**
+   * if user is signed in, open the add to library modal
+   * if user is not signed in, open the login modal
+   */
+  const handleLibrary = () => {
+    if (currentUser.email) {
+      setOpenModal((state) => !state);
+    } else {
+      setOpenLoginModal((state) => !state);
+    }
+  };
 
   return (
     <>
@@ -40,7 +53,13 @@ const LibraryActions = (props) => {
        */}
       {openModal && (
         <Modal setOpenModal={setOpenModal} openModal={openModal}>
-          <UserLibrary selectedBook={props.book} setOpenModal={setOpenModal} />
+          <AddToLibrary selectedBook={props.book} setOpenModal={setOpenModal} />
+        </Modal>
+      )}
+
+      {openLoginModal && (
+        <Modal setOpenModal={setOpenLoginModal} openModal={openLoginModal}>
+          <Login setOpenModal={setOpenLoginModal} />
         </Modal>
       )}
     </>

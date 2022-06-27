@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 import Books from "../components/books/Books";
-import LibraryActions from "../components/books/LibraryActions";
+import LibraryActions from "../components/library/LibraryActions";
 import { AuthContext } from "../contexts/authContext";
 
 const useGetAllBooks = () => {
