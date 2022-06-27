@@ -38,24 +38,18 @@ const AddToLibrary = (props) => {
 
   //function to add the user and the selected book to the library
   const addToLibrary = (category) => {
-    //only add to library if there is a current user
-    if (currentUser.email) {
-      dispatch(
-        addBookToLibrary({
-          selectedBook: { bookData, category },
-          user: currentUser.email,
-        })
-      );
-    } else {
-      alert("Please sign in to add books to your library");
-    }
+    dispatch(
+      addBookToLibrary({
+        selectedBook: { bookData, category, timeAdded: Date.now() },
+        user: currentUser.email,
+      })
+    );
 
-    //add notification
     //close the modal
     props.setOpenModal(false);
   };
 
-  // everytime there is a change in the library, check if the selected book is already in the current user's library
+  // when a user want to add a book, check if the selected book is already in their library
   useEffect(() => {
     dispatch(
       checkIfBookAlreadyExistsInCurrentUserLibrary({

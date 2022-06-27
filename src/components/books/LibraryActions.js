@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RiAddCircleLine } from "react-icons/ri";
 import { MdInfoOutline } from "react-icons/md";
 import Modal from "../../helpers/modal/Modal";
 import AddToLibrary from "./AddToLibrary";
+import { AuthContext } from "../../contexts/authContext";
 
 const LibraryActions = (props) => {
   const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
 
   //navigate to the book details page for the specified book
   const handleDetails = () => navigate(`/results/${props.book.id}`);
 
   //set the modal state when the user clicks on the add to library button
-  const handleLibrary = () => setOpenModal((state) => !state);
+  const handleLibrary = () => {
+    if (currentUser.email) {
+      setOpenModal((state) => !state);
+    } else {
+      alert("You must be logged in to add a book to your library");
+    }
+  };
 
   return (
     <>
