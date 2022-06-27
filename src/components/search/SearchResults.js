@@ -5,9 +5,9 @@ import Books from "../books/Books";
 import Container from "../../helpers/wrapper/Container";
 import Heading from "../../helpers/heading/Heading";
 import LibraryActions from "../library/LibraryActions";
-import Loading from "../../helpers/Loading";
 import EmptyShelf from "../books/EmptyShelf";
 import webSearch from "../../images/web_search.svg";
+import Loading from "../../helpers/modal/Loading";
 
 const SearchResults = () => {
   // states

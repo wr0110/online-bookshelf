@@ -5,8 +5,9 @@ import BookDetails from "../components/books/BookDetails";
 import Nav from "../components/nav/Nav";
 import SearchResults from "../components/search/SearchResults";
 import { AuthContext } from "../contexts/authContext";
-import ProtectedRoute from "../helpers/ProtectedRoute";
-import ScrollToTop from "../helpers/ScrollToTop";
+import NoMatch from "../helpers/routes/NoMatch";
+import ProtectedRoute from "../helpers/routes/ProtectedRoute";
+import ScrollToTop from "../helpers/routes/ScrollToTop";
 import Explore from "./Explore";
 import Library from "./Library";
 import PrivateHome from "./PrivateHome";
@@ -49,6 +50,7 @@ const Pages = () => {
 
           <Route path="/results" element={<SearchResults />} />
           <Route path="results/:bookId" element={<BookDetails />} />
+          <Route path="*" element={<NoMatch />} />
         </Routes>
       </ScrollToTop>
     </>

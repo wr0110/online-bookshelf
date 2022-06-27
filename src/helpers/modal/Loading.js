@@ -1,5 +1,5 @@
 import React from "react";
-import loading from "../images/blocks-scale.svg";
+import loading from "../../images/blocks-scale.svg";
 import styled from "./Loading.module.css";
 
 const Loading = () => {
