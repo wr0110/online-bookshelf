@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { AuthContext } from "../contexts/authContext";
 import Books from "../components/books/Books";
-import LibraryActions from "../components/books/LibraryActions";
+import LibraryActions from "../components/library/LibraryActions";
 import EmptyShelf from "../components/books/EmptyShelf";
 import search from "../images/search.svg";
 
