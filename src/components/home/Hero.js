@@ -15,7 +15,7 @@ const Hero = (props) => {
 
   const auth = currentUser.email && isSignedIn;
 
-  //navigate to explore page
+  //navigate to explore page or show login prompt
   const handleClick = () => {
     if (auth) {
       navigate("/explore");

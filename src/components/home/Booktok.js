@@ -10,7 +10,6 @@ import Login from "../login/Login";
 const Booktok = () => {
   const [openLoginModal, setOpenLoginModal] = useState(false);
 
-  //navigate to explore page
   const handleClick = () => setOpenLoginModal((state) => !state);
 
   // props for heading component

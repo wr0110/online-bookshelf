@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Container from "../../helpers/wrapper/Container";
 import styled from "./BookDetails.module.css";
 import Loading from "../../helpers/modal/Loading";
@@ -10,7 +10,6 @@ import Login from "../login/Login";
 
 //component to show book details
 const BookDetails = () => {
-  // id destructured from the url
   const { bookId } = useParams();
   const { currentUser, isSignedIn } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
@@ -18,6 +17,7 @@ const BookDetails = () => {
   const [openLibraryModal, setOpenLibraryModal] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const descriptionRef = useRef("");
+  const navigate = useNavigate();
 
   const auth = currentUser.email && isSignedIn;
 
@@ -67,6 +67,12 @@ const BookDetails = () => {
     }
   };
 
+  const handleAuthor = () => {
+    if (selectedBook?.authors) {
+      navigate(`/results?search=${selectedBook?.authors[0]}`);
+    }
+  };
+
   const src = selectedBook?.imageLinks?.thumbnail
     ? `${selectedBook?.imageLinks?.thumbnail}`
     : "https://via.placeholder.com/150";
@@ -86,7 +92,7 @@ const BookDetails = () => {
 
             <div className={styled["btn-group"]}>
               <button onClick={handleLibrary}>Add to Library</button>
-              <button>More by Author</button>
+              <button onClick={handleAuthor}>More by Author</button>
             </div>
           </div>
 
