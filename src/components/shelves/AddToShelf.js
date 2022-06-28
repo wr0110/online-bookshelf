@@ -7,6 +7,7 @@ import {
   addToShelf,
   getShelvesForCurrentBook,
 } from "../../store/features/shelf/shelfSlice";
+import { MdCancel } from "react-icons/md";
 
 const AddToShelf = (props) => {
   //context and store
@@ -56,8 +57,11 @@ const AddToShelf = (props) => {
     );
   });
 
+  const handleClose = () => props.setOpenModal(false);
+
   return (
     <section className={styled["add-to-shelf-container"]}>
+      <MdCancel size="30px" className="close-icon" onClick={handleClose} />
       <section className={styled["add-to-shelf"]}>
         <h2>
           Which shelf would you like to place <span>{props.book.title} </span>
