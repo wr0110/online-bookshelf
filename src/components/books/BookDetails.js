@@ -1,14 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import Modal from "../../helpers/modal/Modal";
 import Container from "../../helpers/wrapper/Container";
-import Button from "../button/Button";
-import { GiBookshelf } from "react-icons/gi";
 import styled from "./BookDetails.module.css";
+import Loading from "../../helpers/modal/Loading";
 
 //component to show book details
 const BookDetails = () => {
-  // parameter destructured from the url
+  // id destructured from the url
   const { bookId } = useParams();
   const [loading, setLoading] = useState(false);
   const [selectedBook, setSelectedBook] = useState([]);
@@ -31,60 +29,65 @@ const BookDetails = () => {
     fetchById();
   }, [bookId]);
 
-  /** if the selectedBook is not empty, update the innerHTML value with the given data since the description includes html tags
-   */
+  //if the selectedBook is not empty, update the innerHTML value with the given data since the description includes html tags
   useEffect(() => {
-    if (selectedBook.length !== 0) {
-      descriptionRef.current.innerHTML = ` ${selectedBook?.description}`;
+    console.log(descriptionRef.current);
+    if (
+      selectedBook.length !== 0 &&
+      selectedBook.description !== undefined &&
+      descriptionRef.current !== undefined
+    ) {
+      descriptionRef.current.innerHTML = `${selectedBook.description}`;
+    } else {
+      descriptionRef.current.innerHTML = "No description available.";
     }
   }, [selectedBook]);
 
+  //remove duplicate categories
+  const categorySet = new Set(selectedBook?.categories);
+  const categories = [...categorySet]?.map((category, index) => {
+    return (
+      <p className={styled.category} key={Date.now() + index}>
+        {category}
+      </p>
+    );
+  });
+
+  const src = selectedBook?.imageLinks?.thumbnail
+    ? `${selectedBook?.imageLinks?.thumbnail}`
+    : "https://via.placeholder.com/150";
+
+  const coverWrap = { backgroundImage: `url(${src})` };
+
   return (
     <section className={styled.info}>
-      {/* show Modal when loading */}
-      {loading && (
-        <Modal>
-          <GiBookshelf size="50px" />
-        </Modal>
-      )}
+      {loading && <Loading />}
 
-      {/**only show is selectedBook is not empty
-       *   check is data is available or return left-hand side condition
-       */}
-      {selectedBook.length !== 0 && (
+      {!loading && selectedBook.length !== 0 && (
         <Container className={styled["book-details-container"]}>
           <div className={styled["img-group"]}>
-            <figure>
-              <img
-                src={
-                  selectedBook?.imageLinks
-                    ? selectedBook?.imageLinks.smallThumbnail
-                    : "https://via.placeholder.com/128x204"
-                }
-                alt={selectedBook?.title}
-              />
+            <div style={coverWrap} className={styled["cover-wrap"]}></div>
+            <figure className={styled.cover}>
+              <img src={src} alt={selectedBook?.title} />
             </figure>
-
-            <Button>Add to library</Button>
+            <button>Add to library</button>
           </div>
 
           <article className={styled["book-info"]}>
             <h1 className={styled.title}>{selectedBook?.title}</h1>
 
-            {<p className={styled.author}>{selectedBook?.authors[0]}</p> || ""}
+            {selectedBook?.subtitle && (
+              <p className={styled.subtitle}>{selectedBook?.subtitle}</p>
+            )}
 
-            <div className={styled["book-categories"]}>
-              {selectedBook?.categories?.map(
-                (category, index) =>
-                  (
-                    <p className={styled.category} key={index}>
-                      {category?.split("/")}
-                    </p>
-                  ) || ""
-              )}
-            </div>
+            {selectedBook?.authors && (
+              <p className={styled.author}>{selectedBook?.authors[0]}</p>
+            )}
 
-            {/* uses ref to select element */}
+            {categories && (
+              <div className={styled["book-categories"]}>{categories}</div>
+            )}
+
             <p className={styled.description} ref={descriptionRef}></p>
           </article>
         </Container>

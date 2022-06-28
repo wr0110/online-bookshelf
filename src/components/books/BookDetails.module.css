@@ -12,7 +12,22 @@
   gap: 2rem;
 }
 
-.info figure {
+.cover-wrap {
+  width: 80%;
+  height: 250px;
+  max-width: 250px;
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px);
+  -webkit-filter: blur(15px);
+  position: absolute;
+  top: 50px;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.cover {
   height: 200px;
   width: 130px;
   border-radius: 10px;
@@ -20,17 +35,47 @@
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
-.info figure img {
+.cover img {
   border-radius: 10px;
   width: 100%;
   height: 100%;
 }
+
+.img-group button {
+  background-color: var(--dark-blue);
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  border: 2px solid var(--dark-blue);
+  width: fit-content;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.img-group button:hover {
+  background-color: var(--white);
+  color: var(--dark-blue);
+
+}
+
 
 h1.title {
   font-size: 1.5rem;
   padding-top: 2rem;
   text-align: center;
   color: var(--dark-blue);
+}
+
+
+.subtitle {
+  text-align: center;
+  color: var(--med-grey);
+  font-size: 1.2rem;
+  padding-bottom: 1rem;
+  font-weight: 500;
 }
 
 p.author {
@@ -45,6 +90,7 @@ p.author {
   padding-top: 2rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   gap: 1rem;
 }
 
@@ -55,8 +101,13 @@ p.author {
   border-radius: 50px;
   border: 2px solid var(--dark-blue);
   color: var(--dark-blue);
-
   width: fit-content;
+  transition: all 0.3s ease-in-out;
+}
+
+.category:hover {
+  background-color: var(--dark-blue);
+  color: var(--white);
 }
 
 p.description * {
@@ -70,17 +121,26 @@ p.description {
   font-size: 1.1rem;
 }
 
-@media (min-width: 620px) {
+@media (min-width: 768px) {
   .book-details-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    /* place-items: center space-between; */
-    gap: 1rem;
-    max-width: 1000px;
-    margin: 0 auto;
+    gap: 2rem;
   }
 
-  .info figure {
+  .book-info * {
+    text-align: left !important;
+  }
+
+  .book-categories {
+    justify-content: flex-start;
+  }
+
+  .cover-wrap {
+    top: 70px;
+  }
+
+  .cover {
     height: 250px;
     width: 150px;
   }
@@ -95,7 +155,6 @@ p.description {
 
   h1.title,
   p.author {
-    text-align: left;
     padding-top: 0;
   }
 
@@ -108,9 +167,6 @@ p.description {
     font-size: 1.2rem;
   }
 
-  .book-categories {
-    place-items: center left;
-  }
 }
 
 @media (min-width: 1024px) {
