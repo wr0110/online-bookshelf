@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { createShelf } from "../../store/features/shelf/shelfSlice";
 import { GiBookshelf } from "react-icons/gi";
 import styled from "./CreateShelf.module.css";
+import { MdCancel } from "react-icons/md";
 
 const CreateShelf = (props) => {
   const dispatch = useDispatch();
@@ -25,9 +26,12 @@ const CreateShelf = (props) => {
     }
   };
 
+  const handleClose = () => props.setOpenModal(false);
+
   return (
     <section className={styled["create-shelf-container"]}>
       <article className={styled["create-shelf"]}>
+        <MdCancel size="30px" className="close-icon" onClick={handleClose} />
         <GiBookshelf size="50px" style={{ color: "var(--yellow)" }} />
         <h2>Create New Shelf</h2>
         <p>

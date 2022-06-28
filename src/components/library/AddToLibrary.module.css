@@ -8,10 +8,10 @@
 .library {
   background-color: var(--white);
   width: 95%;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
   border-radius: 10px;
-  padding: 3rem 2rem;
+  padding: 2rem;
   text-align: center;
 }
 
@@ -53,6 +53,14 @@
   color: var(--white);
 }
 
+.close-icon {
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  cursor: pointer;
+  color: var(--dark-blue);
+}
+
 @media (min-width: 600px) {
   .library-container {
     position: relative;
@@ -85,5 +93,9 @@
   .libraryCategory p {
     width: 90%;
     margin: 0;
+  }
+
+  .close-icon {
+    right: 1.5rem;
   }
 }

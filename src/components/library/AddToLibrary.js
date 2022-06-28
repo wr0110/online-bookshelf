@@ -7,6 +7,7 @@ import {
   addBookToLibrary,
   checkIfBookAlreadyExistsInCurrentUserLibrary,
 } from "../../store/features/library/librarySlice";
+import { MdCancel } from "react-icons/md";
 
 const libraryCategories = ["To Be Read", "In Progress", "Completed", "DNF"];
 
@@ -49,6 +50,8 @@ const AddToLibrary = (props) => {
     props.setOpenModal(false);
   };
 
+  const handleClose = () => props.setOpenModal(false);
+
   // when a user want to add a book, check if the selected book is already in their library
   useEffect(() => {
     dispatch(
@@ -62,6 +65,11 @@ const AddToLibrary = (props) => {
   return (
     <section className={styled["library-container"]}>
       <section className={styled.library}>
+        <MdCancel
+          size="30px"
+          className={styled["close-icon"]}
+          onClick={handleClose}
+        />
         <article>
           <h2>
             Where would you like to add <span>{bookData.title}</span> ?

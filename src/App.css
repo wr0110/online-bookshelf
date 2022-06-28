@@ -45,6 +45,16 @@
   padding: 2rem 0;
   letter-spacing: 1.5px;
   margin: 0;
+  font-weight: 300;
+}
+
+/* Modal */
+.close-icon {
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  cursor: pointer;
+  color: var(--dark-blue);
 }
 
 /* Books */
@@ -146,6 +156,11 @@
     width: 80%;
     margin: 0 auto;
   }
+
+  .close-icon {
+    right: .5rem;
+  }
+
 }
 
 @media (min-width: 768px) {

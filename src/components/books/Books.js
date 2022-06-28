@@ -43,6 +43,7 @@ const Books = (props) => {
           <Information
             book={props.book}
             actionsComponent={props.actionsComponent}
+            setOpenModal={setOpenModal}
           />
         </Modal>
       )}

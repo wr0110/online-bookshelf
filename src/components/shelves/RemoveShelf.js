@@ -4,6 +4,7 @@ import { TiDelete } from "react-icons/ti";
 import { AuthContext } from "../../contexts/authContext";
 import { useDispatch } from "react-redux";
 import { removeShelf } from "../../store/features/shelf/shelfSlice";
+import { MdCancel } from "react-icons/md";
 
 const RemoveShelf = (props) => {
   const dispatch = useDispatch();
@@ -24,9 +25,11 @@ const RemoveShelf = (props) => {
     props.setOpenMenuAction(false);
   };
 
+  const handleClose = () => props.setOpenMenuAction(false);
   return (
     <div className={styled["remove-container"]}>
       <section className={styled.remove}>
+        <MdCancel size="30px" className="close-icon" onClick={handleClose} />
         <TiDelete size="50px" style={{ color: "var(--yellow)" }} />
 
         <h2>Remove Shelf</h2>

@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { renameShelf } from "../../store/features/shelf/shelfSlice";
 import styled from "./RenameShelf.module.css";
 import { BiRename } from "react-icons/bi";
+import { MdCancel } from "react-icons/md";
 
 const RenameShelf = (props) => {
   const dispatch = useDispatch();
@@ -32,8 +33,11 @@ const RenameShelf = (props) => {
     props.setOpenMenuAction(false);
   };
 
+  const handleClose = () => props.setOpenMenuAction(false);
+
   return (
     <div className={styled["rename-container"]}>
+      <MdCancel size="30px" className="close-icon" onClick={handleClose} />
       <form onSubmit={handleRenaming} className={styled.rename}>
         <BiRename size="50px" style={{ color: "var(--yellow)" }} />
         <h2>Rename Shelf</h2>
