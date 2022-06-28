@@ -55,6 +55,10 @@ const BookDetails = () => {
     );
   });
 
+  /**
+   * if user is signed in, open the add to library modal
+   * if user is not signed in, open the login modal
+   */
   const handleLibrary = () => {
     if (auth) {
       setOpenLibraryModal((state) => !state);

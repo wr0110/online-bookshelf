@@ -4,8 +4,14 @@ import Container from "../../helpers/wrapper/Container";
 import Button from "../button/Button";
 import add from "../../images/add.png";
 import styled from "./Add.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Add = () => {
+  const navigate = useNavigate();
+
+  //navigate to explore page
+  const handleClick = () => navigate("/explore");
+
   return (
     <section className={styled.add}>
       <Container className={styled.wrap}>
@@ -23,7 +29,7 @@ const Add = () => {
             velit senectus in nunc ut dictum aliquam id platea. In eget amet,
             imperdiet tellus. Sit sit orci in eu. Quis pellentesque.
           </p>
-          <Button>Get Started</Button>
+          <Button onClick={handleClick}>Get Started</Button>
         </article>
 
         <figure>
