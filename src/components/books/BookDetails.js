@@ -1,16 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "../../helpers/wrapper/Container";
 import styled from "./BookDetails.module.css";
 import Loading from "../../helpers/modal/Loading";
+import Modal from "../../helpers/modal/Modal";
+import AddToLibrary from "../library/AddToLibrary";
+import { AuthContext } from "../../contexts/authContext";
+import Login from "../login/Login";
 
 //component to show book details
 const BookDetails = () => {
   // id destructured from the url
   const { bookId } = useParams();
+  const { currentUser, isSignedIn } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [selectedBook, setSelectedBook] = useState([]);
+  const [openLibraryModal, setOpenLibraryModal] = useState(false);
+  const [openLoginModal, setOpenLoginModal] = useState(false);
   const descriptionRef = useRef("");
+
+  const auth = currentUser.email && isSignedIn;
 
   //fetch data using the given book ID and set the selectedBook state
   useEffect(() => {
@@ -46,6 +55,14 @@ const BookDetails = () => {
     );
   });
 
+  const handleLibrary = () => {
+    if (auth) {
+      setOpenLibraryModal((state) => !state);
+    } else {
+      setOpenLoginModal((state) => !state);
+    }
+  };
+
   const src = selectedBook?.imageLinks?.thumbnail
     ? `${selectedBook?.imageLinks?.thumbnail}`
     : "https://via.placeholder.com/150";
@@ -59,13 +76,12 @@ const BookDetails = () => {
       {!loading && selectedBook.length !== 0 && (
         <Container className={styled["book-details-container"]}>
           <div className={styled["img-group"]}>
-            {/* <div style={coverWrap} className={styled["cover-wrap"]}></div> */}
             <figure className={styled.cover}>
               <img src={src} alt={selectedBook?.title} />
             </figure>
 
             <div className={styled["btn-group"]}>
-              <button>Add to Library</button>
+              <button onClick={handleLibrary}>Add to Library</button>
               <button>More by Author</button>
             </div>
           </div>
@@ -92,6 +108,21 @@ const BookDetails = () => {
             </p>
           </article>
         </Container>
+      )}
+
+      {openLibraryModal && (
+        <Modal openModal={openLibraryModal} setOpenModal={setOpenLibraryModal}>
+          <AddToLibrary
+            selectedBook={selectedBook}
+            setOpenModal={setOpenLibraryModal}
+          />
+        </Modal>
+      )}
+
+      {openLoginModal && (
+        <Modal openModal={openLoginModal} setOpenModal={setOpenLoginModal}>
+          <Login setOpenModal={setOpenLoginModal} />
+        </Modal>
       )}
     </section>
   );
