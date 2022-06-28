@@ -2,6 +2,12 @@
   position: relative;
   top: 110px;
   padding: 5rem 0;
+  background-image: url('../../images/blobs.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: cover;
+  height: 100%;
+  min-height: 100vh;
 }
 
 .img-group {
@@ -10,21 +16,6 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
-}
-
-.cover-wrap {
-  width: 80%;
-  height: 250px;
-  max-width: 250px;
-  background-repeat: none;
-  background-size: cover;
-  background-position: center;
-  filter: blur(15px);
-  -webkit-filter: blur(15px);
-  position: absolute;
-  top: 50px;
-  z-index: -1;
-  opacity: 0.5;
 }
 
 .cover {
@@ -41,24 +32,32 @@
   height: 100%;
 }
 
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+  /* width: 100%; */
+}
+
 .img-group button {
-  background-color: var(--dark-blue);
+  background: none;
   padding: 10px 25px;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--white);
+  color: var(--dark-blue);
   border: none;
   border-radius: 50px;
   border: 2px solid var(--dark-blue);
-  width: fit-content;
+  width: 100%;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
 .img-group button:hover {
-  background-color: var(--white);
-  color: var(--dark-blue);
-
+  background-color: var(--dark-blue);
+  color: var(--white);
 }
 
 
@@ -72,10 +71,10 @@ h1.title {
 
 .subtitle {
   text-align: center;
-  color: var(--med-grey);
-  font-size: 1.2rem;
+  color: var(--dark-blue);
+  font-size: 1.1rem;
   padding-bottom: 1rem;
-  font-weight: 500;
+  font-weight: 300;
 }
 
 p.author {
@@ -95,14 +94,14 @@ p.author {
 }
 
 .category {
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 400;
   padding: 10px 20px;
   border-radius: 50px;
   border: 2px solid var(--dark-blue);
   color: var(--dark-blue);
   width: fit-content;
   transition: all 0.3s ease-in-out;
+  text-align: center;
 }
 
 .category:hover {
@@ -111,15 +110,15 @@ p.author {
 }
 
 p.description * {
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
-  font-size: 1.1rem;
 }
 
 p.description {
   padding-top: 2rem;
-  font-size: 1.1rem;
+  font-weight: 300;
 }
+
 
 @media (min-width: 768px) {
   .book-details-container {
@@ -141,8 +140,8 @@ p.description {
   }
 
   .cover {
-    height: 250px;
-    width: 150px;
+    height: 220px;
+    width: 145px;
   }
 
   .img-group {
@@ -164,7 +163,7 @@ p.description {
 
   p.description *,
   p.description {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
 }
@@ -172,5 +171,6 @@ p.description {
 @media (min-width: 1024px) {
   .info {
     top: 70px;
+    background-position: center;
   }
 }

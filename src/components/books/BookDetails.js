@@ -10,7 +10,7 @@ const BookDetails = () => {
   const { bookId } = useParams();
   const [loading, setLoading] = useState(false);
   const [selectedBook, setSelectedBook] = useState([]);
-  const descriptionRef = useRef();
+  const descriptionRef = useRef("");
 
   //fetch data using the given book ID and set the selectedBook state
   useEffect(() => {
@@ -31,15 +31,8 @@ const BookDetails = () => {
 
   //if the selectedBook is not empty, update the innerHTML value with the given data since the description includes html tags
   useEffect(() => {
-    console.log(descriptionRef.current);
-    if (
-      selectedBook.length !== 0 &&
-      selectedBook.description !== undefined &&
-      descriptionRef.current !== undefined
-    ) {
+    if (selectedBook?.description && descriptionRef.current) {
       descriptionRef.current.innerHTML = `${selectedBook.description}`;
-    } else {
-      descriptionRef.current.innerHTML = "No description available.";
     }
   }, [selectedBook]);
 
@@ -57,7 +50,7 @@ const BookDetails = () => {
     ? `${selectedBook?.imageLinks?.thumbnail}`
     : "https://via.placeholder.com/150";
 
-  const coverWrap = { backgroundImage: `url(${src})` };
+  // const coverWrap = { backgroundImage: `url(${src})` };
 
   return (
     <section className={styled.info}>
@@ -66,11 +59,15 @@ const BookDetails = () => {
       {!loading && selectedBook.length !== 0 && (
         <Container className={styled["book-details-container"]}>
           <div className={styled["img-group"]}>
-            <div style={coverWrap} className={styled["cover-wrap"]}></div>
+            {/* <div style={coverWrap} className={styled["cover-wrap"]}></div> */}
             <figure className={styled.cover}>
               <img src={src} alt={selectedBook?.title} />
             </figure>
-            <button>Add to library</button>
+
+            <div className={styled["btn-group"]}>
+              <button>Add to Library</button>
+              <button>More by Author</button>
+            </div>
           </div>
 
           <article className={styled["book-info"]}>
@@ -84,11 +81,15 @@ const BookDetails = () => {
               <p className={styled.author}>{selectedBook?.authors[0]}</p>
             )}
 
-            {categories && (
+            {categories.length !== 0 && (
               <div className={styled["book-categories"]}>{categories}</div>
             )}
 
-            <p className={styled.description} ref={descriptionRef}></p>
+            <p className={styled.description} ref={descriptionRef}>
+              {selectedBook?.description === undefined && (
+                <p>No description available</p>
+              )}
+            </p>
           </article>
         </Container>
       )}
