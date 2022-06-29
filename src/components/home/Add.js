@@ -25,9 +25,9 @@ const Add = () => {
             }
           />
           <p className="para">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus
-            velit senectus in nunc ut dictum aliquam id platea. In eget amet,
-            imperdiet tellus. Sit sit orci in eu. Quis pellentesque.
+            Add to your library and create shelves to keep track of your
+            reading. Categorize your books so you can easily find them when you
+            want to re-read a favorite or find a new book in a genre you enjoy.
           </p>
           <Button onClick={handleClick}>Get Started</Button>
         </article>
