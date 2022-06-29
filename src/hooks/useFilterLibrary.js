@@ -3,8 +3,6 @@ import { useSelector } from "react-redux";
 import { AuthContext } from "../contexts/authContext";
 import Books from "../components/books/Books";
 import LibraryActions from "../components/library/LibraryActions";
-import EmptyShelf from "../components/books/EmptyShelf";
-import search from "../images/search.svg";
 
 //custom hook to filter the current user's library based on the category recieved
 const useFilterLibrary = (category) => {
@@ -21,6 +19,7 @@ const useFilterLibrary = (category) => {
 
   /**
    * filter the current user's userLibrary based on the category received
+   * sort the filtered array by the time the book was added to the library
    * map over the filtered results and return a Book for each record
    */
   const libraryForCurrentUser = detailsForCurrentUser?.userLibrary
@@ -36,14 +35,6 @@ const useFilterLibrary = (category) => {
         />
       );
     });
-
-  //if the library is empty show an empty shelf
-  if (
-    libraryForCurrentUser === undefined ||
-    libraryForCurrentUser.length === 0
-  ) {
-    return <EmptyShelf src={search} />;
-  }
 
   // return the results from the filter and map
   return libraryForCurrentUser;

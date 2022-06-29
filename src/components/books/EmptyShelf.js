@@ -10,10 +10,8 @@ const EmptyShelf = (props) => {
       </figure>
 
       <article>
-        <h2> Its not a 404 error but it might as well be.</h2>
-        <p>
-          Looks like there are no books here, but no worries, we can fix that.
-        </p>
+        <h2> {props.heading}</h2>
+        <p>{props.message}</p>
         <Button>Explore</Button>
       </article>
     </section>

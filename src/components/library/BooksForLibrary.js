@@ -2,8 +2,13 @@ import React, { useEffect } from "react";
 import useFilterLibrary from "../../hooks/useFilterLibrary";
 import useGetAllBooks from "../../hooks/useGetAllBooks";
 import EmptyShelf from "../books/EmptyShelf";
-
 import search from "../../images/search.svg";
+
+//props for empty shelf
+const heading = "There are no books here yet.";
+const message =
+  "Search for a book to add it to your library or visit the Explore page to find more books.";
+
 const BooksForLibrary = ({ searchParams, setSearchParams }) => {
   const AllBooks = useGetAllBooks();
 
@@ -14,7 +19,6 @@ const BooksForLibrary = ({ searchParams, setSearchParams }) => {
   let books = [];
   books = useFilterLibrary(urlParam);
 
-  //* wrapped inside useEffect, to fix bad setState
   useEffect(() => {
     //if the search param = TBR set the urlParam to To Be Read
     if (urlParam === "TBR") {
@@ -27,11 +31,13 @@ const BooksForLibrary = ({ searchParams, setSearchParams }) => {
     books = AllBooks;
   }
 
+  const empty = !books || books.length === 0 || books === undefined;
+
   return (
     <div>
       {/* if there are no books in the library show the empty shelf */}
-      {!books || books.length === 0 || books === undefined ? (
-        <EmptyShelf src={search} />
+      {empty ? (
+        <EmptyShelf src={search} heading={heading} message={message} />
       ) : (
         <section className="books-grid">{books}</section>
       )}
