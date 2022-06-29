@@ -9,7 +9,7 @@ import Login from "../login/Login";
 
 const LibraryActions = (props) => {
   const navigate = useNavigate();
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, isSignedIn } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
 
@@ -21,7 +21,7 @@ const LibraryActions = (props) => {
    * if user is not signed in, open the login modal
    */
   const handleLibrary = () => {
-    if (currentUser.email) {
+    if (currentUser.email && isSignedIn) {
       setOpenModal((state) => !state);
     } else {
       setOpenLoginModal((state) => !state);

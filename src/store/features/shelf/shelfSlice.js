@@ -4,7 +4,6 @@ const initialState = {
   shelf: [],
   isShelfEmpty: true,
   currentBookShelves: [],
-  sortedBooks: [],
   shelfFeedback: {
     title: "",
     message: "",
@@ -49,13 +48,22 @@ const shelfSlice = createSlice({
 
           // return state;
         } else {
-          //if the shelf does not exist add the shelf
-          userExists.shelves.unshift(data.shelf);
-          state.shelfFeedback = {
-            title: "Success",
-            message: `Your ${data.shelf} shelf has been created.`,
-            type: "success",
-          };
+          //if the shelf length is greater than 5, prevent the user from creating a new shelf
+          if (userExists.shelves.length === 15) {
+            state.shelfFeedback = {
+              title: "Error",
+              message: `You have reached the maximum number of shelves.`,
+              type: "error",
+            };
+          } else {
+            //if the shelf does not exist add the shelf
+            userExists.shelves.unshift(data.shelf);
+            state.shelfFeedback = {
+              title: "Success",
+              message: `Your ${data.shelf} shelf has been created.`,
+              type: "success",
+            };
+          }
         }
       }
     },

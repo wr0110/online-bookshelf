@@ -15,6 +15,9 @@ const Login = (props) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  //get path from the url
+  const path = window.location.pathname;
+
   /**
    * setIsAuth to true and store the state in local storage when user logs in
    * redirect the user to the home page when they login
@@ -43,7 +46,7 @@ const Login = (props) => {
         setLoading(false);
       })
       .then(() => {
-        navigate("/", { replace: true });
+        navigate(`${path}`, { replace: true });
         props.setOpenModal(false);
       });
   };

@@ -1,18 +1,28 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import Modal from "../../helpers/modal/Modal";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Container from "../../helpers/wrapper/Container";
-import Button from "../button/Button";
-import { GiBookshelf } from "react-icons/gi";
 import styled from "./BookDetails.module.css";
+import Loading from "../../helpers/modal/Loading";
+import Modal from "../../helpers/modal/Modal";
+import AddToLibrary from "../library/AddToLibrary";
+import { AuthContext } from "../../contexts/authContext";
+import Login from "../login/Login";
+import EmptyShelf from "./EmptyShelf";
+import webSearch from "../../images/web_search.svg";
 
 //component to show book details
 const BookDetails = () => {
-  // parameter destructured from the url
   const { bookId } = useParams();
+  const { currentUser, isSignedIn } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [selectedBook, setSelectedBook] = useState([]);
-  const descriptionRef = useRef();
+  const [openLibraryModal, setOpenLibraryModal] = useState(false);
+  const [openLoginModal, setOpenLoginModal] = useState(false);
+  const descriptionRef = useRef("");
+  const navigate = useNavigate();
+  const [error, setError] = useState(false);
+
+  const auth = currentUser.email && isSignedIn;
 
   //fetch data using the given book ID and set the selectedBook state
   useEffect(() => {
@@ -24,70 +34,118 @@ const BookDetails = () => {
         const data = await response.json();
         setSelectedBook(data.volumeInfo);
       } catch (error) {
-        console.log(error);
+        setError(error);
       }
       setLoading(false);
     };
     fetchById();
   }, [bookId]);
 
-  /** if the selectedBook is not empty, update the innerHTML value with the given data since the description includes html tags
-   */
+  //if the selectedBook is not empty, update the innerHTML value with the given data since the description includes html tags
   useEffect(() => {
-    if (selectedBook.length !== 0) {
-      descriptionRef.current.innerHTML = ` ${selectedBook?.description}`;
+    if (selectedBook?.description && descriptionRef.current) {
+      descriptionRef.current.innerHTML = `${selectedBook.description}`;
     }
   }, [selectedBook]);
 
+  //remove duplicate categories
+  const categorySet = new Set(selectedBook?.categories);
+  const categories = [...categorySet]?.map((category, index) => {
+    return (
+      <p className={styled.category} key={Date.now() + index}>
+        {category}
+      </p>
+    );
+  });
+
+  /**
+   * if user is signed in, open the add to library modal
+   * if user is not signed in, open the login modal
+   */
+  const handleLibrary = () => {
+    if (auth) {
+      setOpenLibraryModal((state) => !state);
+    } else {
+      setOpenLoginModal((state) => !state);
+    }
+  };
+
+  const handleAuthor = () => {
+    if (selectedBook?.authors) {
+      navigate(`/results?search=${selectedBook?.authors[0]}`);
+    }
+  };
+
+  const src = selectedBook?.imageLinks?.thumbnail
+    ? `${selectedBook?.imageLinks?.thumbnail}`
+    : "https://via.placeholder.com/150";
+
+  // const coverWrap = { backgroundImage: `url(${src})` };
+
+  if (!selectedBook || error) {
+    return (
+      <Container className={styled.wrap}>
+        <EmptyShelf src={webSearch} />
+      </Container>
+    );
+  }
+
   return (
     <section className={styled.info}>
-      {/* show Modal when loading */}
-      {loading && (
-        <Modal>
-          <GiBookshelf size="50px" />
-        </Modal>
-      )}
+      {loading && <Loading />}
 
-      {/**only show is selectedBook is not empty
-       *   check is data is available or return left-hand side condition
-       */}
-      {selectedBook.length !== 0 && (
+      {!loading && selectedBook.length !== 0 && (
         <Container className={styled["book-details-container"]}>
           <div className={styled["img-group"]}>
-            <figure>
-              <img
-                src={
-                  selectedBook?.imageLinks
-                    ? selectedBook?.imageLinks.smallThumbnail
-                    : "https://via.placeholder.com/128x204"
-                }
-                alt={selectedBook?.title}
-              />
+            <figure className={styled.cover}>
+              <img src={src} alt={selectedBook?.title} />
             </figure>
 
-            <Button>Add to library</Button>
+            <div className={styled["btn-group"]}>
+              <button onClick={handleLibrary}>Add to Library</button>
+              <button onClick={handleAuthor}>More by Author</button>
+            </div>
           </div>
 
           <article className={styled["book-info"]}>
             <h1 className={styled.title}>{selectedBook?.title}</h1>
 
-            {<p className={styled.author}>{selectedBook?.authors[0]}</p> || ""}
+            {selectedBook?.subtitle && (
+              <p className={styled.subtitle}>{selectedBook?.subtitle}</p>
+            )}
 
-            <div className={styled["book-categories"]}>
-              {selectedBook?.categories?.map(
-                (category, index) =>
-                  (
-                    <p className={styled.category} key={index}>
-                      {category?.split("/")}
-                    </p>
-                  ) || ""
+            {selectedBook?.authors && (
+              <p className={styled.author}>{selectedBook?.authors[0]}</p>
+            )}
+
+            {categories.length !== 0 && (
+              <div className={styled["book-categories"]}>{categories}</div>
+            )}
+
+            <p className={styled.description} ref={descriptionRef}>
+              {selectedBook?.description === undefined && (
+                <p>No description available</p>
               )}
-            </div>
-
-            {/* uses ref to select element */}
-            <p className={styled.description} ref={descriptionRef}></p>
+            </p>
           </article>
         </Container>
+      )}
+
+      {/* {!loading && selectedBook.length === undefined && <p>No book found</p>} */}
+
+      {openLibraryModal && (
+        <Modal openModal={openLibraryModal} setOpenModal={setOpenLibraryModal}>
+          <AddToLibrary
+            selectedBook={selectedBook}
+            setOpenModal={setOpenLibraryModal}
+          />
+        </Modal>
+      )}
+
+      {openLoginModal && (
+        <Modal openModal={openLoginModal} setOpenModal={setOpenLoginModal}>
+          <Login setOpenModal={setOpenLoginModal} />
+        </Modal>
       )}
     </section>
   );
