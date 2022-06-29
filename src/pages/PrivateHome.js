@@ -22,12 +22,12 @@ const PrivateHome = () => {
   //Hero Props
   const heroHeading = (
     <>
-      Start <span>organizing</span> your reads
+      Start <span>organizing</span>
     </>
   );
 
   const heroText =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus velit senectus in nunc ut dictum aliquam id platea. In eget amet, imperdiet tellus. Sit sit orci in eu. Quis pellentesque.";
+    "BookMark makes it easy for you to find and keep track of the books you want to read. Add to your library and create shelves to help stay organized. Keep track of the books you've read, the books you're currently reading, the books you want to read and those hard to finish books.";
 
   const buttonText = "Get Started";
 
@@ -54,9 +54,7 @@ const PrivateHome = () => {
             We think you <span>might like</span> these
           </>
         }
-        paragraph="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere
-            blanditiis quis perferendis doloremque ipsa, reprehenderit saepe
-            repellendus illo deleniti assumenda!"
+        paragraph="Looking for something new and exciting to read? Check out these top picks for you. We are making it easier for you to get started with a curated list of some of our favourites."
       />
       <Genre
         genreList={genreList}
