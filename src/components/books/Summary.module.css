@@ -62,6 +62,7 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   color: var(--med-grey);
+  font-style: normal;
 }
 
 

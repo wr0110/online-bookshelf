@@ -7,9 +7,11 @@ import { AuthContext } from "../../contexts/authContext";
 import CreateShelf from "./CreateShelf";
 import Modal from "../../helpers/modal/Modal";
 import AddToShelf from "./AddToShelf";
+import { useNavigate } from "react-router-dom";
 
 const ShelfActions = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isShelfEmpty } = useSelector((state) => state.bookShelf);
   const { currentUser } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
@@ -23,9 +25,13 @@ const ShelfActions = (props) => {
     }
   };
 
+  //check if user has shelves
   useEffect(() => {
     dispatch(checkIfUserHasShelves(currentUser.email));
   }, [dispatch, currentUser, openModal]);
+
+  //navigate to the book details page for the specified book
+  const handleDetails = () => navigate(`/results/${props.book.id}`);
 
   return (
     <section>
@@ -39,7 +45,7 @@ const ShelfActions = (props) => {
         </p>
 
         {/* Button to add to get more details */}
-        <p>
+        <p onClick={handleDetails}>
           <span>
             <MdInfoOutline size="25px" fontWeight="700" />
           </span>

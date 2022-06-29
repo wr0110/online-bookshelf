@@ -7,6 +7,8 @@ import Modal from "../../helpers/modal/Modal";
 import AddToLibrary from "../library/AddToLibrary";
 import { AuthContext } from "../../contexts/authContext";
 import Login from "../login/Login";
+import EmptyShelf from "./EmptyShelf";
+import webSearch from "../../images/web_search.svg";
 
 //component to show book details
 const BookDetails = () => {
@@ -18,6 +20,7 @@ const BookDetails = () => {
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const descriptionRef = useRef("");
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
 
   const auth = currentUser.email && isSignedIn;
 
@@ -31,7 +34,7 @@ const BookDetails = () => {
         const data = await response.json();
         setSelectedBook(data.volumeInfo);
       } catch (error) {
-        console.log(error);
+        setError(error);
       }
       setLoading(false);
     };
@@ -79,6 +82,14 @@ const BookDetails = () => {
 
   // const coverWrap = { backgroundImage: `url(${src})` };
 
+  if (!selectedBook || error) {
+    return (
+      <Container className={styled.wrap}>
+        <EmptyShelf src={webSearch} />
+      </Container>
+    );
+  }
+
   return (
     <section className={styled.info}>
       {loading && <Loading />}
@@ -119,6 +130,8 @@ const BookDetails = () => {
           </article>
         </Container>
       )}
+
+      {/* {!loading && selectedBook.length === undefined && <p>No book found</p>} */}
 
       {openLibraryModal && (
         <Modal openModal={openLibraryModal} setOpenModal={setOpenLibraryModal}>

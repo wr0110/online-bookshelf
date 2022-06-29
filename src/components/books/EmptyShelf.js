@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "./EmptyShelf.module.css";
 import Button from "../button/Button";
+import Container from "../../helpers/wrapper/Container";
 
 const EmptyShelf = (props) => {
   return (

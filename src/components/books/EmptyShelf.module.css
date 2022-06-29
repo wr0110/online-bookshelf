@@ -1,6 +1,10 @@
 .empty-shelf {
     margin: 2rem 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .empty-shelf figure {
@@ -14,7 +18,7 @@
 }
 
 .empty-shelf article {
-    max-width: 300px;
+    max-width: 400px;
     margin: 0 auto;
 }
 
@@ -42,6 +46,10 @@
         gap: 2rem;
         max-width: 56.25rem;
         margin: 0 auto;
+    }
+
+    .empty-shelf article h2 {
+        padding-bottom: 1rem;
     }
 
     .empty-shelf article {
