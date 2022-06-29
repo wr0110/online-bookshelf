@@ -22,7 +22,7 @@ const PrivateHome = () => {
   //Hero Props
   const heroHeading = (
     <>
-      Start <span>organizing</span> your reads
+      Start <span>organizing</span>
     </>
   );
 
