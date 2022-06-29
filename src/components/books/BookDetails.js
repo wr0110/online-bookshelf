@@ -9,6 +9,7 @@ import { AuthContext } from "../../contexts/authContext";
 import Login from "../login/Login";
 import EmptyShelf from "./EmptyShelf";
 import webSearch from "../../images/web_search.svg";
+import server from "../../images/server_down.svg";
 
 //component to show book details
 const BookDetails = () => {
@@ -58,8 +59,7 @@ const BookDetails = () => {
     );
   });
 
-  /**
-   * if user is signed in, open the add to library modal
+  /** if user is signed in, open the add to library modal
    * if user is not signed in, open the login modal
    */
   const handleLibrary = () => {
@@ -80,21 +80,41 @@ const BookDetails = () => {
     ? `${selectedBook?.imageLinks?.thumbnail}`
     : "https://via.placeholder.com/150";
 
-  // const coverWrap = { backgroundImage: `url(${src})` };
-
-  if (!selectedBook || error) {
+  if (!selectedBook && !error) {
     return (
-      <Container className={styled.wrap}>
-        <EmptyShelf src={webSearch} />
+      <Container className={styled.info}>
+        <EmptyShelf
+          src={webSearch}
+          heading="No results found."
+          message="Try searching for another book or visit the Explore page."
+          button="Explore"
+          route="/explore"
+        />
       </Container>
     );
   }
+
+  if (error) {
+    return (
+      <Container className={styled.info}>
+        <EmptyShelf
+          src={server}
+          heading="There was error when fetching the data"
+          message="Try searching for another book or visit the Explore page."
+          button="Explore"
+          route="/explore"
+        />
+      </Container>
+    );
+  }
+
+  const success = !loading && selectedBook.length !== 0 && !error;
 
   return (
     <section className={styled.info}>
       {loading && <Loading />}
 
-      {!loading && selectedBook.length !== 0 && (
+      {success && (
         <Container className={styled["book-details-container"]}>
           <div className={styled["img-group"]}>
             <figure className={styled.cover}>
@@ -130,8 +150,6 @@ const BookDetails = () => {
           </article>
         </Container>
       )}
-
-      {/* {!loading && selectedBook.length === undefined && <p>No book found</p>} */}
 
       {openLibraryModal && (
         <Modal openModal={openLibraryModal} setOpenModal={setOpenLibraryModal}>

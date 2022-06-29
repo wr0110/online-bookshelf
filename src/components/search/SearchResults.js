@@ -107,12 +107,10 @@ const SearchResults = () => {
 
   const empty = !allBooks || allBooks === undefined || allBooks.length === 0;
 
-  return (
-    <section className={styled.results}>
-      {loading && <Loading />}
-
-      <Container>
-        {empty && !error ? (
+  if (empty && !error && !loading) {
+    return (
+      <div className={styled.results}>
+        <Container>
           <EmptyShelf
             src={webSearch}
             heading="No results found."
@@ -120,12 +118,18 @@ const SearchResults = () => {
             button="Explore"
             route="/explore"
           />
-        ) : (
-          <>
-            <Heading className="heading-md" text={text} />
-            <div className="books-grid">{allBooks}</div>{" "}
-          </>
-        )}
+        </Container>
+      </div>
+    );
+  }
+
+  return (
+    <section className={styled.results}>
+      {loading && <Loading />}
+
+      <Container>
+        <Heading className="heading-md" text={text} />
+        <div className="books-grid">{allBooks}</div>
       </Container>
     </section>
   );
