@@ -29,7 +29,7 @@ const PublicHome = () => {
   );
 
   const heroText =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus velit senectus in nunc ut dictum aliquam id platea. In eget amet, imperdiet tellus. Sit sit orci in eu. Quis pellentesque.";
+    "The preferred bookmarking app for book lovers. Use BookMark, to create your online bookshelf and add to your library anytime, anywhere. Stay organized with shelves and never lose track of a book again!";
 
   const buttonText = "Start Organizing";
 
@@ -42,7 +42,7 @@ const PublicHome = () => {
 
   // props to pass to the genre component
   const paragraph =
-    " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus eleifend cras praesent purus nec, quis aliquet.";
+    "If you're looking for a way to keep track of all your favorite books, then BookMark is the app for you! Access all your favorites in one central location. Create your bookshelf and add all your favorite titles to it.";
 
   // props to pass to the top picks component
 
@@ -68,9 +68,7 @@ const PublicHome = () => {
             Top picks of the <span>month</span>
           </>
         }
-        paragraph="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere
-            blanditiis quis perferendis doloremque ipsa, reprehenderit saepe
-            repellendus illo deleniti assumenda!"
+        paragraph="These books are all great reads that will keep you entertained for hours on end. If you're looking for something new to read, be sure to check out one of these books!"
       />
       <Booktok />
       <Review />

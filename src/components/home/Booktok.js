@@ -30,8 +30,10 @@ const Booktok = () => {
             <Heading className="heading-md" text={heading} />
 
             <p className="para">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus
-              velit senectus in nunc ut dictum aliquam id platea.
+              TikTok made me read it! We are staying up to date with #BookTok
+              and we've made it easier for you to see what's going viral. Add
+              these popular books to your collection and stay up-to-date on the
+              latest must-reads.
             </p>
             <Button onClick={handleClick}>Explore</Button>
           </article>
