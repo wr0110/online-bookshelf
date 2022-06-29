@@ -5,9 +5,9 @@ import EmptyShelf from "../books/EmptyShelf";
 import search from "../../images/search.svg";
 
 //props for empty shelf
-const heading = "There are no books here yet.";
+const heading = "There are no books here as yet.";
 const message =
-  "Search for a book to add it to your library or visit the Explore page to find more books.";
+  "Search for a book to add it to your Library or visit the Explore page to find more books.";
 
 const BooksForLibrary = ({ searchParams, setSearchParams }) => {
   const AllBooks = useGetAllBooks();
@@ -37,7 +37,13 @@ const BooksForLibrary = ({ searchParams, setSearchParams }) => {
     <div>
       {/* if there are no books in the library show the empty shelf */}
       {empty ? (
-        <EmptyShelf src={search} heading={heading} message={message} />
+        <EmptyShelf
+          src={search}
+          heading={heading}
+          message={message}
+          button="Explore"
+          route="/explore"
+        />
       ) : (
         <section className="books-grid">{books}</section>
       )}
