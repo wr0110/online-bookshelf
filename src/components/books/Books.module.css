@@ -3,15 +3,6 @@
   width: fit-content;
 }
 
-.icon {
-  position: relative;
-  top: 40px;
-  right: -90px;
-  background-color: var(--med-grey);
-  border-radius: 5px;
-  width: fit-content;
-}
-
 .books figure img {
   height: 200px;
   width: 130px;
@@ -26,13 +17,13 @@
 }
 
 .delete {
-  position: absolute;
-  top: -15px;
-  left: 110px;
-  background-color: var(--med-grey);
-  border-radius: 5px;
-  padding: 3px;
   cursor: pointer;
+}
 
+.bookmarked,
+.delete {
+  position: absolute;
+  top: -3px;
+  left: 95px;
 
 }

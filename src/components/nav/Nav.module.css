@@ -32,7 +32,7 @@
   justify-content: center;
   align-items: center;
   list-style: none;
-  background-color: rgba(255, 255, 255, 0.523);
+  background-color: rgba(236, 236, 236, 0.522);
   backdrop-filter: blur(20px);
   z-index: 2;
   gap: 2rem;
@@ -94,6 +94,10 @@
 
 .desktop-search-bar {
   display: none;
+}
+
+.search-icon {
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {

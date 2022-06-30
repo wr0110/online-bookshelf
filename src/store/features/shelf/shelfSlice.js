@@ -284,6 +284,5 @@ export const {
   renameShelf,
   removeShelf,
   removeBookFromAllShelves,
-  sortBooksOnShelf,
 } = shelfSlice.actions;
 export default shelfSlice.reducer;

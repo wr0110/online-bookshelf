@@ -19,6 +19,7 @@
 }
 
 .cover {
+  position: relative;
   height: 200px;
   width: 130px;
   border-radius: 10px;
@@ -120,6 +121,13 @@ p.description {
 }
 
 
+.bookmarked {
+  position: absolute;
+  top: -3px;
+  left: 95px;
+
+}
+
 @media (min-width: 768px) {
   .book-details-container {
     display: grid;
@@ -139,10 +147,6 @@ p.description {
     top: 70px;
   }
 
-  .cover {
-    height: 220px;
-    width: 145px;
-  }
 
   .img-group {
     justify-content: start;

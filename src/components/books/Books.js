@@ -4,10 +4,16 @@ import Modal from "../../helpers/modal/Modal";
 import Information from "./Information";
 import RemoveBook from "./RemoveBook";
 import { RiBookmarkFill } from "react-icons/ri";
+import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 
 // component to show each book it receives
 const Books = (props) => {
   // state and props
+  const { library } = useSelector((state) => state.bookStore);
+  const { shelf } = useSelector((state) => state.bookShelf);
+  const { currentUser } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [openRemoveModal, setOpenRemoveModal] = useState(false);
@@ -16,6 +22,24 @@ const Books = (props) => {
   // set the modal state
   const handleGetBookInfo = () => setOpenModal((state) => !state);
   const handleDelete = () => setOpenRemoveModal((state) => !state);
+
+  //get current user
+  const user = shelf.find((record) => record.user === currentUser?.email);
+  const libraryUser = library.find(
+    (record) => record.user === currentUser?.email
+  );
+
+  //check if this book is on the current user's shelves and library
+  const isOnShelves = user?.booksOnShelves?.find(
+    (book) => book.bookData.id === props.book.id
+  );
+
+  const isInLibrary = libraryUser?.userLibrary?.find(
+    (book) => book.bookData.id === props.book.id
+  );
+
+  const showLibraryBookmark = props.showLibraryBookmark && isInLibrary;
+  const showShelfBookmark = props.showShelfBookmark && isOnShelves;
 
   return (
     <>
@@ -30,9 +54,13 @@ const Books = (props) => {
 
         {props.showDeleteIcon && isHovering && (
           <div className={styled.delete} onClick={handleDelete}>
-            <div>
-              <RiBookmarkFill color="white" size="22px" />
-            </div>
+            <RiBookmarkFill style={{ color: "var(--yellow)" }} size="35px" />
+          </div>
+        )}
+
+        {(showShelfBookmark || showLibraryBookmark) && (
+          <div className={styled.bookmarked}>
+            <RiBookmarkFill style={{ color: "var(--yellow)" }} size="35px" />
           </div>
         )}
       </section>
