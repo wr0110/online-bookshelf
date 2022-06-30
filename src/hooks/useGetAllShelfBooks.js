@@ -16,6 +16,7 @@ const useGetAllShelfBooks = () => {
         key={record.bookData.id}
         book={record.bookData}
         actionsComponent={<ShelfActions book={record.bookData} />}
+        showShelfBookmark={true}
       />
     );
   });

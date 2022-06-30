@@ -40,6 +40,9 @@ const Books = (props) => {
     (book) => book.bookData.id === props.book.id
   );
 
+  const showLibraryBookmark = props.showLibraryBookmark && isInLibrary;
+  const showShelfBookmark = props.showShelfBookmark && isOnShelves;
+
   return (
     <>
       <section
@@ -53,13 +56,11 @@ const Books = (props) => {
 
         {props.showDeleteIcon && isHovering && (
           <div className={styled.delete} onClick={handleDelete}>
-            <div>
-              <RiBookmarkFill color="white" size="22px" />
-            </div>
+            <RiBookmarkFill style={{ color: "var(--yellow)" }} size="35px" />
           </div>
         )}
 
-        {(isOnShelves || isInLibrary) && (
+        {(showShelfBookmark || showLibraryBookmark) && (
           <div className={styled.bookmarked}>
             <RiBookmarkFill style={{ color: "var(--yellow)" }} size="35px" />
           </div>

@@ -32,6 +32,7 @@ const useExplore = (subject) => {
         key={id}
         book={bookData}
         actionsComponent={<LibraryActions book={bookData} />}
+        showLibraryBookmark={true}
       />
     );
   });

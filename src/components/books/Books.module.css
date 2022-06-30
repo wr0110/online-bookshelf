@@ -17,16 +17,11 @@
 }
 
 .delete {
-  position: absolute;
-  top: -15px;
-  left: 110px;
-  background-color: var(--med-grey);
-  border-radius: 5px;
-  padding: 3px;
   cursor: pointer;
 }
 
-.bookmarked * {
+.bookmarked,
+.delete {
   position: absolute;
   top: -3px;
   left: 95px;
