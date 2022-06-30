@@ -168,7 +168,7 @@ p.description {
 
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   .info {
     top: 70px;
     background-position: center;

@@ -105,7 +105,7 @@ const SearchResults = () => {
     );
   }
 
-  const empty = !allBooks || allBooks === undefined || allBooks.length === 0;
+  const empty = !allBooks || allBooks === undefined;
 
   if (empty && !error && !loading) {
     return (
@@ -127,10 +127,12 @@ const SearchResults = () => {
     <section className={styled.results}>
       {loading && <Loading />}
 
-      <Container>
-        <Heading className="heading-md" text={text} />
-        <div className="books-grid">{allBooks}</div>
-      </Container>
+      {!loading && !empty && (
+        <Container>
+          <Heading className="heading-md" text={text} />
+          <div className="books-grid">{allBooks}</div>
+        </Container>
+      )}
     </section>
   );
 };

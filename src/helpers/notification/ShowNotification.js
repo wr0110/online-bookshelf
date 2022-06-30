@@ -18,7 +18,7 @@ const ShowNotification = () => {
         ),
 
         insert: "top",
-        container: "top-right",
+        container: "top-left",
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
 
@@ -42,7 +42,7 @@ const ShowNotification = () => {
         ),
 
         insert: "top",
-        container: "top-right",
+        container: "top-left",
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
 

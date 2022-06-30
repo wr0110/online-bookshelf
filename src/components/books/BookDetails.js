@@ -10,6 +10,7 @@ import Login from "../login/Login";
 import EmptyShelf from "./EmptyShelf";
 import webSearch from "../../images/web_search.svg";
 import server from "../../images/server_down.svg";
+import ScrollToTop from "../../helpers/routes/ScrollToTop";
 
 //component to show book details
 const BookDetails = () => {
@@ -111,61 +112,66 @@ const BookDetails = () => {
   const success = !loading && selectedBook.length !== 0 && !error;
 
   return (
-    <section className={styled.info}>
-      {loading && <Loading />}
+    <ScrollToTop>
+      <section className={styled.info}>
+        {loading && <Loading />}
 
-      {success && (
-        <Container className={styled["book-details-container"]}>
-          <div className={styled["img-group"]}>
-            <figure className={styled.cover}>
-              <img src={src} alt={selectedBook?.title} />
-            </figure>
+        {success && (
+          <Container className={styled["book-details-container"]}>
+            <div className={styled["img-group"]}>
+              <figure className={styled.cover}>
+                <img src={src} alt={selectedBook?.title} />
+              </figure>
 
-            <div className={styled["btn-group"]}>
-              <button onClick={handleLibrary}>Add to Library</button>
-              <button onClick={handleAuthor}>More by Author</button>
+              <div className={styled["btn-group"]}>
+                <button onClick={handleLibrary}>Add to Library</button>
+                <button onClick={handleAuthor}>More by Author</button>
+              </div>
             </div>
-          </div>
 
-          <article className={styled["book-info"]}>
-            <h1 className={styled.title}>{selectedBook?.title}</h1>
+            <article className={styled["book-info"]}>
+              <h1 className={styled.title}>{selectedBook?.title}</h1>
 
-            {selectedBook?.subtitle && (
-              <p className={styled.subtitle}>{selectedBook?.subtitle}</p>
-            )}
-
-            {selectedBook?.authors && (
-              <p className={styled.author}>{selectedBook?.authors[0]}</p>
-            )}
-
-            {categories.length !== 0 && (
-              <div className={styled["book-categories"]}>{categories}</div>
-            )}
-
-            <p className={styled.description} ref={descriptionRef}>
-              {selectedBook?.description === undefined && (
-                <p>No description available</p>
+              {selectedBook?.subtitle && (
+                <p className={styled.subtitle}>{selectedBook?.subtitle}</p>
               )}
-            </p>
-          </article>
-        </Container>
-      )}
 
-      {openLibraryModal && (
-        <Modal openModal={openLibraryModal} setOpenModal={setOpenLibraryModal}>
-          <AddToLibrary
-            selectedBook={selectedBook}
+              {selectedBook?.authors && (
+                <p className={styled.author}>{selectedBook?.authors[0]}</p>
+              )}
+
+              {categories.length !== 0 && (
+                <div className={styled["book-categories"]}>{categories}</div>
+              )}
+
+              <p className={styled.description} ref={descriptionRef}>
+                {selectedBook?.description === undefined && (
+                  <p>No description available</p>
+                )}
+              </p>
+            </article>
+          </Container>
+        )}
+
+        {openLibraryModal && (
+          <Modal
+            openModal={openLibraryModal}
             setOpenModal={setOpenLibraryModal}
-          />
-        </Modal>
-      )}
+          >
+            <AddToLibrary
+              selectedBook={selectedBook}
+              setOpenModal={setOpenLibraryModal}
+            />
+          </Modal>
+        )}
 
-      {openLoginModal && (
-        <Modal openModal={openLoginModal} setOpenModal={setOpenLoginModal}>
-          <Login setOpenModal={setOpenLoginModal} />
-        </Modal>
-      )}
-    </section>
+        {openLoginModal && (
+          <Modal openModal={openLoginModal} setOpenModal={setOpenLoginModal}>
+            <Login setOpenModal={setOpenLoginModal} />
+          </Modal>
+        )}
+      </section>
+    </ScrollToTop>
   );
 };
 
