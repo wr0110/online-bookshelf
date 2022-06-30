@@ -4,10 +4,16 @@ import Modal from "../../helpers/modal/Modal";
 import Information from "./Information";
 import RemoveBook from "./RemoveBook";
 import { RiBookmarkFill } from "react-icons/ri";
+import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 
 // component to show each book it receives
 const Books = (props) => {
   // state and props
+  const { library } = useSelector((state) => state.bookStore);
+  const { shelf } = useSelector((state) => state.bookShelf);
+  const { currentUser } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [openRemoveModal, setOpenRemoveModal] = useState(false);
@@ -16,6 +22,23 @@ const Books = (props) => {
   // set the modal state
   const handleGetBookInfo = () => setOpenModal((state) => !state);
   const handleDelete = () => setOpenRemoveModal((state) => !state);
+
+  //get booksOnShelves for the current user
+  const user = shelf.find((record) => record.user === currentUser?.email);
+
+  const libraryUser = library.find(
+    (record) => record.user === currentUser?.email
+  );
+
+  //check if this book is on the current user's shelves and return boolean
+  const isOnShelves = user?.booksOnShelves?.find(
+    (book) => book.bookData.id === props.book.id
+  );
+
+  //check if this book is on the current user's library and return boolean
+  const isInLibrary = libraryUser?.userLibrary?.find(
+    (book) => book.bookData.id === props.book.id
+  );
 
   return (
     <>
@@ -33,6 +56,12 @@ const Books = (props) => {
             <div>
               <RiBookmarkFill color="white" size="22px" />
             </div>
+          </div>
+        )}
+
+        {(isOnShelves || isInLibrary) && (
+          <div className={styled.bookmarked}>
+            <RiBookmarkFill style={{ color: "var(--yellow)" }} size="35px" />
           </div>
         )}
       </section>

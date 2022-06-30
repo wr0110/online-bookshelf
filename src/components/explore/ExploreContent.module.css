@@ -17,7 +17,7 @@
     cursor: pointer;
     overflow-x: scroll;
     scrollbar-width: none;
-    margin: 2rem 0;
+    padding: 2rem 0;
     gap: 2rem;
 }
 
