@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   shelf: [],
-  isOnShelf: false,
   isShelfEmpty: true,
   currentBookShelves: [],
   shelfFeedback: {
@@ -185,23 +184,6 @@ const shelfSlice = createSlice({
         }
       }
     },
-    isInBooksOnShelves: (state, action) => {
-      const data = action.payload; // user, bookId
-
-      //find the user
-      const user = state.shelf.find((record) => record.user === data.user);
-
-      //check if this book is on the current user's shelves and return boolean
-      const isOnShelf = user?.booksOnShelves?.find(
-        (book) => book.bookData.id === data.bookId
-      );
-
-      if (isOnShelf) {
-        state.isOnShelf = true;
-      } else {
-        state.isOnShelf = false;
-      }
-    },
     renameShelf: (state, action) => {
       const data = action.payload; //newName, shelf, user
 
@@ -299,7 +281,6 @@ export const {
   checkIfUserHasShelves,
   addToShelf,
   getShelvesForCurrentBook,
-  isInBooksOnShelves,
   renameShelf,
   removeShelf,
   removeBookFromAllShelves,

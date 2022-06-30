@@ -11,10 +11,13 @@ import EmptyShelf from "./EmptyShelf";
 import webSearch from "../../images/web_search.svg";
 import server from "../../images/server_down.svg";
 import ScrollToTop from "../../helpers/routes/ScrollToTop";
+import { useSelector } from "react-redux";
+import { RiBookmarkFill } from "react-icons/ri";
 
 //component to show book details
 const BookDetails = () => {
   const { bookId } = useParams();
+  const { library } = useSelector((state) => state.bookStore);
   const { currentUser, isSignedIn } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [selectedBook, setSelectedBook] = useState([]);
@@ -25,6 +28,14 @@ const BookDetails = () => {
   const [error, setError] = useState(false);
 
   const auth = currentUser.email && isSignedIn;
+
+  const libraryUser = library.find(
+    (record) => record.user === currentUser?.email
+  );
+
+  const isInLibrary = libraryUser?.userLibrary?.find(
+    (book) => book.bookData.id === bookId
+  );
 
   //fetch data using the given book ID and set the selectedBook state
   useEffect(() => {
@@ -121,6 +132,14 @@ const BookDetails = () => {
             <div className={styled["img-group"]}>
               <figure className={styled.cover}>
                 <img src={src} alt={selectedBook?.title} />
+                {isInLibrary && (
+                  <div className={styled.bookmarked}>
+                    <RiBookmarkFill
+                      style={{ color: "var(--yellow)" }}
+                      size="35px"
+                    />
+                  </div>
+                )}
               </figure>
 
               <div className={styled["btn-group"]}>

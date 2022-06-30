@@ -23,19 +23,17 @@ const Books = (props) => {
   const handleGetBookInfo = () => setOpenModal((state) => !state);
   const handleDelete = () => setOpenRemoveModal((state) => !state);
 
-  //get booksOnShelves for the current user
+  //get current user
   const user = shelf.find((record) => record.user === currentUser?.email);
-
   const libraryUser = library.find(
     (record) => record.user === currentUser?.email
   );
 
-  //check if this book is on the current user's shelves and return boolean
+  //check if this book is on the current user's shelves and library
   const isOnShelves = user?.booksOnShelves?.find(
     (book) => book.bookData.id === props.book.id
   );
 
-  //check if this book is on the current user's library and return boolean
   const isInLibrary = libraryUser?.userLibrary?.find(
     (book) => book.bookData.id === props.book.id
   );
