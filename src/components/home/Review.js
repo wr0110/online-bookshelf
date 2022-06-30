@@ -31,7 +31,7 @@ const Review = () => {
   );
 
   //only return 3 random reviews
-  const limitReviews = reviews.sort(() => Math.random() - 0.1).slice(0, 3);
+  const limitReviews = reviews.sort(() => Math.random() - 0.5).slice(0, 3);
 
   const reviewList = limitReviews.map((review) => {
     return (

@@ -9,6 +9,8 @@ import { AuthContext } from "../../contexts/authContext";
 import Login from "../login/Login";
 import EmptyShelf from "./EmptyShelf";
 import webSearch from "../../images/web_search.svg";
+import server from "../../images/server_down.svg";
+import ScrollToTop from "../../helpers/routes/ScrollToTop";
 
 //component to show book details
 const BookDetails = () => {
@@ -58,8 +60,7 @@ const BookDetails = () => {
     );
   });
 
-  /**
-   * if user is signed in, open the add to library modal
+  /** if user is signed in, open the add to library modal
    * if user is not signed in, open the login modal
    */
   const handleLibrary = () => {
@@ -80,74 +81,97 @@ const BookDetails = () => {
     ? `${selectedBook?.imageLinks?.thumbnail}`
     : "https://via.placeholder.com/150";
 
-  // const coverWrap = { backgroundImage: `url(${src})` };
-
-  if (!selectedBook || error) {
+  if (!selectedBook && !error) {
     return (
-      <Container className={styled.wrap}>
-        <EmptyShelf src={webSearch} />
+      <Container className={styled.info}>
+        <EmptyShelf
+          src={webSearch}
+          heading="No results found."
+          message="Try searching for another book or visit the Explore page."
+          button="Explore"
+          route="/explore"
+        />
       </Container>
     );
   }
 
+  if (error) {
+    return (
+      <Container className={styled.info}>
+        <EmptyShelf
+          src={server}
+          heading="There was error when fetching the data"
+          message="Try searching for another book or visit the Explore page."
+          button="Explore"
+          route="/explore"
+        />
+      </Container>
+    );
+  }
+
+  const success = !loading && selectedBook.length !== 0 && !error;
+
   return (
-    <section className={styled.info}>
-      {loading && <Loading />}
+    <ScrollToTop>
+      <section className={styled.info}>
+        {loading && <Loading />}
 
-      {!loading && selectedBook.length !== 0 && (
-        <Container className={styled["book-details-container"]}>
-          <div className={styled["img-group"]}>
-            <figure className={styled.cover}>
-              <img src={src} alt={selectedBook?.title} />
-            </figure>
+        {success && (
+          <Container className={styled["book-details-container"]}>
+            <div className={styled["img-group"]}>
+              <figure className={styled.cover}>
+                <img src={src} alt={selectedBook?.title} />
+              </figure>
 
-            <div className={styled["btn-group"]}>
-              <button onClick={handleLibrary}>Add to Library</button>
-              <button onClick={handleAuthor}>More by Author</button>
+              <div className={styled["btn-group"]}>
+                <button onClick={handleLibrary}>Add to Library</button>
+                <button onClick={handleAuthor}>More by Author</button>
+              </div>
             </div>
-          </div>
 
-          <article className={styled["book-info"]}>
-            <h1 className={styled.title}>{selectedBook?.title}</h1>
+            <article className={styled["book-info"]}>
+              <h1 className={styled.title}>{selectedBook?.title}</h1>
 
-            {selectedBook?.subtitle && (
-              <p className={styled.subtitle}>{selectedBook?.subtitle}</p>
-            )}
-
-            {selectedBook?.authors && (
-              <p className={styled.author}>{selectedBook?.authors[0]}</p>
-            )}
-
-            {categories.length !== 0 && (
-              <div className={styled["book-categories"]}>{categories}</div>
-            )}
-
-            <p className={styled.description} ref={descriptionRef}>
-              {selectedBook?.description === undefined && (
-                <p>No description available</p>
+              {selectedBook?.subtitle && (
+                <p className={styled.subtitle}>{selectedBook?.subtitle}</p>
               )}
-            </p>
-          </article>
-        </Container>
-      )}
 
-      {/* {!loading && selectedBook.length === undefined && <p>No book found</p>} */}
+              {selectedBook?.authors && (
+                <p className={styled.author}>{selectedBook?.authors[0]}</p>
+              )}
 
-      {openLibraryModal && (
-        <Modal openModal={openLibraryModal} setOpenModal={setOpenLibraryModal}>
-          <AddToLibrary
-            selectedBook={selectedBook}
+              {categories.length !== 0 && (
+                <div className={styled["book-categories"]}>{categories}</div>
+              )}
+
+              <p className={styled.description} ref={descriptionRef}>
+                {selectedBook?.description === undefined && (
+                  <p>No description available</p>
+                )}
+              </p>
+            </article>
+          </Container>
+        )}
+
+        {openLibraryModal && (
+          <Modal
+            openModal={openLibraryModal}
             setOpenModal={setOpenLibraryModal}
-          />
-        </Modal>
-      )}
+          >
+            <AddToLibrary
+              selectedBook={selectedBook}
+              setOpenModal={setOpenLibraryModal}
+            />
+          </Modal>
+        )}
 
-      {openLoginModal && (
-        <Modal openModal={openLoginModal} setOpenModal={setOpenLoginModal}>
-          <Login setOpenModal={setOpenLoginModal} />
-        </Modal>
-      )}
-    </section>
+        {openLoginModal && (
+          <Modal openModal={openLoginModal} setOpenModal={setOpenLoginModal}>
+            <Login setOpenModal={setOpenLoginModal} />
+          </Modal>
+        )}
+      </section>
+    </ScrollToTop>
   );
 };
 

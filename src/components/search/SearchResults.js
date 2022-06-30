@@ -7,12 +7,14 @@ import Heading from "../../helpers/heading/Heading";
 import LibraryActions from "../library/LibraryActions";
 import EmptyShelf from "../books/EmptyShelf";
 import webSearch from "../../images/web_search.svg";
+import server from "../../images/server_down.svg";
 import Loading from "../../helpers/modal/Loading";
 
 const SearchResults = () => {
   // states
   const [bookResults, setBookResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   /** convert the location object into a javascript object
    * get the search property and store is value in a constant  */
@@ -35,6 +37,7 @@ const SearchResults = () => {
         const data = await response.json();
         setBookResults(data.items);
       } catch (error) {
+        setError((state) => !state);
         console.log(error);
       }
       setLoading(false);
@@ -86,16 +89,50 @@ const SearchResults = () => {
     return <Navigate to="/" />;
   }
 
+  if (error) {
+    return (
+      <div className={styled.results}>
+        <Container>
+          <EmptyShelf
+            src={server}
+            heading="There was error when fetching the data"
+            message="Try searching for another book or visit the Explore page."
+            button="Explore"
+            route="/explore"
+          />
+        </Container>
+      </div>
+    );
+  }
+
+  const empty = !allBooks || allBooks === undefined;
+
+  if (empty && !error && !loading) {
+    return (
+      <div className={styled.results}>
+        <Container>
+          <EmptyShelf
+            src={webSearch}
+            heading="No results found."
+            message="Try searching for another book or visit the Explore page."
+            button="Explore"
+            route="/explore"
+          />
+        </Container>
+      </div>
+    );
+  }
+
   return (
     <section className={styled.results}>
-      {/* when loading show Modal */}
       {loading && <Loading />}
 
-      <Container>
-        {allBooks && <Heading className="heading-md" text={text} />}
-        {allBooks === undefined && <EmptyShelf src={webSearch} />}
-        <div className="books-grid">{allBooks}</div>
-      </Container>
+      {!loading && !empty && (
+        <Container>
+          <Heading className="heading-md" text={text} />
+          <div className="books-grid">{allBooks}</div>
+        </Container>
+      )}
     </section>
   );
 };

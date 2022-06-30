@@ -10,14 +10,6 @@
   min-height: 100vh;
 }
 
-.wrap {
-  position: relative;
-  top: 100px;
-  padding: 2rem 0;
-  height: 100%;
-}
-
-
 .img-group {
   display: flex;
   flex-direction: column;
@@ -176,7 +168,7 @@ p.description {
 
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   .info {
     top: 70px;
     background-position: center;

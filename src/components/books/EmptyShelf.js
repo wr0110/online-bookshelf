@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "./EmptyShelf.module.css";
 import Button from "../button/Button";
+import { useNavigate } from "react-router-dom";
 
 const EmptyShelf = (props) => {
+  const navigate = useNavigate();
+  const handleClick = () => navigate(`${props.route}`);
+
   return (
     <section className={styled["empty-shelf"]}>
       <figure>
@@ -10,11 +14,9 @@ const EmptyShelf = (props) => {
       </figure>
 
       <article>
-        <h2> Its not a 404 error but it might as well be.</h2>
-        <p>
-          Looks like there are no books here, but no worries, we can fix that.
-        </p>
-        <Button>Explore</Button>
+        <h2> {props.heading}</h2>
+        <p>{props.message}</p>
+        <Button onClick={handleClick}>{props.button}</Button>
       </article>
     </section>
   );
