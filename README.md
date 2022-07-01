@@ -50,8 +50,6 @@ As this is still a work-in-progress, here are the currently implemented features
 - [x] Delete custom shelves
 - [ ] Save data to Firebase
 
----
-
 ## How to use BookMark
 
 ### **Library**
