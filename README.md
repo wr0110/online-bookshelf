@@ -49,3 +49,48 @@ As this is still a work-in-progress, here are the currently implemented features
 - [x] Edit custom shelves
 - [x] Delete custom shelves
 - [ ] Save data to Firebase
+
+---
+
+## How to use BookMark
+
+### **Library**
+
+#### Adding a Book to the Library
+
+- Search for a book or an author or visit the explore page.
+- From the results, click on the book you want to add to your library, and click on the **Add to Library** button. Choose the desired category for the book. This will add the book to your library.
+
+#### Moving a Book to a Different Category
+
+- Books in the library can only be added to one category: **To Be Read, In Progress, Completed or DNF**. If you want to move a book to a different category, you can click on the **Add to Library** button again and choose the desired category.
+- If you want more details about the book, click on the book and then click on the **Details & More** button. This will show you more information about the book.
+
+#### Removing a Book from the Library
+
+- To remove a book from the library, visit any of the categories in the library: **All, To Be Read, In Progress, Completed or DNF**. Hover over the book and click on the **bookmark** icon. This will remove the book from the library. If the book is on a shelf, it will also be removed from the shelf.
+
+### **Shelves**
+
+You can also add a book to a custom shelf. Custom shelves are created by you. They allow you to have more control over your books. You can create a maximum of 15 shelves. Books in the library will be automatically added to the shelves page. Only books that are in the library can be added to a shelf.
+
+#### Creating a Custom Shelf
+
+- First, visit the shelves page. On the shelves page, click on the **Add Icon** and create a new shelf.
+
+#### Adding a Book to a Shelf
+
+- First add the book to your library. Too see all the books available to add to a shelf, click on the **Books** tab.
+- To add a book to a shelf, click on the book you want to add to the shelf and choose from the list of shelves you created. This will add the book to the shelf. If a book is already in the shelf, the shelf name will be dark blue.
+
+#### Removing a Book from a Shelf
+
+- To remove a book from a shelf, click on the book you want to remove from the shelf and choose from the list of shelves you created. Shelf names will be dark blue if the book is in the shelf. Click on dark blue shelf names to remove the book from the shelf.
+
+#### Renaming a Shelf
+
+- To rename a shelf, right click on the shelf name and then click on the **Rename Shelf** button. This will open a modal with the current name of the shelf. You can change the name of the shelf. All the books on the old shelf will be moved to the new shelf.
+
+#### Removing a Shelf
+
+- To remove a shelf, right click on the shelf name and then click on the **Remove Shelf** button. This will open a modal with the current shelf. You can delete the shelf. All the books on the shelf will be removed from that shelf.
