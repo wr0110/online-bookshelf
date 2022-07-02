@@ -13,8 +13,7 @@ const SearchResults = () => {
   /** convert the location object into a javascript object
    * get the search property and store is value in a constant  */
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const searchQuery = queryParams.get("search");
+  const searchQuery = new URLSearchParams(location.search).get("search");
 
   const {
     data: bookResults,

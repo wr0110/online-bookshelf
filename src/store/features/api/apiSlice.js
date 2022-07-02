@@ -11,7 +11,10 @@ export const apiSlice = createApi({
       query: (searchQuery) =>
         `?q=${searchQuery}&orderBy=relevance&maxResults=28&key=${apiKey}`,
     }),
+    getBookDetails: builder.query({
+      query: (bookId) => `/${bookId}`,
+    }),
   }),
 });
 
-export const { useGetSearchResultsQuery } = apiSlice;
+export const { useGetSearchResultsQuery, useGetBookDetailsQuery } = apiSlice;
