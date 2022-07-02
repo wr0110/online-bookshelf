@@ -23,14 +23,7 @@ const Summary = (props) => {
       {/* if there is no image then show placeholder image */}
       <div className={styled.summary}>
         <figure>
-          <img
-            src={
-              imageLinks
-                ? imageLinks.smallThumbnail
-                : "https://via.placeholder.com/128x204"
-            }
-            alt={title}
-          />
+          <img src={imageLinks.smallThumbnail} alt={title} />
         </figure>
 
         <article>

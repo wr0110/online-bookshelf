@@ -17,13 +17,16 @@ const ShowBookDetails = (props) => {
   const auth = currentUser.email && isSignedIn;
 
   const { selectedBook, isInLibrary } = props.details;
+  const { authors, description, subtitle, title, categories, imageLinks } =
+    selectedBook?.volumeInfo;
 
   //if the selectedBook is not empty, update the innerHTML value with the given data since the description includes html tags
   useEffect(() => {
-    if (selectedBook?.description && descriptionRef.current) {
-      descriptionRef.current.innerHTML = `${selectedBook.description}`;
+    if (description && descriptionRef.current) {
+      descriptionRef.current.innerHTML = `${description}`;
     }
-  }, [selectedBook]);
+  }, [description]);
+
   /** if user is signed in, open the add to library modal
    * if user is not signed in, open the login modal
    */
@@ -36,14 +39,14 @@ const ShowBookDetails = (props) => {
   };
 
   const handleAuthor = () => {
-    if (selectedBook?.authors) {
-      navigate(`/results?search=${selectedBook?.authors[0]}`);
+    if (authors) {
+      navigate(`/results?search=${authors[0]}`);
     }
   };
 
   //remove duplicate categories
-  const categorySet = new Set(selectedBook?.categories);
-  const categories = [...categorySet]?.map((category, index) => {
+  const categorySet = new Set(categories);
+  const allCategories = [...categorySet]?.map((category, index) => {
     return (
       <p className={styled.category} key={Date.now() + index}>
         {category}
@@ -51,15 +54,15 @@ const ShowBookDetails = (props) => {
     );
   });
 
-  const src = selectedBook?.imageLinks?.thumbnail
-    ? `${selectedBook?.imageLinks?.thumbnail}`
+  const src = imageLinks?.thumbnail
+    ? `${imageLinks?.thumbnail}`
     : "https://via.placeholder.com/150";
   return (
     <>
       <Container className={styled["book-details-container"]}>
         <div className={styled["img-group"]}>
           <figure className={styled.cover}>
-            <img src={src} alt={selectedBook?.title} />
+            <img src={src} alt={title} />
             {isInLibrary && (
               <div className={styled.bookmarked}>
                 <RiBookmarkFill
@@ -77,24 +80,16 @@ const ShowBookDetails = (props) => {
         </div>
 
         <article className={styled["book-info"]}>
-          <h1 className={styled.title}>{selectedBook?.title}</h1>
+          <h1 className={styled.title}>{title}</h1>
+          {subtitle && <p className={styled.subtitle}>{subtitle}</p>}
+          {authors && <p className={styled.author}>{authors[0]}</p>}
 
-          {selectedBook?.subtitle && (
-            <p className={styled.subtitle}>{selectedBook?.subtitle}</p>
-          )}
-
-          {selectedBook?.authors && (
-            <p className={styled.author}>{selectedBook?.authors[0]}</p>
-          )}
-
-          {categories.length !== 0 && (
-            <div className={styled["book-categories"]}>{categories}</div>
+          {categories && (
+            <div className={styled["book-categories"]}>{allCategories}</div>
           )}
 
           <p className={styled.description} ref={descriptionRef}>
-            {selectedBook?.description === undefined && (
-              <p>No description available</p>
-            )}
+            {description === undefined && <p>No description available</p>}
           </p>
         </article>
       </Container>

@@ -7,7 +7,6 @@ import SearchResults from "../components/search/SearchResults";
 import { AuthContext } from "../contexts/authContext";
 import NoMatch from "../helpers/routes/NoMatch";
 import ProtectedRoute from "../helpers/routes/ProtectedRoute";
-import ScrollToTop from "../helpers/routes/ScrollToTop";
 import Explore from "./Explore";
 import Library from "./Library";
 import PrivateHome from "./PrivateHome";
@@ -21,38 +20,36 @@ const Pages = () => {
   return (
     <>
       <Nav />
-      <ScrollToTop>
-        <Routes>
-          {!auth ? (
-            <Route path="/" exact element={<PublicHome />} />
-          ) : (
-            <Route path="/" exact element={<PrivateHome />} />
-          )}
+      <Routes>
+        {!auth ? (
+          <Route path="/" exact element={<PublicHome />} />
+        ) : (
+          <Route path="/" exact element={<PrivateHome />} />
+        )}
 
-          <Route path="/explore" element={<Explore />} />
+        <Route path="/explore" element={<Explore />} />
 
-          <Route
-            path="/library"
-            element={
-              <ProtectedRoute>
-                <Library />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/shelves"
-            element={
-              <ProtectedRoute>
-                <Shelves />
-              </ProtectedRoute>
-            }
-          />
+        <Route
+          path="/library"
+          element={
+            <ProtectedRoute>
+              <Library />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/shelves"
+          element={
+            <ProtectedRoute>
+              <Shelves />
+            </ProtectedRoute>
+          }
+        />
 
-          <Route path="/results" element={<SearchResults />} />
-          <Route path="results/:bookId" element={<BookDetails />} />
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-      </ScrollToTop>
+        <Route path="/results" element={<SearchResults />} />
+        <Route path="results/:bookId" element={<BookDetails />} />
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
     </>
   );
 };
