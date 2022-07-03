@@ -8,6 +8,7 @@ import webSearch from "../../images/web_search.svg";
 import Loading from "../../helpers/modal/Loading";
 import { useGetSearchResultsQuery } from "../../store/features/api/apiSlice";
 import BookResults from "./BookResults";
+import ScrollToTop from "../../helpers/routes/ScrollToTop";
 
 const SearchResults = () => {
   /** convert the location object into a javascript object
@@ -30,6 +31,10 @@ const SearchResults = () => {
     bookResults?.items === undefined ||
     bookResults?.items.length === 0;
 
+  const errorHeading = error?.data?.error?.message
+    ? `${error?.data?.error?.message}`
+    : "There was an error when trying to fetch the data.";
+
   if (isLoading || isFetching) {
     return (
       <div className={styled.results}>
@@ -44,7 +49,7 @@ const SearchResults = () => {
     content = (
       <EmptyShelf
         src={server}
-        heading={`${error.toString()}`}
+        heading={errorHeading}
         message="Try searching for another book or visit the Explore page."
         button="Explore"
         route="/explore"
@@ -69,6 +74,7 @@ const SearchResults = () => {
 
   return (
     <section className={styled.results}>
+      <ScrollToTop />
       {isSuccess && <Container>{content}</Container>}
     </section>
   );

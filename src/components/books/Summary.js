@@ -18,12 +18,16 @@ const Summary = (props) => {
     } else snippetRef.current.innerHTML = "Visit Details & More";
   }, [searchInfo]);
 
+  const src = imageLinks
+    ? `${imageLinks?.thumbnail}`
+    : "https://via.placeholder.com/150";
+
   return (
     <section className={styled["book-summary"]}>
       {/* if there is no image then show placeholder image */}
       <div className={styled.summary}>
         <figure>
-          <img src={imageLinks.smallThumbnail} alt={title} />
+          <img src={src} alt={title} />
         </figure>
 
         <article>
