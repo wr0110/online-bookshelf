@@ -45,12 +45,15 @@ const BookDetails = () => {
     );
   }
 
+  const errorHeading = error?.data?.error?.message
+    ? `${error?.data?.error?.message}`
+    : "There was an error when trying to fetch the data.";
   if (isError) {
     return (
       <Container className={styled.info}>
         <EmptyShelf
           src={server}
-          heading={`${error.toString()}`}
+          heading={errorHeading}
           message="Try searching for another book or visit the Explore page."
           button="Explore"
           route="/explore"

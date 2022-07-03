@@ -4,7 +4,7 @@ import styled from "./LibraryNav.module.css";
 const links = ["All", "TBR", "In Progress", "Completed", "DNF"];
 
 const LibraryNav = ({ searchParams, setSearchParams }) => {
-  const [link, setlink] = useState("All");
+  const [link, setlink] = useState("");
 
   //get the category from the url
   let urlParam = searchParams?.get("category");
@@ -13,7 +13,9 @@ const LibraryNav = ({ searchParams, setSearchParams }) => {
 
   //update the search params when the link changes
   useEffect(() => {
-    setSearchParams({ category: link });
+    if (link) {
+      setSearchParams({ category: link });
+    }
   }, [link, setSearchParams]);
 
   const navLinks = links.map((link) => {
@@ -33,7 +35,7 @@ const LibraryNav = ({ searchParams, setSearchParams }) => {
   return (
     <nav className={styled["library-navbar"]}>
       <h1>Your Library</h1>
-      <div className={styled["library-links"]}> {navLinks}</div>
+      <div className={styled["library-links"]}>{navLinks}</div>
     </nav>
   );
 };

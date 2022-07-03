@@ -41,6 +41,10 @@ const Books = (props) => {
   const showLibraryBookmark = props.showLibraryBookmark && isInLibrary;
   const showShelfBookmark = props.showShelfBookmark && isOnShelves;
 
+  const src = imageLinks
+    ? imageLinks.smallThumbnail
+    : "https://via.placeholder.com/128x193";
+
   return (
     <>
       <section
@@ -49,7 +53,7 @@ const Books = (props) => {
         onMouseLeave={() => setIsHovering(false)}
       >
         <figure onClick={handleGetBookInfo}>
-          <img src={imageLinks.smallThumbnail} alt={title} />
+          <img src={src} alt={title} />
         </figure>
 
         {props.showDeleteIcon && isHovering && (
