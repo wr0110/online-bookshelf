@@ -65,6 +65,7 @@ const PrivateHome = () => {
         alt="person reading a book"
         imgClassName="med-img"
       />
+      <Footer />
     </>
   );
 };
