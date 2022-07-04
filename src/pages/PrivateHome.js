@@ -5,6 +5,7 @@ import cover from "../images/private_cover.png";
 import bookSitting from "../images/book_sitting.png";
 import TopPicks from "../components/home/TopPicks";
 import Add from "../components/home/Add";
+import Footer from "../components/nav/Footer";
 
 const genreList = [
   "Crime Fiction",

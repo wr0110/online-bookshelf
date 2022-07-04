@@ -9,9 +9,9 @@ const Footer = () => {
   const auth = isSignedIn && currentUser.email;
 
   return (
-    <footer>
+    <footer className={styled["footer-container"]}>
       <Container className={styled.footer}>
-        <article>
+        <article className={styled.bookmark}>
           <h2>BookMark</h2>
           <p className={`para ${styled.para}`}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet optio
@@ -20,7 +20,7 @@ const Footer = () => {
           </p>
         </article>
 
-        <div>
+        <article className={styled.useful}>
           <h2>Useful Links</h2>
           <ul>
             <li>
@@ -42,9 +42,9 @@ const Footer = () => {
               </li>
             )}
           </ul>
-        </div>
+        </article>
 
-        <div>
+        <article className={styled.help}>
           <h2>Help</h2>
           <ul>
             <li>
@@ -57,7 +57,7 @@ const Footer = () => {
               <Link to="/faqs">FAQs</Link>
             </li>
           </ul>
-        </div>
+        </article>
       </Container>
       <p className={styled.copyright}>&copy; 2020 BookMark</p>
     </footer>
