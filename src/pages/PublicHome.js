@@ -6,6 +6,7 @@ import Review from "../components/home/Review";
 import TopPicks from "../components/home/TopPicks";
 import reading_svg from "../images/reading_svg.png";
 import covers from "../images/covers.png";
+import Footer from "../components/nav/Footer";
 
 // props to pass to the genre component
 const genreList = [
@@ -71,6 +72,7 @@ const PublicHome = () => {
       />
       <Booktok />
       <Review />
+      <Footer />
     </section>
   );
 };

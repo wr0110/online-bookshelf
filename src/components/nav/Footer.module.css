@@ -1,0 +1,43 @@
+.footer {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.footer h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: .5rem;
+    color: var(--yellow);
+}
+
+.para {
+    padding: 0;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li {
+    padding: .5rem 0;
+}
+
+
+.footer ul li a {
+    color: inherit;
+    text-decoration: none;
+    line-height: 135%;
+    letter-spacing: 1.5px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.copyright {
+    padding: 1rem;
+    background-color: var(--yellow);
+    color: var(--white);
+    text-align: center;
+    font-weight: 600;
+}
