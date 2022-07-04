@@ -14,8 +14,9 @@ root.render(
     <AuthContextProvider>
       <Provider store={store}>
         <BrowserRouter>
-          <ScrollToTop />
-          <App />
+          <ScrollToTop>
+            <App />
+          </ScrollToTop>
         </BrowserRouter>
       </Provider>
     </AuthContextProvider>
