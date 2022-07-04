@@ -54,8 +54,9 @@
 
 .summary-snippet {
   font-weight: 500;
-  line-height: 130%;
+  line-height: 135%;
   padding-top: 0.5rem;
+  letter-spacing: 1.2px;
   width: 90%;
   overflow: hidden;
   display: -webkit-box;
