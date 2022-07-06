@@ -20,6 +20,8 @@ Bookmark uses Firebase and consumes their Authentication and Database services. 
 
 As an avid reader, I found it difficult to keep track of all my books, book recommendations or reading lists since I just kept a list in my notes app or I scribbled it on whatever I could find nearby. This method was not effective as it was unorganized and unreliable. It became clear to me that I needed an easier, more functional way to organize all my reads, and so I created Bookmark with the aim of solving this problem.
 
+## Challenges
+
 ## Tools and Technologies
 
 Bookmark was built using
