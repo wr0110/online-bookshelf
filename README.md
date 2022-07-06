@@ -30,6 +30,7 @@ Bookmark was built using
 - The Context API
 - Firebase
 - Google Books API
+- React Notification Component
 
 ## Features
 
