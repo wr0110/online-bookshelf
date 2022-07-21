@@ -8,6 +8,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "./contexts/authContext";
 import { useSelector } from "react-redux";
 import { doc, setDoc } from "firebase/firestore";
+import GetLibraryFromFirebase from "./components/firebase/GetLibraryFromFirebase";
 
 function App() {
   const { currentUser, isSignedIn } = useContext(AuthContext);
@@ -37,6 +38,7 @@ function App() {
     <>
       <ReactNotifications isMobile={true} />
       <ShowNotification />
+      <GetLibraryFromFirebase />
       <Pages />
     </>
   );
