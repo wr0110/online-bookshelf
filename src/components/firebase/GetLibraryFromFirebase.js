@@ -40,6 +40,7 @@ const GetLibraryFromFirebase = () => {
       dispatch(updateLibraryState({ user: currentUser, userData: data }));
     }
   }, [data, currentUser, dispatch]);
+
   return <div>{loading && <Loading />}</div>;
 };
 

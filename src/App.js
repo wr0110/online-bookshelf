@@ -38,7 +38,7 @@ function App() {
     <>
       <ReactNotifications isMobile={true} />
       <ShowNotification />
-      <GetLibraryFromFirebase />
+      {auth && <GetLibraryFromFirebase />}
       <Pages />
     </>
   );
