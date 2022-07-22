@@ -105,6 +105,22 @@ const librarySlice = createSlice({
 
       return state;
     },
+    updateLibraryState: (state, action) => {
+      const userData = action.payload;
+
+      // get the current user's data from the library
+      const library = userData.userData.filter(
+        (doc) => doc.id === userData.user.userId
+      );
+
+      //update the library state with the current user's data
+      state.library = [
+        {
+          user: userData.user.email,
+          userLibrary: library[0].document.library,
+        },
+      ];
+    },
   },
 });
 
@@ -113,6 +129,7 @@ export const {
   addBookToLibrary,
   checkIfBookAlreadyExistsInCurrentUserLibrary,
   removeBookFromLibrary,
+  updateLibraryState,
 } = librarySlice.actions;
 
 export default librarySlice.reducer;

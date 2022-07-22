@@ -10,14 +10,14 @@ const message =
   "Search for a book to add it to your Library or visit the Explore page to find more books.";
 
 const BooksForLibrary = ({ searchParams, setSearchParams }) => {
-  const AllBooks = useGetAllBooks();
+  let AllBooks = useGetAllBooks();
 
-  //get the category from the url params
   const urlParam = searchParams?.get("category");
+  const initial = useFilterLibrary(urlParam);
+  let books = [];
+  books = initial;
 
   //books to return based on the selected category
-  let books = [];
-  books = useFilterLibrary(urlParam);
 
   useEffect(() => {
     //if the search param = TBR set the urlParam to To Be Read
@@ -25,6 +25,8 @@ const BooksForLibrary = ({ searchParams, setSearchParams }) => {
       setSearchParams({ category: "To Be Read" });
     }
   }, [setSearchParams, urlParam]);
+
+  //get data from database
 
   //return all books for the current user
   if (!urlParam || urlParam === "" || urlParam === "All") {
