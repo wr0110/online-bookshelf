@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, initializeFirestore } from "firebase/firestore";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { collection } from "firebase/firestore";
 
@@ -26,3 +26,12 @@ export const provider = new GoogleAuthProvider();
 
 export const libraryCollection = collection(database, "library");
 
+//Add data to firebase
+export const addDataToFirebase = async (library, id) => {
+  const currentDoc = doc(database, "library", `${id}`);
+  await setDoc(
+    currentDoc,
+    { userBooks: { library: [...library] } },
+    { merge: true }
+  );
+};
