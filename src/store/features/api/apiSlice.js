@@ -12,7 +12,7 @@ export const apiSlice = createApi({
         `?q=${searchQuery}&orderBy=relevance&maxResults=28&key=${apiKey}`,
     }),
     getBookDetails: builder.query({
-      query: (bookId) => `/${bookId}&key=${apiKey}`,
+      query: (bookId) => `/${bookId}`,
     }),
   }),
 });
