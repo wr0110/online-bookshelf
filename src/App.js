@@ -6,13 +6,15 @@ import ShowNotification from "./helpers/notification/ShowNotification";
 import { addDataToFirebase } from "./firebase";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./contexts/authContext";
-import { useSelector } from "react-redux";
-
-// import GetLibraryFromFirebase from "./firebase/GetLibraryFromFirebase";
+import { useDispatch, useSelector } from "react-redux";
+import useGetDataFromFirebase from "./hooks/useGetDataFromFirebase";
+import { updateLibraryState } from "./store/features/library/librarySlice";
 
 function App() {
   const { currentUser, isSignedIn } = useContext(AuthContext);
   const { library } = useSelector((state) => state.bookStore);
+  const dataForUser = useGetDataFromFirebase();
+  const dispatch = useDispatch();
 
   // valid if email exists and user is signed in
   const auth = currentUser.email !== null && isSignedIn;
@@ -28,11 +30,19 @@ function App() {
     }
   }, [library, auth, currentUser]);
 
+  //when app first mounts get data from database
+  useEffect(() => {
+    if (currentUser?.email && !!dataForUser) {
+      const { library } = dataForUser;
+      const data = { email: currentUser?.email, library };
+      if (!!library) dispatch(updateLibraryState(data));
+    }
+  }, [currentUser, dispatch, dataForUser]);
+
   return (
     <>
       <ReactNotifications isMobile={true} />
       <ShowNotification />
-      {/* {auth && <GetLibraryFromFirebase />} */}
       <Pages />
     </>
   );

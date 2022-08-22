@@ -16,7 +16,7 @@ const AuthContextProvider = (props) => {
     email: "",
   });
 
-  console.log(currentUser);
+  // console.log(currentUser);
 
   /**
    *signs out the user
@@ -51,7 +51,7 @@ const AuthContextProvider = (props) => {
     if (user) {
       setcurrentUser(user);
     }
-    console.log(login, user?.email);
+    // console.log(login, user?.email);
   }, []);
 
   const authObject = {

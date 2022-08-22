@@ -1,18 +1,17 @@
 import { getDocs } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { AuthContext } from "../../contexts/authContext";
-import { libraryCollection } from "../../firebase";
-import Loading from "../../helpers/modal/Loading";
-import { updateLibraryState } from "../../store/features/library/librarySlice";
+import { AuthContext } from "../contexts/authContext";
+import { libraryCollection } from "../firebase";
+import Loading from "../helpers/modal/Loading";
 
-const GetLibraryFromFirebase = () => {
-  const dispatch = useDispatch();
+const useGetDataFromFirebase = () => {
   const { currentUser } = useContext(AuthContext);
   const [data, setData] = useState([]);
+  const [dataForUser, setDataForUser] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  //get the data from the database
   useEffect(() => {
-    //get the data from the database
     setLoading(true);
     try {
       const getData = async () => {
@@ -27,21 +26,23 @@ const GetLibraryFromFirebase = () => {
       };
       getData();
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
     setLoading(false);
-
-    // return () => setData([]);
   }, []);
 
   //when there is data in the database, update the library state
   useEffect(() => {
-    if (data.length !== 0) {
-      dispatch(updateLibraryState({ user: currentUser, userData: data }));
+    if (data && data.length !== 0) {
+      const currentUserData = data.find(
+        (item) => item.id === currentUser?.userId
+      );
+      setDataForUser(currentUserData?.document?.userBooks);
     }
-  }, [data, currentUser, dispatch]);
+  }, [data, currentUser]);
 
-  return <div>{loading && <Loading />}</div>;
+  if (loading) return <Loading />;
+  else return dataForUser;
 };
 
-export default GetLibraryFromFirebase;
+export default useGetDataFromFirebase;
