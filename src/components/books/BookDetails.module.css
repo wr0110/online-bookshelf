@@ -93,8 +93,6 @@ p.more:hover {
   text-decoration: underline;
 }
 
-
-
 .book-categories {
   padding-top: 2rem;
   display: flex;
@@ -122,6 +120,7 @@ p.more:hover {
 p.description * {
   font-weight: 300;
   font-style: normal;
+  line-height: 150%;
 }
 
 p.description {

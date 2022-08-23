@@ -2,7 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 0;
+    gap: 1rem;
+    padding: 1.5rem 0;
     border-bottom: 1.5px solid rgba(166, 166, 166, 0.3);
     margin-bottom: 2rem;
     overflow-x: scroll;
@@ -16,21 +17,26 @@
     /* Chrome */
 }
 
-.explore-nav p {
-    margin-right: .5rem;
-    min-width: max-content;
-    padding: 5px 10px;
-    font-weight: 600;
-    color: var(--dark-blue);
-    border-radius: 50px;
-    border: 2px solid var(--dark-blue);
-    transition: all 0.3s ease-in-out;
-    margin-bottom: 0;
-    text-align: center;
-    cursor: pointer;
+.title {
+    display: none;
 }
 
-.explore-nav p:hover {
-    background-color: var(--dark-blue);
-    color: var(--white);
+.links {
+    display: flex;
+    gap: 1rem;
+}
+
+.explore-nav p {
+    min-width: max-content;
+    font-weight: 400;
+    color: var(--med-grey);
+}
+
+
+/* Media Queries */
+
+@media (min-width:900px) {
+    .title {
+        display: grid;
+    }
 }

@@ -37,7 +37,7 @@
   font-weight: 600;
   color: var(--dark-blue);
   border-radius: 50px;
-  border: 2px solid var(--dark-blue);
+  border: 1px solid var(--dark-blue);
   width: 70%;
   margin: 1rem auto;
   cursor: pointer;

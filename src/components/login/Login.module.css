@@ -47,7 +47,7 @@
   align-items: center;
   gap: 0.5rem;
 
-  border: 2px solid var(--dark-blue);
+  border: 1px solid var(--dark-blue);
   border-radius: 50px;
   cursor: pointer;
 

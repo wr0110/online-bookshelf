@@ -4,11 +4,11 @@ import { AuthContext } from "../../contexts/authContext";
 
 const ProtectedRoute = (props) => {
   const { isSignedIn, currentUser } = useContext(AuthContext);
+  const auth = currentUser.email !== "" && isSignedIn;
 
-  //if there is no user and they are not signed in then redirect to the specified path else return children components
-  if (!isSignedIn && !currentUser.email) {
-    return <Navigate to="/" />;
-  }
+  //if user is not authenticated redirect home else return children components
+  if (!auth) return <Navigate to="/" />;
+
   return <div>{props.children}</div>;
 };
 
