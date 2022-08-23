@@ -39,13 +39,13 @@
 
 .img-group button {
   background: none;
-  padding: 10px 25px;
+  padding: 10px 20px;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--dark-blue);
   border: none;
   border-radius: 50px;
-  border: 2px solid var(--dark-blue);
+  border: 1px solid var(--dark-blue);
   width: 100%;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -78,8 +78,22 @@ p.author {
   color: var(--med-grey);
   font-size: 1.1rem;
   font-weight: 600;
-  letter-spacing: 1px;
 }
+
+p.more {
+  text-align: center;
+  margin-top: .5rem;
+  color: var(--dark-blue);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+p.more:hover {
+  text-decoration: underline;
+}
+
+
 
 .book-categories {
   padding-top: 2rem;
@@ -93,7 +107,7 @@ p.author {
   font-weight: 400;
   padding: 10px 20px;
   border-radius: 50px;
-  border: 2px solid var(--dark-blue);
+  border: 1px solid var(--dark-blue);
   color: var(--dark-blue);
   width: fit-content;
   transition: all 0.3s ease-in-out;

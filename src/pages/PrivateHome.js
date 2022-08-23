@@ -28,7 +28,7 @@ const PrivateHome = () => {
   );
 
   const heroText =
-    "BookMark makes it easy for you to find and keep track of the books you want to read. Add to your library and create shelves to help stay organized. Keep track of the books you've read, the books you're currently reading, the books you want to read and those hard to finish books.";
+    "Keep track of the books you've read, the books you're currently reading, the books you want to read and those hard to finish books.";
 
   const buttonText = "Get Started";
 
