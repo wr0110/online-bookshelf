@@ -26,7 +26,6 @@
 
 .summary-title {
   font-size: 1.2rem;
-  letter-spacing: 1px;
   color: var(--dark-blue);
   width: 90%;
   overflow: hidden;
@@ -36,9 +35,8 @@
 }
 
 .summary-author {
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark-blue);
-  letter-spacing: 1px;
 }
 
 .supporting-details {
@@ -53,10 +51,10 @@
 }
 
 .summary-snippet {
-  font-weight: 500;
+  font-weight: 400;
+  font-style: normal;
   line-height: 135%;
   padding-top: 0.5rem;
-  letter-spacing: 1.2px;
   width: 90%;
   overflow: hidden;
   display: -webkit-box;

@@ -2,12 +2,7 @@
   position: relative;
   top: 110px;
   padding: 5rem 0;
-  background-image: url('../../images/blobs.png');
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: cover;
-  height: 100%;
-  min-height: 100vh;
+
 }
 
 .img-group {

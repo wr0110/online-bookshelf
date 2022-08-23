@@ -40,7 +40,7 @@ const Summary = (props) => {
           {/* Year and Category */}
           <div className={styled["supporting-details"]}>
             {publishedDate && (
-              <p>{new Date(publishedDate).getFullYear().toString()}</p>
+              <p>{new Date(publishedDate).getFullYear().toString()} </p>
             )}
             {categories && <p>{categories[0]}</p>}
           </div>
