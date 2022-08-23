@@ -273,6 +273,17 @@ const shelfSlice = createSlice({
         });
       }
     },
+    updateShelf: (state, action) => {
+      const data = action.payload;
+
+      state.shelf = [
+        {
+          user: data.user,
+          booksOnShelves: data.booksOnShelves,
+          shelves: data.shelves,
+        },
+      ];
+    },
   },
 });
 
@@ -284,5 +295,6 @@ export const {
   renameShelf,
   removeShelf,
   removeBookFromAllShelves,
+  updateShelf,
 } = shelfSlice.actions;
 export default shelfSlice.reducer;

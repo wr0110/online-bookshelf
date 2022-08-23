@@ -107,19 +107,8 @@ const librarySlice = createSlice({
     },
     updateLibraryState: (state, action) => {
       const userData = action.payload;
-
-      // get the current user's data from the library
-      const library = userData.userData.filter(
-        (doc) => doc.id === userData.user.userId
-      );
-
       //update the library state with the current user's data
-      state.library = [
-        {
-          user: userData.user.email,
-          userLibrary: library[0].document.library,
-        },
-      ];
+      state.library = [{ user: userData.email, userLibrary: userData.library }];
     },
   },
 });
