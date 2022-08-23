@@ -22,7 +22,6 @@ const useGetDataFromFirebase = () => {
           return data;
         });
         setData(data);
-        console.log("hi");
       };
       getData();
     } catch (error) {
@@ -31,7 +30,7 @@ const useGetDataFromFirebase = () => {
     setLoading(false);
   }, []);
 
-  //when there is data in the database, update the library state
+  //when the data is available, find the current user's data and set the state
   useEffect(() => {
     if (data && data.length !== 0) {
       const currentUserData = data.find(

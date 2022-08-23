@@ -16,9 +16,6 @@ const firebaseConfig = {
 
 // Initialize Firebase and Firestore
 export const app = initializeApp(firebaseConfig);
-// initializeFirestore(app, {
-//   ignoreUndefinedProperties: true,
-// });
 export const database = getFirestore(app);
 
 export const auth = getAuth(app);
@@ -26,12 +23,18 @@ export const provider = new GoogleAuthProvider();
 
 export const libraryCollection = collection(database, "library");
 
-//Add data to firebase
-export const addDataToFirebase = async (library, id) => {
+// add library to firebase
+export const addLibraryToFirebase = async (id, library) => {
   const currentDoc = doc(database, "library", `${id}`);
   await setDoc(
     currentDoc,
     { userBooks: { library: [...library] } },
     { merge: true }
   );
+};
+
+// add shelf to firebase
+export const addShelfToFirebase = async (id, shelf) => {
+  const currentDoc = doc(database, "library", `${id}`);
+  await setDoc(currentDoc, { userBooks: { shelf: [shelf] } }, { merge: true });
 };
