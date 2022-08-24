@@ -7,10 +7,7 @@ import SearchResults from "../components/search/SearchResults";
 import { AuthContext } from "../contexts/authContext";
 import NoMatch from "../helpers/routes/NoMatch";
 import ProtectedRoute from "../helpers/routes/ProtectedRoute";
-import About from "./About";
 import Explore from "./Explore";
-import Faq from "./Faq";
-import Instructions from "./Instructions";
 import Library from "./Library";
 import PrivateHome from "./PrivateHome";
 import PublicHome from "./PublicHome";
@@ -24,11 +21,11 @@ const Pages = () => {
     <>
       <Nav />
       <Routes>
-        {!auth ? (
-          <Route path="/" exact element={<PublicHome />} />
-        ) : (
-          <Route path="/" exact element={<PrivateHome />} />
-        )}
+        <Route
+          path="/"
+          exact
+          element={!auth ? <PublicHome /> : <PrivateHome />}
+        />
 
         <Route path="/explore" element={<Explore />} />
 
@@ -51,11 +48,6 @@ const Pages = () => {
 
         <Route path="/results" element={<SearchResults />} />
         <Route path="results/:bookId" element={<BookDetails />} />
-
-        <Route path="/about" element={<About />} />
-        <Route path="/faqs" element={<Faq />} />
-        <Route path="/instructions" element={<Instructions />} />
-
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </>
