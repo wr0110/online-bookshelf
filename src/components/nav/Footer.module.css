@@ -13,6 +13,8 @@
     column-gap: 2rem;
     justify-content: space-evenly;
     align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .footer ul li {
