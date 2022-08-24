@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useGetDataFromFirebase from "./hooks/useGetDataFromFirebase";
 import { updateLibraryState } from "./store/features/library/librarySlice";
 import { updateShelf } from "./store/features/shelf/shelfSlice";
+import Loading from "./helpers/modal/Loading";
 
 function App() {
   const { currentUser, isSignedIn } = useContext(AuthContext);
@@ -71,6 +72,8 @@ function App() {
       }
     }
   }, [currentUser, dispatch, dataForUser]);
+
+  if (auth && dataForUser.length === 0) return <Loading />;
 
   return (
     <>

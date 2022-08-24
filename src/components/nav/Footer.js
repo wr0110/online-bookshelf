@@ -30,16 +30,6 @@ const Footer = () => {
               <Link to="/shelves">Shelves</Link>
             </li>
           )}
-
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/instructions">How To Use</Link>
-          </li>
-          <li>
-            <Link to="/faqs">FAQs</Link>
-          </li>
         </ul>
       </Container>
       <p className={styled.copyright}>&copy; 2020 BookMark</p>

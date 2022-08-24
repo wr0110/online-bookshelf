@@ -18,7 +18,7 @@ import Shelves from "./Shelves";
 
 const Pages = () => {
   const { currentUser, isSignedIn } = useContext(AuthContext);
-  const auth = currentUser.email !== null && isSignedIn;
+  const auth = currentUser?.email !== "" && isSignedIn;
 
   return (
     <>

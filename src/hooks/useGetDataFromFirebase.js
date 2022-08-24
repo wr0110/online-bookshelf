@@ -1,18 +1,15 @@
 import { getDocs } from "firebase/firestore";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/authContext";
 import { libraryCollection } from "../firebase";
-import Loading from "../helpers/modal/Loading";
 
 const useGetDataFromFirebase = () => {
   const { currentUser } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [dataForUser, setDataForUser] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   //get the data from the database
   useEffect(() => {
-    setLoading(true);
     try {
       const getData = async () => {
         const data = await getDocs(libraryCollection).then((snapshot) => {
@@ -27,7 +24,6 @@ const useGetDataFromFirebase = () => {
     } catch (error) {
       alert(error);
     }
-    setLoading(false);
   }, []);
 
   //when the data is available, find the current user's data and set the state
@@ -40,8 +36,7 @@ const useGetDataFromFirebase = () => {
     }
   }, [data, currentUser]);
 
-  if (loading) return <Loading />;
-  else return dataForUser;
+  return dataForUser;
 };
 
 export default useGetDataFromFirebase;

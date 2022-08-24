@@ -3,7 +3,7 @@ import styled from "./ExploreNav.module.css";
 
 const exploreLinks = [
   "Romance Picks",
-  "BookTok Sensation",
+  "BookTok Sensations",
   "Spicy Book Recs ",
   "Fantasy Picks",
   "Fiction Picks",
@@ -15,7 +15,12 @@ const ExploreNav = () => {
     return <p key={link}>{link}</p>;
   });
 
-  return <nav className={styled["explore-nav"]}>{links}</nav>;
+  return (
+    <nav className={styled["explore-nav"]}>
+      <h2 className={styled.title}>Categories</h2>
+      <div className={styled.links}>{links}</div>
+    </nav>
+  );
 };
 
 export default ExploreNav;

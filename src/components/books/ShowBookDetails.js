@@ -75,7 +75,6 @@ const ShowBookDetails = (props) => {
 
           <div className={styled["btn-group"]}>
             <button onClick={handleLibrary}>Add to Library</button>
-            <button onClick={handleAuthor}>More by Author</button>
           </div>
         </div>
 
@@ -83,6 +82,9 @@ const ShowBookDetails = (props) => {
           <h1 className={styled.title}>{title}</h1>
           {subtitle && <p className={styled.subtitle}>{subtitle}</p>}
           {authors && <p className={styled.author}>{authors[0]}</p>}
+          <p className={styled.more} onClick={handleAuthor}>
+            More by Author
+          </p>
 
           {categories && (
             <div className={styled["book-categories"]}>{allCategories}</div>

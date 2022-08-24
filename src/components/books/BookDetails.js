@@ -62,9 +62,6 @@ const BookDetails = () => {
     );
   }
 
-  // const success =
-  // !isLoading && isSuccess && selectedBook.length !== 0 && !error;
-
   return (
     <section className={styled.info}>
       {isLoading && <Loading />}

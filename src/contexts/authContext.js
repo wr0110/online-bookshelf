@@ -1,8 +1,7 @@
 import { signOut } from "firebase/auth";
-
 import React, { createContext, useEffect, useState } from "react";
-
 import { auth } from "../firebase";
+import Loading from "../helpers/modal/Loading";
 
 // create context
 export const AuthContext = createContext();
@@ -16,7 +15,9 @@ const AuthContextProvider = (props) => {
     email: "",
   });
 
-  // console.log(currentUser);
+  const [loading, setLoading] = useState(true);
+
+  console.log(currentUser);
 
   /**
    *signs out the user
@@ -51,6 +52,7 @@ const AuthContextProvider = (props) => {
     if (user) {
       setcurrentUser(user);
     }
+    setLoading(false);
     // console.log(login, user?.email);
   }, []);
 
@@ -61,6 +63,8 @@ const AuthContextProvider = (props) => {
     currentUser,
     setcurrentUser,
   };
+
+  if (loading) return <Loading />;
 
   return (
     <AuthContext.Provider value={authObject}>

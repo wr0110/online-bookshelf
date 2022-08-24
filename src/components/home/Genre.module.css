@@ -21,7 +21,7 @@
   font-size: 1.1rem;
   padding: 10px 25px;
   border-radius: 50px;
-  border: 2px solid var(--dark-blue);
+  border: 1px solid var(--dark-blue);
   color: var(--dark-blue);
   text-align: center;
   min-width: 120px;
